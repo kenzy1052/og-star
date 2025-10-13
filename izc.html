@@ -1,0 +1,3177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OG STAR TRAVEL & TOURS - Relish the Experience</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* Color Variables - Based on provided color scheme */
+      :root {
+        --primary-color: #0050A4;
+        --secondary-color: #C89B2D;
+        --secondary-hover: #A87423;
+        --accent-color: #F5E1C8;
+        --text-color: #333;
+        --text-light: #F5E1C8;
+        --bg-primary: #ffffff;
+        --bg-secondary: #f8f9fa;
+        --bg-tertiary: #e9ecef;
+        --bg-dark: #3C3C3C;
+        --bg-darker: #0d0d0d;
+        --nav-bg: #ffffff;
+        --nav-bg-dark: #1a1a1a;
+        --gradient-primary: linear-gradient(135deg, #0050A4 0%, #003d7a 100%);
+        --gradient-secondary: linear-gradient(135deg, #C89B2D 0%, #A87423 100%);
+        --gradient-accent: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+        --transition: all 0.3s ease;
+        --nav-height: 70px;
+        --spacing-xs: 0.5rem;
+        --spacing-sm: 1rem;
+        --spacing-md: 1.5rem;
+        --spacing-lg: 2rem;
+        --spacing-xl: 3rem;
+        --spacing-2xl: 4rem;
+        --spacing-3xl: 5rem;
+        --spacing-4xl: 6rem;
+        --radius-sm: 0.25rem;
+        --radius-md: 0.5rem;
+        --radius-lg: 1rem;
+        --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        --shadow-hover: 0 10px 15px rgba(0, 0, 0, 0.1);
+        --font-primary: "Open Sans", sans-serif;
+        --font-secondary: "Montserrat", sans-serif;
+        --footer-text: #F5E1C8;
+        --emerald: #046c4e;
+        --emerald-dark: #012b26;
+        --text-muted: #c0c0c0;
+      }
+
+      /* Dark Mode Variables */
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --primary-color: #0050A4;
+          --secondary-color: #C89B2D;
+          --accent-color: #e74c3c;
+          --text-color: #f5f5f5;
+          --text-light: #333;
+          --bg-primary: #1a1a1a;
+          --bg-secondary: #2c2c2c;
+          --bg-tertiary: #3c3c3c;
+          --nav-bg: #1a1a1a;
+        }
+      }
+
+      /* Reset and Base Styles */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: var(--font-primary);
+        line-height: 1.6;
+        color: var(--text-color);
+        background-color: var(--bg-primary);
+        transition: background-color var(--transition), color var(--transition);
+        overflow-x: hidden;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 15px;
+      }
+
+      /* Typography */
+      h1 {
+        font-size: clamp(1.75rem, 5vw, 2.5rem);
+        margin-bottom: 1rem;
+        color: var(--text-color);
+      }
+
+      h2 {
+        font-size: clamp(1.5rem, 4vw, 2rem);
+        margin-bottom: 1rem;
+        color: var(--primary-color);
+      }
+
+      h3 {
+        font-size: clamp(1.25rem, 3vw, 1.5rem);
+        margin-bottom: 0.8rem;
+        color: var(--text-color);
+      }
+
+      h4 {
+        font-size: clamp(1.1rem, 2.5vw, 1.25rem);
+        margin-bottom: 0.6rem;
+      }
+
+      p {
+        margin-bottom: 1rem;
+      }
+
+      /* Buttons with fill effect */
+      .btn {
+        display: inline-block;
+        padding: 12px 24px;
+        background: var(--gradient-secondary);
+        color: white;
+        text-decoration: none;
+        border-radius: var(--radius-md);
+        font-weight: 600;
+        transition: var(--transition);
+        cursor: pointer;
+        border: none;
+        font-size: 1rem;
+        min-height: 44px;
+        box-shadow: 0 4px 8px rgba(200, 155, 45, 0.3);
+        position: relative;
+        overflow: hidden;
+        z-index: 1;
+      }
+
+      .btn::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 0%;
+        background: #000;
+        z-index: -1;
+        transition: height 420ms ease-in-out;
+        transform-origin: bottom;
+        border-radius: inherit;
+        opacity: 0.95;
+        pointer-events: none;
+      }
+
+      .btn:hover::before {
+        height: 100%;
+      }
+
+      .btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 12px rgba(200, 155, 45, 0.4);
+      }
+
+      /* Custom Scrollbar Styles */
+      ::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+      }
+
+      ::-webkit-scrollbar-track {
+        background: var(--bg-secondary);
+        border-radius: 10px;
+      }
+
+      ::-webkit-scrollbar-thumb {
+        background: var(--gradient-primary);
+        border-radius: 10px;
+        transition: all var(--transition);
+      }
+
+      ::-webkit-scrollbar-thumb:hover {
+        background: var(--gradient-secondary);
+      }
+
+      /* Firefox Scrollbar */
+      html {
+        scrollbar-width: thin;
+        scrollbar-color: var(--primary-color) var(--bg-secondary);
+      }
+
+      /* Enhanced Scroll Animation Classes */
+      .scroll-animate {
+        opacity: 0;
+        transform: translateY(60px);
+        transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      }
+
+      .scroll-animate.animate-slide-left {
+        transform: translateX(-60px) translateY(30px);
+      }
+
+      .scroll-animate.animate-slide-right {
+        transform: translateX(60px) translateY(30px);
+      }
+
+      .scroll-animate.animate-scale {
+        transform: scale(0.8) translateY(30px);
+      }
+
+      .scroll-animate.animate-fade {
+        transform: translateY(30px);
+      }
+
+      .scroll-animate.visible {
+        opacity: 1;
+        transform: translateX(0) translateY(0) scale(1);
+      }
+
+      /* Text Animation Classes */
+      .text-animate {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      }
+
+      .text-animate.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* Stagger animation delays */
+      .scroll-animate:nth-child(1) {
+        transition-delay: 0s;
+      }
+      .scroll-animate:nth-child(2) {
+        transition-delay: 0.1s;
+      }
+      .scroll-animate:nth-child(3) {
+        transition-delay: 0.2s;
+      }
+      .scroll-animate:nth-child(4) {
+        transition-delay: 0.3s;
+      }
+      .scroll-animate:nth-child(5) {
+        transition-delay: 0.4s;
+      }
+      .scroll-animate:nth-child(6) {
+        transition-delay: 0.5s;
+      }
+
+      /* Text stagger delays */
+      .text-animate:nth-child(1) {
+        transition-delay: 0s;
+      }
+      .text-animate:nth-child(2) {
+        transition-delay: 0.15s;
+      }
+      .text-animate:nth-child(3) {
+        transition-delay: 0.3s;
+      }
+
+      /* ===========================================
+            NAVBAR
+           =========================================== */
+      .navbar {
+        position: fixed;
+        inset: 0 0 auto 0;
+        height: var(--nav-height);
+        display: flex;
+        align-items: center;
+        background: var(--nav-bg);
+        backdrop-filter: blur(6px) saturate(120%);
+        border-bottom: 1px solid rgba(10, 12, 13, 0.06);
+        z-index: 1200;
+        box-shadow: 0 8px 30px rgba(15, 23, 42, 0.04);
+        transition: transform 0.3s ease;
+      }
+
+      .navbar.hidden {
+        transform: translateY(-100%);
+      }
+
+      .nav-inner {
+        position: relative;
+        width: 100%;
+        max-width: 1240px;
+        margin: 0 auto;
+        height: 100%;
+        padding: 0 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      /* Logo pinned to near-left corner */
+      .nav-logo {
+        position: absolute;
+        left: 12px;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+      .nav-logo img {
+        height: 44px;
+        display: block;
+      }
+
+      /* WhatsApp pinned to near-right corner */
+      .nav-cta {
+        position: absolute;
+        right: 12px;
+        top: 50%;
+        transform: translateY(-50%);
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      /* Center nav (keeps centered even when left/right items exist) */
+      .nav-center {
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        pointer-events: auto;
+      }
+
+      .nav-menu {
+        display: flex;
+        gap: 28px;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        align-items: center;
+      }
+
+      .nav-item {
+        position: relative;
+      }
+
+      .nav-link {
+        display: inline-block;
+        color: var(--text-color);
+        font-weight: 600;
+        font-size: 13px;
+        text-transform: uppercase;
+        letter-spacing: 0.6px;
+        padding: 6px 4px;
+        text-decoration: none;
+        transition: color 420ms var(--transition), transform 220ms var(--transition);
+      }
+
+      /* underline: center -> full using scaleX */
+      .nav-link::after {
+        content: "";
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%) scaleX(0);
+        transform-origin: center;
+        width: 100%;
+        height: 2px;
+        bottom: -8px;
+        background: var(--secondary-color);
+        border-radius: 2px;
+        transition: transform 520ms var(--transition); /* slower and clean */
+      }
+      .nav-link:hover {
+        color: var(--secondary-color);
+      }
+      .nav-link:hover::after,
+      .nav-link.active::after {
+        transform: translateX(-50%) scaleX(1);
+      }
+
+      /* Desktop dropdown (floating) */
+      .dropdown {
+        position: absolute;
+        top: calc(var(--nav-height) - 6px);
+        left: 50%;
+        transform: translateX(-50%) translateY(10px);
+        background: linear-gradient(#fff, #fbfbfb);
+        border-radius: 10px;
+        padding: 10px;
+        box-shadow: 0 18px 40px rgba(4, 10, 15, 0.08);
+        border: 1px solid rgba(10, 12, 13, 0.04);
+        min-width: 210px;
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transition: opacity 260ms var(--transition), transform 260ms var(--transition),
+          visibility 260ms;
+        z-index: 50;
+      }
+      .dropdown .sublink {
+        display: block;
+        padding: 10px 12px;
+        color: var(--text-muted);
+        text-decoration: none;
+        border-radius: 6px;
+        font-weight: 600;
+        transition: color 180ms var(--transition), background 180ms var(--transition);
+        text-align: center;
+      }
+      .dropdown .sublink:hover {
+        background: rgba(200, 155, 45, 0.1);
+        color: var(--secondary-color);
+      }
+
+      @media (min-width: 1024px) {
+        .nav-item:hover > .dropdown {
+          opacity: 1;
+          visibility: visible;
+          transform: translateX(-50%) translateY(0);
+          pointer-events: auto;
+        }
+      }
+
+      /* ===========================
+       WhatsApp CTA (desktop) - expand + typewriter + water-fill hover
+       =========================== */
+      .whatsapp-btn {
+        --btn-h: 44px;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        height: var(--btn-h);
+        border-radius: 999px;
+        border: 0;
+        cursor: pointer;
+        padding: 0 12px;
+        width: 48px; /* initial circular */
+        overflow: hidden;
+        position: relative;
+        background: linear-gradient(180deg, #25d366, #20c55c);
+        color: #fff;
+        font-weight: 700;
+        transition: width 700ms var(--transition), box-shadow 240ms var(--transition),
+          transform 200ms var(--transition);
+        box-shadow: 0 8px 30px rgba(37, 211, 102, 0.14);
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+      }
+      .whatsapp-btn .w-icon {
+        width: 34px;
+        text-align: center;
+        font-size: 18px;
+        z-index: 2;
+      }
+      .whatsapp-btn .w-label {
+        opacity: 0;
+        transform: translateX(-6px);
+        white-space: nowrap;
+        z-index: 2;
+        transition: opacity 420ms var(--transition) 0.12s,
+          transform 420ms var(--transition) 0.12s;
+      }
+      /* background "water" : pseudo element that fills from bottom to top */
+      .whatsapp-btn::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 0%;
+        background: #000; /* fill color black on hover */
+        z-index: 1;
+        transition: height 420ms ease-in-out;
+        transform-origin: bottom;
+        border-radius: 999px;
+        opacity: 0.95;
+        pointer-events: none;
+      }
+      /* when expanded, show label */
+      .whatsapp-btn.expand {
+        width: 170px;
+      }
+      .whatsapp-btn.expand .w-label {
+        opacity: 1;
+        transform: none;
+      }
+      /* hover effect: "water fill" bottom -> top */
+      .whatsapp-btn:hover::after {
+        height: 100%;
+      }
+      /* invert label color when water covers it (use mix-blend or color change) */
+      .whatsapp-btn:hover .w-label,
+      .whatsapp-btn:hover .w-icon {
+        color: #fff; /* label and icon remain white */
+        z-index: 3;
+      }
+      /* subtle lift */
+      .whatsapp-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 18px 46px rgba(2, 6, 23, 0.12);
+      }
+
+      /* ===========================
+       MOBILE: hamburger & slide panel
+       =========================== */
+      .hamburger {
+        display: none;
+        background: none;
+        border: 0;
+        font-size: 20px;
+        cursor: pointer;
+        color: var(--text-color);
+      }
+
+      .mobile-panel {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 100%;
+        max-width: 420px;
+        height: 100vh;
+        background: linear-gradient(
+          180deg,
+          #0b0f11,
+          #091214
+        ); /* darker mobile panel */
+        box-shadow: -50px 0 80px rgba(2, 6, 23, 0.6);
+        transition: right 0.46s var(--transition);
+        z-index: 1400;
+        display: flex;
+        flex-direction: column;
+        padding: 28px;
+        color: var(--footer-text);
+      }
+      .mobile-panel.open {
+        right: 0;
+      }
+      .mobile-panel .close-btn {
+        margin-left: auto;
+        background: none;
+        border: 0;
+        font-size: 22px;
+        cursor: pointer;
+        color: var(--text-muted);
+      }
+
+      .mobile-links {
+        margin-top: 18px;
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+      }
+      .mobile-links a,
+      .mobile-links button {
+        color: var(--footer-text);
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 16px;
+        text-align: left;
+        background: none;
+        border: 0;
+        padding: 12px 6px;
+        border-radius: 8px;
+        cursor: pointer;
+      }
+      .mobile-sublinks {
+        display: none;
+        flex-direction: column;
+        gap: 6px;
+        padding-left: 12px;
+        margin-bottom: 8px;
+      }
+      .mobile-sublinks a {
+        font-weight: 600;
+        color: #cbd6d8;
+        padding: 10px 6px;
+        border-radius: 6px;
+        text-decoration: none;
+      }
+
+      .overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(2, 6, 23, 0.6);
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s ease;
+        z-index: 1350;
+      }
+      .overlay.show {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      @media (max-width: 1023px) {
+        .nav-center {
+          display: none;
+        } /* hide center nav on mobile */
+        .nav-logo {
+          left: 12px;
+        } /* keep near left */
+        .nav-cta {
+          right: 12px;
+        } /* keep near right */
+        .whatsapp-btn {
+          display: none;
+        } /* mobile CTA is inside panel */
+        .hamburger {
+          display: block;
+          position: relative;
+          right: 0;
+        }
+      }
+
+      @media (min-width: 1024px) {
+        .mobile-panel,
+        .overlay {
+          display: none;
+        }
+      }
+
+      /* Hero Section */
+      .hero {
+        position: relative;
+        width: 100%;
+        overflow: hidden;
+        margin-top: var(--nav-height);
+        aspect-ratio: 16/9;
+      }
+
+      .hero-slider {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+      }
+
+      .hero-slide {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        opacity: 0;
+        transition: opacity 1s ease-in-out;
+      }
+
+      .hero-slide.active {
+        opacity: 1;
+      }
+
+      /* Hero slide backgrounds */
+      .hero-slide-1 {
+        background-image: linear-gradient(
+            rgba(0, 80, 164, 0.7),
+            rgba(0, 80, 164, 0.7)
+          ),
+          url("https://picsum.photos/seed/ogstar1/1200/600.jpg");
+      }
+
+      .hero-slide-2 {
+        background-image: linear-gradient(
+            rgba(200, 155, 45, 0.7),
+            rgba(200, 155, 45, 0.7)
+          ),
+          url("https://picsum.photos/seed/ogstar2/1200/600.jpg");
+      }
+
+      .hero-slide-3 {
+        background-image: linear-gradient(
+            rgba(231, 76, 60, 0.7),
+            rgba(231, 76, 60, 0.7)
+          ),
+          url("https://picsum.photos/seed/ogstar3/1200/600.jpg");
+      }
+
+      .hero-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3));
+        z-index: -1;
+      }
+
+      .hero-content {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100%;
+        max-width: 800px;
+        padding: 0 20px;
+        text-align: center;
+        z-index: 1;
+      }
+
+      .hero-title {
+        font-size: clamp(1.75rem, 5vw, 2.5rem);
+        font-weight: 600;
+        color: white;
+        margin-bottom: var(--spacing-md);
+        text-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
+        line-height: 1.3;
+        font-family: var(--font-secondary);
+      }
+
+      .hero-subtitle {
+        font-size: clamp(0.9rem, 2.5vw, 1.25rem);
+        color: rgba(255, 255, 255, 0.9);
+        margin-bottom: var(--spacing-2xl);
+        font-weight: 300;
+        line-height: 1.5;
+        font-family: var(--font-primary);
+      }
+
+      /* Dot Navigation */
+      .hero-dots {
+        position: absolute;
+        bottom: var(--spacing-xl);
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        gap: var(--spacing-sm);
+        z-index: 10;
+      }
+
+      .hero-dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.4);
+        cursor: pointer;
+        transition: all var(--transition);
+        border: 2px solid rgba(255, 255, 255, 0.6);
+      }
+
+      .hero-dot.active {
+        background: white;
+        transform: scale(1.2);
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+      }
+
+      .hero-dot:hover {
+        background: rgba(255, 255, 255, 0.7);
+        transform: scale(1.1);
+      }
+
+      /* Section Styles */
+      .section {
+        padding: var(--spacing-4xl) 0;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .section-subtitle {
+        color: var(--secondary-color);
+        font-size: 1.2rem;
+        font-family: "Dancing Script", cursive;
+        text-align: center;
+        margin-bottom: 15px;
+      }
+
+      .section-title {
+        margin-bottom: 50px;
+        position: relative;
+        padding-bottom: 15px;
+        text-align: center;
+      }
+
+      .section-title:after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 50px;
+        height: 3px;
+        background: var(--gradient-secondary);
+      }
+
+      /* About Us Section - New Design */
+      .split {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 28px;
+        align-items: center;
+        padding: 60px 0;
+      }
+
+      .split .media {
+        border-radius: 18px;
+        overflow: hidden;
+        position: relative;
+        min-height: 360px;
+        box-shadow: 0 8px 30px rgba(12, 13, 14, 0.08);
+      }
+
+      .contact-card {
+        position: absolute;
+        left: 24px;
+        bottom: 24px;
+        background: var(--bg-primary);
+        padding: 14px 18px;
+        border-radius: 12px;
+        box-shadow: 0 8px 30px rgba(12, 13, 14, 0.08);
+        display: inline-block;
+      }
+
+      .contact-card p {
+        margin: 0;
+        font-size: 0.78rem;
+        color: var(--text-muted);
+        letter-spacing: 1px;
+        text-transform: uppercase;
+      }
+
+      .contact-card strong {
+        display: block;
+        font-size: 1.15rem;
+        margin-top: 3px;
+        color: var(--text-color);
+        font-family: var(--font-secondary);
+      }
+
+      .split .text {
+        padding: 6px 10px;
+      }
+
+      .lead {
+        color: var(--text-muted);
+        max-width: 60ch;
+        line-height: 1.85;
+        margin-bottom: 1rem;
+      }
+
+      /* Why Choose Us Section - New Design */
+      .why {
+        padding: 60px 0;
+      }
+
+      .why .panel {
+        border-radius: 18px;
+        overflow: hidden;
+        display: grid;
+        grid-template-columns: 1fr;
+        align-items: stretch;
+        box-shadow: 0 8px 30px rgba(12, 13, 14, 0.08);
+      }
+
+      .why .info {
+        padding: 48px;
+        background: linear-gradient(
+          180deg,
+          rgba(0, 80, 164, 0.98),
+          rgba(0, 61, 122, 0.98)
+        );
+        color: #fff;
+      }
+
+      .why .info h2 {
+        font-size: clamp(1.6rem, 3vw, 2.4rem);
+        margin: 0 0 14px;
+        font-family: var(--font-secondary);
+        color: #fff;
+      }
+
+      .why .info p {
+        color: rgba(255, 255, 255, 0.85);
+        line-height: 1.8;
+        max-width: 66ch;
+      }
+
+      .why .features {
+        margin-top: 24px;
+        display: grid;
+        gap: 20px;
+      }
+
+      .feature {
+        display: flex;
+        gap: 16px;
+        align-items: flex-start;
+      }
+
+      .feature .icon {
+        min-width: 48px;
+        min-height: 48px;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(
+          180deg,
+          rgba(255, 140, 28, 0.12),
+          rgba(255, 120, 20, 0.08)
+        );
+        color: var(--secondary-color);
+        font-size: 18px;
+      }
+
+      .feature h4 {
+        margin: 0;
+        font-size: 1.05rem;
+        color: white;
+        font-weight: 700;
+      }
+
+      .feature p {
+        margin: 6px 0 0;
+        color: rgba(255, 255, 255, 0.75);
+        font-size: 0.95rem;
+        line-height: 1.6;
+      }
+
+      .why .image {
+        min-height: 420px;
+        background-size: cover;
+        background-position: center;
+      }
+
+      /* ANIMATIONS */
+      .reveal {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.6s ease, transform 0.6s ease;
+      }
+
+      .reveal.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* Services Section */
+      .services-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+        margin-top: 50px;
+      }
+
+      .service-card {
+        background: var(--bg-secondary);
+        border-radius: var(--radius-lg);
+        padding: 30px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        transition: var(--transition);
+        text-align: center;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .service-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      }
+
+      .service-icon {
+        font-size: 2.5rem;
+        color: var(--secondary-color);
+        margin-bottom: 20px;
+      }
+
+      /* Featured Tours Section */
+      .tours-section {
+        padding: 72px 0;
+        background: #fff;
+        text-align: center;
+      }
+      .tours-container {
+        max-width: 1240px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+      .tours-subtitle {
+        color: var(--secondary-color);
+        font-style: italic;
+        font-size: 1rem;
+        margin-bottom: 8px;
+      }
+      .tours-title {
+        font-size: 2.2rem;
+        font-weight: 700;
+        color: var(--primary-color);
+        margin-bottom: 28px;
+      }
+
+      /* Carousel common */
+      .carousel-wrapper {
+        position: relative;
+        overflow: hidden;
+        margin: 0 auto;
+      }
+      .carousel-track {
+        display: flex;
+        gap: 20px;
+        transition: transform 0.6s cubic-bezier(0.22, 0.9, 0.35, 1), opacity 0.35s linear;
+        will-change: transform;
+        cursor: grab;
+        align-items: stretch;
+      }
+      .carousel-track.grabbing {
+        cursor: grabbing;
+      }
+
+      .carousel-dots {
+        margin-top: 18px;
+        display: flex;
+        justify-content: center;
+        gap: 8px;
+      }
+      .carousel-dots .dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: #d3d3d3;
+        cursor: pointer;
+        transition: background 0.25s;
+      }
+      .carousel-dots .dot.active {
+        background: var(--secondary-color);
+      }
+
+      img {
+        -webkit-user-drag: none;
+        user-drag: none;
+        display: block;
+      }
+
+      /* Card base */
+      .tour-card,
+      .testimonial-card {
+        background: #fff;
+        border-radius: 14px;
+        box-shadow: 0 6px 24px rgba(0, 0, 0, 0.08);
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        min-height: 100%;
+        transform-origin: center;
+        opacity: 0.98;
+        transition: transform 0.35s cubic-bezier(0.22, 0.9, 0.35, 1),
+          box-shadow 0.25s cubic-bezier(0.22, 0.9, 0.35, 1), opacity 0.4s linear;
+      }
+      .tour-card:hover,
+      .testimonial-card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+      }
+
+      /* small fade increase when flagged in view */
+      .in-view {
+        opacity: 1;
+      }
+
+      /* Tours specifics */
+      .tour-image {
+        position: relative;
+      }
+      .tour-image img {
+        width: 100%;
+        height: 220px;
+        object-fit: cover;
+        display: block;
+      }
+      .tour-badge {
+        position: absolute;
+        top: 12px;
+        left: 12px;
+        background: var(--secondary-color);
+        color: #fff;
+        padding: 6px 10px;
+        border-radius: 8px;
+        font-weight: 700;
+        font-size: 0.75rem;
+      }
+      .tour-content {
+        padding: 14px 16px;
+        text-align: left;
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+      }
+      .tour-title {
+        font-size: 1.05rem;
+        margin: 6px 0;
+        font-weight: 700;
+        color: #222;
+      }
+      .tour-location {
+        color: #666;
+        font-size: 0.9rem;
+        margin-bottom: 8px;
+        display: flex;
+        gap: 8px;
+        align-items: center;
+      }
+      .tour-price {
+        margin-top: auto;
+        font-weight: 600;
+        color: #333;
+      }
+      .tour-price span {
+        color: var(--secondary-color);
+        font-weight: 800;
+      }
+      .tour-footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 10px;
+        color: #777;
+        font-size: 0.9rem;
+      }
+      .tour-btn {
+        text-decoration: none;
+        color: var(--secondary-color);
+        font-weight: 700;
+        display: inline-block;
+        transition: transform 0.2s cubic-bezier(0.22, 0.9, 0.35, 1), opacity 0.2s linear;
+      }
+      .tour-btn:hover {
+        transform: translateY(-3px);
+        color: var(--secondary-hover);
+      }
+
+      /* Remove underline in all circumstances */
+      a {
+        text-decoration: none !important;
+      }
+
+      /* Testimonials specifics */
+      .testimonial-card {
+        padding: 18px;
+        align-items: center;
+        text-align: center;
+      }
+      .testimonial-avatar img {
+        width: 86px;
+        height: 86px;
+        object-fit: cover;
+        border-radius: 50%;
+        display: block;
+        margin: 0 auto 10px;
+      }
+      .testimonial-rating {
+        color: #f5a623;
+        display: flex;
+        gap: 6px;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 10px;
+      }
+      .testimonial-text {
+        color: #444;
+        font-size: 0.95rem;
+        margin: 8px 0 12px;
+        line-height: 1.45;
+      }
+      .testimonial-name {
+        font-weight: 700;
+        margin-bottom: 4px;
+      }
+      .testimonial-role {
+        color: #888;
+        font-size: 0.9rem;
+      }
+
+      /* Responsive rules: exact breakpoints requested */
+      /* default (mobile-first) => 1 card */
+      .visual-items {
+        --visual-count: 1;
+      }
+
+      /* 475px -> 1 card (explicit per request) */
+      @media (min-width: 475px) {
+        .visual-items {
+          --visual-count: 1;
+        }
+      }
+
+      /* 640px -> 2 cards */
+      @media (min-width: 640px) {
+        .visual-items {
+          --visual-count: 2;
+        }
+      }
+
+      /* 1024px and above -> 4 cards */
+      @media (min-width: 1024px) {
+        .visual-items {
+          --visual-count: 4;
+        }
+      }
+
+      /* minor mobile tweaks */
+      @media (max-width: 480px) {
+        .testimonial-avatar img {
+          width: 72px;
+          height: 72px;
+        }
+        .tour-image img {
+          height: 180px;
+        }
+        .tours-title {
+          font-size: 1.6rem;
+        }
+      }
+
+      /* helpful utility to force stable heights (if you need) */
+      .carousel-track > * {
+        display: block;
+      }
+
+      /* Testimonials Section */
+      .testimonials-section {
+        padding: 72px 0;
+        background: #fff;
+        text-align: center;
+      }
+      .testimonials-container {
+        max-width: 1240px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+      .testimonials-subtitle {
+        color: var(--secondary-color);
+        font-style: italic;
+        font-size: 1rem;
+        margin-bottom: 8px;
+      }
+      .testimonials-title {
+        font-size: 2.2rem;
+        font-weight: 700;
+        color: var(--primary-color);
+        margin-bottom: 28px;
+      }
+
+      /* CTA Section */
+      .cta-section {
+        padding: 80px 0;
+        background: linear-gradient(135deg, var(--primary-color) 0%, #003d7a 100%);
+        color: white;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .cta-section::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url('https://picsum.photos/seed/cta/1920/600.jpg') center/cover;
+        opacity: 0.2;
+        z-index: 0;
+      }
+
+      .cta-container {
+        position: relative;
+        z-index: 1;
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      .cta-title {
+        font-size: clamp(2rem, 4vw, 3rem);
+        margin-bottom: 20px;
+        font-weight: 700;
+        font-family: var(--font-secondary);
+      }
+
+      .cta-subtitle {
+        font-size: 1.2rem;
+        margin-bottom: 40px;
+        opacity: 0.9;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .cta-buttons {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+      }
+
+      .cta-btn {
+        padding: 15px 30px;
+        font-size: 1.1rem;
+        font-weight: 600;
+        border-radius: 50px;
+        text-decoration: none;
+        display: inline-block;
+        position: relative;
+        overflow: hidden;
+        z-index: 1;
+        transition: transform 0.3s ease;
+      }
+
+      .cta-btn-primary {
+        background: var(--gradient-secondary);
+        color: white;
+      }
+
+      .cta-btn-secondary {
+        background: transparent;
+        color: white;
+        border: 2px solid white;
+      }
+
+      .cta-btn::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 0%;
+        background: #000;
+        z-index: -1;
+        transition: height 420ms ease-in-out;
+        transform-origin: bottom;
+        border-radius: inherit;
+        opacity: 0.95;
+        pointer-events: none;
+      }
+
+      .cta-btn:hover::before {
+        height: 100%;
+      }
+
+      .cta-btn:hover {
+        transform: translateY(-3px);
+      }
+
+      /* Footer */
+      .footer {
+        background: linear-gradient(180deg, var(--emerald-dark), #000);
+        color: var(--footer-text);
+        padding: 60px 20px 20px;
+        margin-top: 100px;
+      }
+
+      .footer-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .footer-column h4 {
+        margin-bottom: 1rem;
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: var(--footer-text);
+      }
+
+      .footer-column ul {
+        list-style: none;
+        padding: 0;
+      }
+
+      .footer-column ul li {
+        margin-bottom: 10px;
+      }
+
+      .footer-column ul li a {
+        text-decoration: none;
+        color: var(--text-muted);
+        font-size: 15px;
+        transition: var(--transition);
+      }
+
+      .footer-column ul li a:hover {
+        color: var(--emerald);
+      }
+
+      .social-links {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+      }
+
+      .social-links a {
+        width: 36px;
+        height: 36px;
+        border: 1px solid var(--footer-text);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--footer-text);
+        transition: var(--transition);
+      }
+
+      .social-links a:hover {
+        border-color: var(--emerald);
+        color: var(--emerald);
+        transform: translateY(-3px);
+      }
+
+      .footer-bottom {
+        text-align: center;
+        margin-top: 40px;
+        padding-top: 20px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        color: var(--text-muted);
+        font-size: 14px;
+      }
+
+      .footer-bottom span {
+        color: var(--emerald);
+      }
+
+      /* WhatsApp Floating Button */
+      .whatsapp-float {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        background-color: #25d366;
+        color: white;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 30px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        z-index: 1000;
+        transition: all 0.3s ease;
+        text-decoration: none;
+      }
+
+      .whatsapp-float:hover {
+        transform: scale(1.1);
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+      }
+
+      /* ===========================================
+           RESPONSIVE BREAKPOINTS
+          =========================================== */
+
+      /* xs - Default (mobile first) */
+
+      /* sm */
+      @media (min-width: 475px) {
+        .hero-title {
+          font-size: clamp(2rem, 5vw, 2.5rem);
+          margin-bottom: var(--spacing-md);
+        }
+        .hero-subtitle {
+          font-size: clamp(1rem, 2.5vw, 1.25rem);
+        }
+      }
+
+      /* md */
+      @media (min-width: 768px) {
+        .split {
+          grid-template-columns: 1fr 1fr;
+          gap: 40px;
+        }
+
+        .why .panel {
+          grid-template-columns: 1fr 1fr;
+        }
+
+        .why .info {
+          padding: 56px;
+        }
+      }
+
+      /* lg */
+      @media (min-width: 1024px) {
+        .hero {
+          min-height: 100vh;
+          aspect-ratio: auto;
+          margin-top: 0;
+        }
+        .hero-content {
+          max-width: 800px;
+        }
+
+        .hero-title {
+          font-size: clamp(2.5rem, 5vw, 3rem);
+        }
+        .hero-subtitle {
+          font-size: clamp(1.25rem, 2.5vw, 1.5rem);
+          margin-bottom: var(--spacing-3xl);
+        }
+      }
+
+      /* xl */
+      @media (min-width: 1280px) {
+        /* Additional styles if needed */
+      }
+
+      /* 2xl */
+      @media (min-width: 1536px) {
+        /* Additional styles if needed */
+      }
+    </style>
+</head>
+<body>
+    <!-- Mobile Menu Overlay -->
+    <div class="overlay" id="overlay" aria-hidden="true"></div>
+
+    <!-- Navigation -->
+    <header class="navbar" id="navbar">
+        <div class="nav-inner">
+            <!-- LOGO pinned left -->
+            <div class="nav-logo" aria-hidden="false">
+                <a href="#" class="logo">
+                    <img src="https://picsum.photos/seed/logo/200/80.jpg" alt="OG Star logo" />
+                </a>
+            </div>
+
+            <!-- CENTER menu (desktop) -->
+            <nav class="nav-center" aria-label="Main navigation">
+                <ul class="nav-menu" role="menubar">
+                    <li class="nav-item" role="none">
+                        <a href="#home" class="nav-link active" role="menuitem">Home</a>
+                    </li>
+
+                    <li class="nav-item" role="none">
+                        <a href="#services" class="nav-link" role="menuitem">Services</a>
+                        <div class="dropdown" role="menu" aria-hidden="true">
+                            <a href="#travel" class="sublink">Travel Abroad</a>
+                            <a href="#work" class="sublink">Work &amp; Stay Abroad</a>
+                        </div>
+                    </li>
+
+                    <li class="nav-item" role="none">
+                        <a href="#information" class="nav-link" role="menuitem">Information</a>
+                        <div class="dropdown" role="menu" aria-hidden="true">
+                            <a href="#about" class="sublink">About Us</a>
+                            <a href="#faq" class="sublink">Frequently Asked Questions</a>
+                        </div>
+                    </li>
+
+                    <li class="nav-item" role="none">
+                        <a href="#contact" class="nav-link" role="menuitem">Contact</a>
+                    </li>
+
+                    <li class="nav-item" role="none">
+                        <a href="#blog" class="nav-link" role="menuitem">Blog</a>
+                    </li>
+                </ul>
+            </nav>
+
+            <!-- RIGHT controls (WhatsApp + hamburger) pinned right -->
+            <div class="nav-cta">
+                <!-- WhatsApp CTA (desktop) -->
+                <button
+                    class="whatsapp-btn"
+                    id="whatsappDesktop"
+                    aria-label="WhatsApp Us"
+                >
+                    <span class="w-icon"><i class="fab fa-whatsapp"></i></span>
+                    <span class="w-label" id="whLabel">WhatsApp Us</span>
+                </button>
+
+                <!-- Hamburger for mobile -->
+                <button
+                    class="hamburger"
+                    id="hamburger"
+                    aria-controls="mobilePanel"
+                    aria-expanded="false"
+                    aria-label="Open menu"
+                >
+                    <i class="fas fa-bars" style="font-size: 18px"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile panel -->
+    <aside
+        class="mobile-panel"
+        id="mobilePanel"
+        aria-hidden="true"
+        aria-label="Mobile menu"
+    >
+        <button class="close-btn" id="closePanel" aria-label="Close menu">
+            <i class="fas fa-times"></i>
+        </button>
+
+        <nav class="mobile-links" aria-label="Mobile primary navigation">
+            <a href="#home" class="m-link">Home</a>
+
+            <div>
+                <button class="m-link m-toggle" data-target="mServices">
+                    Services
+                    <i
+                        class="fas fa-chevron-down"
+                        style="opacity: 0.6; margin-left: 6px"
+                    ></i>
+                </button>
+                <div class="mobile-sublinks" id="mServices">
+                    <a href="#travel">Travel Abroad</a>
+                    <a href="#work">Work &amp; Stay Abroad</a>
+                </div>
+            </div>
+
+            <div>
+                <button class="m-link m-toggle" data-target="mInfo">
+                    Information
+                    <i
+                        class="fas fa-chevron-down"
+                        style="opacity: 0.6; margin-left: 6px"
+                    ></i>
+                </button>
+                <div class="mobile-sublinks" id="mInfo">
+                    <a href="#about">About Us</a>
+                    <a href="#faq">Frequently Asked Questions</a>
+                </div>
+            </div>
+
+            <a href="#contact" class="m-link">Contact</a>
+            <a href="#blog" class="m-link">Blog</a>
+
+            <!-- WhatsApp in mobile panel as last item -->
+            <div
+                style="
+                    margin-top: 18px;
+                    padding-top: 12px;
+                    border-top: 1px solid rgba(255, 255, 255, 0.04);
+                "
+            >
+                <button
+                    class="whatsapp-btn"
+                    id="whatsappMobile"
+                    style="
+                        width: 100%;
+                        background: linear-gradient(180deg, #25d366, #20c55c);
+                        color: #fff;
+                        justify-content: center;
+                    "
+                >
+                    <span class="w-icon"><i class="fab fa-whatsapp"></i></span>
+                    <span class="w-label">WhatsApp Us</span>
+                </button>
+            </div>
+        </nav>
+    </aside>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-slider">
+            <div class="hero-slide hero-slide-1 active">
+                <div class="hero-content">
+                    <h1 class="hero-title text-animate">Relish the Experience</h1>
+                    <p class="hero-subtitle text-animate">
+                        Explore the world with our curated travel experiences and discover
+                        new horizons
+                    </p>
+                </div>
+            </div>
+            <div class="hero-slide hero-slide-2">
+                <div class="hero-content">
+                    <h1 class="hero-title text-animate">Work & Study Abroad</h1>
+                    <p class="hero-subtitle text-animate">
+                        Open doors to international opportunities with our expert guidance
+                    </p>
+                </div>
+            </div>
+            <div class="hero-slide hero-slide-3">
+                <div class="hero-content">
+                    <h1 class="hero-title text-animate">Visa Assistance</h1>
+                    <p class="hero-subtitle text-animate">
+                        Navigate the complex visa application process with our
+                        professional support
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="hero-overlay"></div>
+
+        <!-- Dot Navigation -->
+        <div class="hero-dots">
+            <div class="hero-dot active" onclick="goToSlide(0)"></div>
+            <div class="hero-dot" onclick="goToSlide(1)"></div>
+            <div class="hero-dot" onclick="goToSlide(2)"></div>
+        </div>
+    </section>
+
+    <!-- About Us Section - New Design -->
+    <section id="about" class="container split">
+        <div class="media reveal">
+            <img
+                src="https://picsum.photos/seed/intro/900/700.jpg"
+                alt="Travel view"
+                style="width: 100%; height: 100%; object-fit: cover"
+            />
+            <div class="contact-card">
+                <p>Contact Us</p>
+                <strong>0550202021</strong>
+            </div>
+        </div>
+
+        <div class="text reveal">
+            <h3 class="section-subtitle">About Us</h3>
+            <h2 class="section-title">Welcome to OG Star Travel &amp; Tours</h2>
+            <p class="lead">
+                At OG Star Travel &amp; Tours, we're not just a travel agency; we're
+                your gateway to extraordinary experiences and global opportunities.
+                With years of expertise in travel and immigration services, we build
+                trusted relationships to make your journey effortless and memorable.
+            </p>
+            <p class="lead">
+                From visa assistance and job placement support to bespoke travel
+                itineraries and interview coaching, our team provides personalized
+                guidance at every step.
+            </p>
+            <a class="btn" href="#contact">Contact Us</a>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="section services" id="services">
+        <div class="container">
+            <h4 class="section-subtitle">Our Services</h4>
+            <h2 class="section-title">What We Offer</h2>
+            <div class="services-grid">
+                <div class="service-card scroll-animate animate-scale">
+                    <div class="service-icon">
+                        <i class="fas fa-map-marked-alt"></i>
+                    </div>
+                    <h3>Travel & Tourism</h3>
+                    <p>
+                        Experience the world with our curated travel packages to exotic
+                        destinations and cultural immersions.
+                    </p>
+                </div>
+                <div class="service-card scroll-animate animate-scale">
+                    <div class="service-icon">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <h3>Work & Stay Abroad</h3>
+                    <p>
+                        Transform your career with international work opportunities and
+                        relocation assistance.
+                    </p>
+                </div>
+                <div class="service-card scroll-animate animate-scale">
+                    <div class="service-icon">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                    <h3>Job Placement Support</h3>
+                    <p>
+                        Unlock global career opportunities with our specialized job
+                        placement and interview coaching.
+                    </p>
+                </div>
+                <div class="service-card scroll-animate animate-scale">
+                    <div class="service-icon">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <h3>Interview Preparation</h3>
+                    <p>
+                        Excel in your interviews with our comprehensive preparation
+                        program and personalized coaching.
+                    </p>
+                </div>
+                <div class="service-card scroll-animate animate-scale">
+                    <div class="service-icon">
+                        <i class="fas fa-passport"></i>
+                    </div>
+                    <h3>Visa Assistance</h3>
+                    <p>
+                        Navigate the complex visa application process with our experienced
+                        consultants' end-to-end support.
+                    </p>
+                </div>
+                <div class="service-card scroll-animate animate-scale">
+                    <div class="service-icon">
+                        <i class="fas fa-suitcase-rolling"></i>
+                    </div>
+                    <h3>Custom Travel Packages</h3>
+                    <p>
+                        Design your perfect journey with our bespoke travel packages
+                        tailored to your preferences.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us Section - New Design -->
+    <section id="why" class="container why">
+        <div class="why panel reveal">
+            <div class="info">
+                <h4 class="section-subtitle" style="color: var(--secondary-color)">
+                    OG Star Travel &amp; Tours
+                </h4>
+                <h2>Why Choose Us</h2>
+                <p>
+                    No matter the type of experience you seek — leisure, business, or
+                    education — OG Star offers exceptional service delivery, custom
+                    packages, and trusted local partners that open doors to the world.
+                </p>
+
+                <div class="features">
+                    <div class="feature">
+                        <div class="icon"><i class="fas fa-user-tie"></i></div>
+                        <div>
+                            <h4>Professional Service Delivery</h4>
+                            <p>
+                                Our team of dedicated professionals will support you through
+                                every step of your travel or relocation process.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="feature">
+                        <div class="icon"><i class="fas fa-plane-departure"></i></div>
+                        <div>
+                            <h4>Amazing Tour Packages</h4>
+                            <p>
+                                Competitive prices and well-crafted tour packages — book
+                                with confidence and experience more.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div
+                class="image"
+                style="
+                    background-image: url('https://picsum.photos/seed/whychoose/1200/900.jpg');
+                "
+            ></div>
+        </div>
+    </section>
+
+    <!-- Featured Tours Section -->
+    <section class="tours-section">
+        <div class="tours-container">
+            <h4 class="tours-subtitle">Featured Tours</h4>
+            <h2 class="tours-title">Explore Our Tours</h2>
+
+            <div class="carousel-wrapper visual-items" id="toursWrapper">
+                <div class="carousel-track" id="toursTrack">
+                    <!-- 10 tour cards -->
+                    <div class="tour-card">
+                        <div class="tour-image">
+                            <img
+                                src="https://picsum.photos/seed/tour1/800/600.jpg"
+                                alt="Accra City Tour"
+                            /><span class="tour-badge">FEATURED</span>
+                        </div>
+                        <div class="tour-content">
+                            <h3 class="tour-title">Accra City Tour</h3>
+                            <div class="tour-location">
+                                <i class="fas fa-map-marker-alt"></i> Accra, Ghana
+                            </div>
+                            <div class="tour-price">Starting from <span>$50</span></div>
+                            <div class="tour-footer">
+                                <span><i class="fas fa-users"></i> 100</span
+                                ><a class="tour-btn" href="#">Explore →</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tour-card">
+                        <div class="tour-image">
+                            <img
+                                src="https://picsum.photos/seed/tour2/800/600.jpg"
+                                alt="Cape Coast Castle"
+                            /><span class="tour-badge">FEATURED</span>
+                        </div>
+                        <div class="tour-content">
+                            <h3 class="tour-title">Cape Coast Castle</h3>
+                            <div class="tour-location">
+                                <i class="fas fa-map-marker-alt"></i> Cape Coast, Ghana
+                            </div>
+                            <div class="tour-price">Starting from <span>$75</span></div>
+                            <div class="tour-footer">
+                                <span><i class="fas fa-users"></i> 100</span
+                                ><a class="tour-btn" href="#">Explore →</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tour-card">
+                        <div class="tour-image">
+                            <img
+                                src="https://picsum.photos/seed/tour3/800/600.jpg"
+                                alt="Mole National Park"
+                            /><span class="tour-badge">FEATURED</span>
+                        </div>
+                        <div class="tour-content">
+                            <h3 class="tour-title">Mole National Park</h3>
+                            <div class="tour-location">
+                                <i class="fas fa-map-marker-alt"></i> Northern Ghana
+                            </div>
+                            <div class="tour-price">Starting from <span>$120</span></div>
+                            <div class="tour-footer">
+                                <span><i class="fas fa-users"></i> 100</span
+                                ><a class="tour-btn" href="#">Explore →</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tour-card">
+                        <div class="tour-image">
+                            <img
+                                src="https://picsum.photos/seed/tour4/800/600.jpg"
+                                alt="Kakum National Park"
+                            /><span class="tour-badge">FEATURED</span>
+                        </div>
+                        <div class="tour-content">
+                            <h3 class="tour-title">Kakum National Park</h3>
+                            <div class="tour-location">
+                                <i class="fas fa-map-marker-alt"></i> Central Ghana
+                            </div>
+                            <div class="tour-price">Starting from <span>$85</span></div>
+                            <div class="tour-footer">
+                                <span><i class="fas fa-users"></i> 100</span
+                                ><a class="tour-btn" href="#">Explore →</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tour-card">
+                        <div class="tour-image">
+                            <img
+                                src="https://picsum.photos/seed/tour5/800/600.jpg"
+                                alt="Lake Volta Cruise"
+                            /><span class="tour-badge">FEATURED</span>
+                        </div>
+                        <div class="tour-content">
+                            <h3 class="tour-title">Lake Volta Cruise</h3>
+                            <div class="tour-location">
+                                <i class="fas fa-map-marker-alt"></i> Volta Region
+                            </div>
+                            <div class="tour-price">Starting from <span>$95</span></div>
+                            <div class="tour-footer">
+                                <span><i class="fas fa-users"></i> 100</span
+                                ><a class="tour-btn" href="#">Explore →</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tour-card">
+                        <div class="tour-image">
+                            <img
+                                src="https://picsum.photos/seed/tour6/800/600.jpg"
+                                alt="Ashanti Kingdom Tour"
+                            /><span class="tour-badge">FEATURED</span>
+                        </div>
+                        <div class="tour-content">
+                            <h3 class="tour-title">Ashanti Kingdom Tour</h3>
+                            <div class="tour-location">
+                                <i class="fas fa-map-marker-alt"></i> Kumasi, Ghana
+                            </div>
+                            <div class="tour-price">Starting from <span>$110</span></div>
+                            <div class="tour-footer">
+                                <span><i class="fas fa-users"></i> 100</span
+                                ><a class="tour-btn" href="#">Explore →</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tour-card">
+                        <div class="tour-image">
+                            <img
+                                src="https://picsum.photos/seed/tour7/800/600.jpg"
+                                alt="Beach Getaway"
+                            /><span class="tour-badge">FEATURED</span>
+                        </div>
+                        <div class="tour-content">
+                            <h3 class="tour-title">Beach Getaway</h3>
+                            <div class="tour-location">
+                                <i class="fas fa-map-marker-alt"></i> Coastal Ghana
+                            </div>
+                            <div class="tour-price">Starting from <span>$130</span></div>
+                            <div class="tour-footer">
+                                <span><i class="fas fa-users"></i> 100</span
+                                ><a class="tour-btn" href="#">Explore →</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tour-card">
+                        <div class="tour-image">
+                            <img
+                                src="https://picsum.photos/seed/tour8/800/600.jpg"
+                                alt="Wli Waterfalls"
+                            /><span class="tour-badge">FEATURED</span>
+                        </div>
+                        <div class="tour-content">
+                            <h3 class="tour-title">Wli Waterfalls</h3>
+                            <div class="tour-location">
+                                <i class="fas fa-map-marker-alt"></i> Volta Region
+                            </div>
+                            <div class="tour-price">Starting from <span>$100</span></div>
+                            <div class="tour-footer">
+                                <span><i class="fas fa-users"></i> 100</span
+                                ><a class="tour-btn" href="#">Explore →</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tour-card">
+                        <div class="tour-image">
+                            <img
+                                src="https://picsum.photos/seed/tour9/800/600.jpg"
+                                alt="Ada Foah Beach"
+                            /><span class="tour-badge">FEATURED</span>
+                        </div>
+                        <div class="tour-content">
+                            <h3 class="tour-title">Ada Foah Beach</h3>
+                            <div class="tour-location">
+                                <i class="fas fa-map-marker-alt"></i> Greater Accra
+                            </div>
+                            <div class="tour-price">Starting from <span>$80</span></div>
+                            <div class="tour-footer">
+                                <span><i class="fas fa-users"></i> 100</span
+                                ><a class="tour-btn" href="#">Explore →</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tour-card">
+                        <div class="tour-image">
+                            <img
+                                src="https://picsum.photos/seed/tour10/800/600.jpg"
+                                alt="Paga Crocodile Pond"
+                            /><span class="tour-badge">FEATURED</span>
+                        </div>
+                        <div class="tour-content">
+                            <h3 class="tour-title">Paga Crocodile Pond</h3>
+                            <div class="tour-location">
+                                <i class="fas fa-map-marker-alt"></i> Upper East Region
+                            </div>
+                            <div class="tour-price">Starting from <span>$90</span></div>
+                            <div class="tour-footer">
+                                <span><i class="fas fa-users"></i> 100</span
+                                ><a class="tour-btn" href="#">Explore →</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="carousel-dots" id="toursDots"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials-section">
+        <div class="testimonials-container">
+            <h4 class="testimonials-subtitle">Testimonials</h4>
+            <h2 class="testimonials-title">What Customers Say</h2>
+
+            <div class="carousel-wrapper visual-items" id="testimonialsWrapper">
+                <div class="carousel-track" id="testimonialsTrack">
+                    <!-- testimonial cards -->
+                    <div class="testimonial-card">
+                        <div class="testimonial-avatar">
+                            <img
+                                src="https://picsum.photos/seed/person1/150/150.jpg"
+                                alt="Jane Doe"
+                            />
+                        </div>
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i
+                            ><i class="fas fa-star"></i><i class="fas fa-star"></i
+                            ><i class="fas fa-star"></i
+                            ><span style="margin-left: 8px; color: #333; font-weight: 700"
+                                >5.0</span
+                            >
+                        </div>
+                        <p class="testimonial-text">
+                            "OG Star Travel & Tours made my Ghana trip absolutely
+                            unforgettable. The guides were knowledgeable and the itinerary
+                            was perfectly planned."
+                        </p>
+                        <h4 class="testimonial-name">Jane Doe</h4>
+                        <p class="testimonial-role">Customer</p>
+                    </div>
+
+                    <div class="testimonial-card">
+                        <div class="testimonial-avatar">
+                            <img
+                                src="https://picsum.photos/seed/person2/150/150.jpg"
+                                alt="Kwame"
+                            />
+                        </div>
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i
+                            ><i class="fas fa-star"></i><i class="fas fa-star"></i
+                            ><i class="fas fa-star"></i
+                            ><span style="margin-left: 8px; color: #333; font-weight: 700"
+                                >5.0</span
+                            >
+                        </div>
+                        <p class="testimonial-text">
+                            "The visa assistance service was exceptional. They guided me
+                            through every step and made the process so much easier than I
+                            expected."
+                        </p>
+                        <h4 class="testimonial-name">Kwame</h4>
+                        <p class="testimonial-role">Customer</p>
+                    </div>
+
+                    <div class="testimonial-card">
+                        <div class="testimonial-avatar">
+                            <img
+                                src="https://picsum.photos/seed/person3/150/150.jpg"
+                                alt="Sarah Johnson"
+                            />
+                        </div>
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i
+                            ><i class="fas fa-star"></i><i class="fas fa-star"></i
+                            ><i class="fas fa-star-half-alt"></i
+                            ><span style="margin-left: 8px; color: #333; font-weight: 700"
+                                >4.5</span
+                            >
+                        </div>
+                        <p class="testimonial-text">
+                            "Thanks to OG Star's work abroad program, I'm now working in my
+                            dream job in Canada. Their interview preparation was
+                            invaluable."
+                        </p>
+                        <h4 class="testimonial-name">Sarah Johnson</h4>
+                        <p class="testimonial-role">Customer</p>
+                    </div>
+
+                    <div class="testimonial-card">
+                        <div class="testimonial-avatar">
+                            <img
+                                src="https://picsum.photos/seed/person4/150/150.jpg"
+                                alt="Michael"
+                            />
+                        </div>
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i
+                            ><i class="fas fa-star"></i><i class="fas fa-star"></i
+                            ><i class="fas fa-star"></i
+                            ><span style="margin-left: 8px; color: #333; font-weight: 700"
+                                >5.0</span
+                            >
+                        </div>
+                        <p class="testimonial-text">
+                            "The custom travel package they created for my family was
+                            perfect. Every detail was taken care of, from accommodations to
+                            activities."
+                        </p>
+                        <h4 class="testimonial-name">Michael</h4>
+                        <p class="testimonial-role">Customer</p>
+                    </div>
+
+                    <div class="testimonial-card">
+                        <div class="testimonial-avatar">
+                            <img
+                                src="https://picsum.photos/seed/person5/150/150.jpg"
+                                alt="Ama"
+                            />
+                        </div>
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i
+                            ><i class="fas fa-star"></i><i class="fas fa-star"></i
+                            ><i class="fas fa-star"></i
+                            ><span style="margin-left: 8px; color: #333; font-weight: 700"
+                                >5.0</span
+                            >
+                        </div>
+                        <p class="testimonial-text">
+                            "I've traveled with many companies, but OG Star stands out for
+                            their professionalism and attention to detail. The Cape Coast
+                            tour was exceptional."
+                        </p>
+                        <h4 class="testimonial-name">Ama</h4>
+                        <p class="testimonial-role">Customer</p>
+                    </div>
+
+                    <div class="testimonial-card">
+                        <div class="testimonial-avatar">
+                            <img
+                                src="https://picsum.photos/seed/person6/150/150.jpg"
+                                alt="David"
+                            />
+                        </div>
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i
+                            ><i class="fas fa-star"></i><i class="fas fa-star"></i
+                            ><i class="far fa-star"></i
+                            ><span style="margin-left: 8px; color: #333; font-weight: 700"
+                                >4.0</span
+                            >
+                        </div>
+                        <p class="testimonial-text">
+                            "The work and stay abroad guidance helped me navigate the
+                            complex process of relocating. I'm now happily settled in the UK
+                            thanks to their support."
+                        </p>
+                        <h4 class="testimonial-name">David</h4>
+                        <p class="testimonial-role">Customer</p>
+                    </div>
+
+                    <div class="testimonial-card">
+                        <div class="testimonial-avatar">
+                            <img
+                                src="https://picsum.photos/seed/person7/150/150.jpg"
+                                alt="Grace"
+                            />
+                        </div>
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i
+                            ><i class="fas fa-star"></i><i class="fas fa-star"></i
+                            ><i class="fas fa-star"></i
+                            ><span style="margin-left: 8px; color: #333; font-weight: 700"
+                                >5.0</span
+                            >
+                        </div>
+                        <p class="testimonial-text">
+                            "The Mole National Park safari was a dream come true! Our guide
+                            was incredibly knowledgeable about the wildlife and made the
+                            experience educational."
+                        </p>
+                        <h4 class="testimonial-name">Grace</h4>
+                        <p class="testimonial-role">Customer</p>
+                    </div>
+
+                    <div class="testimonial-card">
+                        <div class="testimonial-avatar">
+                            <img
+                                src="https://picsum.photos/seed/person8/150/150.jpg"
+                                alt="Samuel"
+                            />
+                        </div>
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i
+                            ><i class="fas fa-star"></i><i class="fas fa-star"></i
+                            ><i class="fas fa-star-half-alt"></i
+                            ><span style="margin-left: 8px; color: #333; font-weight: 700"
+                                >4.5</span
+                            >
+                        </div>
+                        <p class="testimonial-text">
+                            "I was nervous about the visa application process, but OG Star's
+                            team was with me every step of the way. They made it stress-free
+                            and straightforward."
+                        </p>
+                        <h4 class="testimonial-name">Samuel</h4>
+                        <p class="testimonial-role">Customer</p>
+                    </div>
+
+                    <div class="testimonial-card">
+                        <div class="testimonial-avatar">
+                            <img
+                                src="https://picsum.photos/seed/person9/150/150.jpg"
+                                alt="Fatima"
+                            />
+                        </div>
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i
+                            ><i class="fas fa-star"></i><i class="fas fa-star"></i
+                            ><i class="fas fa-star"></i
+                            ><span style="margin-left: 8px; color: #333; font-weight: 700"
+                                >5.0</span
+                            >
+                        </div>
+                        <p class="testimonial-text">
+                            "The Ashanti Kingdom tour was a cultural immersion like no
+                            other. Our guide's deep knowledge of the history and traditions
+                            made every site come alive."
+                        </p>
+                        <h4 class="testimonial-name">Fatima</h4>
+                        <p class="testimonial-role">Customer</p>
+                    </div>
+
+                    <div class="testimonial-card">
+                        <div class="testimonial-avatar">
+                            <img
+                                src="https://picsum.photos/seed/person10/150/150.jpg"
+                                alt="John"
+                            />
+                        </div>
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i
+                            ><i class="fas fa-star"></i><i class="fas fa-star"></i
+                            ><i class="fas fa-star-half-alt"></i
+                            ><span style="margin-left: 8px; color: #333; font-weight: 700"
+                                >4.5</span
+                            >
+                        </div>
+                        <p class="testimonial-text">
+                            "The interview preparation sessions were invaluable. They helped
+                            me refine my answers and build confidence. I landed the job on
+                            my first interview!"
+                        </p>
+                        <h4 class="testimonial-name">John</h4>
+                        <p class="testimonial-role">Customer</p>
+                    </div>
+
+                    <div class="testimonial-card">
+                        <div class="testimonial-avatar">
+                            <img
+                                src="https://picsum.photos/seed/person11/150/150.jpg"
+                                alt="Yaa"
+                            />
+                        </div>
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i
+                            ><i class="fas fa-star"></i><i class="fas fa-star"></i
+                            ><i class="fas fa-star"></i
+                            ><span style="margin-left: 8px; color: #333; font-weight: 700"
+                                >5.0</span
+                            >
+                        </div>
+                        <p class="testimonial-text">
+                            "The Lake Volta cruise was the highlight of our trip. The sunset
+                            views were breathtaking, and the crew made sure we were
+                            comfortable throughout."
+                        </p>
+                        <h4 class="testimonial-name">Yaa</h4>
+                        <p class="testimonial-role">Customer</p>
+                    </div>
+
+                    <div class="testimonial-card">
+                        <div class="testimonial-avatar">
+                            <img
+                                src="https://picsum.photos/seed/person12/150/150.jpg"
+                                alt="Kofi"
+                            />
+                        </div>
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i
+                            ><i class="fas fa-star"></i><i class="fas fa-star"></i
+                            ><i class="fas fa-star"></i
+                            ><span style="margin-left: 8px; color: #333; font-weight: 700"
+                                >5.0</span
+                            >
+                        </div>
+                        <p class="testimonial-text">
+                            "From the moment I inquired about their services to the end of
+                            my trip, the customer service was exceptional. They went above
+                            and beyond to ensure my travel experience was seamless."
+                        </p>
+                        <h4 class="testimonial-name">Kofi</h4>
+                        <p class="testimonial-role">Customer</p>
+                    </div>
+                </div>
+
+                <div class="carousel-dots" id="testimonialsDots"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="cta-container">
+            <h2 class="cta-title">Ready to Start Your Journey?</h2>
+            <p class="cta-subtitle">
+                Let OG Star Travel & Tours be your gateway to extraordinary experiences around the world.
+            </p>
+            <div class="cta-buttons">
+                <a href="#contact" class="cta-btn cta-btn-primary">Get in Touch</a>
+                <a href="#services" class="cta-btn cta-btn-secondary">Explore Services</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer" id="contact">
+        <div class="footer-container">
+            <div class="footer-column">
+                <img src="https://picsum.photos/seed/logo/200/80.jpg" alt="OG Star Logo" style="max-width: 150px; margin-bottom: 1rem;">
+                <p>
+                    OG Star Travel & Tours helps you explore the world with ease — from
+                    visa assistance to full tour experiences across the globe.
+                </p>
+            </div>
+
+            <div class="footer-column">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#information">Information</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#blog">Blog</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h4>Our Services</h4>
+                <ul>
+                    <li><a href="#">Travel & Tours</a></li>
+                    <li><a href="#">Study Abroad</a></li>
+                    <li><a href="#">Work & Stay</a></li>
+                    <li><a href="#">Visa Assistance</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h4>Connect With Us</h4>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-x-twitter"></i></a>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            © 2025 OG Star Travel & Tours. Crafted with <span>❤️</span> by
+            Kenzyverse.
+        </div>
+    </footer>
+
+    <!-- WhatsApp Floating Button -->
+    <a
+        href="https://wa.me/233546945944?text=Hello%20OG%20Star%20Travel%20%26%20Tours,%20I'm%20interested%20in%20your%20services"
+        class="whatsapp-float"
+        target="_blank"
+    >
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script>
+        // Global Variables
+        let heroCurrentSlide = 0;
+        const heroTotalSlides = 3;
+        let heroSlideInterval;
+        let isAnimating = false;
+        let lastScrollTop = 0;
+        let scrollTimer = null;
+        let navbarVisible = true;
+
+        // Initialize page
+        document.addEventListener("DOMContentLoaded", function () {
+            initScrollAnimations();
+            initVisibleElements();
+            initHeroSlider();
+            initMobilePanel();
+            initWhatsAppButton();
+            initCarousels();
+            initNavbarScroll();
+            initDropdownMenu();
+        });
+
+        // Scroll Animations
+        function initScrollAnimations() {
+            const observer = new IntersectionObserver(
+                (entries) => {
+                    entries.forEach((entry, index) => {
+                        if (entry.isIntersecting) {
+                            setTimeout(() => {
+                                entry.target.classList.add("visible");
+                            }, index * 100);
+                        }
+                    });
+                },
+                {
+                    threshold: 0.1,
+                    rootMargin: "0px 0px -30px 0px",
+                }
+            );
+
+            document
+                .querySelectorAll(".scroll-animate, .text-animate, .reveal")
+                .forEach((el) => {
+                    observer.observe(el);
+                });
+        }
+
+        function initVisibleElements() {
+            const elements = document.querySelectorAll(
+                ".scroll-animate, .text-animate, .reveal"
+            );
+            elements.forEach((el, index) => {
+                const rect = el.getBoundingClientRect();
+                const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
+
+                if (isVisible) {
+                    setTimeout(() => {
+                        el.classList.add("visible");
+                    }, index * 50);
+                }
+            });
+        }
+
+        // Hero Slider
+        function initHeroSlider() {
+            const heroSlides = document.querySelectorAll(".hero-slide");
+            const heroDots = document.querySelectorAll(".hero-dot");
+
+            function updateHeroSlide() {
+                if (isAnimating) return;
+
+                isAnimating = true;
+
+                heroSlides.forEach((slide) => slide.classList.remove("active"));
+                heroDots.forEach((dot) => dot.classList.remove("active"));
+
+                heroSlides[heroCurrentSlide].classList.add("active");
+                heroDots[heroCurrentSlide].classList.add("active");
+
+                // Animate text elements
+                const textElements =
+                    heroSlides[heroCurrentSlide].querySelectorAll(".text-animate");
+                textElements.forEach((el, index) => {
+                    setTimeout(() => {
+                        el.classList.add("visible");
+                    }, index * 200);
+                });
+
+                setTimeout(() => {
+                    isAnimating = false;
+                }, 1000);
+            }
+
+            function nextHeroSlide() {
+                // Reset text animations on current slide
+                const currentTextElements =
+                    heroSlides[heroCurrentSlide].querySelectorAll(".text-animate");
+                currentTextElements.forEach((el) => {
+                    el.classList.remove("visible");
+                });
+
+                heroCurrentSlide = (heroCurrentSlide + 1) % heroTotalSlides;
+                updateHeroSlide();
+            }
+
+            function prevHeroSlide() {
+                // Reset text animations on current slide
+                const currentTextElements =
+                    heroSlides[heroCurrentSlide].querySelectorAll(".text-animate");
+                currentTextElements.forEach((el) => {
+                    el.classList.remove("visible");
+                });
+
+                heroCurrentSlide =
+                    (heroCurrentSlide - 1 + heroTotalSlides) % heroTotalSlides;
+                updateHeroSlide();
+            }
+
+            function goToSlide(slideIndex) {
+                if (slideIndex >= 0 && slideIndex < heroTotalSlides && !isAnimating) {
+                    // Reset text animations on current slide
+                    const currentTextElements =
+                        heroSlides[heroCurrentSlide].querySelectorAll(".text-animate");
+                    currentTextElements.forEach((el) => {
+                        el.classList.remove("visible");
+                    });
+
+                    heroCurrentSlide = slideIndex;
+                    updateHeroSlide();
+                    resetHeroAutoSlide();
+                }
+            }
+
+            function resetHeroAutoSlide() {
+                clearInterval(heroSlideInterval);
+                heroSlideInterval = setInterval(nextHeroSlide, 6000);
+            }
+
+            // Event listeners
+            heroDots.forEach((dot, index) => {
+                dot.addEventListener("click", () => goToSlide(index));
+            });
+
+            // Touch support
+            let touchStartX = 0;
+            let touchEndX = 0;
+
+            const heroSlider = document.querySelector(".hero-slider");
+            if (heroSlider) {
+                heroSlider.addEventListener("touchstart", (e) => {
+                    touchStartX = e.changedTouches[0].screenX;
+                });
+
+                heroSlider.addEventListener("touchend", (e) => {
+                    touchEndX = e.changedTouches[0].screenX;
+                    handleSwipe();
+                });
+
+                function handleSwipe() {
+                    if (touchEndX < touchStartX - 50) {
+                        nextHeroSlide();
+                        resetHeroAutoSlide();
+                    } else if (touchEndX > touchStartX + 50) {
+                        prevHeroSlide();
+                        resetHeroAutoSlide();
+                    }
+                }
+            }
+
+            // Initialize first slide
+            updateHeroSlide();
+
+            // Auto-play
+            heroSlideInterval = setInterval(nextHeroSlide, 6000);
+        }
+
+        // Mobile Panel
+        function initMobilePanel() {
+            const hamburger = document.getElementById("hamburger");
+            const panel = document.getElementById("mobilePanel");
+            const overlay = document.getElementById("overlay");
+            const closeBtn = document.getElementById("closePanel");
+
+            function openPanel() {
+                panel.classList.add("open");
+                overlay.classList.add("show");
+                panel.setAttribute("aria-hidden", "false");
+                hamburger.setAttribute("aria-expanded", "true");
+                document.body.style.overflow = "hidden";
+            }
+            function closePanel() {
+                panel.classList.remove("open");
+                overlay.classList.remove("show");
+                panel.setAttribute("aria-hidden", "true");
+                hamburger.setAttribute("aria-expanded", "false");
+                document.body.style.overflow = "";
+            }
+
+            hamburger.addEventListener("click", openPanel);
+            closeBtn.addEventListener("click", closePanel);
+            overlay.addEventListener("click", closePanel);
+
+            // mobile sublink toggles
+            document.querySelectorAll(".m-toggle").forEach((btn) => {
+                btn.addEventListener("click", () => {
+                    const target = btn.dataset.target;
+                    const el = document.getElementById(target);
+                    if (!el) return;
+                    const showing = window.getComputedStyle(el).display === "flex";
+                    el.style.display = showing ? "none" : "flex";
+                });
+            });
+
+            // Close on link click
+            document.querySelectorAll(".mobile-links a").forEach((a) => {
+                a.addEventListener("click", () => closePanel());
+            });
+
+            // ensure panel closes if resizing to desktop
+            window.addEventListener("resize", () => {
+                if (window.innerWidth >= 1024 && panel.classList.contains("open"))
+                    closePanel();
+            });
+        }
+
+        // WhatsApp Button
+        function initWhatsAppButton() {
+            const whatsappButton = document.querySelector(".whatsapp-float");
+            const whatsappDesktop = document.getElementById("whatsappDesktop");
+            const whatsappMobile = document.getElementById("whatsappMobile");
+
+            // Add hover effect
+            whatsappButton?.addEventListener("mouseenter", () => {
+                whatsappButton.style.transform = "scale(1.1) rotate(15deg)";
+            });
+
+            whatsappButton?.addEventListener("mouseleave", () => {
+                whatsappButton.style.transform = "scale(1) rotate(0deg)";
+            });
+
+            // Desktop WhatsApp: expand after 3s + typewriter
+            (function () {
+                const btn = whatsappDesktop;
+                const label = document.getElementById("whLabel");
+                const full = "WhatsApp Us";
+                const typingDelay = 60;
+                const delayBefore = 3000;
+                let typedIndex = 0;
+                let typingTimer = null;
+
+                // click opens
+                btn.addEventListener("click", () => {
+                    window.open(
+                        "https://wa.me/233546945944?text=Hello%20OG%20Star%20Travel%20%26%20Tours,%20I'm%20interested%20in%20your%20services",
+                        "_blank"
+                    );
+                });
+
+                // schedule expand & type
+                window.addEventListener("load", () => {
+                    setTimeout(() => {
+                        btn.classList.add("expand");
+                        // clear label and type
+                        label.textContent = "";
+                        typedIndex = 0;
+                        typingTimer = setInterval(() => {
+                            label.textContent += full[typedIndex++];
+                            if (typedIndex >= full.length) clearInterval(typingTimer);
+                        }, typingDelay);
+                    }, delayBefore);
+                });
+
+                // also allow keyboard activation
+                btn.addEventListener("keyup", (e) => {
+                    if (e.key === "Enter") {
+                        window.open(
+                            "https://wa.me/233546945944?text=Hello%20OG%20Star%20Travel%20%26%20Tours,%20I'm%20interested%20in%20your%20services",
+                            "_blank"
+                        );
+                    }
+                });
+            })();
+
+            // mobile whatsapp button inside panel
+            (function () {
+                const mobileBtn = whatsappMobile;
+                if (mobileBtn) mobileBtn.addEventListener("click", () => {
+                    window.open(
+                        "https://wa.me/233546945944?text=Hello%20OG%20Star%20Travel%20%26%20Tours,%20I'm%20interested%20in%20your%20services",
+                        "_blank"
+                    );
+                });
+            })();
+        }
+
+        // Carousels
+        function initCarousels() {
+            // Tours Carousel
+            new CircularCarousel({
+                wrapperId: "toursWrapper",
+                trackId: "toursTrack",
+                dotsId: "toursDots",
+                autoMs: 6000, // 6s for tours
+            });
+
+            // Testimonials Carousel
+            new CircularCarousel({
+                wrapperId: "testimonialsWrapper",
+                trackId: "testimonialsTrack",
+                dotsId: "testimonialsDots",
+                autoMs: 8000, // 8s for testimonials (slower for readability)
+            });
+        }
+
+        // Navbar scroll behavior
+        function initNavbarScroll() {
+            const navbar = document.getElementById("navbar");
+            let lastScrollTop = 0;
+            let scrollTimer = null;
+
+            window.addEventListener("scroll", () => {
+                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                
+                // Show navbar when scrolling up or at the top
+                if (scrollTop <= 0 || scrollTop < lastScrollTop) {
+                    navbar.classList.remove("hidden");
+                    navbarVisible = true;
+                } 
+                // Hide navbar when scrolling down
+                else if (scrollTop > lastScrollTop && scrollTop > 100) {
+                    navbar.classList.add("hidden");
+                    navbarVisible = false;
+                }
+                
+                lastScrollTop = scrollTop;
+                
+                // Clear any existing timer
+                clearTimeout(scrollTimer);
+                
+                // Set a timer to show navbar after scrolling stops
+                scrollTimer = setTimeout(() => {
+                    if (!navbarVisible) {
+                        navbar.classList.remove("hidden");
+                        navbarVisible = true;
+                    }
+                }, 1000);
+            });
+
+            // Show navbar when clicking/tapping the screen
+            document.addEventListener("click", () => {
+                if (!navbarVisible) {
+                    navbar.classList.remove("hidden");
+                    navbarVisible = true;
+                }
+            });
+
+            document.addEventListener("touchstart", () => {
+                if (!navbarVisible) {
+                    navbar.classList.remove("hidden");
+                    navbarVisible = true;
+                }
+            });
+        }
+
+        // Dropdown menu fix
+        function initDropdownMenu() {
+            const navItems = document.querySelectorAll(".nav-item");
+            
+            navItems.forEach(item => {
+                const link = item.querySelector(".nav-link");
+                const dropdown = item.querySelector(".dropdown");
+                
+                if (!dropdown) return;
+                
+                // Prevent dropdown from closing when moving mouse to it
+                item.addEventListener("mouseenter", () => {
+                    dropdown.style.opacity = "1";
+                    dropdown.style.visibility = "visible";
+                    dropdown.style.transform = "translateX(-50%) translateY(0)";
+                    dropdown.style.pointerEvents = "auto";
+                });
+                
+                item.addEventListener("mouseleave", () => {
+                    dropdown.style.opacity = "";
+                    dropdown.style.visibility = "";
+                    dropdown.style.transform = "";
+                    dropdown.style.pointerEvents = "";
+                });
+                
+                // Keep dropdown open when hovering over it
+                dropdown.addEventListener("mouseenter", () => {
+                    dropdown.style.opacity = "1";
+                    dropdown.style.visibility = "visible";
+                    dropdown.style.transform = "translateX(-50%) translateY(0)";
+                    dropdown.style.pointerEvents = "auto";
+                });
+                
+                dropdown.addEventListener("mouseleave", () => {
+                    dropdown.style.opacity = "";
+                    dropdown.style.visibility = "";
+                    dropdown.style.transform = "";
+                    dropdown.style.pointerEvents = "";
+                });
+            });
+        }
+
+        // CircularCarousel Class
+        class CircularCarousel {
+            constructor({ wrapperId, trackId, dotsId, autoMs = 6000 }) {
+                this.wrapper = document.getElementById(wrapperId);
+                this.track = document.getElementById(trackId);
+                this.dotsWrap = document.getElementById(dotsId);
+                this.autoMs = autoMs;
+
+                this.gap = 20;
+                this.cloneCount = 0;
+                this.index = 0; // logical index among originals (0..n-1)
+                this.cardWidth = 0;
+                this.moveIncrement = 0;
+                this.autoTimer = null;
+
+                // drag state
+                this.isDragging = false;
+                this.startX = 0;
+                this.prevTranslate = 0;
+                this.dragThreshold = 60;
+
+                // store original nodes as templates
+                this.originalTemplateNodes = Array.from(this.track.children).map(
+                    (n) => n.cloneNode(true)
+                );
+                this.originalCount = this.originalTemplateNodes.length;
+
+                // bind
+                this._onTransitionEnd = this._onTransitionEnd.bind(this);
+                this._onResize = this._onResize.bind(this);
+                this._onVisibility = this._onVisibility.bind(this);
+
+                // init
+                this._init();
+            }
+
+            _readVisualCount() {
+                const val = getComputedStyle(this.wrapper).getPropertyValue(
+                    "--visual-count"
+                );
+                const n = parseInt(val);
+                return n && n > 0 ? n : 1;
+            }
+
+            _init() {
+                // rebuild track with original nodes (no clones)
+                this.track.innerHTML = "";
+                this.originalTemplateNodes.forEach((n) =>
+                    this.track.appendChild(n.cloneNode(true))
+                );
+                this.originalCount = Array.from(this.track.children).length;
+
+                // visual count & clones
+                this.visualCount = this._readVisualCount();
+                this.cloneCount = this.visualCount;
+
+                // create clones
+                this._createClones();
+
+                // items reference
+                this.items = Array.from(this.track.children);
+
+                // build dots
+                this._buildDots();
+
+                // layout sizes
+                this._layout();
+
+                // initial jump (no transition)
+                this._jumpToIndex(this.index, false);
+
+                // events
+                this.track.addEventListener("transitionend", this._onTransitionEnd);
+                window.addEventListener("resize", this._onResize);
+                document.addEventListener("visibilitychange", this._onVisibility);
+
+                // interactions
+                this._enableDragTouch();
+
+                // auto
+                this._startAuto();
+            }
+
+            _createClones() {
+                const originals = Array.from(this.track.children);
+                // append clones of first cloneCount to end
+                for (let i = 0; i < this.cloneCount; i++) {
+                    const clone = originals[i].cloneNode(true);
+                    clone.setAttribute("data-clone", "end-" + i);
+                    this.track.appendChild(clone);
+                }
+                // prepend clones of last cloneCount to beginning
+                for (let i = 0; i < this.cloneCount; i++) {
+                    const clone = originals[originals.length - 1 - i].cloneNode(true);
+                    clone.setAttribute("data-clone", "start-" + i);
+                    this.track.insertBefore(clone, this.track.firstChild);
+                }
+            }
+
+            _buildDots() {
+                this.dotsWrap.innerHTML = "";
+                this.dots = [];
+                for (let i = 0; i < this.originalCount; i++) {
+                    const d = document.createElement("span");
+                    d.className = "dot";
+                    if (i === 0) d.classList.add("active");
+                    ((idx) =>
+                        d.addEventListener("click", () => {
+                            this.index = idx;
+                            this._moveToIndex(this.index);
+                            this._resetAuto();
+                        }))(i);
+                    this.dotsWrap.appendChild(d);
+                    this.dots.push(d);
+                }
+            }
+
+            _layout() {
+                this.visualCount = this._readVisualCount();
+                const wrapperW = this.wrapper.clientWidth;
+                const totalGaps = (this.visualCount - 1) * this.gap;
+                const cardW = (wrapperW - totalGaps) / this.visualCount;
+                this.cardWidth = Math.floor(cardW);
+                // apply flex-basis to all items
+                Array.from(this.track.children).forEach((node) => {
+                    node.style.flex = `0 0 ${this.cardWidth}px`;
+                });
+                this.moveIncrement = this.cardWidth + this.gap;
+                // remove transition while layout to avoid flashes
+                this.track.style.transition = "none";
+                this._jumpToIndex(this.index, false);
+                requestAnimationFrame(() => {
+                    this.track.style.transition = "";
+                });
+                // update in-view visual after layout
+                this._setInViewClass();
+            }
+
+            _enableDragTouch() {
+                // mouse
+                this.track.addEventListener("mousedown", (e) => {
+                    e.preventDefault();
+                    this.isDragging = true;
+                    this.startX = e.clientX;
+                    this.prevTranslate =
+                        -(this.index + this.cloneCount) * this.moveIncrement;
+                    this.track.style.transition = "none";
+                    this.track.classList.add("grabbing");
+                    this._stopAuto();
+                });
+                window.addEventListener("mousemove", (e) => {
+                    if (!this.isDragging) return;
+                    const dx = e.clientX - this.startX;
+                    this._setTranslate(this.prevTranslate + dx);
+                });
+                window.addEventListener("mouseup", (e) => {
+                    if (!this.isDragging) return;
+                    this.isDragging = false;
+                    this.track.classList.remove("grabbing");
+                    const dx = e.clientX - this.startX;
+                    if (dx < -this.dragThreshold)
+                        this.index = (this.index + 1) % this.originalCount;
+                    else if (dx > this.dragThreshold)
+                        this.index =
+                            (this.index - 1 + this.originalCount) % this.originalCount;
+                    this._moveToIndex(this.index);
+                    this._resetAuto();
+                });
+
+                // touch
+                this.track.addEventListener(
+                    "touchstart",
+                    (e) => {
+                        this.isDragging = true;
+                        this.startX = e.touches[0].clientX;
+                        this.prevTranslate =
+                            -(this.index + this.cloneCount) * this.moveIncrement;
+                        this.track.style.transition = "none";
+                        this._stopAuto();
+                    },
+                    { passive: true }
+                );
+
+                this.track.addEventListener(
+                    "touchmove",
+                    (e) => {
+                        if (!this.isDragging) return;
+                        const dx = e.touches[0].clientX - this.startX;
+                        this._setTranslate(this.prevTranslate + dx);
+                    },
+                    { passive: true }
+                );
+
+                this.track.addEventListener("touchend", (e) => {
+                    if (!this.isDragging) return;
+                    this.isDragging = false;
+                    const dx = e.changedTouches[0].clientX - this.startX;
+                    if (dx < -this.dragThreshold)
+                        this.index = (this.index + 1) % this.originalCount;
+                    else if (dx > this.dragThreshold)
+                        this.index =
+                            (this.index - 1 + this.originalCount) % this.originalCount;
+                    this._moveToIndex(this.index);
+                    this._resetAuto();
+                });
+
+                // prevent default image drag
+                this.track.addEventListener("dragstart", (e) => e.preventDefault());
+            }
+
+            _setTranslate(x) {
+                this.track.style.transform = `translateX(${x}px)`;
+            }
+
+            _moveToIndex(i) {
+                this.track.style.transition = `transform .6s cubic-bezier(0.22, 0.9, 0.35, 1)`;
+                const x = -(i + this.cloneCount) * this.moveIncrement;
+                this._setTranslate(x);
+                this._updateDots(i);
+                this._setInViewClass();
+            }
+
+            _jumpToIndex(i, withTransition = false) {
+                if (!withTransition) this.track.style.transition = "none";
+                const x = -(i + this.cloneCount) * this.moveIncrement;
+                this._setTranslate(x);
+                this._updateDots(i);
+                this._setInViewClass();
+                if (!withTransition)
+                    requestAnimationFrame(() => {
+                        this.track.style.transition = "";
+                    });
+            }
+
+            _onTransitionEnd() {
+                // check if we are inside the clone zones, then jump to real counterpart
+                const transformX = this._currentTransform();
+                const alignedIndex = Math.round(-transformX / this.moveIncrement); // index among items (incl clones)
+                const firstReal = this.cloneCount;
+                const lastRealStart = firstReal + this.originalCount - 1;
+
+                if (alignedIndex > lastRealStart) {
+                    // beyond last real -> wrap
+                    const offset = alignedIndex - (firstReal + this.originalCount);
+                    this.index = offset % this.originalCount;
+                    this._jumpToIndex(this.index, false);
+                } else if (alignedIndex < firstReal) {
+                    // before first real -> wrap forward
+                    const offset = alignedIndex - firstReal + this.originalCount;
+                    this.index = offset % this.originalCount;
+                    this._jumpToIndex(this.index, false);
+                } else {
+                    // in real zone
+                    this.index = (alignedIndex - firstReal) % this.originalCount;
+                    this._updateDots(this.index);
+                    this._setInViewClass();
+                }
+            }
+
+            _currentTransform() {
+                const st = window.getComputedStyle(this.track).transform;
+                if (!st || st === "none") return 0;
+                const values = st.match(/matrix.*\((.+)\)/)[1].split(", ");
+                return parseFloat(values[4]);
+            }
+
+            _updateDots(i) {
+                if (!this.dots) return;
+                this.dots.forEach((d, idx) =>
+                    d.classList.toggle("active", idx === i % this.originalCount)
+                );
+            }
+
+            _setInViewClass() {
+                // Add .in-view to the leftmost visible card (logical index)
+                // First remove from all
+                Array.from(this.track.children).forEach((n) =>
+                    n.classList.remove("in-view")
+                );
+                // The node that corresponds to leftmost visible = cloneCount + index
+                const pos = this.cloneCount + this.index;
+                const node = this.track.children[pos];
+                if (node) node.classList.add("in-view");
+            }
+
+            _startAuto() {
+                this._stopAuto();
+                this.autoTimer = setInterval(() => {
+                    this.index = (this.index + 1) % this.originalCount;
+                    this._moveToIndex(this.index);
+                }, this.autoMs);
+                // pause on hover (desktop)
+                this.wrapper.addEventListener("mouseenter", () => this._stopAuto());
+                this.wrapper.addEventListener("mouseleave", () => this._resetAuto());
+            }
+
+            _stopAuto() {
+                clearInterval(this.autoTimer);
+                this.autoTimer = null;
+            }
+            _resetAuto() {
+                this._stopAuto();
+                this._startAuto();
+            }
+
+            _onResize() {
+                // Re-init layout because visual count might change
+                const savedIndex = this.index;
+                // remove listeners for safety
+                this.track.removeEventListener(
+                    "transitionend",
+                    this._onTransitionEnd
+                );
+                window.removeEventListener("resize", this._onResize);
+
+                // rebuild original nodes
+                this.track.innerHTML = "";
+                this.originalTemplateNodes.forEach((n) =>
+                    this.track.appendChild(n.cloneNode(true))
+                );
+                this.originalCount = Array.from(this.track.children).length;
+
+                // re-init
+                this._init();
+                this.index = savedIndex % this.originalCount;
+                this._jumpToIndex(this.index, false);
+            }
+
+            _onVisibility() {
+                if (document.hidden) this._stopAuto();
+                else this._resetAuto();
+            }
+        } // end class
+    </script>
+</body>
+</html>
