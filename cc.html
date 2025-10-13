@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OG Star Travel & Tours — About & Why Choose Us</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <style>
+      :root {
+        --primary: #0a3d62;
+        --accent: #f39c12;
+        --accent-2: #e67e22;
+        --muted: #6b6f76;
+        --bg: #ffffff;
+        --card: #ffffff;
+        --text: #222222;
+        --soft: #f6f7f9;
+        --shadow: 0 8px 30px rgba(12, 13, 14, 0.08);
+        --radius: 14px;
+        --transition: 300ms cubic-bezier(0.2, 0.9, 0.2, 1);
+      }
+
+      body {
+        margin: 0;
+        font-family: "Open Sans", sans-serif;
+        color: var(--text);
+        background: linear-gradient(180deg, var(--bg) 0%, var(--soft) 100%);
+        line-height: 1.6;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      .btn {
+        background: linear-gradient(90deg, var(--accent), var(--accent-2));
+        color: #fff;
+        padding: 12px 18px;
+        border-radius: 12px;
+        border: none;
+        font-weight: 700;
+        cursor: pointer;
+        box-shadow: 0 8px 22px rgba(243, 156, 18, 0.12);
+        transition: transform var(--transition), box-shadow var(--transition);
+        display: inline-block;
+        text-decoration: none;
+      }
+
+      .btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 18px 40px rgba(230, 110, 20, 0.12);
+      }
+
+      /* ABOUT US SECTION */
+      .split {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 28px;
+        align-items: center;
+        padding: 60px 0;
+      }
+
+      .split .media {
+        border-radius: 18px;
+        overflow: hidden;
+        position: relative;
+        min-height: 360px;
+        box-shadow: var(--shadow);
+      }
+
+      .contact-card {
+        position: absolute;
+        left: 24px;
+        bottom: 24px;
+        background: var(--card);
+        padding: 14px 18px;
+        border-radius: 12px;
+        box-shadow: var(--shadow);
+        display: inline-block;
+      }
+
+      .contact-card p {
+        margin: 0;
+        font-size: 0.78rem;
+        color: var(--muted);
+        letter-spacing: 1px;
+        text-transform: uppercase;
+      }
+
+      .contact-card strong {
+        display: block;
+        font-size: 1.15rem;
+        margin-top: 3px;
+        color: var(--text);
+        font-family: "Montserrat", sans-serif;
+      }
+
+      .split .text {
+        padding: 6px 10px;
+      }
+
+      .section-subtitle {
+        color: var(--accent);
+        font-family: "Dancing Script", cursive;
+        font-size: 1.05rem;
+      }
+
+      .section-title {
+        font-family: "Montserrat", sans-serif;
+        font-size: clamp(1.4rem, 3vw, 2rem);
+        margin: 10px 0 18px;
+        letter-spacing: -0.4px;
+      }
+
+      .lead {
+        color: var(--muted);
+        max-width: 60ch;
+        line-height: 1.85;
+        margin-bottom: 1rem;
+      }
+
+      /* WHY CHOOSE US SECTION */
+      .why {
+        padding: 60px 0;
+      }
+
+      .why .panel {
+        border-radius: 18px;
+        overflow: hidden;
+        display: grid;
+        grid-template-columns: 1fr;
+        align-items: stretch;
+        box-shadow: var(--shadow);
+      }
+
+      .why .info {
+        padding: 48px;
+        background: linear-gradient(
+          180deg,
+          rgba(26, 26, 30, 0.98),
+          rgba(28, 28, 34, 0.98)
+        );
+        color: #fff;
+      }
+
+      .why .info h2 {
+        font-size: clamp(1.6rem, 3vw, 2.4rem);
+        margin: 0 0 14px;
+        font-family: "Montserrat", sans-serif;
+      }
+
+      .why .info p {
+        color: rgba(255, 255, 255, 0.85);
+        line-height: 1.8;
+        max-width: 66ch;
+      }
+
+      .why .features {
+        margin-top: 24px;
+        display: grid;
+        gap: 20px;
+      }
+
+      .feature {
+        display: flex;
+        gap: 16px;
+        align-items: flex-start;
+      }
+
+      .feature .icon {
+        min-width: 48px;
+        min-height: 48px;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(
+          180deg,
+          rgba(255, 140, 28, 0.12),
+          rgba(255, 120, 20, 0.08)
+        );
+        color: var(--accent);
+        font-size: 18px;
+      }
+
+      .feature h4 {
+        margin: 0;
+        font-size: 1.05rem;
+        color: white;
+        font-weight: 700;
+      }
+
+      .feature p {
+        margin: 6px 0 0;
+        color: rgba(255, 255, 255, 0.75);
+        font-size: 0.95rem;
+        line-height: 1.6;
+      }
+
+      .why .image {
+        min-height: 420px;
+        background-size: cover;
+        background-position: center;
+      }
+
+      /* ANIMATIONS */
+      .reveal {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.6s ease, transform 0.6s ease;
+      }
+
+      .reveal.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      @media (min-width: 640px) {
+        .split {
+          grid-template-columns: 1fr 1fr;
+          gap: 40px;
+        }
+
+        .why .panel {
+          grid-template-columns: 1fr 1fr;
+        }
+
+        .why .info {
+          padding: 56px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <!-- ABOUT US -->
+      <section id="about" class="container split">
+        <div class="media reveal">
+          <img
+            src="https://picsum.photos/seed/intro/900/700.jpg"
+            alt="Travel view"
+            style="width: 100%; height: 100%; object-fit: cover"
+          />
+          <div class="contact-card">
+            <p>Contact Us</p>
+            <strong>0550202021</strong>
+          </div>
+        </div>
+
+        <div class="text reveal">
+          <h3 class="section-subtitle">About Us</h3>
+          <h2 class="section-title">Welcome to OG Star Travel &amp; Tours</h2>
+          <p class="lead">
+            At OG Star Travel &amp; Tours, we're not just a travel agency; we're
+            your gateway to extraordinary experiences and global opportunities.
+            With years of expertise in travel and immigration services, we build
+            trusted relationships to make your journey effortless and memorable.
+          </p>
+          <p class="lead">
+            From visa assistance and job placement support to bespoke travel
+            itineraries and interview coaching, our team provides personalized
+            guidance at every step.
+          </p>
+          <a class="btn" href="#contact">Contact Us</a>
+        </div>
+      </section>
+
+      <!-- WHY CHOOSE US -->
+      <section id="why" class="container why">
+        <div class="why panel reveal">
+          <div class="info">
+            <h4 class="section-subtitle" style="color: var(--accent)">
+              OG Star Travel &amp; Tours
+            </h4>
+            <h2>Why Choose Us</h2>
+            <p>
+              No matter the type of experience you seek — leisure, business, or
+              education — OG Star offers exceptional service delivery, custom
+              packages, and trusted local partners that open doors to the world.
+            </p>
+
+            <div class="features">
+              <div class="feature">
+                <div class="icon"><i class="fas fa-user-tie"></i></div>
+                <div>
+                  <h4>Professional Service Delivery</h4>
+                  <p>
+                    Our team of dedicated professionals will support you through
+                    every step of your travel or relocation process.
+                  </p>
+                </div>
+              </div>
+
+              <div class="feature">
+                <div class="icon"><i class="fas fa-plane-departure"></i></div>
+                <div>
+                  <h4>Amazing Tour Packages</h4>
+                  <p>
+                    Competitive prices and well-crafted tour packages — book
+                    with confidence and experience more.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="image"
+            style="
+              background-image: url('https://picsum.photos/seed/whychoose/1200/900.jpg');
+            "
+          ></div>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      // Simple scroll reveal effect
+      const reveals = document.querySelectorAll(".reveal");
+      const revealOnScroll = () => {
+        const triggerBottom = window.innerHeight * 0.85;
+        reveals.forEach((el) => {
+          const rect = el.getBoundingClientRect();
+          if (rect.top < triggerBottom) el.classList.add("visible");
+        });
+      };
+      window.addEventListener("scroll", revealOnScroll);
+      revealOnScroll();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,1148 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <style>
+      :root {
+        --gap: 20; /* px gap between cards (JS reads numeric value) */
+        --accent: #ff7b00;
+        --badge: #00bcd4;
+        --maxw: 1240px;
+        --dot-size: 10px;
+      }
+
+      /* Container & typography */
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto,
+          "Helvetica Neue", Arial;
+        color: #222;
+      }
+      .section {
+        padding: 72px 0;
+        background: #fff;
+        text-align: center;
+      }
+      .container {
+        max-width: var(--maxw);
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+      .section-subtitle {
+        color: var(--accent);
+        font-style: italic;
+        font-size: 1rem;
+        margin-bottom: 8px;
+      }
+      .section-title {
+        font-size: 2.2rem;
+        font-weight: 700;
+        color: #222;
+        margin-bottom: 28px;
+      }
+
+      /* carousel wrappers */
+      .carousel-wrapper {
+        position: relative;
+        overflow: hidden;
+        margin: 0 auto;
+      }
+      .carousel-track {
+        display: flex;
+        gap: calc(var(--gap) * 1px);
+        transition: transform 0.6s cubic-bezier(0.22, 0.9, 0.35, 1);
+        will-change: transform;
+        cursor: grab;
+      }
+      .carousel-track.grabbing {
+        cursor: grabbing;
+      }
+
+      /* cards */
+      .tour-card,
+      .testimonial-card {
+        background: #fff;
+        border-radius: 14px;
+        box-shadow: 0 6px 24px rgba(0, 0, 0, 0.08);
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        min-height: 100%; /* helps consistent height */
+      }
+
+      /* tour card specifics */
+      .tour-image {
+        position: relative;
+      }
+      .tour-image img {
+        width: 100%;
+        height: 220px;
+        object-fit: cover;
+        display: block;
+      }
+      .tour-badge {
+        position: absolute;
+        top: 12px;
+        left: 12px;
+        background: var(--badge);
+        color: #fff;
+        padding: 6px 10px;
+        border-radius: 8px;
+        font-weight: 700;
+        font-size: 0.75rem;
+      }
+      .tour-content {
+        padding: 14px 16px;
+        text-align: left;
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+      }
+      .tour-title {
+        font-size: 1.05rem;
+        margin: 6px 0;
+        font-weight: 700;
+        color: #222;
+      }
+      .tour-location {
+        color: #666;
+        font-size: 0.9rem;
+        margin-bottom: 8px;
+        display: flex;
+        gap: 8px;
+        align-items: center;
+      }
+      .tour-price {
+        margin-top: auto;
+        font-weight: 600;
+        color: #333;
+      }
+      .tour-price span {
+        color: var(--accent);
+        font-weight: 800;
+      }
+      .tour-footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 10px;
+        color: #777;
+        font-size: 0.9rem;
+      }
+      .tour-btn {
+        text-decoration: none;
+        color: var(--accent);
+        font-weight: 700;
+      }
+      .tour-btn:hover {
+        color: #e26e00;
+        text-decoration: none;
+      }
+
+      /* testimonial specifics */
+      .testimonial-card {
+        padding: 18px;
+        align-items: center;
+        text-align: center;
+      }
+      .testimonial-avatar img {
+        width: 86px;
+        height: 86px;
+        object-fit: cover;
+        border-radius: 50%;
+        display: block;
+        margin: 0 auto 10px;
+      }
+      .testimonial-rating {
+        color: #f5a623;
+        display: flex;
+        gap: 6px;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 10px;
+      }
+      .testimonial-text {
+        color: #444;
+        font-size: 0.95rem;
+        margin: 8px 0 12px;
+        line-height: 1.45;
+      }
+      .testimonial-name {
+        font-weight: 700;
+        margin-bottom: 4px;
+      }
+      .testimonial-role {
+        color: #888;
+        font-size: 0.9rem;
+      }
+
+      /* dots */
+      .carousel-dots {
+        margin-top: 18px;
+        display: flex;
+        justify-content: center;
+        gap: 8px;
+      }
+      .carousel-dots .dot {
+        width: var(--dot-size);
+        height: var(--dot-size);
+        border-radius: 50%;
+        background: #d3d3d3;
+        cursor: pointer;
+        transition: background 0.25s;
+      }
+      .carousel-dots .dot.active {
+        background: var(--accent);
+      }
+
+      /* prevent browser image dragging */
+      img {
+        -webkit-user-drag: none;
+        user-drag: none;
+      }
+
+      /* Breakpoints: we set CSS variable --visual-count per wrapper. JS reads it. */
+      /* Default (xs) - mobile first: 1 card */
+      .visual-items {
+        --visual-count: 1;
+      }
+
+      /* 475px still 1 card (keeps rule you gave) */
+      @media (min-width: 475px) {
+        .visual-items {
+          --visual-count: 1;
+        }
+      }
+
+      /* 640px -> 2 cards */
+      @media (min-width: 640px) {
+        .visual-items {
+          --visual-count: 2;
+        }
+      }
+
+      /* 1024px and up -> 4 cards */
+      @media (min-width: 1024px) {
+        .visual-items {
+          --visual-count: 4;
+        }
+      }
+
+      /* small tweaks */
+      @media (max-width: 480px) {
+        .testimonial-avatar img {
+          width: 72px;
+          height: 72px;
+        }
+        .tour-image img {
+          height: 180px;
+        }
+      }
+
+      /* ensure anchors don't get underlined anywhere */
+      a {
+        text-decoration: none;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- =========================
+     FEATURED TOURS SECTION
+     ========================= -->
+    <section class="section tours-section">
+      <div class="container">
+        <h4 class="section-subtitle">Featured Tours</h4>
+        <h2 class="section-title">Explore Our Tours</h2>
+
+        <div class="carousel-wrapper visual-items" id="toursWrapper">
+          <div class="carousel-track" id="toursTrack">
+            <!-- 1 -->
+            <div class="tour-card">
+              <div class="tour-image">
+                <img
+                  src="https://picsum.photos/seed/tour1/800/600.jpg"
+                  alt="Accra City Tour"
+                />
+                <span class="tour-badge">FEATURED</span>
+              </div>
+              <div class="tour-content">
+                <h3 class="tour-title">Accra City Tour</h3>
+                <div class="tour-location">
+                  <i class="fas fa-map-marker-alt"></i> Accra, Ghana
+                </div>
+                <div class="tour-price">Starting from <span>$50</span></div>
+                <div class="tour-footer">
+                  <span><i class="fas fa-users"></i> 100</span
+                  ><a class="tour-btn" href="#">Explore →</a>
+                </div>
+              </div>
+            </div>
+            <!-- 2 -->
+            <div class="tour-card">
+              <div class="tour-image">
+                <img
+                  src="https://picsum.photos/seed/tour2/800/600.jpg"
+                  alt="Cape Coast Castle"
+                />
+                <span class="tour-badge">FEATURED</span>
+              </div>
+              <div class="tour-content">
+                <h3 class="tour-title">Cape Coast Castle</h3>
+                <div class="tour-location">
+                  <i class="fas fa-map-marker-alt"></i> Cape Coast, Ghana
+                </div>
+                <div class="tour-price">Starting from <span>$75</span></div>
+                <div class="tour-footer">
+                  <span><i class="fas fa-users"></i> 100</span
+                  ><a class="tour-btn" href="#">Explore →</a>
+                </div>
+              </div>
+            </div>
+            <!-- 3 -->
+            <div class="tour-card">
+              <div class="tour-image">
+                <img
+                  src="https://picsum.photos/seed/tour3/800/600.jpg"
+                  alt="Mole National Park"
+                />
+                <span class="tour-badge">FEATURED</span>
+              </div>
+              <div class="tour-content">
+                <h3 class="tour-title">Mole National Park</h3>
+                <div class="tour-location">
+                  <i class="fas fa-map-marker-alt"></i> Northern Ghana
+                </div>
+                <div class="tour-price">Starting from <span>$120</span></div>
+                <div class="tour-footer">
+                  <span><i class="fas fa-users"></i> 100</span
+                  ><a class="tour-btn" href="#">Explore →</a>
+                </div>
+              </div>
+            </div>
+            <!-- 4 -->
+            <div class="tour-card">
+              <div class="tour-image">
+                <img
+                  src="https://picsum.photos/seed/tour4/800/600.jpg"
+                  alt="Kakum National Park"
+                />
+                <span class="tour-badge">FEATURED</span>
+              </div>
+              <div class="tour-content">
+                <h3 class="tour-title">Kakum National Park</h3>
+                <div class="tour-location">
+                  <i class="fas fa-map-marker-alt"></i> Central Ghana
+                </div>
+                <div class="tour-price">Starting from <span>$85</span></div>
+                <div class="tour-footer">
+                  <span><i class="fas fa-users"></i> 100</span
+                  ><a class="tour-btn" href="#">Explore →</a>
+                </div>
+              </div>
+            </div>
+            <!-- 5 -->
+            <div class="tour-card">
+              <div class="tour-image">
+                <img
+                  src="https://picsum.photos/seed/tour5/800/600.jpg"
+                  alt="Lake Volta Cruise"
+                />
+                <span class="tour-badge">FEATURED</span>
+              </div>
+              <div class="tour-content">
+                <h3 class="tour-title">Lake Volta Cruise</h3>
+                <div class="tour-location">
+                  <i class="fas fa-map-marker-alt"></i> Volta Region
+                </div>
+                <div class="tour-price">Starting from <span>$95</span></div>
+                <div class="tour-footer">
+                  <span><i class="fas fa-users"></i> 100</span
+                  ><a class="tour-btn" href="#">Explore →</a>
+                </div>
+              </div>
+            </div>
+            <!-- 6 -->
+            <div class="tour-card">
+              <div class="tour-image">
+                <img
+                  src="https://picsum.photos/seed/tour6/800/600.jpg"
+                  alt="Ashanti Kingdom Tour"
+                />
+                <span class="tour-badge">FEATURED</span>
+              </div>
+              <div class="tour-content">
+                <h3 class="tour-title">Ashanti Kingdom Tour</h3>
+                <div class="tour-location">
+                  <i class="fas fa-map-marker-alt"></i> Kumasi, Ghana
+                </div>
+                <div class="tour-price">Starting from <span>$110</span></div>
+                <div class="tour-footer">
+                  <span><i class="fas fa-users"></i> 100</span
+                  ><a class="tour-btn" href="#">Explore →</a>
+                </div>
+              </div>
+            </div>
+            <!-- 7 -->
+            <div class="tour-card">
+              <div class="tour-image">
+                <img
+                  src="https://picsum.photos/seed/tour7/800/600.jpg"
+                  alt="Beach Getaway"
+                />
+                <span class="tour-badge">FEATURED</span>
+              </div>
+              <div class="tour-content">
+                <h3 class="tour-title">Beach Getaway</h3>
+                <div class="tour-location">
+                  <i class="fas fa-map-marker-alt"></i> Coastal Ghana
+                </div>
+                <div class="tour-price">Starting from <span>$130</span></div>
+                <div class="tour-footer">
+                  <span><i class="fas fa-users"></i> 100</span
+                  ><a class="tour-btn" href="#">Explore →</a>
+                </div>
+              </div>
+            </div>
+            <!-- 8 -->
+            <div class="tour-card">
+              <div class="tour-image">
+                <img
+                  src="https://picsum.photos/seed/tour8/800/600.jpg"
+                  alt="Wli Waterfalls"
+                />
+                <span class="tour-badge">FEATURED</span>
+              </div>
+              <div class="tour-content">
+                <h3 class="tour-title">Wli Waterfalls</h3>
+                <div class="tour-location">
+                  <i class="fas fa-map-marker-alt"></i> Volta Region
+                </div>
+                <div class="tour-price">Starting from <span>$100</span></div>
+                <div class="tour-footer">
+                  <span><i class="fas fa-users"></i> 100</span
+                  ><a class="tour-btn" href="#">Explore →</a>
+                </div>
+              </div>
+            </div>
+            <!-- 9 -->
+            <div class="tour-card">
+              <div class="tour-image">
+                <img
+                  src="https://picsum.photos/seed/tour9/800/600.jpg"
+                  alt="Ada Foah Beach"
+                />
+                <span class="tour-badge">FEATURED</span>
+              </div>
+              <div class="tour-content">
+                <h3 class="tour-title">Ada Foah Beach</h3>
+                <div class="tour-location">
+                  <i class="fas fa-map-marker-alt"></i> Greater Accra
+                </div>
+                <div class="tour-price">Starting from <span>$80</span></div>
+                <div class="tour-footer">
+                  <span><i class="fas fa-users"></i> 100</span
+                  ><a class="tour-btn" href="#">Explore →</a>
+                </div>
+              </div>
+            </div>
+            <!-- 10 -->
+            <div class="tour-card">
+              <div class="tour-image">
+                <img
+                  src="https://picsum.photos/seed/tour10/800/600.jpg"
+                  alt="Paga Crocodile Pond"
+                />
+                <span class="tour-badge">FEATURED</span>
+              </div>
+              <div class="tour-content">
+                <h3 class="tour-title">Paga Crocodile Pond</h3>
+                <div class="tour-location">
+                  <i class="fas fa-map-marker-alt"></i> Upper East Region
+                </div>
+                <div class="tour-price">Starting from <span>$90</span></div>
+                <div class="tour-footer">
+                  <span><i class="fas fa-users"></i> 100</span
+                  ><a class="tour-btn" href="#">Explore →</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="carousel-dots" id="toursDots"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- small spacing -->
+    <div style="height: 36px"></div>
+
+    <!-- =========================
+     TESTIMONIALS
+     ========================= -->
+    <section class="section testimonials-section">
+      <div class="container">
+        <h4 class="section-subtitle">Testimonials</h4>
+        <h2 class="section-title">What Customers Say</h2>
+
+        <div class="carousel-wrapper visual-items" id="testimonialsWrapper">
+          <div class="carousel-track" id="testimonialsTrack">
+            <!-- (original testimonial cards from your snippet) -->
+            <div class="testimonial-card">
+              <div class="testimonial-avatar">
+                <img
+                  src="https://picsum.photos/seed/person1/150/150.jpg"
+                  alt="Jane Doe"
+                />
+              </div>
+              <div class="testimonial-rating">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i
+                ><i class="fas fa-star"></i><i class="fas fa-star"></i
+                ><i class="fas fa-star"></i
+                ><span style="margin-left: 8px; color: #333; font-weight: 700"
+                  >5.0</span
+                >
+              </div>
+              <p class="testimonial-text">
+                "OG Star Travel & Tours made my Ghana trip absolutely
+                unforgettable. The guides were knowledgeable and the itinerary
+                was perfectly planned."
+              </p>
+              <h4 class="testimonial-name">Jane Doe</h4>
+              <p class="testimonial-role">Customer</p>
+            </div>
+
+            <div class="testimonial-card">
+              <div class="testimonial-avatar">
+                <img
+                  src="https://picsum.photos/seed/person2/150/150.jpg"
+                  alt="Kwame"
+                />
+              </div>
+              <div class="testimonial-rating">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i
+                ><i class="fas fa-star"></i><i class="fas fa-star"></i
+                ><i class="fas fa-star"></i
+                ><span style="margin-left: 8px; color: #333; font-weight: 700"
+                  >5.0</span
+                >
+              </div>
+              <p class="testimonial-text">
+                "The visa assistance service was exceptional. They guided me
+                through every step and made the process so much easier than I
+                expected."
+              </p>
+              <h4 class="testimonial-name">Kwame</h4>
+              <p class="testimonial-role">Customer</p>
+            </div>
+
+            <div class="testimonial-card">
+              <div class="testimonial-avatar">
+                <img
+                  src="https://picsum.photos/seed/person3/150/150.jpg"
+                  alt="Sarah Johnson"
+                />
+              </div>
+              <div class="testimonial-rating">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i
+                ><i class="fas fa-star"></i><i class="fas fa-star"></i
+                ><i class="fas fa-star-half-alt"></i
+                ><span style="margin-left: 8px; color: #333; font-weight: 700"
+                  >4.5</span
+                >
+              </div>
+              <p class="testimonial-text">
+                "Thanks to OG Star's work abroad program, I'm now working in my
+                dream job in Canada. Their interview preparation was
+                invaluable."
+              </p>
+              <h4 class="testimonial-name">Sarah Johnson</h4>
+              <p class="testimonial-role">Customer</p>
+            </div>
+
+            <div class="testimonial-card">
+              <div class="testimonial-avatar">
+                <img
+                  src="https://picsum.photos/seed/person4/150/150.jpg"
+                  alt="Michael"
+                />
+              </div>
+              <div class="testimonial-rating">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i
+                ><i class="fas fa-star"></i><i class="fas fa-star"></i
+                ><i class="fas fa-star"></i
+                ><span style="margin-left: 8px; color: #333; font-weight: 700"
+                  >5.0</span
+                >
+              </div>
+              <p class="testimonial-text">
+                "The custom travel package they created for my family was
+                perfect. Every detail was taken care of, from accommodations to
+                activities."
+              </p>
+              <h4 class="testimonial-name">Michael</h4>
+              <p class="testimonial-role">Customer</p>
+            </div>
+
+            <div class="testimonial-card">
+              <div class="testimonial-avatar">
+                <img
+                  src="https://picsum.photos/seed/person5/150/150.jpg"
+                  alt="Ama"
+                />
+              </div>
+              <div class="testimonial-rating">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i
+                ><i class="fas fa-star"></i><i class="fas fa-star"></i
+                ><i class="fas fa-star"></i
+                ><span style="margin-left: 8px; color: #333; font-weight: 700"
+                  >5.0</span
+                >
+              </div>
+              <p class="testimonial-text">
+                "I've traveled with many companies, but OG Star stands out for
+                their professionalism and attention to detail. The Cape Coast
+                tour was exceptional."
+              </p>
+              <h4 class="testimonial-name">Ama</h4>
+              <p class="testimonial-role">Customer</p>
+            </div>
+
+            <div class="testimonial-card">
+              <div class="testimonial-avatar">
+                <img
+                  src="https://picsum.photos/seed/person6/150/150.jpg"
+                  alt="David"
+                />
+              </div>
+              <div class="testimonial-rating">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i
+                ><i class="fas fa-star"></i><i class="fas fa-star"></i
+                ><i class="far fa-star"></i
+                ><span style="margin-left: 8px; color: #333; font-weight: 700"
+                  >4.0</span
+                >
+              </div>
+              <p class="testimonial-text">
+                "The work and stay abroad guidance helped me navigate the
+                complex process of relocating. I'm now happily settled in the UK
+                thanks to their support."
+              </p>
+              <h4 class="testimonial-name">David</h4>
+              <p class="testimonial-role">Customer</p>
+            </div>
+
+            <div class="testimonial-card">
+              <div class="testimonial-avatar">
+                <img
+                  src="https://picsum.photos/seed/person7/150/150.jpg"
+                  alt="Grace"
+                />
+              </div>
+              <div class="testimonial-rating">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i
+                ><i class="fas fa-star"></i><i class="fas fa-star"></i
+                ><i class="fas fa-star"></i
+                ><span style="margin-left: 8px; color: #333; font-weight: 700"
+                  >5.0</span
+                >
+              </div>
+              <p class="testimonial-text">
+                "The Mole National Park safari was a dream come true! Our guide
+                was incredibly knowledgeable about the wildlife and made the
+                experience educational."
+              </p>
+              <h4 class="testimonial-name">Grace</h4>
+              <p class="testimonial-role">Customer</p>
+            </div>
+
+            <div class="testimonial-card">
+              <div class="testimonial-avatar">
+                <img
+                  src="https://picsum.photos/seed/person8/150/150.jpg"
+                  alt="Samuel"
+                />
+              </div>
+              <div class="testimonial-rating">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i
+                ><i class="fas fa-star"></i><i class="fas fa-star"></i
+                ><i class="fas fa-star-half-alt"></i
+                ><span style="margin-left: 8px; color: #333; font-weight: 700"
+                  >4.5</span
+                >
+              </div>
+              <p class="testimonial-text">
+                "I was nervous about the visa application process, but OG Star's
+                team was with me every step of the way. They made it stress-free
+                and straightforward."
+              </p>
+              <h4 class="testimonial-name">Samuel</h4>
+              <p class="testimonial-role">Customer</p>
+            </div>
+
+            <div class="testimonial-card">
+              <div class="testimonial-avatar">
+                <img
+                  src="https://picsum.photos/seed/person9/150/150.jpg"
+                  alt="Fatima"
+                />
+              </div>
+              <div class="testimonial-rating">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i
+                ><i class="fas fa-star"></i><i class="fas fa-star"></i
+                ><i class="fas fa-star"></i
+                ><span style="margin-left: 8px; color: #333; font-weight: 700"
+                  >5.0</span
+                >
+              </div>
+              <p class="testimonial-text">
+                "The Ashanti Kingdom tour was a cultural immersion like no
+                other. Our guide's deep knowledge of the history and traditions
+                made every site come alive."
+              </p>
+              <h4 class="testimonial-name">Fatima</h4>
+              <p class="testimonial-role">Customer</p>
+            </div>
+
+            <div class="testimonial-card">
+              <div class="testimonial-avatar">
+                <img
+                  src="https://picsum.photos/seed/person10/150/150.jpg"
+                  alt="John"
+                />
+              </div>
+              <div class="testimonial-rating">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i
+                ><i class="fas fa-star"></i><i class="fas fa-star"></i
+                ><i class="fas fa-star-half-alt"></i
+                ><span style="margin-left: 8px; color: #333; font-weight: 700"
+                  >4.5</span
+                >
+              </div>
+              <p class="testimonial-text">
+                "The interview preparation sessions were invaluable. They helped
+                me refine my answers and build confidence. I landed the job on
+                my first interview!"
+              </p>
+              <h4 class="testimonial-name">John</h4>
+              <p class="testimonial-role">Customer</p>
+            </div>
+
+            <div class="testimonial-card">
+              <div class="testimonial-avatar">
+                <img
+                  src="https://picsum.photos/seed/person11/150/150.jpg"
+                  alt="Yaa"
+                />
+              </div>
+              <div class="testimonial-rating">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i
+                ><i class="fas fa-star"></i><i class="fas fa-star"></i
+                ><i class="fas fa-star"></i
+                ><span style="margin-left: 8px; color: #333; font-weight: 700"
+                  >5.0</span
+                >
+              </div>
+              <p class="testimonial-text">
+                "The Lake Volta cruise was the highlight of our trip. The sunset
+                views were breathtaking, and the crew made sure we were
+                comfortable throughout."
+              </p>
+              <h4 class="testimonial-name">Yaa</h4>
+              <p class="testimonial-role">Customer</p>
+            </div>
+
+            <div class="testimonial-card">
+              <div class="testimonial-avatar">
+                <img
+                  src="https://picsum.photos/seed/person12/150/150.jpg"
+                  alt="Kofi"
+                />
+              </div>
+              <div class="testimonial-rating">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i
+                ><i class="fas fa-star"></i><i class="fas fa-star"></i
+                ><i class="fas fa-star"></i
+                ><span style="margin-left: 8px; color: #333; font-weight: 700"
+                  >5.0</span
+                >
+              </div>
+              <p class="testimonial-text">
+                "From the moment I inquired about their services to the end of
+                my trip, the customer service was exceptional. They went above
+                and beyond to ensure my travel experience was seamless."
+              </p>
+              <h4 class="testimonial-name">Kofi</h4>
+              <p class="testimonial-role">Customer</p>
+            </div>
+          </div>
+
+          <div class="carousel-dots" id="testimonialsDots"></div>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      /*
+  CircularCarousel class (clean and robust)
+  - clones visibleCount items on both ends for infinite feel
+  - computes card widths so visualCount fits exactly
+  - supports dots, auto-slide, mouse drag, touch swipe
+  - and fixes testimonial half-cut issue by exact sizing
+*/
+      class CircularCarousel {
+        constructor({ wrapperId, trackId, dotsId, autoMs = 6000 }) {
+          this.wrapper = document.getElementById(wrapperId);
+          this.track = document.getElementById(trackId);
+          this.dotsWrap = document.getElementById(dotsId);
+          this.autoMs = autoMs;
+
+          this.gap =
+            parseInt(
+              getComputedStyle(document.documentElement).getPropertyValue(
+                "--gap"
+              )
+            ) || 20;
+          this.visualCount = this._readVisualCount();
+          this.originalNodes = Array.from(this.track.children);
+          this.originalCount = this.originalNodes.length;
+
+          this.index = 0; // logical index of leftmost visible original item (0..originalCount-1)
+          this.cloneCount = 0;
+          this.cardWidth = 0;
+          this.moveIncrement = 0;
+
+          // drag state
+          this.isDragging = false;
+          this.startX = 0;
+          this.prevTranslate = 0;
+          this.dragThreshold = 60;
+
+          // timers
+          this.autoTimer = null;
+
+          // bind handlers
+          this._onTransitionEnd = this._onTransitionEnd.bind(this);
+          this._onResize = this._onResize.bind(this);
+          this._onVisibility = this._onVisibility.bind(this);
+
+          this._init();
+        }
+
+        _readVisualCount() {
+          const val = getComputedStyle(this.wrapper).getPropertyValue(
+            "--visual-count"
+          );
+          const n = parseInt(val);
+          return n && n > 0 ? n : 1;
+        }
+
+        _init() {
+          // ensure track contains original nodes (clone-free)
+          this.track.innerHTML = "";
+          this.originalNodes.forEach((node) =>
+            this.track.appendChild(node.cloneNode(true))
+          );
+
+          // refresh references
+          this.originalNodes = Array.from(this.track.children);
+          this.originalCount = this.originalNodes.length;
+
+          // compute visual count and clone count
+          this.visualCount = this._readVisualCount();
+          this.cloneCount = this.visualCount;
+
+          // create clones
+          this._createClones();
+
+          // set items array including clones
+          this.items = Array.from(this.track.children);
+
+          // build dots
+          this._buildDots();
+
+          // layout (compute widths)
+          this._layout();
+
+          // initial jump to logical index (after clones)
+          this._jumpToIndex(this.index, false);
+
+          // events
+          this.track.addEventListener("transitionend", this._onTransitionEnd);
+          window.addEventListener("resize", this._onResize);
+          document.addEventListener("visibilitychange", this._onVisibility);
+
+          // interactions
+          this._enableDragTouch();
+
+          // auto
+          this._startAuto();
+        }
+
+        _createClones() {
+          const originals = Array.from(this.track.children).slice(
+            this.cloneCount,
+            this.cloneCount + this.originalCount
+          );
+          // Note: track currently contains only originals, so we use originalNodes
+          // Append clones of first cloneCount to end
+          for (let i = 0; i < this.cloneCount; i++) {
+            const clone = this.originalNodes[i].cloneNode(true);
+            clone.setAttribute("data-clone", "end-" + i);
+            this.track.appendChild(clone);
+          }
+          // Prepend clones of last cloneCount to start
+          for (let i = 0; i < this.cloneCount; i++) {
+            const clone =
+              this.originalNodes[this.originalCount - 1 - i].cloneNode(true);
+            clone.setAttribute("data-clone", "start-" + i);
+            this.track.insertBefore(clone, this.track.firstChild);
+          }
+        }
+
+        _buildDots() {
+          this.dotsWrap.innerHTML = "";
+          this.dots = [];
+          for (let i = 0; i < this.originalCount; i++) {
+            const d = document.createElement("span");
+            d.className = "dot";
+            if (i === 0) d.classList.add("active");
+            ((idx) =>
+              d.addEventListener("click", () => {
+                this.index = idx;
+                this._moveToIndex(this.index);
+                this._resetAuto();
+              }))(i);
+            this.dotsWrap.appendChild(d);
+            this.dots.push(d);
+          }
+        }
+
+        _layout() {
+          // compute widths so exactly visualCount cards fit inside wrapper
+          this.visualCount = this._readVisualCount();
+          const wrapperW = this.wrapper.clientWidth;
+          const totalGaps = (this.visualCount - 1) * this.gap;
+          const cardW = (wrapperW - totalGaps) / this.visualCount;
+          this.cardWidth = Math.floor(cardW);
+          // apply flex-basis to all items (including clones)
+          Array.from(this.track.children).forEach((node) => {
+            node.style.flex = `0 0 ${this.cardWidth}px`;
+          });
+          this.moveIncrement = this.cardWidth + this.gap;
+          // ensure track has no transition while layout
+          this.track.style.transition = "none";
+          // reposition
+          this._jumpToIndex(this.index, false);
+          // clear transition none next frame
+          requestAnimationFrame(() => {
+            this.track.style.transition = "";
+          });
+        }
+
+        _enableDragTouch() {
+          // mouse drag
+          this.track.addEventListener("mousedown", (e) => {
+            e.preventDefault();
+            this.isDragging = true;
+            this.startX = e.clientX;
+            this.prevTranslate =
+              -(this.index + this.cloneCount) * this.moveIncrement;
+            this.track.style.transition = "none";
+            this.track.classList.add("grabbing");
+            this._stopAuto();
+          });
+          window.addEventListener("mousemove", (e) => {
+            if (!this.isDragging) return;
+            const dx = e.clientX - this.startX;
+            this._setTranslate(this.prevTranslate + dx);
+          });
+          window.addEventListener("mouseup", (e) => {
+            if (!this.isDragging) return;
+            this.isDragging = false;
+            this.track.classList.remove("grabbing");
+            const dx = e.clientX - this.startX;
+            if (dx < -this.dragThreshold)
+              this.index = (this.index + 1) % this.originalCount;
+            else if (dx > this.dragThreshold)
+              this.index =
+                (this.index - 1 + this.originalCount) % this.originalCount;
+            this._moveToIndex(this.index);
+            this._resetAuto();
+          });
+          // touch
+          this.track.addEventListener(
+            "touchstart",
+            (e) => {
+              this.isDragging = true;
+              this.startX = e.touches[0].clientX;
+              this.prevTranslate =
+                -(this.index + this.cloneCount) * this.moveIncrement;
+              this.track.style.transition = "none";
+              this._stopAuto();
+            },
+            { passive: true }
+          );
+          this.track.addEventListener(
+            "touchmove",
+            (e) => {
+              if (!this.isDragging) return;
+              const dx = e.touches[0].clientX - this.startX;
+              this._setTranslate(this.prevTranslate + dx);
+            },
+            { passive: true }
+          );
+          this.track.addEventListener("touchend", (e) => {
+            if (!this.isDragging) return;
+            this.isDragging = false;
+            const dx = e.changedTouches[0].clientX - this.startX;
+            if (dx < -this.dragThreshold)
+              this.index = (this.index + 1) % this.originalCount;
+            else if (dx > this.dragThreshold)
+              this.index =
+                (this.index - 1 + this.originalCount) % this.originalCount;
+            this._moveToIndex(this.index);
+            this._resetAuto();
+          });
+
+          // prevent image dragging glitch
+          this.track.addEventListener("dragstart", (e) => e.preventDefault());
+        }
+
+        _setTranslate(x) {
+          this.track.style.transform = `translateX(${x}px)`;
+        }
+
+        _moveToIndex(i) {
+          this.track.style.transition =
+            "transform 0.6s cubic-bezier(.22,.9,.35,1)";
+          const x = -(i + this.cloneCount) * this.moveIncrement;
+          this._setTranslate(x);
+          this._updateDots(i);
+        }
+
+        _jumpToIndex(i, withTransition = false) {
+          if (!withTransition) this.track.style.transition = "none";
+          const x = -(i + this.cloneCount) * this.moveIncrement;
+          this._setTranslate(x);
+          this._updateDots(i);
+          if (!withTransition)
+            requestAnimationFrame(() => {
+              this.track.style.transition = "";
+            });
+        }
+
+        _onTransitionEnd() {
+          // detect if we are in clones zone and jump to correct real index without transition
+          const transformX = this._currentTransform();
+          const alignedIdx = Math.round(-transformX / this.moveIncrement); // index among items including clones
+          const firstRealIdx = this.cloneCount;
+          const lastRealIdxStart = firstRealIdx + this.originalCount - 1;
+
+          if (alignedIdx > lastRealIdxStart) {
+            // moved beyond last real (in appended clones) -> wrap to corresponding real
+            const offset = alignedIdx - (firstRealIdx + this.originalCount);
+            this.index = offset % this.originalCount;
+            this._jumpToIndex(this.index, false);
+          } else if (alignedIdx < firstRealIdx) {
+            // moved before first real (in prepended clones) -> wrap forward
+            const offset = alignedIdx - firstRealIdx + this.originalCount;
+            this.index = offset % this.originalCount;
+            this._jumpToIndex(this.index, false);
+          } else {
+            // normal: set logical index
+            this.index = (alignedIdx - firstRealIdx) % this.originalCount;
+            this._updateDots(this.index);
+          }
+        }
+
+        _currentTransform() {
+          const st = window.getComputedStyle(this.track).transform;
+          if (!st || st === "none") return 0;
+          const values = st.match(/matrix.*\((.+)\)/)[1].split(", ");
+          return parseFloat(values[4]);
+        }
+
+        _updateDots(i) {
+          if (!this.dots) return;
+          this.dots.forEach((d, idx) =>
+            d.classList.toggle("active", idx === i % this.originalCount)
+          );
+        }
+
+        _startAuto() {
+          this._stopAuto();
+          this.autoTimer = setInterval(() => {
+            this.index = (this.index + 1) % this.originalCount;
+            this._moveToIndex(this.index);
+          }, this.autoMs);
+          // pause on hover (desktop)
+          this.wrapper.addEventListener("mouseenter", () => this._stopAuto());
+          this.wrapper.addEventListener("mouseleave", () => this._resetAuto());
+        }
+
+        _stopAuto() {
+          clearInterval(this.autoTimer);
+          this.autoTimer = null;
+        }
+        _resetAuto() {
+          this._stopAuto();
+          this._startAuto();
+        }
+
+        _onResize() {
+          // Save logical index, re-init layout (clones depend on visualCount)
+          const savedIndex = this.index;
+          // clear listeners
+          this.track.removeEventListener(
+            "transitionend",
+            this._onTransitionEnd
+          );
+          window.removeEventListener("resize", this._onResize);
+
+          // rebuild track with original nodes (no clones)
+          const originals = this.originalNodes.map((n) => n.cloneNode(true));
+          this.track.innerHTML = "";
+          originals.forEach((n) => this.track.appendChild(n));
+          this.originalNodes = Array.from(this.track.children);
+          this.originalCount = this.originalNodes.length;
+          // re-init fully
+          this._init();
+          // restore index safely
+          this.index = savedIndex % this.originalCount;
+          this._jumpToIndex(this.index, false);
+        }
+
+        _onVisibility() {
+          if (document.hidden) this._stopAuto();
+          else this._resetAuto();
+        }
+      } /* end CircularCarousel */
+
+      document.addEventListener("DOMContentLoaded", function () {
+        // instantiate tours
+        const tours = new CircularCarousel({
+          wrapperId: "toursWrapper",
+          trackId: "toursTrack",
+          dotsId: "toursDots",
+          autoMs: 6000,
+        });
+
+        // instantiate testimonials
+        const testimonials = new CircularCarousel({
+          wrapperId: "testimonialsWrapper",
+          trackId: "testimonialsTrack",
+          dotsId: "testimonialsDots",
+          autoMs: 6000,
+        });
+      });
+    </script>
+  </body>
+</html>

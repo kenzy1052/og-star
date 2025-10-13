@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OG Star Travel & Tours</title>
+
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+
+    <style>
+      :root {
+        --emerald: #046c4e;
+        --emerald-dark: #012b26;
+        --text-light: #f3f3f3;
+        --text-muted: #c0c0c0;
+        --transition: all 0.4s ease;
+      }
+
+      body {
+        margin: 0;
+        font-family: "Poppins", sans-serif;
+        background-color: #f8f9fa;
+      }
+
+      /* ========== NAVBAR ========== */
+      .navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.85);
+        backdrop-filter: blur(10px);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.6rem 2rem;
+        z-index: 999;
+      }
+
+      .navbar .logo img {
+        height: 55px;
+      }
+
+      .nav-menu {
+        list-style: none;
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+      }
+
+      .nav-menu li {
+        position: relative;
+      }
+
+      .nav-link {
+        text-decoration: none;
+        color: var(--text-light);
+        font-weight: 500;
+        position: relative;
+        transition: var(--transition);
+        display: inline-block;
+        padding: 6px 0;
+      }
+
+      .nav-link::after {
+        content: "";
+        position: absolute;
+        bottom: -6px;
+        left: 50%;
+        width: 0;
+        height: 2px;
+        background-color: var(--emerald);
+        transition: var(--transition);
+        transform: translateX(-50%);
+      }
+
+      .nav-link:hover::after,
+      .nav-link.active::after {
+        width: 100%;
+      }
+
+      .nav-link:hover {
+        color: var(--emerald);
+      }
+
+      /* Dropdown Menu */
+      .dropdown {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background-color: rgba(0, 0, 0, 0.95);
+        padding: 10px 0;
+        border-radius: 6px;
+        min-width: 180px;
+        display: none;
+        flex-direction: column;
+        z-index: 1000;
+      }
+
+      .dropdown a {
+        color: var(--text-light);
+        text-decoration: none;
+        padding: 10px 20px;
+        display: block;
+        font-size: 14px;
+        transition: var(--transition);
+      }
+
+      .dropdown a:hover {
+        background-color: var(--emerald);
+        color: #fff;
+      }
+
+      .nav-menu li:hover > .dropdown {
+        display: flex;
+      }
+
+      /* WhatsApp Button */
+      .whatsapp-btn {
+        position: relative;
+        overflow: hidden;
+        background-color: var(--emerald);
+        color: #fff;
+        border: none;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 0.6rem 1.2rem;
+        border-radius: 50px;
+        cursor: pointer;
+        font-weight: 500;
+        transition: var(--transition);
+      }
+
+      .whatsapp-btn i {
+        font-size: 18px;
+      }
+
+      .whatsapp-btn span {
+        white-space: nowrap;
+        opacity: 0;
+        transform: translateX(-10px);
+        transition: var(--transition);
+      }
+
+      .whatsapp-btn.active span {
+        opacity: 1;
+        transform: translateX(0);
+      }
+
+      .whatsapp-btn::before {
+        content: "";
+        position: absolute;
+        bottom: -100%;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #000;
+        transition: all 0.6s ease-in-out;
+        z-index: 0;
+      }
+
+      .whatsapp-btn:hover::before {
+        bottom: 0;
+      }
+
+      .whatsapp-btn:hover {
+        color: #fff;
+      }
+
+      .whatsapp-btn * {
+        position: relative;
+        z-index: 2;
+      }
+
+      /* Mobile Styles */
+      .hamburger {
+        display: none;
+        font-size: 24px;
+        color: #fff;
+        background: none;
+        border: none;
+        cursor: pointer;
+      }
+
+      @media (max-width: 768px) {
+        .nav-menu {
+          display: none;
+          flex-direction: column;
+          background-color: rgba(0, 0, 0, 0.95);
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100vh;
+          justify-content: center;
+          align-items: center;
+          gap: 1.5rem;
+          transition: var(--transition);
+        }
+
+        .nav-menu.active {
+          display: flex;
+        }
+
+        .hamburger {
+          display: block;
+        }
+
+        .dropdown {
+          position: static;
+          display: none;
+          width: 100%;
+          text-align: center;
+          background: none;
+        }
+
+        .dropdown a {
+          padding: 8px;
+        }
+
+        .nav-menu li.open .dropdown {
+          display: flex;
+        }
+
+        .whatsapp-btn {
+          margin-top: 2rem;
+        }
+      }
+
+      /* ========== FOOTER ========== */
+      footer {
+        background: linear-gradient(180deg, var(--emerald-dark), #000);
+        color: var(--text-light);
+        padding: 60px 20px 20px;
+        margin-top: 100px;
+      }
+
+      .footer-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .footer-column h4 {
+        margin-bottom: 1rem;
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: var(--text-light);
+      }
+
+      .footer-column ul {
+        list-style: none;
+        padding: 0;
+      }
+
+      .footer-column ul li {
+        margin-bottom: 10px;
+      }
+
+      .footer-column ul li a {
+        text-decoration: none;
+        color: var(--text-muted);
+        font-size: 15px;
+        transition: var(--transition);
+      }
+
+      .footer-column ul li a:hover {
+        color: var(--emerald);
+      }
+
+      .social-links {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+      }
+
+      .social-links a {
+        width: 36px;
+        height: 36px;
+        border: 1px solid var(--text-light);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--text-light);
+        transition: var(--transition);
+      }
+
+      .social-links a:hover {
+        border-color: var(--emerald);
+        color: var(--emerald);
+        transform: translateY(-3px);
+      }
+
+      .footer-bottom {
+        text-align: center;
+        margin-top: 40px;
+        padding-top: 20px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        color: var(--text-muted);
+        font-size: 14px;
+      }
+
+      .footer-bottom span {
+        color: var(--emerald);
+      }
+    </style>
+  </head>
+
+  <body>
+    <nav class="navbar">
+      <a href="#" class="logo">
+        <img src="assets/images/logo.png" alt="OG Star Travel & Tours" />
+      </a>
+
+      <button class="hamburger" id="hamburger">
+        <i class="fas fa-bars"></i>
+      </button>
+
+      <ul class="nav-menu" id="navMenu">
+        <li><a href="#" class="nav-link active">Home</a></li>
+
+        <li>
+          <a href="#" class="nav-link"
+            >Services <i class="fas fa-chevron-down" style="font-size: 12px"></i
+          ></a>
+          <div class="dropdown">
+            <a href="#">Travel Abroad</a>
+            <a href="#">Work & Stay Abroad</a>
+          </div>
+        </li>
+
+        <li>
+          <a href="#" class="nav-link"
+            >Information
+            <i class="fas fa-chevron-down" style="font-size: 12px"></i
+          ></a>
+          <div class="dropdown">
+            <a href="#">About Us</a>
+            <a href="#">Frequently Asked Questions</a>
+          </div>
+        </li>
+
+        <li><a href="#" class="nav-link">Contact</a></li>
+        <li><a href="#" class="nav-link">Blog</a></li>
+
+        <li>
+          <button class="whatsapp-btn" id="whatsappBtnMobile">
+            <i class="fab fa-whatsapp"></i>
+            <span>WhatsApp Us</span>
+          </button>
+        </li>
+      </ul>
+
+      <button class="whatsapp-btn" id="whatsappBtn">
+        <i class="fab fa-whatsapp"></i>
+        <span>WhatsApp Us</span>
+      </button>
+    </nav>
+
+    <main style="padding-top: 100px; text-align: center">
+      <h1>Welcome to OG Star Travel & Tours</h1>
+    </main>
+
+    <footer>
+      <div class="footer-container">
+        <div class="footer-column">
+          <h4>About Us</h4>
+          <p>
+            OG Star Travel & Tours helps you explore the world with ease — from
+            visa assistance to full tour experiences across the globe.
+          </p>
+        </div>
+
+        <div class="footer-column">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">Information</a></li>
+            <li><a href="#">Contact</a></li>
+            <li><a href="#">Blog</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-column">
+          <h4>Our Services</h4>
+          <ul>
+            <li><a href="#">Travel & Tours</a></li>
+            <li><a href="#">Study Abroad</a></li>
+            <li><a href="#">Work & Stay</a></li>
+            <li><a href="#">Visa Assistance</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-column">
+          <h4>Connect With Us</h4>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-whatsapp"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-x-twitter"></i></a>
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        © 2025 OG Star Travel & Tours. Crafted with <span>❤️</span> by
+        Kenzyverse.
+      </div>
+    </footer>
+
+    <script>
+      // WhatsApp button animation
+      window.addEventListener("load", () => {
+        setTimeout(() => {
+          document.getElementById("whatsappBtn").classList.add("active");
+        }, 3000);
+      });
+
+      // WhatsApp click event
+      const openWhatsApp = () => {
+        window.open(
+          "https://wa.me/233546945944?text=Hello%20OG%20Star%20Travel%20and%20Tours!%20I'm%20interested%20in%20your%20services.",
+          "_blank"
+        );
+      };
+      document
+        .getElementById("whatsappBtn")
+        .addEventListener("click", openWhatsApp);
+      document
+        .getElementById("whatsappBtnMobile")
+        .addEventListener("click", openWhatsApp);
+
+      // Mobile Menu Toggle
+      const hamburger = document.getElementById("hamburger");
+      const navMenu = document.getElementById("navMenu");
+
+      hamburger.addEventListener("click", () => {
+        navMenu.classList.toggle("active");
+        hamburger.innerHTML = navMenu.classList.contains("active")
+          ? '<i class="fas fa-times"></i>'
+          : '<i class="fas fa-bars"></i>';
+      });
+
+      // Mobile dropdowns
+      document.querySelectorAll(".nav-menu li > a").forEach((link) => {
+        link.addEventListener("click", (e) => {
+          const parentLi = link.parentElement;
+          if (parentLi.querySelector(".dropdown") && window.innerWidth <= 768) {
+            e.preventDefault();
+            parentLi.classList.toggle("open");
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

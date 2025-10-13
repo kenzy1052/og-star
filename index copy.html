@@ -1,0 +1,2800 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OG STAR TRAVEL & TOURS - Relish the Experience</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* Color Variables from Logo - Premium Professional Palette */
+      :root {
+        --primary-color: #0a3d62;
+        --secondary-color: #f39c12;
+        --accent-color: #e74c3c;
+        --light-color: #f8f9fa;
+        --dark-color: #2c3e50;
+        --text-color: #333;
+        --text-light: #f5f5f5;
+        --bg-primary: #ffffff;
+        --bg-secondary: #f8f9fa;
+        --bg-tertiary: #e9ecef;
+        --bg-dark: #1a1a1a;
+        --bg-darker: #0d0d0d;
+        --nav-bg: #ffffff;
+        --nav-bg-dark: #1a1a1a;
+        --gradient-primary: linear-gradient(135deg, #0a3d62 0%, #1a5276 100%);
+        --gradient-secondary: linear-gradient(135deg, #f39c12 0%, #e67e22 100%);
+        --gradient-accent: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+        --transition: all 0.3s ease;
+        --nav-height: 70px;
+        --spacing-xs: 0.5rem;
+        --spacing-sm: 1rem;
+        --spacing-md: 1.5rem;
+        --spacing-lg: 2rem;
+        --spacing-xl: 3rem;
+        --spacing-2xl: 4rem;
+        --spacing-3xl: 5rem;
+        --spacing-4xl: 6rem;
+        --radius-sm: 0.25rem;
+        --radius-md: 0.5rem;
+        --radius-lg: 1rem;
+        --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        --shadow-hover: 0 10px 15px rgba(0, 0, 0, 0.1);
+        --font-primary: "Open Sans", sans-serif;
+        --font-secondary: "Montserrat", sans-serif;
+        --footer-text: #f5f5f5; /* Fixed footer text color */
+      }
+
+      /* Dark Mode Variables */
+      [data-theme="dark"] {
+        --primary-color: #3498db;
+        --secondary-color: #f39c12;
+        --accent-color: #e74c3c;
+        --text-color: #f5f5f5;
+        --text-light: #333;
+        --bg-primary: #1a1a1a;
+        --bg-secondary: #2c2c2c;
+        --bg-tertiary: #3c3c3c;
+        --nav-bg: #1a1a1a;
+        /* Footer text remains the same in dark mode */
+      }
+
+      /* Reset and Base Styles */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: var(--font-primary);
+        line-height: 1.6;
+        color: var(--text-color);
+        background-color: var(--bg-primary);
+        transition: background-color var(--transition), color var(--transition);
+        overflow-x: hidden;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 15px;
+      }
+
+      /* Typography */
+      h1 {
+        font-size: clamp(1.75rem, 5vw, 2.5rem);
+        margin-bottom: 1rem;
+        color: var(--text-color);
+      }
+
+      h2 {
+        font-size: clamp(1.5rem, 4vw, 2rem);
+        margin-bottom: 1rem;
+        color: var(--text-color);
+      }
+
+      h3 {
+        font-size: clamp(1.25rem, 3vw, 1.5rem);
+        margin-bottom: 0.8rem;
+        color: var(--text-color);
+      }
+
+      h4 {
+        font-size: clamp(1.1rem, 2.5vw, 1.25rem);
+        margin-bottom: 0.6rem;
+      }
+
+      p {
+        margin-bottom: 1rem;
+      }
+
+      /* Buttons */
+      .btn {
+        display: inline-block;
+        padding: 12px 24px;
+        background: var(--gradient-secondary);
+        color: white;
+        text-decoration: none;
+        border-radius: var(--radius-md);
+        font-weight: 600;
+        transition: var(--transition);
+        cursor: pointer;
+        border: none;
+        font-size: 1rem;
+        min-height: 44px;
+        box-shadow: 0 4px 8px rgba(243, 156, 18, 0.3);
+      }
+
+      .btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 12px rgba(243, 156, 18, 0.4);
+      }
+
+      /* Custom Scrollbar Styles */
+      ::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+      }
+
+      ::-webkit-scrollbar-track {
+        background: var(--bg-secondary);
+        border-radius: 10px;
+      }
+
+      ::-webkit-scrollbar-thumb {
+        background: var(--gradient-primary);
+        border-radius: 10px;
+        transition: all var(--transition);
+      }
+
+      ::-webkit-scrollbar-thumb:hover {
+        background: var(--gradient-secondary);
+      }
+
+      /* Firefox Scrollbar */
+      html {
+        scrollbar-width: thin;
+        scrollbar-color: var(--primary-color) var(--bg-secondary);
+      }
+
+      /* Enhanced Scroll Animation Classes */
+      .scroll-animate {
+        opacity: 0;
+        transform: translateY(60px);
+        transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      }
+
+      .scroll-animate.animate-slide-left {
+        transform: translateX(-60px) translateY(30px);
+      }
+
+      .scroll-animate.animate-slide-right {
+        transform: translateX(60px) translateY(30px);
+      }
+
+      .scroll-animate.animate-scale {
+        transform: scale(0.8) translateY(30px);
+      }
+
+      .scroll-animate.animate-fade {
+        transform: translateY(30px);
+      }
+
+      .scroll-animate.visible {
+        opacity: 1;
+        transform: translateX(0) translateY(0) scale(1);
+      }
+
+      /* Text Animation Classes */
+      .text-animate {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      }
+
+      .text-animate.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* Stagger animation delays */
+      .scroll-animate:nth-child(1) {
+        transition-delay: 0s;
+      }
+      .scroll-animate:nth-child(2) {
+        transition-delay: 0.1s;
+      }
+      .scroll-animate:nth-child(3) {
+        transition-delay: 0.2s;
+      }
+      .scroll-animate:nth-child(4) {
+        transition-delay: 0.3s;
+      }
+      .scroll-animate:nth-child(5) {
+        transition-delay: 0.4s;
+      }
+      .scroll-animate:nth-child(6) {
+        transition-delay: 0.5s;
+      }
+
+      /* Text stagger delays */
+      .text-animate:nth-child(1) {
+        transition-delay: 0s;
+      }
+      .text-animate:nth-child(2) {
+        transition-delay: 0.15s;
+      }
+      .text-animate:nth-child(3) {
+        transition-delay: 0.3s;
+      }
+
+      /* ===========================================
+            NAVIGATION - MOBILE FIRST
+           =========================================== */
+      .navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 999;
+        background: var(--nav-bg);
+        backdrop-filter: blur(10px);
+        transition: all var(--transition);
+        height: 60px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .navbar.hidden {
+        transform: translateY(-100%);
+      }
+
+      .navbar.scrolled {
+        box-shadow: 0 4px 20px var(--shadow);
+      }
+
+      .nav-container {
+        margin: 0 auto;
+        padding: 0 8px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 60px;
+      }
+
+      .logo {
+        transition: all var(--transition);
+      }
+
+      .logo:hover {
+        transform: scale(1.05);
+      }
+
+      .logo-icon {
+        width: 90px;
+        height: auto;
+      }
+
+      .nav-menu {
+        position: fixed;
+        top: 60px;
+        left: -100%;
+        width: 100%;
+        height: calc(100vh - 60px);
+        background: var(--nav-bg);
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        padding: var(--spacing-xl);
+        transition: left var(--transition);
+        list-style: none;
+        overflow-y: auto;
+        box-shadow: 2px 0 10px var(--shadow);
+      }
+
+      .nav-menu.active {
+        left: 0;
+      }
+
+      .nav-item {
+        width: 100%;
+        text-align: left;
+        position: relative;
+      }
+
+      .nav-link-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+      }
+
+      .nav-link {
+        color: var(--text-color);
+        text-decoration: none;
+        font-weight: 500;
+        font-size: 16px;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+        transition: color var(--transition);
+        padding: 10px 0;
+        display: block;
+        position: relative;
+        flex-grow: 1;
+      }
+
+      .nav-link::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: var(--secondary-color);
+        transition: width var(--transition);
+      }
+
+      .nav-link:hover,
+      .nav-link.active {
+        color: var(--secondary-color);
+      }
+
+      /* Dropdown Toggle for Mobile */
+      .dropdown-toggle {
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: var(--spacing-md);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 40px;
+        color: var(--secondary-color);
+      }
+
+      /* Dropdown Arrow for Mobile */
+      .dropdown-arrow {
+        font-size: 12px;
+        transition: transform var(--transition);
+      }
+
+      .dropdown-arrow.open {
+        transform: rotate(180deg);
+      }
+
+      /* Dropdown Menu */
+      .dropdown-menu {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height var(--transition);
+        padding-left: var(--spacing-md);
+        margin-top: 0;
+      }
+
+      .dropdown-menu.open {
+        max-height: 500px;
+        margin-top: var(--spacing-sm);
+      }
+
+      .dropdown-item {
+        margin-bottom: var(--spacing-sm);
+      }
+
+      .dropdown-link {
+        color: var(--text-color);
+        text-decoration: none;
+        font-size: 14px;
+        text-transform: capitalize;
+        transition: color var(--transition);
+        display: block;
+        padding: var(--spacing-xs) 0;
+      }
+
+      .dropdown-link:hover {
+        color: var(--secondary-color);
+      }
+
+      .nav-controls {
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-sm);
+      }
+
+      /* Theme Toggle Button */
+      .theme-toggle-btn {
+        border: 1px solid var(--border);
+        padding: 4px 8px;
+        gap: 10px;
+        font-size: 14px;
+        font-weight: 500;
+        backdrop-filter: blur(10px);
+        background: var(--gradient-primary);
+        color: white;
+        border-radius: 100px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        transition: all 0.3s ease;
+        cursor: pointer;
+      }
+
+      .theme-toggle-btn:hover {
+        transform: scale(1.1);
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+      }
+
+      .theme-icon {
+        font-size: 12px;
+        transition: transform var(--transition-normal);
+      }
+      .theme-toggle:hover .theme-icon {
+        transform: rotate(180deg);
+      }
+
+      .mobile-menu-toggle {
+        background: none;
+        border: none;
+        color: var(--text-color);
+        font-size: 18px;
+        cursor: pointer;
+        padding: var(--spacing-sm);
+        display: block;
+        z-index: 1000;
+      }
+
+      .mobile-menu-toggle.active {
+        color: var(--secondary-color);
+      }
+
+      /* Mobile Menu Overlay */
+      .mobile-menu-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 998;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity var(--transition), visibility var(--transition);
+      }
+
+      .mobile-menu-overlay.active {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      /* Hero Section */
+      .hero {
+        position: relative;
+        width: 100%;
+        overflow: hidden;
+        margin-top: 60px;
+        aspect-ratio: 16/9;
+      }
+
+      .hero-slider {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+      }
+
+      .hero-slide {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        opacity: 0;
+        transition: opacity 1s ease-in-out;
+      }
+
+      .hero-slide.active {
+        opacity: 1;
+      }
+
+      /* Hero slide backgrounds */
+      .hero-slide-1 {
+        background-image: linear-gradient(
+            rgba(10, 61, 98, 0.7),
+            rgba(10, 61, 98, 0.7)
+          ),
+          url("https://picsum.photos/seed/ogstar1/1200/600.jpg");
+      }
+
+      .hero-slide-2 {
+        background-image: linear-gradient(
+            rgba(243, 156, 18, 0.7),
+            rgba(243, 156, 18, 0.7)
+          ),
+          url("https://picsum.photos/seed/ogstar2/1200/600.jpg");
+      }
+
+      .hero-slide-3 {
+        background-image: linear-gradient(
+            rgba(231, 76, 60, 0.7),
+            rgba(231, 76, 60, 0.7)
+          ),
+          url("https://picsum.photos/seed/ogstar3/1200/600.jpg");
+      }
+
+      .hero-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3));
+        z-index: -1;
+      }
+
+      .hero-content {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100%;
+        max-width: 800px;
+        padding: 0 20px;
+        text-align: center;
+        z-index: 1;
+      }
+
+      .hero-title {
+        font-size: clamp(1.75rem, 5vw, 2.5rem);
+        font-weight: 600;
+        color: white;
+        margin-bottom: var(--spacing-md);
+        text-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
+        line-height: 1.3;
+        font-family: var(--font-secondary);
+      }
+
+      .hero-subtitle {
+        font-size: clamp(0.9rem, 2.5vw, 1.25rem);
+        color: rgba(255, 255, 255, 0.9);
+        margin-bottom: var(--spacing-2xl);
+        font-weight: 300;
+        line-height: 1.5;
+        font-family: var(--font-primary);
+      }
+
+      /* Dot Navigation */
+      .hero-dots {
+        position: absolute;
+        bottom: var(--spacing-xl);
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        gap: var(--spacing-sm);
+        z-index: 10;
+      }
+
+      .hero-dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.4);
+        cursor: pointer;
+        transition: all var(--transition);
+        border: 2px solid rgba(255, 255, 255, 0.6);
+      }
+
+      .hero-dot.active {
+        background: white;
+        transform: scale(1.2);
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+      }
+
+      .hero-dot:hover {
+        background: rgba(255, 255, 255, 0.7);
+        transform: scale(1.1);
+      }
+
+      /* Section Styles */
+      .section {
+        padding: var(--spacing-4xl) 0;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .section-subtitle {
+        color: var(--secondary-color);
+        font-size: 1.2rem;
+        font-family: "Dancing Script", cursive;
+        text-align: center;
+        margin-bottom: 15px;
+      }
+
+      .section-title {
+        margin-bottom: 50px;
+        position: relative;
+        padding-bottom: 15px;
+        text-align: center;
+      }
+
+      .section-title:after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 50px;
+        height: 3px;
+        background: var(--gradient-secondary);
+      }
+
+      /* Introduction Section */
+      .intro-section {
+        padding: var(--spacing-4xl) 0;
+        background-color: var(--bg-primary);
+        display: flex;
+        align-items: center;
+        min-height: 80vh;
+      }
+
+      .intro-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: var(--spacing-2xl);
+        width: 100%;
+      }
+
+      .intro-text {
+        flex: 1;
+        max-width: 600px;
+      }
+
+      .intro-image {
+        flex: 1;
+        max-width: 500px;
+        height: 400px;
+        overflow: hidden;
+        border-radius: var(--radius-lg);
+        box-shadow: 0 10px 30px var(--shadow);
+      }
+
+      .intro-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform var(--transition);
+      }
+
+      .intro-image:hover img {
+        transform: scale(1.05);
+      }
+
+      /* Services Section */
+      .services-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+        margin-top: 50px;
+      }
+
+      .service-card {
+        background: var(--bg-secondary);
+        border-radius: var(--radius-lg);
+        padding: 30px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        transition: var(--transition);
+        text-align: center;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .service-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      }
+
+      .service-icon {
+        font-size: 2.5rem;
+        color: var(--secondary-color);
+        margin-bottom: 20px;
+      }
+
+      /* Why Choose Us */
+      .why-choose {
+        background-color: var(--bg-secondary);
+      }
+
+      .why-choose-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: var(--spacing-2xl);
+      }
+
+      .why-choose-text {
+        flex: 1;
+        max-width: 600px;
+      }
+
+      .why-choose-image {
+        flex: 1;
+        max-width: 500px;
+        height: 400px;
+        overflow: hidden;
+        border-radius: var(--radius-lg);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      .why-choose-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .feature-list {
+        list-style: none;
+        margin-top: 20px;
+        text-align: left;
+      }
+
+      .feature-list li {
+        margin-bottom: 15px;
+        display: flex;
+        align-items: flex-start;
+      }
+
+      .feature-list i {
+        color: var(--secondary-color);
+        margin-right: 10px;
+        margin-top: 5px;
+      }
+
+      /* Featured Tours */
+      .tours-section {
+        position: relative;
+        overflow: hidden;
+        padding: var(--spacing-4xl) 0;
+        background-color: var(--bg-primary);
+      }
+
+      .tours-container {
+        display: flex;
+        transition: transform 0.5s ease;
+        padding: 20px 0;
+      }
+
+      .tour-card {
+        min-width: 350px;
+        margin: 0 15px;
+        background-color: var(--bg-secondary);
+        border-radius: var(--radius-lg);
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        transition: var(--transition);
+      }
+
+      .tour-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+      }
+
+      .tour-image {
+        height: 250px;
+        overflow: hidden;
+      }
+
+      .tour-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+      }
+
+      .tour-card:hover .tour-image img {
+        transform: scale(1.05);
+      }
+
+      .tour-content {
+        padding: 20px;
+      }
+
+      .tour-badge {
+        display: inline-block;
+        background: var(--gradient-accent);
+        color: white;
+        padding: 5px 10px;
+        border-radius: var(--radius-sm);
+        font-size: 0.8rem;
+        font-weight: bold;
+        margin-bottom: 10px;
+      }
+
+      .tour-title {
+        font-size: 1.3rem;
+        margin-bottom: 10px;
+        color: var(--text-color);
+      }
+
+      .tour-location {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+        color: #666;
+      }
+
+      .tour-location i {
+        margin-right: 5px;
+        color: var(--secondary-color);
+      }
+
+      .tour-price {
+        font-size: 1.1rem;
+        margin-bottom: 15px;
+        color: var(--text-color);
+        font-weight: 600;
+      }
+
+      .tour-btn {
+        display: inline-block;
+        background: var(--gradient-secondary);
+        color: white;
+        padding: 8px 16px;
+        border-radius: var(--radius-sm);
+        text-decoration: none;
+        font-weight: 600;
+        transition: var(--transition);
+      }
+
+      .tour-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(243, 156, 18, 0.3);
+      }
+
+      .tours-nav {
+        display: flex;
+        justify-content: center;
+        margin-top: 30px;
+        gap: 10px;
+      }
+
+      .tour-dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background-color: rgba(0, 0, 0, 0.2);
+        cursor: pointer;
+        transition: var(--transition);
+      }
+
+      .tour-dot.active {
+        background: var(--secondary-color);
+      }
+
+      /* Testimonials */
+      .testimonials {
+        background-color: var(--bg-secondary);
+        padding: var(--spacing-4xl) 0;
+      }
+
+      .testimonials-container {
+        display: flex;
+        transition: transform 0.5s ease;
+        padding: 20px 0;
+      }
+
+      .testimonial-card {
+        min-width: 350px;
+        margin: 0 15px;
+        background-color: var(--bg-primary);
+        border-radius: var(--radius-lg);
+        padding: 30px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        text-align: center;
+      }
+
+      .testimonial-avatar {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        margin: 0 auto 20px;
+        overflow: hidden;
+      }
+
+      .testimonial-avatar img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .testimonial-rating {
+        color: var(--secondary-color);
+        margin-bottom: 15px;
+      }
+
+      .testimonial-text {
+        font-style: italic;
+        margin-bottom: 20px;
+        line-height: 1.6;
+      }
+
+      .testimonial-name {
+        font-weight: 600;
+        margin-bottom: 5px;
+      }
+
+      .testimonial-role {
+        color: #6c757d;
+        font-size: 0.9rem;
+      }
+
+      .testimonials-nav {
+        display: flex;
+        justify-content: center;
+        margin-top: 30px;
+        gap: 10px;
+      }
+
+      .testimonial-dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background-color: rgba(0, 0, 0, 0.2);
+        cursor: pointer;
+        transition: var(--transition);
+      }
+
+      .testimonial-dot.active {
+        background: var(--secondary-color);
+      }
+
+      /* Footer */
+      .footer {
+        background: var(--gradient-primary);
+        color: var(--footer-text);
+        padding: 70px 0 20px;
+      }
+
+      .footer-content {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 40px;
+        margin-bottom: 40px;
+        max-width: 1200px;
+        margin-left: auto;
+        margin-right: auto;
+        padding: 0 15px;
+      }
+
+      .footer-column h3 {
+        color: white;
+        margin-bottom: 20px;
+        position: relative;
+        padding-bottom: 10px;
+        font-size: 1.2rem;
+      }
+
+      .footer-column h3:after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 40px;
+        height: 2px;
+        background: var(--secondary-color);
+      }
+
+      .footer-links {
+        list-style: none;
+      }
+
+      .footer-links li {
+        margin-bottom: 10px;
+      }
+
+      .footer-links a {
+        color: var(--footer-text);
+        text-decoration: none;
+        transition: var(--transition);
+        display: inline-block;
+      }
+
+      .footer-links a:hover {
+        color: var(--secondary-color);
+        transform: translateX(5px);
+      }
+
+      .contact-info {
+        list-style: none;
+      }
+
+      .contact-info li {
+        margin-bottom: 15px;
+        display: flex;
+        align-items: flex-start;
+      }
+
+      .contact-info i {
+        color: var(--secondary-color);
+        margin-right: 10px;
+        margin-top: 3px;
+      }
+
+      .social-icons {
+        display: flex;
+        gap: 15px;
+        margin-top: 20px;
+      }
+
+      .social-icon {
+        width: 40px;
+        height: 40px;
+        background-color: rgba(255, 255, 255, 0.1);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        text-decoration: none;
+        transition: var(--transition);
+      }
+
+      .social-icon:hover {
+        background-color: var(--secondary-color);
+        transform: translateY(-3px);
+      }
+
+      .footer-bottom {
+        text-align: center;
+        padding-top: 20px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        color: var(--footer-text);
+        font-size: 0.9rem;
+        max-width: 1200px;
+        margin-left: auto;
+        margin-right: auto;
+        padding: 0 15px;
+      }
+
+      /* Newsletter Form */
+      .newsletter-form {
+        display: flex;
+        margin-top: 20px;
+      }
+
+      .newsletter-input {
+        flex: 1;
+        padding: 10px;
+        border: none;
+        border-radius: var(--radius-sm) 0 0 var(--radius-sm);
+        background-color: rgba(255, 255, 255, 0.1);
+        color: white;
+      }
+
+      .newsletter-input::placeholder {
+        color: rgba(255, 255, 255, 0.7);
+      }
+
+      .newsletter-button {
+        background: var(--gradient-secondary);
+        color: white;
+        border: none;
+        padding: 0 15px;
+        border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+        cursor: pointer;
+        transition: var(--transition);
+      }
+
+      .newsletter-button:hover {
+        transform: translateY(-2px);
+      }
+
+      /* WhatsApp Floating Button */
+      .whatsapp-float {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        background-color: #25d366;
+        color: white;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 30px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        z-index: 1000;
+        transition: all 0.3s ease;
+        text-decoration: none;
+      }
+
+      .whatsapp-float:hover {
+        transform: scale(1.1);
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+      }
+
+      /* ===========================================
+           RESPONSIVE BREAKPOINTS
+          =========================================== */
+
+      /* xs - Default (mobile first) */
+
+      /* sm */
+      @media (min-width: 475px) {
+        .hero-title {
+          font-size: clamp(2rem, 5vw, 2.5rem);
+          margin-bottom: var(--spacing-md);
+        }
+        .hero-subtitle {
+          font-size: clamp(1rem, 2.5vw, 1.25rem);
+        }
+      }
+
+      /* md */
+      @media (min-width: 768px) {
+        .intro-content {
+          flex-direction: row;
+          align-items: center;
+        }
+
+        .intro-text {
+          margin-right: var(--spacing-2xl);
+        }
+
+        .why-choose-content {
+          flex-direction: row;
+          align-items: center;
+        }
+
+        .why-choose-image {
+          order: -1;
+          margin-right: var(--spacing-2xl);
+        }
+      }
+
+      /* lg */
+      @media (min-width: 1024px) {
+        .navbar {
+          height: 70px;
+        }
+        .nav-container {
+          height: 70px;
+          padding: 0 var(--spacing-lg);
+        }
+        .logo-icon {
+          width: 120px;
+        }
+        .nav-menu {
+          position: static;
+          width: auto;
+          max-width: none;
+          height: auto;
+          background: transparent;
+          display: flex;
+          flex-direction: row;
+          justify-content: center;
+          align-items: center;
+          padding: 0;
+          transition: none;
+          gap: var(--spacing-xl);
+          margin: 0 auto;
+          box-shadow: none;
+          overflow-y: visible;
+        }
+        .nav-menu.active {
+          left: auto;
+        }
+        .nav-item {
+          width: auto;
+          text-align: center;
+          position: relative;
+        }
+        .nav-link-container {
+          display: block;
+        }
+        .nav-link {
+          font-size: 14px;
+          letter-spacing: 1px;
+          padding: 8px 0;
+          position: relative;
+          justify-content: center;
+          transition: all 0.3s;
+        }
+        .nav-link::after {
+          left: 0;
+          transform: none;
+        }
+        .nav-link:hover::after,
+        .nav-link.active::after {
+          transition: all 0.3s;
+          width: 100%;
+        }
+        /* Hide dropdown toggle on desktop */
+        .dropdown-toggle {
+          display: none;
+        }
+        /* Desktop Dropdown Menu */
+        .dropdown-arrow {
+          display: none;
+        }
+        .dropdown-menu {
+          position: absolute;
+          top: 100%;
+          left: 50%;
+          transform: translateX(-50%) translateY(10px);
+          background: var(--nav-bg);
+          backdrop-filter: blur(10px);
+          border: 1px solid rgb(255, 206, 121);
+          border-radius: var(--radius-md);
+          padding: var(--spacing-md);
+          min-width: 200px;
+          box-shadow: 0 4px 20px var(--shadow);
+          opacity: 0;
+          visibility: hidden;
+          transition: opacity var(--transition), visibility var(--transition),
+            transform var(--transition);
+          max-height: none;
+          padding-left: var(--spacing-md);
+          margin-top: 0;
+          text-align: center;
+          list-style: none;
+        }
+        .nav-item:hover .dropdown-menu {
+          opacity: 1;
+          visibility: visible;
+          transform: translateX(-50%) translateY(0);
+        }
+        .dropdown-menu.open {
+          max-height: none;
+          margin-top: 0;
+        }
+        .dropdown-item {
+          margin-bottom: var(--spacing-sm);
+        }
+        .dropdown-item:last-child {
+          margin-bottom: 0;
+        }
+        .dropdown-link {
+          padding: var(--spacing-xs) var(--spacing-sm);
+          border-radius: var(--radius-sm);
+          transition: all var(--transition);
+          display: block;
+          text-align: center;
+        }
+        .dropdown-link:hover {
+          background: var(--bg-tertiary);
+          color: var(--secondary-color);
+        }
+        .mobile-menu-toggle {
+          display: none;
+        }
+        .mobile-menu-overlay {
+          display: none;
+        }
+        .nav-controls {
+          position: static;
+          transform: none;
+        }
+        .hero {
+          min-height: 100vh;
+          aspect-ratio: auto;
+          margin-top: 0;
+        }
+        .hero-content {
+          max-width: 800px;
+        }
+
+        .hero-title {
+          font-size: clamp(2.5rem, 5vw, 3rem);
+        }
+        .hero-subtitle {
+          font-size: clamp(1.25rem, 2.5vw, 1.5rem);
+          margin-bottom: var(--spacing-3xl);
+        }
+      }
+
+      /* xl */
+      @media (min-width: 1280px) {
+        .nav-container {
+          max-width: 1200px;
+        }
+        .nav-menu {
+          gap: var(--spacing-2xl);
+        }
+      }
+
+      /* 2xl */
+      @media (min-width: 1536px) {
+        .nav-container {
+          max-width: 1200px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+      <div class="nav-container">
+        <a href="#" class="logo">
+          <img
+            src="assets/images/logo.png"
+            alt="OG Star Travel & Tours"
+            class="logo-icon"
+          />
+        </a>
+        <ul class="nav-menu" id="navMenu">
+          <li class="nav-item">
+            <a href="#home" class="nav-link active">Home</a>
+          </li>
+          <li class="nav-item">
+            <div class="nav-link-container">
+              <a href="#services" class="nav-link">Services</a>
+              <button class="dropdown-toggle" onclick="toggleDropdown(this)">
+                <i class="fas fa-chevron-down dropdown-arrow"></i>
+              </button>
+            </div>
+            <ul class="dropdown-menu">
+              <li class="dropdown-item">
+                <a href="#" class="dropdown-link">Travel and Tour</a>
+              </li>
+              <li class="dropdown-item">
+                <a href="#" class="dropdown-link">Work and Stay Abroad</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <div class="nav-link-container">
+              <a href="#information" class="nav-link">Information</a>
+              <button class="dropdown-toggle" onclick="toggleDropdown(this)">
+                <i class="fas fa-chevron-down dropdown-arrow"></i>
+              </button>
+            </div>
+            <ul class="dropdown-menu">
+              <li class="dropdown-item">
+                <a href="#" class="dropdown-link">About Us</a>
+              </li>
+              <li class="dropdown-item">
+                <a href="#" class="dropdown-link">Ask a Question</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a href="#contact" class="nav-link">Contact</a>
+          </li>
+          <li class="nav-item">
+            <a href="#blog" class="nav-link">Blog</a>
+          </li>
+        </ul>
+        <div class="nav-controls">
+          <button class="theme-toggle-btn" onclick="toggleTheme()">
+            <i class="fas fa-moon theme-icon" id="themeIcon"></i>
+            <span class="theme-text">Dark</span>
+          </button>
+          <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">
+            <i class="fas fa-bars"></i>
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+      <div class="hero-slider">
+        <div class="hero-slide hero-slide-1 active">
+          <div class="hero-content">
+            <h1 class="hero-title text-animate">Relish the Experience</h1>
+            <p class="hero-subtitle text-animate">
+              Explore the world with our curated travel experiences and discover
+              new horizons
+            </p>
+          </div>
+        </div>
+        <div class="hero-slide hero-slide-2">
+          <div class="hero-content">
+            <h1 class="hero-title text-animate">Work & Study Abroad</h1>
+            <p class="hero-subtitle text-animate">
+              Open doors to international opportunities with our expert guidance
+            </p>
+          </div>
+        </div>
+        <div class="hero-slide hero-slide-3">
+          <div class="hero-content">
+            <h1 class="hero-title text-animate">Visa Assistance</h1>
+            <p class="hero-subtitle text-animate">
+              Navigate the complex visa application process with our
+              professional support
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="hero-overlay"></div>
+
+      <!-- Dot Navigation -->
+      <div class="hero-dots">
+        <div class="hero-dot active" onclick="goToSlide(0)"></div>
+        <div class="hero-dot" onclick="goToSlide(1)"></div>
+        <div class="hero-dot" onclick="goToSlide(2)"></div>
+      </div>
+    </section>
+
+    <!-- Introduction Section -->
+    <section class="section intro-section">
+      <div class="container">
+        <div class="intro-content">
+          <div class="intro-text scroll-animate animate-slide-left">
+            <h4 class="section-subtitle text-animate">About Us</h4>
+            <h2 class="section-title text-animate">
+              Welcome to OG Star Travel & Tours
+            </h2>
+            <p class="text-animate">
+              At OG Star Travel & Tours, we're not just a travel agency; we're
+              your gateway to extraordinary experiences and global
+              opportunities. With years of expertise in the travel and
+              immigration industry, we've built a reputation for excellence,
+              reliability, and personalized service that sets us apart from the
+              rest.
+            </p>
+            <p class="text-animate">
+              Our team of dedicated professionals is passionate about creating
+              transformative journeys and opening doors to international
+              possibilities. We understand that every traveler and job seeker
+              has unique aspirations, and we take pride in crafting tailored
+              solutions that exceed expectations.
+            </p>
+            <a href="#services" class="btn text-animate">Learn More</a>
+          </div>
+          <div class="intro-image scroll-animate animate-slide-right">
+            <img
+              src="https://picsum.photos/seed/intro/500/400.jpg"
+              alt="About OG Star Travel & Tours"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="section services" id="services">
+      <div class="container">
+        <h4 class="section-subtitle">Our Services</h4>
+        <h2 class="section-title">What We Offer</h2>
+        <div class="services-grid">
+          <div class="service-card scroll-animate animate-scale">
+            <div class="service-icon">
+              <i class="fas fa-map-marked-alt"></i>
+            </div>
+            <h3>Travel & Tourism</h3>
+            <p>
+              Experience the world with our curated travel packages to exotic
+              destinations and cultural immersions.
+            </p>
+          </div>
+          <div class="service-card scroll-animate animate-scale">
+            <div class="service-icon">
+              <i class="fas fa-briefcase"></i>
+            </div>
+            <h3>Work & Stay Abroad</h3>
+            <p>
+              Transform your career with international work opportunities and
+              relocation assistance.
+            </p>
+          </div>
+          <div class="service-card scroll-animate animate-scale">
+            <div class="service-icon">
+              <i class="fas fa-user-tie"></i>
+            </div>
+            <h3>Job Placement Support</h3>
+            <p>
+              Unlock global career opportunities with our specialized job
+              placement and interview coaching.
+            </p>
+          </div>
+          <div class="service-card scroll-animate animate-scale">
+            <div class="service-icon">
+              <i class="fas fa-comments"></i>
+            </div>
+            <h3>Interview Preparation</h3>
+            <p>
+              Excel in your interviews with our comprehensive preparation
+              program and personalized coaching.
+            </p>
+          </div>
+          <div class="service-card scroll-animate animate-scale">
+            <div class="service-icon">
+              <i class="fas fa-passport"></i>
+            </div>
+            <h3>Visa Assistance</h3>
+            <p>
+              Navigate the complex visa application process with our experienced
+              consultants' end-to-end support.
+            </p>
+          </div>
+          <div class="service-card scroll-animate animate-scale">
+            <div class="service-icon">
+              <i class="fas fa-suitcase-rolling"></i>
+            </div>
+            <h3>Custom Travel Packages</h3>
+            <p>
+              Design your perfect journey with our bespoke travel packages
+              tailored to your preferences.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section class="section why-choose">
+      <div class="container">
+        <h4 class="section-subtitle">OG Star Travel and Tour</h4>
+        <h2 class="section-title">Why Choose Us</h2>
+        <div class="why-choose-content">
+          <div class="why-choose-image scroll-animate animate-slide-left">
+            <img
+              src="https://picsum.photos/seed/whychoose/500/400.jpg"
+              alt="Why Choose Us"
+            />
+          </div>
+          <div class="why-choose-text scroll-animate animate-slide-right">
+            <p>
+              At OG Star Travel & Tours, we're committed to providing
+              exceptional service and unforgettable experiences. Our team of
+              experienced professionals is dedicated to making your travel
+              dreams a reality.
+            </p>
+            <p>
+              We understand that every journey is unique, and we take pride in
+              crafting personalized experiences that exceed expectations. From
+              the moment you contact us to the completion of your trip or
+              placement, we're with you every step of the way.
+            </p>
+            <ul class="feature-list">
+              <li>
+                <i class="fas fa-check-circle"></i> Experienced local guides and
+                international partners
+              </li>
+              <li>
+                <i class="fas fa-check-circle"></i> Personalized itineraries and
+                comprehensive visa support
+              </li>
+              <li>
+                <i class="fas fa-check-circle"></i> 24/7 customer support and
+                trusted placement services
+              </li>
+              <li>
+                <i class="fas fa-check-circle"></i> Proven track record with
+                high success rates
+              </li>
+              <li>
+                <i class="fas fa-check-circle"></i> Transparent pricing with
+                flexible payment options
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Tours Section -->
+    <section class="section tours-section">
+      <div class="container">
+        <h4 class="section-subtitle">Featured Tours</h4>
+        <h2 class="section-title">Explore Our Tours</h2>
+        <div class="tours-container" id="toursContainer">
+          <div class="tour-card">
+            <div class="tour-image">
+              <img
+                src="https://picsum.photos/seed/tour1/350/250.jpg"
+                alt="Accra City Tour"
+              />
+            </div>
+            <div class="tour-content">
+              <span class="tour-badge">Featured</span>
+              <h3 class="tour-title">Accra City Tour</h3>
+              <div class="tour-location">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>Accra, Ghana</span>
+              </div>
+              <div class="tour-price">Starting from $50</div>
+              <a href="#" class="tour-btn">Explore</a>
+            </div>
+          </div>
+          <div class="tour-card">
+            <div class="tour-image">
+              <img
+                src="https://picsum.photos/seed/tour2/350/250.jpg"
+                alt="Cape Coast Castle"
+              />
+            </div>
+            <div class="tour-content">
+              <span class="tour-badge">Featured</span>
+              <h3 class="tour-title">Cape Coast Castle</h3>
+              <div class="tour-location">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>Cape Coast, Ghana</span>
+              </div>
+              <div class="tour-price">Starting from $75</div>
+              <a href="#" class="tour-btn">Explore</a>
+            </div>
+          </div>
+          <div class="tour-card">
+            <div class="tour-image">
+              <img
+                src="https://picsum.photos/seed/tour3/350/250.jpg"
+                alt="Mole National Park"
+              />
+            </div>
+            <div class="tour-content">
+              <span class="tour-badge">Featured</span>
+              <h3 class="tour-title">Mole National Park</h3>
+              <div class="tour-location">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>Northern Ghana</span>
+              </div>
+              <div class="tour-price">Starting from $120</div>
+              <a href="#" class="tour-btn">Explore</a>
+            </div>
+          </div>
+          <div class="tour-card">
+            <div class="tour-image">
+              <img
+                src="https://picsum.photos/seed/tour4/350/250.jpg"
+                alt="Kakum National Park"
+              />
+            </div>
+            <div class="tour-content">
+              <span class="tour-badge">Featured</span>
+              <h3 class="tour-title">Kakum National Park</h3>
+              <div class="tour-location">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>Central Ghana</span>
+              </div>
+              <div class="tour-price">Starting from $85</div>
+              <a href="#" class="tour-btn">Explore</a>
+            </div>
+          </div>
+          <div class="tour-card">
+            <div class="tour-image">
+              <img
+                src="https://picsum.photos/seed/tour5/350/250.jpg"
+                alt="Lake Volta Cruise"
+              />
+            </div>
+            <div class="tour-content">
+              <span class="tour-badge">Featured</span>
+              <h3 class="tour-title">Lake Volta Cruise</h3>
+              <div class="tour-location">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>Volta Region</span>
+              </div>
+              <div class="tour-price">Starting from $95</div>
+              <a href="#" class="tour-btn">Explore</a>
+            </div>
+          </div>
+          <div class="tour-card">
+            <div class="tour-image">
+              <img
+                src="https://picsum.photos/seed/tour6/350/250.jpg"
+                alt="Ashanti Kingdom Tour"
+              />
+            </div>
+            <div class="tour-content">
+              <span class="tour-badge">Featured</span>
+              <h3 class="tour-title">Ashanti Kingdom Tour</h3>
+              <div class="tour-location">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>Kumasi, Ghana</span>
+              </div>
+              <div class="tour-price">Starting from $110</div>
+              <a href="#" class="tour-btn">Explore</a>
+            </div>
+          </div>
+          <div class="tour-card">
+            <div class="tour-image">
+              <img
+                src="https://picsum.photos/seed/tour7/350/250.jpg"
+                alt="Beach Getaway"
+              />
+            </div>
+            <div class="tour-content">
+              <span class="tour-badge">Featured</span>
+              <h3 class="tour-title">Beach Getaway</h3>
+              <div class="tour-location">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>Coastal Ghana</span>
+              </div>
+              <div class="tour-price">Starting from $130</div>
+              <a href="#" class="tour-btn">Explore</a>
+            </div>
+          </div>
+          <div class="tour-card">
+            <div class="tour-image">
+              <img
+                src="https://picsum.photos/seed/tour8/350/250.jpg"
+                alt="Wli Waterfalls"
+              />
+            </div>
+            <div class="tour-content">
+              <span class="tour-badge">Featured</span>
+              <h3 class="tour-title">Wli Waterfalls</h3>
+              <div class="tour-location">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>Volta Region</span>
+              </div>
+              <div class="tour-price">Starting from $100</div>
+              <a href="#" class="tour-btn">Explore</a>
+            </div>
+          </div>
+          <div class="tour-card">
+            <div class="tour-image">
+              <img
+                src="https://picsum.photos/seed/tour9/350/250.jpg"
+                alt="Ada Foah Beach"
+              />
+            </div>
+            <div class="tour-content">
+              <span class="tour-badge">Featured</span>
+              <h3 class="tour-title">Ada Foah Beach</h3>
+              <div class="tour-location">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>Greater Accra</span>
+              </div>
+              <div class="tour-price">Starting from $80</div>
+              <a href="#" class="tour-btn">Explore</a>
+            </div>
+          </div>
+          <div class="tour-card">
+            <div class="tour-image">
+              <img
+                src="https://picsum.photos/seed/tour10/350/250.jpg"
+                alt="Paga Crocodile Pond"
+              />
+            </div>
+            <div class="tour-content">
+              <span class="tour-badge">Featured</span>
+              <h3 class="tour-title">Paga Crocodile Pond</h3>
+              <div class="tour-location">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>Upper East Region</span>
+              </div>
+              <div class="tour-price">Starting from $90</div>
+              <a href="#" class="tour-btn">Explore</a>
+            </div>
+          </div>
+        </div>
+        <div class="tours-nav" id="toursNav">
+          <!-- Dots will be generated by JavaScript -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="section testimonials">
+      <div class="container">
+        <h4 class="section-subtitle">Testimonials</h4>
+        <h2 class="section-title">What Customers Say</h2>
+        <div class="testimonials-container" id="testimonialsContainer">
+          <div class="testimonial-card">
+            <div class="testimonial-avatar">
+              <img
+                src="https://picsum.photos/seed/person1/150/150.jpg"
+                alt="Jane Doe"
+              />
+            </div>
+            <div class="testimonial-rating">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <span>5.0</span>
+            </div>
+            <p class="testimonial-text">
+              "OG Star Travel & Tours made my Ghana trip absolutely
+              unforgettable. The guides were knowledgeable and the itinerary was
+              perfectly planned."
+            </p>
+            <h4 class="testimonial-name">Jane Doe</h4>
+            <p class="testimonial-role">Customer</p>
+          </div>
+          <div class="testimonial-card">
+            <div class="testimonial-avatar">
+              <img
+                src="https://picsum.photos/seed/person2/150/150.jpg"
+                alt="Kwame"
+              />
+            </div>
+            <div class="testimonial-rating">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <span>5.0</span>
+            </div>
+            <p class="testimonial-text">
+              "The visa assistance service was exceptional. They guided me
+              through every step and made the process so much easier than I
+              expected."
+            </p>
+            <h4 class="testimonial-name">Kwame</h4>
+            <p class="testimonial-role">Customer</p>
+          </div>
+          <div class="testimonial-card">
+            <div class="testimonial-avatar">
+              <img
+                src="https://picsum.photos/seed/person3/150/150.jpg"
+                alt="Sarah Johnson"
+              />
+            </div>
+            <div class="testimonial-rating">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star-half-alt"></i>
+              <span>4.5</span>
+            </div>
+            <p class="testimonial-text">
+              "Thanks to OG Star's work abroad program, I'm now working in my
+              dream job in Canada. Their interview preparation was invaluable."
+            </p>
+            <h4 class="testimonial-name">Sarah Johnson</h4>
+            <p class="testimonial-role">Customer</p>
+          </div>
+          <div class="testimonial-card">
+            <div class="testimonial-avatar">
+              <img
+                src="https://picsum.photos/seed/person4/150/150.jpg"
+                alt="Michael"
+              />
+            </div>
+            <div class="testimonial-rating">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <span>5.0</span>
+            </div>
+            <p class="testimonial-text">
+              "The custom travel package they created for my family was perfect.
+              Every detail was taken care of, from accommodations to
+              activities."
+            </p>
+            <h4 class="testimonial-name">Michael</h4>
+            <p class="testimonial-role">Customer</p>
+          </div>
+          <div class="testimonial-card">
+            <div class="testimonial-avatar">
+              <img
+                src="https://picsum.photos/seed/person5/150/150.jpg"
+                alt="Ama"
+              />
+            </div>
+            <div class="testimonial-rating">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <span>5.0</span>
+            </div>
+            <p class="testimonial-text">
+              "I've traveled with many companies, but OG Star stands out for
+              their professionalism and attention to detail. The Cape Coast tour
+              was exceptional."
+            </p>
+            <h4 class="testimonial-name">Ama</h4>
+            <p class="testimonial-role">Customer</p>
+          </div>
+          <div class="testimonial-card">
+            <div class="testimonial-avatar">
+              <img
+                src="https://picsum.photos/seed/person6/150/150.jpg"
+                alt="David"
+              />
+            </div>
+            <div class="testimonial-rating">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="far fa-star"></i>
+              <span>4.0</span>
+            </div>
+            <p class="testimonial-text">
+              "The work and stay abroad guidance helped me navigate the complex
+              process of relocating. I'm now happily settled in the UK thanks to
+              their support."
+            </p>
+            <h4 class="testimonial-name">David</h4>
+            <p class="testimonial-role">Customer</p>
+          </div>
+          <div class="testimonial-card">
+            <div class="testimonial-avatar">
+              <img
+                src="https://picsum.photos/seed/person7/150/150.jpg"
+                alt="Grace"
+              />
+            </div>
+            <div class="testimonial-rating">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <span>5.0</span>
+            </div>
+            <p class="testimonial-text">
+              "The Mole National Park safari was a dream come true! Our guide
+              was incredibly knowledgeable about the wildlife and made the
+              experience educational."
+            </p>
+            <h4 class="testimonial-name">Grace</h4>
+            <p class="testimonial-role">Customer</p>
+          </div>
+          <div class="testimonial-card">
+            <div class="testimonial-avatar">
+              <img
+                src="https://picsum.photos/seed/person8/150/150.jpg"
+                alt="Samuel"
+              />
+            </div>
+            <div class="testimonial-rating">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star-half-alt"></i>
+              <span>4.5</span>
+            </div>
+            <p class="testimonial-text">
+              "I was nervous about the visa application process, but OG Star's
+              team was with me every step of the way. They made it stress-free
+              and straightforward."
+            </p>
+            <h4 class="testimonial-name">Samuel</h4>
+            <p class="testimonial-role">Customer</p>
+          </div>
+          <div class="testimonial-card">
+            <div class="testimonial-avatar">
+              <img
+                src="https://picsum.photos/seed/person9/150/150.jpg"
+                alt="Fatima"
+              />
+            </div>
+            <div class="testimonial-rating">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <span>5.0</span>
+            </div>
+            <p class="testimonial-text">
+              "The Ashanti Kingdom tour was a cultural immersion like no other.
+              Our guide's deep knowledge of the history and traditions made
+              every site come alive."
+            </p>
+            <h4 class="testimonial-name">Fatima</h4>
+            <p class="testimonial-role">Customer</p>
+          </div>
+          <div class="testimonial-card">
+            <div class="testimonial-avatar">
+              <img
+                src="https://picsum.photos/seed/person10/150/150.jpg"
+                alt="John"
+              />
+            </div>
+            <div class="testimonial-rating">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star-half-alt"></i>
+              <span>4.5</span>
+            </div>
+            <p class="testimonial-text">
+              "The interview preparation sessions were invaluable. They helped
+              me refine my answers and build confidence. I landed the job on my
+              first interview!"
+            </p>
+            <h4 class="testimonial-name">John</h4>
+            <p class="testimonial-role">Customer</p>
+          </div>
+          <div class="testimonial-card">
+            <div class="testimonial-avatar">
+              <img
+                src="https://picsum.photos/seed/person11/150/150.jpg"
+                alt="Yaa"
+              />
+            </div>
+            <div class="testimonial-rating">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <span>5.0</span>
+            </div>
+            <p class="testimonial-text">
+              "The Lake Volta cruise was the highlight of our trip. The sunset
+              views were breathtaking, and the crew made sure we were
+              comfortable throughout."
+            </p>
+            <h4 class="testimonial-name">Yaa</h4>
+            <p class="testimonial-role">Customer</p>
+          </div>
+          <div class="testimonial-card">
+            <div class="testimonial-avatar">
+              <img
+                src="https://picsum.photos/seed/person12/150/150.jpg"
+                alt="Kofi"
+              />
+            </div>
+            <div class="testimonial-rating">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <span>5.0</span>
+            </div>
+            <p class="testimonial-text">
+              "From the moment I inquired about their services to the end of my
+              trip, the customer service was exceptional. They went above and
+              beyond to ensure my travel experience was seamless."
+            </p>
+            <h4 class="testimonial-name">Kofi</h4>
+            <p class="testimonial-role">Customer</p>
+          </div>
+        </div>
+        <div class="testimonials-nav" id="testimonialsNav">
+          <!-- Dots will be generated by JavaScript -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer" id="contact">
+      <div class="footer-content">
+        <div class="footer-column">
+          <h3>About OG Star</h3>
+          <p>
+            OG Star Travel & Tours is your gateway to extraordinary experiences
+            and global opportunities. With years of expertise in travel and
+            immigration services, we create unforgettable journeys.
+          </p>
+          <div class="social-icons">
+            <a href="#" class="social-icon"
+              ><i class="fab fa-facebook-f"></i
+            ></a>
+            <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="social-icon"
+              ><i class="fab fa-linkedin-in"></i
+            ></a>
+          </div>
+        </div>
+        <div class="footer-column">
+          <h3>Quick Links</h3>
+          <ul class="footer-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#information">Information</a></li>
+            <li><a href="#blog">Blog</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h3>Our Services</h3>
+          <ul class="footer-links">
+            <li><a href="#">Travel & Tourism</a></li>
+            <li><a href="#">Work & Stay Abroad</a></li>
+            <li><a href="#">Job Placement Support</a></li>
+            <li><a href="#">Interview Preparation</a></li>
+            <li><a href="#">Visa Assistance</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h3>Contact Info</h3>
+          <ul class="contact-info">
+            <li>
+              <i class="fas fa-map-marker-alt"></i> 123 Travel Street, Accra,
+              Ghana
+            </li>
+            <li><i class="fas fa-phone"></i> +233 123 456 789</li>
+            <li><i class="fas fa-envelope"></i> info@ogstartravel.com</li>
+            <li><i class="fas fa-clock"></i> Mon-Fri: 8AM-6PM</li>
+          </ul>
+          <form class="newsletter-form" id="newsletterForm">
+            <input
+              type="email"
+              class="newsletter-input"
+              placeholder="Your email"
+            />
+            <button type="submit" class="newsletter-button">
+              <i class="fas fa-paper-plane"></i>
+            </button>
+          </form>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>
+          &copy; 2023 OG STAR TRAVEL & TOURS. All Rights Reserved. | Privacy
+          Policy | Terms of Service
+        </p>
+      </div>
+    </footer>
+
+    <!-- WhatsApp Floating Button -->
+    <a
+      href="https://wa.me/233546945944?text=Hello%20OG%20Star%20Travel%20%26%20Tours,%20I'm%20interested%20in%20your%20services"
+      class="whatsapp-float"
+      target="_blank"
+    >
+      <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script>
+      // Global Variables
+      let heroCurrentSlide = 0;
+      const heroTotalSlides = 3;
+      let heroSlideInterval;
+      let isAnimating = false;
+      let lastScrollTop = 0;
+      let currentTourIndex = 0;
+      let currentTestimonialIndex = 0;
+      let tourAutoPlayInterval;
+      let testimonialAutoPlayInterval;
+      let navbarVisible = true;
+      let scrollTimer = null;
+
+      // Initialize page
+      document.addEventListener("DOMContentLoaded", function () {
+        initScrollAnimations();
+        initVisibleElements();
+        initHeroSlider();
+        initToursCarousel();
+        initTestimonialsCarousel();
+        initNavbar();
+        initThemeToggle();
+        initNewsletterForm();
+        initSmoothScrolling();
+        initWhatsAppButton();
+      });
+
+      // Scroll Animations
+      function initScrollAnimations() {
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry, index) => {
+              if (entry.isIntersecting) {
+                setTimeout(() => {
+                  entry.target.classList.add("visible");
+                }, index * 100);
+              }
+            });
+          },
+          {
+            threshold: 0.1,
+            rootMargin: "0px 0px -30px 0px",
+          }
+        );
+
+        document
+          .querySelectorAll(".scroll-animate, .text-animate")
+          .forEach((el) => {
+            observer.observe(el);
+          });
+      }
+
+      function initVisibleElements() {
+        const elements = document.querySelectorAll(
+          ".scroll-animate, .text-animate"
+        );
+        elements.forEach((el, index) => {
+          const rect = el.getBoundingClientRect();
+          const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
+
+          if (isVisible) {
+            setTimeout(() => {
+              el.classList.add("visible");
+            }, index * 50);
+          }
+        });
+      }
+
+      // Hero Slider
+      function initHeroSlider() {
+        const heroSlides = document.querySelectorAll(".hero-slide");
+        const heroDots = document.querySelectorAll(".hero-dot");
+
+        function updateHeroSlide() {
+          if (isAnimating) return;
+
+          isAnimating = true;
+
+          heroSlides.forEach((slide) => slide.classList.remove("active"));
+          heroDots.forEach((dot) => dot.classList.remove("active"));
+
+          heroSlides[heroCurrentSlide].classList.add("active");
+          heroDots[heroCurrentSlide].classList.add("active");
+
+          // Animate text elements
+          const textElements =
+            heroSlides[heroCurrentSlide].querySelectorAll(".text-animate");
+          textElements.forEach((el, index) => {
+            setTimeout(() => {
+              el.classList.add("visible");
+            }, index * 200);
+          });
+
+          setTimeout(() => {
+            isAnimating = false;
+          }, 1000);
+        }
+
+        function nextHeroSlide() {
+          // Reset text animations on current slide
+          const currentTextElements =
+            heroSlides[heroCurrentSlide].querySelectorAll(".text-animate");
+          currentTextElements.forEach((el) => {
+            el.classList.remove("visible");
+          });
+
+          heroCurrentSlide = (heroCurrentSlide + 1) % heroTotalSlides;
+          updateHeroSlide();
+        }
+
+        function prevHeroSlide() {
+          // Reset text animations on current slide
+          const currentTextElements =
+            heroSlides[heroCurrentSlide].querySelectorAll(".text-animate");
+          currentTextElements.forEach((el) => {
+            el.classList.remove("visible");
+          });
+
+          heroCurrentSlide =
+            (heroCurrentSlide - 1 + heroTotalSlides) % heroTotalSlides;
+          updateHeroSlide();
+        }
+
+        function goToSlide(slideIndex) {
+          if (slideIndex >= 0 && slideIndex < heroTotalSlides && !isAnimating) {
+            // Reset text animations on current slide
+            const currentTextElements =
+              heroSlides[heroCurrentSlide].querySelectorAll(".text-animate");
+            currentTextElements.forEach((el) => {
+              el.classList.remove("visible");
+            });
+
+            heroCurrentSlide = slideIndex;
+            updateHeroSlide();
+            resetHeroAutoSlide();
+          }
+        }
+
+        function resetHeroAutoSlide() {
+          clearInterval(heroSlideInterval);
+          heroSlideInterval = setInterval(nextHeroSlide, 6000);
+        }
+
+        // Event listeners
+        heroDots.forEach((dot, index) => {
+          dot.addEventListener("click", () => goToSlide(index));
+        });
+
+        // Touch support
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        const heroSlider = document.querySelector(".hero-slider");
+        if (heroSlider) {
+          heroSlider.addEventListener("touchstart", (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+          });
+
+          heroSlider.addEventListener("touchend", (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+          });
+
+          function handleSwipe() {
+            if (touchEndX < touchStartX - 50) {
+              nextHeroSlide();
+              resetHeroAutoSlide();
+            } else if (touchEndX > touchStartX + 50) {
+              prevHeroSlide();
+              resetHeroAutoSlide();
+            }
+          }
+        }
+
+        // Initialize first slide
+        updateHeroSlide();
+
+        // Auto-play
+        heroSlideInterval = setInterval(nextHeroSlide, 6000);
+      }
+
+      // Tours Carousel
+      function initToursCarousel() {
+        const toursContainer = document.getElementById("toursContainer");
+        const toursNav = document.getElementById("toursNav");
+        const tourCards = document.querySelectorAll(".tour-card");
+        const totalTours = tourCards.length;
+
+        // Clone first and last few cards for infinite loop effect
+        const cloneCount = 3;
+        for (let i = 0; i < cloneCount; i++) {
+          // Clone first cards and append to end
+          const firstClone = tourCards[i].cloneNode(true);
+          toursContainer.appendChild(firstClone);
+
+          // Clone last cards and prepend to beginning
+          const lastClone = tourCards[totalTours - 1 - i].cloneNode(true);
+          toursContainer.insertBefore(lastClone, toursContainer.firstChild);
+        }
+
+        // Create navigation dots
+        for (let i = 0; i < totalTours; i++) {
+          const dot = document.createElement("span");
+          dot.classList.add("tour-dot");
+          if (i === 0) dot.classList.add("active");
+          dot.addEventListener("click", () => goToTour(i));
+          toursNav.appendChild(dot);
+        }
+
+        const tourDots = document.querySelectorAll(".tour-dot");
+        const cardWidth = 350;
+        const cardMargin = 30;
+        const totalWidth = cardWidth + cardMargin;
+
+        // Set initial position to show the first real card (after clones)
+        currentTourIndex = cloneCount;
+        updateToursPosition();
+
+        function updateToursPosition(smooth = true) {
+          const offset = -currentTourIndex * totalWidth;
+          const containerWidth = toursContainer.parentElement.offsetWidth;
+          const centerOffset = (containerWidth - cardWidth) / 2;
+
+          if (smooth) {
+            toursContainer.style.transition = "transform 0.5s ease";
+          } else {
+            toursContainer.style.transition = "none";
+          }
+
+          toursContainer.style.transform = `translateX(${
+            offset + centerOffset
+          }px)`;
+
+          // Update active dot
+          const realIndex =
+            (((currentTourIndex - cloneCount) % totalTours) + totalTours) %
+            totalTours;
+          tourDots.forEach((dot) => dot.classList.remove("active"));
+          tourDots[realIndex].classList.add("active");
+        }
+
+        function goToTour(index) {
+          currentTourIndex = cloneCount + index;
+          updateToursPosition();
+          resetTourAutoPlay();
+        }
+
+        function nextTour() {
+          currentTourIndex++;
+          updateToursPosition();
+
+          // Check if we've moved past the clones
+          if (currentTourIndex >= totalTours + cloneCount) {
+            // Wait for transition to complete, then jump to real cards
+            setTimeout(() => {
+              currentTourIndex = cloneCount;
+              updateToursPosition(false);
+            }, 500);
+          }
+        }
+
+        function prevTour() {
+          currentTourIndex--;
+          updateToursPosition();
+
+          // Check if we've moved before the clones
+          if (currentTourIndex < cloneCount) {
+            // Wait for transition to complete, then jump to real cards
+            setTimeout(() => {
+              currentTourIndex = totalTours + cloneCount - 1;
+              updateToursPosition(false);
+            }, 500);
+          }
+        }
+
+        function resetTourAutoPlay() {
+          clearInterval(tourAutoPlayInterval);
+          tourAutoPlayInterval = setInterval(nextTour, 5000);
+        }
+
+        // Touch support
+        let tourTouchStartX = 0;
+        let tourTouchEndX = 0;
+
+        toursContainer.addEventListener("touchstart", (e) => {
+          tourTouchStartX = e.changedTouches[0].screenX;
+        });
+
+        toursContainer.addEventListener("touchend", (e) => {
+          tourTouchEndX = e.changedTouches[0].screenX;
+          handleTourSwipe();
+        });
+
+        function handleTourSwipe() {
+          if (tourTouchEndX < tourTouchStartX - 50) {
+            nextTour();
+            resetTourAutoPlay();
+          } else if (tourTouchEndX > tourTouchStartX + 50) {
+            prevTour();
+            resetTourAutoPlay();
+          }
+        }
+
+        // Auto-play
+        tourAutoPlayInterval = setInterval(nextTour, 5000);
+      }
+
+      // Testimonials Carousel
+      function initTestimonialsCarousel() {
+        const testimonialsContainer = document.getElementById(
+          "testimonialsContainer"
+        );
+        const testimonialsNav = document.getElementById("testimonialsNav");
+        const testimonialCards = document.querySelectorAll(".testimonial-card");
+        const totalTestimonials = testimonialCards.length;
+
+        // Clone first and last few cards for infinite loop effect
+        const cloneCount = 3;
+        for (let i = 0; i < cloneCount; i++) {
+          // Clone first cards and append to end
+          const firstClone = testimonialCards[i].cloneNode(true);
+          testimonialsContainer.appendChild(firstClone);
+
+          // Clone last cards and prepend to beginning
+          const lastClone =
+            testimonialCards[totalTestimonials - 1 - i].cloneNode(true);
+          testimonialsContainer.insertBefore(
+            lastClone,
+            testimonialsContainer.firstChild
+          );
+        }
+
+        // Create navigation dots
+        for (let i = 0; i < totalTestimonials; i++) {
+          const dot = document.createElement("span");
+          dot.classList.add("testimonial-dot");
+          if (i === 0) dot.classList.add("active");
+          dot.addEventListener("click", () => goToTestimonial(i));
+          testimonialsNav.appendChild(dot);
+        }
+
+        const testimonialDots = document.querySelectorAll(".testimonial-dot");
+        const cardWidth = 350;
+        const cardMargin = 30;
+        const totalWidth = cardWidth + cardMargin;
+
+        // Set initial position to show the first real card (after clones)
+        currentTestimonialIndex = cloneCount;
+        updateTestimonialsPosition();
+
+        function updateTestimonialsPosition(smooth = true) {
+          const offset = -currentTestimonialIndex * totalWidth;
+          const containerWidth =
+            testimonialsContainer.parentElement.offsetWidth;
+          const centerOffset = (containerWidth - cardWidth) / 2;
+
+          if (smooth) {
+            testimonialsContainer.style.transition = "transform 0.5s ease";
+          } else {
+            testimonialsContainer.style.transition = "none";
+          }
+
+          testimonialsContainer.style.transform = `translateX(${
+            offset + centerOffset
+          }px)`;
+
+          // Update active dot
+          const realIndex =
+            (((currentTestimonialIndex - cloneCount) % totalTestimonials) +
+              totalTestimonials) %
+            totalTestimonials;
+          testimonialDots.forEach((dot) => dot.classList.remove("active"));
+          testimonialDots[realIndex].classList.add("active");
+        }
+
+        function goToTestimonial(index) {
+          currentTestimonialIndex = cloneCount + index;
+          updateTestimonialsPosition();
+          resetTestimonialAutoPlay();
+        }
+
+        function nextTestimonial() {
+          currentTestimonialIndex++;
+          updateTestimonialsPosition();
+
+          // Check if we've moved past the clones
+          if (currentTestimonialIndex >= totalTestimonials + cloneCount) {
+            // Wait for transition to complete, then jump to real cards
+            setTimeout(() => {
+              currentTestimonialIndex = cloneCount;
+              updateTestimonialsPosition(false);
+            }, 500);
+          }
+        }
+
+        function prevTestimonial() {
+          currentTestimonialIndex--;
+          updateTestimonialsPosition();
+
+          // Check if we've moved before the clones
+          if (currentTestimonialIndex < cloneCount) {
+            // Wait for transition to complete, then jump to real cards
+            setTimeout(() => {
+              currentTestimonialIndex = totalTestimonials + cloneCount - 1;
+              updateTestimonialsPosition(false);
+            }, 500);
+          }
+        }
+
+        function resetTestimonialAutoPlay() {
+          clearInterval(testimonialAutoPlayInterval);
+          testimonialAutoPlayInterval = setInterval(nextTestimonial, 5000);
+        }
+
+        // Touch support
+        let testimonialTouchStartX = 0;
+        let testimonialTouchEndX = 0;
+
+        testimonialsContainer.addEventListener("touchstart", (e) => {
+          testimonialTouchStartX = e.changedTouches[0].screenX;
+        });
+
+        testimonialsContainer.addEventListener("touchend", (e) => {
+          testimonialTouchEndX = e.changedTouches[0].screenX;
+          handleTestimonialSwipe();
+        });
+
+        function handleTestimonialSwipe() {
+          if (testimonialTouchEndX < testimonialTouchStartX - 50) {
+            nextTestimonial();
+            resetTestimonialAutoPlay();
+          } else if (testimonialTouchEndX > testimonialTouchStartX + 50) {
+            prevTestimonial();
+            resetTestimonialAutoPlay();
+          }
+        }
+
+        // Auto-play
+        testimonialAutoPlayInterval = setInterval(nextTestimonial, 5000);
+      }
+
+      // Navbar
+      function initNavbar() {
+        const navbar = document.getElementById("navbar");
+        const mobileMenuToggle = document.querySelector(".mobile-menu-toggle");
+        const mobileMenuOverlay = document.getElementById("mobileMenuOverlay");
+        const navMenu = document.getElementById("navMenu");
+
+        function openMobileMenu() {
+          navMenu.classList.add("active");
+          mobileMenuOverlay.classList.add("active");
+          document.body.style.overflow = "hidden";
+        }
+
+        function closeMobileMenu() {
+          navMenu.classList.remove("active");
+          mobileMenuOverlay.classList.remove("active");
+          document.body.style.overflow = "";
+        }
+
+        mobileMenuToggle?.addEventListener("click", openMobileMenu);
+        mobileMenuOverlay?.addEventListener("click", closeMobileMenu);
+
+        // Hide/show navbar on scroll
+        window.addEventListener("scroll", () => {
+          const scrollTop =
+            window.pageYOffset || document.documentElement.scrollTop;
+
+          // Clear the previous timer
+          clearTimeout(scrollTimer);
+
+          if (scrollTop > lastScrollTop && scrollTop > 100) {
+            // Scrolling down
+            navbar.classList.add("hidden");
+            navbarVisible = false;
+          } else {
+            // Scrolling up
+            navbar.classList.remove("hidden");
+            navbarVisible = true;
+          }
+
+          // Set a timer to show navbar after scrolling stops
+          scrollTimer = setTimeout(() => {
+            if (!navbarVisible) {
+              navbar.classList.remove("hidden");
+              navbarVisible = true;
+            }
+          }, 1000);
+
+          lastScrollTop = scrollTop;
+        });
+
+        // Show navbar when clicking/tapping the screen
+        document.addEventListener("click", (e) => {
+          if (!navbarVisible && !e.target.closest(".navbar")) {
+            navbar.classList.remove("hidden");
+            navbarVisible = true;
+          }
+        });
+
+        document.addEventListener("touchstart", (e) => {
+          if (!navbarVisible && !e.target.closest(".navbar")) {
+            navbar.classList.remove("hidden");
+            navbarVisible = true;
+          }
+        });
+      }
+
+      // Theme Toggle
+      function initThemeToggle() {
+        const themeIcon = document.getElementById("themeIcon");
+
+        // Check for saved theme preference
+        const savedTheme = localStorage.getItem("theme");
+        if (savedTheme === "dark") {
+          document.body.setAttribute("data-theme", "dark");
+          themeIcon.className = "fas fa-sun";
+        }
+      }
+
+      function toggleTheme() {
+        const themeIcon = document.getElementById("themeIcon");
+
+        if (document.body.getAttribute("data-theme") === "dark") {
+          document.body.removeAttribute("data-theme");
+          themeIcon.className = "fas fa-moon";
+          localStorage.setItem("theme", "light");
+        } else {
+          document.body.setAttribute("data-theme", "dark");
+          themeIcon.className = "fas fa-sun";
+          localStorage.setItem("theme", "dark");
+        }
+      }
+
+      // Newsletter Form
+      function initNewsletterForm() {
+        const newsletterForm = document.getElementById("newsletterForm");
+
+        newsletterForm?.addEventListener("submit", (e) => {
+          e.preventDefault();
+          const email = e.target.querySelector(".newsletter-input").value;
+
+          if (email) {
+            // Show success message
+            const successMsg = document.createElement("div");
+            successMsg.textContent = "Thank you for subscribing!";
+            successMsg.style.color = "white";
+            successMsg.style.marginTop = "10px";
+            successMsg.style.textAlign = "center";
+
+            newsletterForm.innerHTML = "";
+            newsletterForm.appendChild(successMsg);
+
+            setTimeout(() => {
+              newsletterForm.innerHTML = `
+                            <input type="email" class="newsletter-input" placeholder="Your email">
+                            <button type="submit" class="newsletter-button"><i class="fas fa-paper-plane"></i></button>
+                        `;
+              initNewsletterForm();
+            }, 3000);
+          }
+        });
+      }
+
+      // Smooth Scrolling
+      function initSmoothScrolling() {
+        document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+          anchor.addEventListener("click", function (e) {
+            const href = this.getAttribute("href");
+
+            if (href === "#" || href === "") return;
+
+            e.preventDefault();
+
+            const target = document.querySelector(href);
+            if (target) {
+              const navbar = document.getElementById("navbar");
+              const navbarHeight = navbar ? navbar.offsetHeight : 0;
+              const targetPosition = target.offsetTop - navbarHeight - 20;
+
+              window.scrollTo({
+                top: targetPosition,
+                behavior: "smooth",
+              });
+            }
+          });
+        });
+      }
+
+      // WhatsApp Button
+      function initWhatsAppButton() {
+        const whatsappButton = document.querySelector(".whatsapp-float");
+
+        // Add hover effect
+        whatsappButton?.addEventListener("mouseenter", () => {
+          whatsappButton.style.transform = "scale(1.1) rotate(15deg)";
+        });
+
+        whatsappButton?.addEventListener("mouseleave", () => {
+          whatsappButton.style.transform = "scale(1) rotate(0deg)";
+        });
+      }
+
+      // Dropdown Toggle
+      function toggleDropdown(element) {
+        // Only for mobile view
+        if (window.innerWidth < 1024) {
+          const dropdownMenu =
+            element.parentElement.parentElement.querySelector(".dropdown-menu");
+          const dropdownArrow = element.querySelector(".dropdown-arrow");
+
+          if (dropdownMenu && dropdownArrow) {
+            dropdownMenu.classList.toggle("open");
+            dropdownArrow.classList.toggle("open");
+
+            if (event) {
+              event.preventDefault();
+              event.stopPropagation();
+            }
+          }
+        }
+      }
+
+      // Mobile Menu Toggle
+      function toggleMobileMenu() {
+        const navMenu = document.getElementById("navMenu");
+        const mobileMenuToggle = document.querySelector(".mobile-menu-toggle");
+        const mobileMenuOverlay = document.getElementById("mobileMenuOverlay");
+
+        if (navMenu.classList.contains("active")) {
+          navMenu.classList.remove("active");
+          mobileMenuToggle.classList.remove("active");
+          mobileMenuOverlay.classList.remove("active");
+          document.body.style.overflow = "";
+        } else {
+          navMenu.classList.add("active");
+          mobileMenuToggle.classList.add("active");
+          mobileMenuOverlay.classList.add("active");
+          document.body.style.overflow = "hidden";
+        }
+      }
+    </script>
+  </body>
+</html>
