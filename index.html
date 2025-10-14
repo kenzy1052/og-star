@@ -275,6 +275,10 @@
         transition: transform 0.3s ease;
       }
 
+      .navbar::-webkit-scrollbar {
+        display: none;
+      }
+
       .navbar.hidden {
         transform: translateY(-100%);
       }
@@ -1516,6 +1520,7 @@
         .split {
           grid-template-columns: 1fr 1fr;
           gap: 30px;
+          margin-top: 5rem;
         }
 
         .why .panel {

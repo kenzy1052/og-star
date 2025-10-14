@@ -1,165 +1,334 @@
 /* ===========================================
-    FONT IMPORTS
-   =========================================== */
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&family=Raleway:wght@300;400;500;600;700&display=swap");
+   FONT IMPORTS
+=========================================== */
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap");
 
 /* ===========================================
-    CSS CUSTOM PROPERTIES (VARIABLES)
-   =========================================== */
+   CSS CUSTOM PROPERTIES (VARIABLES)
+=========================================== */
 :root {
-  /* Colors from Logo */
-  --color-blue: #1a5fb4; /* Blue from "TRAVEL & TOURS" and "OG" */
-  --color-brown: #8b4513; /* Brown from "OG" */
-  --color-gold: #ffd700; /* Gold from "STAR" */
-  --color-red: #e74c3c; /* Red from airplane */
-  --color-dark-gray: #333333; /* Dark gray from SUV */
-  --color-light-gray: #f5f5f5; /* Light gray background */
+  /* === BRAND COLORS === */
+  --primary-color: #2ec4b6; /* Tropical teal (ocean + calm) */
+  --secondary-color: #ff6b6b; /* Coral red (fun, adventure) */
+  --accent-color: #ffd166; /* Warm sand yellow (relaxation) */
+  --highlight-color: #118ab2; /* Sky blue (freedom, travel) */
 
-  /* Light Theme Colors */
+  /* === TEXT COLORS === */
+  --text-color: #1a1a1a; /* Default dark text */
+  --text-muted: #6c757d;
+  --text-light: #ffffff;
+
+  /* === BACKGROUNDS === */
   --bg-primary: #ffffff;
-  --bg-secondary: #f8f9fa;
-  --bg-tertiary: #e9ecef;
-  --text-primary: #212529;
-  --text-secondary: #6c757d;
-  --text-muted: #adb5bd;
-  --border-color: #dee2e6;
-  --accent: var(--color-blue);
+  --bg-secondary: #f6f9fa;
+  --bg-tertiary: #eef2f3;
+  --bg-dark: #212529;
+  --bg-darker: #141414;
 
-  /* Dark Theme Colors */
-  --dark-bg-primary: #121212;
-  --dark-bg-secondary: #1e1e1e;
-  --dark-bg-tertiary: #2a2a2a;
-  --dark-text-primary: #f8f9fa;
-  --dark-text-secondary: #adb5bd;
-  --dark-text-muted: #6c757d;
-  --dark-border-color: #343a40;
-  --dark-accent: #4dabf7;
+  /* === NAV & FOOTER === */
+  --nav-bg: #ffffff;
+  --nav-bg-dark: #0e1a1a;
+  --footer-text: #f0f0f0;
 
-  /* Gradients */
-  --gradient-primary: linear-gradient(
-    135deg,
-    var(--color-blue),
-    var(--color-brown)
-  );
-  --gradient-secondary: linear-gradient(
-    135deg,
-    var(--color-gold),
-    var(--color-red)
-  );
-  --gradient-tertiary: linear-gradient(
-    135deg,
-    var(--color-blue),
-    var(--color-gold)
-  );
-  --gradient-hero: linear-gradient(
-    rgba(26, 95, 180, 0.8),
-    rgba(139, 69, 19, 0.8)
-  );
+  /* === GRADIENTS === */
+  --gradient-primary: linear-gradient(135deg, #2ec4b6 0%, #118ab2 100%);
+  --gradient-secondary: linear-gradient(135deg, #ff6b6b 0%, #ffd166 100%);
+  --gradient-accent: linear-gradient(135deg, #2ec4b6 0%, #ff6b6b 100%);
 
-  /* Fonts */
-  --font-primary: "Inter", sans-serif;
-  --font-secondary: "Poppins", sans-serif;
-  --font-accent: "Raleway", sans-serif;
-
-  /* Spacing */
-  --spacing-xs: 0.25rem;
-  --spacing-sm: 0.5rem;
-  --spacing-md: 1rem;
-  --spacing-lg: 1.5rem;
-  --spacing-xl: 2rem;
-  --spacing-2xl: 3rem;
-  --spacing-3xl: 4rem;
-
-  /* Transitions */
-  --transition-fast: 0.2s ease;
-  --transition-normal: 0.3s ease;
-  --transition-slow: 0.5s ease;
-
-  /* Shadows */
-  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
-  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
-  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
-  --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.1);
-
-  /* Border Radius */
+  /* === EFFECTS === */
+  --shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  --shadow-hover: 0 10px 20px rgba(0, 0, 0, 0.15);
+  --transition: all 0.3s ease-in-out;
   --radius-sm: 0.25rem;
-  --radius-md: 0.5rem;
-  --radius-lg: 0.75rem;
-  --radius-xl: 1rem;
-  --radius-full: 9999px;
+  --radius-md: 0.75rem;
+  --radius-lg: 1.25rem;
 
-  /* Z-index */
-  --z-dropdown: 1000;
-  --z-sticky: 1020;
-  --z-fixed: 1030;
-  --z-modal-backdrop: 1040;
-  --z-modal: 1050;
-  --z-popover: 1060;
-  --z-tooltip: 1070;
-}
+  /* === TYPOGRAPHY === */
+  --font-primary: "Poppins", sans-serif;
+  --font-secondary: "Montserrat", sans-serif;
+  --font-elegant: "Playfair Display", serif;
 
-/* Dark Theme */
-[data-theme="dark"] {
-  --bg-primary: var(--dark-bg-primary);
-  --bg-secondary: var(--dark-bg-secondary);
-  --bg-tertiary: var(--dark-bg-tertiary);
-  --text-primary: var(--dark-text-primary);
-  --text-secondary: var(--dark-text-secondary);
-  --text-muted: var(--dark-text-muted);
-  --border-color: var(--dark-border-color);
-  --accent: var(--dark-accent);
+  /* === LAYOUT === */
+  --nav-height: 70px;
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 1.5rem;
+  --spacing-lg: 2rem;
+  --spacing-xl: 3rem;
+  --spacing-2xl: 4rem;
+  --spacing-3xl: 5rem;
+  --spacing-4xl: 6rem;
+  --card-bg-light: #ffffff;
+  --card-bg-dark: #2a2a2a;
 }
 
 /* ===========================================
-    GLOBAL STYLES & RESET
-   =========================================== */
+   DARK THEME
+=========================================== */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --primary-color: #3fd0c6; /* Softer teal */
+    --secondary-color: #ff8585; /* Gentle coral */
+    --accent-color: #ffe080; /* Warm sand glow */
+    --highlight-color: #48cae4; /* Ocean highlight */
+
+    --text-color: #f5f5f5;
+    --text-muted: #b0b0b0;
+    --text-light: #ffffff;
+
+    --bg-primary: #0e1a1a;
+    --bg-secondary: #152020;
+    --bg-tertiary: #1e2a2a;
+    --bg-dark: #0b1212;
+    --bg-darker: #050909;
+
+    --nav-bg: #121c1c;
+    --nav-bg-dark: #000000;
+    --footer-text: #e0e0e0;
+
+    --gradient-primary: linear-gradient(135deg, #3fd0c6 0%, #48cae4 100%);
+    --gradient-secondary: linear-gradient(135deg, #ff8585 0%, #ffe080 100%);
+    --gradient-accent: linear-gradient(135deg, #3fd0c6 0%, #ff8585 100%);
+
+    --card-bg-light: #1f2a2a;
+    --card-bg-dark: #121c1c;
+  }
+}
+
+/* ===========================================
+   GLOBAL STYLES & RESET
+=========================================== */
+/* Reset and Base Styles */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-html,
-body {
-  overflow-x: hidden;
-  max-width: 100%;
-}
+
 body {
   font-family: var(--font-primary);
-  background-color: var(--bg-primary);
-  color: var(--text-primary);
   line-height: 1.6;
-  transition: background-color var(--transition-normal),
-    color var(--transition-normal);
+  color: var(--text-color);
+  background: var(--bg-primary);
+  overflow-x: hidden;
 }
+
 /* Typography */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: var(--font-secondary);
-  font-weight: 400;
-  line-height: 1.2;
-  margin-bottom: var(--spacing-md);
-}
 h1 {
-  font-size: clamp(1.75rem, 5vw, 3rem);
+  font-size: clamp(1.75rem, 5vw, 2.5rem);
+  margin-bottom: 1rem;
+  color: var(--text-color);
+  text-transform: uppercase;
+  font-family: var(--font-secondary);
+  font-weight: 700;
 }
+
 h2 {
-  font-size: clamp(1.5rem, 4vw, 2.5rem);
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  margin-bottom: 1rem;
+  color: var(--primary-color);
+  text-transform: uppercase;
+  font-family: var(--font-secondary);
+  font-weight: 700;
 }
+
 h3 {
-  font-size: clamp(1.25rem, 3vw, 1.75rem);
+  font-size: clamp(1.25rem, 3vw, 1.5rem);
+  margin-bottom: 0.8rem;
+  color: var(--text-color);
+  text-transform: uppercase;
+  font-family: var(--font-secondary);
+  font-weight: 600;
 }
+
+h4 {
+  font-size: clamp(1.1rem, 2.5vw, 1.25rem);
+  margin-bottom: 0.6rem;
+  text-transform: uppercase;
+  font-family: var(--font-secondary);
+  font-weight: 600;
+}
+
 p {
-  margin-bottom: var(--spacing-md);
-  color: var(--text-secondary);
+  margin-bottom: 1rem;
 }
-a {
-  color: var(--accent);
+
+/* Section subtitle styling - Consistent across all sections */
+.section-subtitle,
+.tours-subtitle,
+.testimonials-subtitle {
+  color: var(--secondary-color);
+  font-size: 1.5rem;
+  font-family: var(--font-elegant);
+  text-align: center;
+  margin-bottom: 15px;
+  text-transform: capitalize; /* Only first letter capitalized */
+}
+
+/* Buttons with fill effect - no translate on hover */
+.btn {
+  display: inline-block;
+  padding: 12px 24px;
+  background: var(--gradient-secondary);
+  color: white;
   text-decoration: none;
-  transition: color var(--transition-fast);
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  transition: var(--transition);
+  cursor: pointer;
+  border: none;
+  font-size: 1rem;
+  min-height: 44px;
+  box-shadow: 0 4px 8px rgba(255, 215, 0, 0.3); /* Updated with new gold color */
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.btn::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 0%;
+  background: rgba(0, 0, 0);
+  z-index: -1;
+  transition: height 420ms ease-in-out;
+  transform-origin: bottom;
+  border-radius: inherit;
+  opacity: 0.95;
+  pointer-events: none;
+}
+
+.btn:hover::before {
+  height: 100%;
+}
+
+.btn:hover {
+  box-shadow: 0 6px 12px rgba(255, 215, 0, 0.4); /* Updated with new gold color */
+}
+
+/* Custom Scrollbar Styles */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--gradient-primary);
+  border-radius: 10px;
+  transition: all var(--transition);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--gradient-secondary);
+}
+
+/* Firefox Scrollbar */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: var(--primary-color) var(--bg-secondary);
+}
+
+/* Scroll Animations and Transitions */
+.scroll-animate {
+  opacity: 0;
+  transform: translateY(60px);
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.scroll-animate.animate-slide-left {
+  transform: translateX(-60px) translateY(30px);
+}
+
+.scroll-animate.animate-slide-right {
+  transform: translateX(60px) translateY(30px);
+}
+
+.scroll-animate.animate-scale {
+  transform: scale(0.8) translateY(30px);
+}
+
+.scroll-animate.animate-fade {
+  transform: translateY(30px);
+}
+
+.scroll-animate.visible {
+  opacity: 1;
+  transform: translateX(0) translateY(0) scale(1);
+}
+
+/* Text Animation Classes */
+.text-animate {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.text-animate.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger animation delays */
+.scroll-animate:nth-child(1) {
+  transition-delay: 0s;
+}
+.scroll-animate:nth-child(2) {
+  transition-delay: 0.1s;
+}
+.scroll-animate:nth-child(3) {
+  transition-delay: 0.2s;
+}
+.scroll-animate:nth-child(4) {
+  transition-delay: 0.3s;
+}
+.scroll-animate:nth-child(5) {
+  transition-delay: 0.4s;
+}
+.scroll-animate:nth-child(6) {
+  transition-delay: 0.5s;
+}
+
+/* Text stagger delays */
+.text-animate:nth-child(1) {
+  transition-delay: 0s;
+}
+.text-animate:nth-child(2) {
+  transition-delay: 0.15s;
+}
+.text-animate:nth-child(3) {
+  transition-delay: 0.3s;
+}
+
+/* ANIMATIONS */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Dark mode logo switching */
+@media (prefers-color-scheme: dark) {
+  .nav-logo img,
+  .footer-column img {
+    content: url("../images/logo2.png");
+  }
+}
+
+/* a {
+  text-decoration: none;
 }
 a:hover {
   color: var(--text-primary);
@@ -194,4 +363,4 @@ button:focus {
 
 ul {
   list-style-type: none;
-}
+} */
