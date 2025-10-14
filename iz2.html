@@ -12,63 +12,64 @@
       href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap"
       rel="stylesheet"
     />
-    <!-- 
-      ==================== CSS FILES ====================
-      These styles should be moved to separate files:
-      
-      1. styles.css - Contains main styles (variables, components, sections)
-      2. utils.css - Contains utility classes and responsive styles
-      
-      To use these files, replace this style block with:
-      <link rel="stylesheet" href="css/styles.css">
-      <link rel="stylesheet" href="css/utils.css">
-    -->
     <style>
-      /* === STYLES THAT SHOULD BE MOVED TO STYLES.CSS === */
+      html,
+      body {
+        overflow-x: hidden;
+      }
+      /* Color Variables - Based on provided color scheme */
       :root {
-        /* === BRAND COLORS === */
-        --primary-color: #2ec4b6; /* Tropical teal (ocean + calm) */
-        --secondary-color: #ff6b6b; /* Coral red (fun, adventure) */
-        --accent-color: #ffd166; /* Warm sand yellow (relaxation) */
-        --highlight-color: #118ab2; /* Sky blue (freedom, travel) */
+        /* Primary Colors - Tropical & Inviting */
+        --primary-color: #008b8b; /* Deep teal - evokes tropical waters */
+        --primary-light: #20b2aa; /* Light teal for variety */
+        --primary-dark: #006666; /* Darker teal for contrast */
 
-        /* === TEXT COLORS === */
-        --text-color: #1a1a1a; /* Default dark text */
-        --text-muted: #6c757d;
+        /* Secondary Colors - Warm & Adventurous */
+        --secondary-color: #ff6b35; /* Vibrant coral orange - evokes sunsets and adventure */
+        --secondary-hover: #ff5722; /* Deeper orange for hover states */
+        --secondary-light: #ff8c42; /* Lighter orange for accents */
+
+        /* Accent Colors - Natural & Relaxing */
+        --accent-color: #f5deb3; /* Sandy beige - evokes beaches and relaxation */
+        --accent-hover: #e6d7a7; /* Slightly darker beige for hover */
+        --tertiary-color: #4caf50; /* Fresh green - evokes nature and exploration */
+
+        /* Text Colors */
+        --text-color: #333333;
         --text-light: #ffffff;
+        --text-muted: #6c757d;
+        --text-on-primary: #ffffff;
+        --text-on-secondary: #ffffff;
 
-        /* === BACKGROUNDS === */
+        /* Background Colors */
         --bg-primary: #ffffff;
-        --bg-secondary: #f6f9fa;
-        --bg-tertiary: #eef2f3;
-        --bg-dark: #212529;
-        --bg-darker: #141414;
+        --bg-secondary: #f8f9fa;
+        --bg-tertiary: #f1f3f5;
+        --bg-dark: #2c3e50;
+        --bg-darker: #1a252f;
 
-        /* === NAV & FOOTER === */
+        /* Navigation */
         --nav-bg: #ffffff;
-        --nav-bg-dark: #0e1a1a;
-        --footer-text: #f0f0f0;
-
-        /* === GRADIENTS === */
-        --gradient-primary: linear-gradient(135deg, #2ec4b6 0%, #118ab2 100%);
-        --gradient-secondary: linear-gradient(135deg, #ff6b6b 0%, #ffd166 100%);
-        --gradient-accent: linear-gradient(135deg, #2ec4b6 0%, #ff6b6b 100%);
-
-        /* === EFFECTS === */
-        --shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        --shadow-hover: 0 10px 20px rgba(0, 0, 0, 0.15);
-        --transition: all 0.3s ease-in-out;
-        --radius-sm: 0.25rem;
-        --radius-md: 0.75rem;
-        --radius-lg: 1.25rem;
-
-        /* === TYPOGRAPHY === */
-        --font-primary: "Poppins", sans-serif;
-        --font-secondary: "Montserrat", sans-serif;
-        --font-elegant: "Playfair Display", serif;
-
-        /* === LAYOUT === */
+        --nav-bg-dark: #1a252f;
         --nav-height: 70px;
+
+        /* Gradients */
+        --gradient-primary: linear-gradient(135deg, #008b8b 0%, #20b2aa 100%);
+        --gradient-secondary: linear-gradient(135deg, #ff6b35 0%, #ff8c42 100%);
+        --gradient-accent: linear-gradient(135deg, #4caf50 0%, #81c784 100%);
+        --gradient-hero: linear-gradient(
+          135deg,
+          rgba(0, 139, 139, 0.8) 0%,
+          rgba(255, 107, 53, 0.8) 100%
+        );
+
+        /* Cards & Components */
+        --card-bg-light: #ffffff;
+        --card-bg-dark: #2c3e50;
+        --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        --card-shadow-hover: 0 10px 15px rgba(0, 0, 0, 0.1);
+
+        /* Spacing */
         --spacing-xs: 0.5rem;
         --spacing-sm: 1rem;
         --spacing-md: 1.5rem;
@@ -77,42 +78,49 @@
         --spacing-2xl: 4rem;
         --spacing-3xl: 5rem;
         --spacing-4xl: 6rem;
-        --card-bg-light: #ffffff;
-        --card-bg-dark: #2a2a2a;
+
+        /* Border Radius */
+        --radius-sm: 0.25rem;
+        --radius-md: 0.5rem;
+        --radius-lg: 1rem;
+
+        /* Transitions */
+        --transition: all 0.3s ease;
+
+        /* Typography */
+        --font-primary: "Open Sans", sans-serif;
+        --font-secondary: "Montserrat", sans-serif;
+        --font-elegant: "Playfair Display", serif;
+
+        /* Footer */
+        --footer-bg: #1a252f;
+        --footer-text: #f5deb3;
       }
 
-      /* === DARK THEME === */
+      /* Dark Mode Variables */
       @media (prefers-color-scheme: dark) {
         :root {
-          --primary-color: #3fd0c6; /* Softer teal */
-          --secondary-color: #ff8585; /* Gentle coral */
-          --accent-color: #ffe080; /* Warm sand glow */
-          --highlight-color: #48cae4; /* Ocean highlight */
+          --primary-color: #20b2aa;
+          --primary-light: #4dd9d3;
+          --primary-dark: #008b8b;
+
+          --secondary-color: #ff8c42;
+          --secondary-hover: #ff6b35;
+
+          --accent-color: #e6d7a7;
+          --accent-hover: #d4c793;
 
           --text-color: #f5f5f5;
           --text-muted: #b0b0b0;
-          --text-light: #ffffff;
 
-          --bg-primary: #0e1a1a;
-          --bg-secondary: #152020;
-          --bg-tertiary: #1e2a2a;
-          --bg-dark: #0b1212;
-          --bg-darker: #050909;
+          --bg-primary: #1a252f;
+          --bg-secondary: #2c3e50;
+          --bg-tertiary: #34495e;
 
-          --nav-bg: #121c1c;
-          --nav-bg-dark: #000000;
-          --footer-text: #e0e0e0;
+          --card-bg-light: #2c3e50;
+          --card-bg-dark: #1a252f;
 
-          --gradient-primary: linear-gradient(135deg, #3fd0c6 0%, #48cae4 100%);
-          --gradient-secondary: linear-gradient(
-            135deg,
-            #ff8585 0%,
-            #ffe080 100%
-          );
-          --gradient-accent: linear-gradient(135deg, #3fd0c6 0%, #ff8585 100%);
-
-          --card-bg-light: #1f2a2a;
-          --card-bg-dark: #121c1c;
+          --nav-bg: #1a252f;
         }
       }
 
@@ -128,6 +136,7 @@
         line-height: 1.6;
         color: var(--text-color);
         background: var(--bg-primary);
+        /* transition: background-color var(--transition), color var(--transition); */
         overflow-x: hidden;
       }
 
@@ -230,6 +239,7 @@
       }
 
       .btn:hover {
+        /* Removed transform: translateY(-2px) */
         box-shadow: 0 6px 12px rgba(255, 215, 0, 0.4); /* Updated with new gold color */
       }
 
@@ -260,7 +270,77 @@
         scrollbar-color: var(--primary-color) var(--bg-secondary);
       }
 
-      /* Navigation */
+      /* Enhanced Scroll Animation Classes */
+      .scroll-animate {
+        opacity: 0;
+        transform: translateY(60px);
+        transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      }
+
+      .scroll-animate.animate-slide-left {
+        transform: translateX(-60px) translateY(30px);
+      }
+
+      .scroll-animate.animate-slide-right {
+        transform: translateX(60px) translateY(30px);
+      }
+
+      .scroll-animate.animate-scale {
+        transform: scale(0.8) translateY(30px);
+      }
+
+      .scroll-animate.animate-fade {
+        transform: translateY(30px);
+      }
+
+      .scroll-animate.visible {
+        opacity: 1;
+        transform: translateX(0) translateY(0) scale(1);
+      }
+
+      /* Text Animation Classes */
+      .text-animate {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      }
+
+      .text-animate.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* Stagger animation delays */
+      .scroll-animate:nth-child(1) {
+        transition-delay: 0s;
+      }
+      .scroll-animate:nth-child(2) {
+        transition-delay: 0.1s;
+      }
+      .scroll-animate:nth-child(3) {
+        transition-delay: 0.2s;
+      }
+      .scroll-animate:nth-child(4) {
+        transition-delay: 0.3s;
+      }
+      .scroll-animate:nth-child(5) {
+        transition-delay: 0.4s;
+      }
+      .scroll-animate:nth-child(6) {
+        transition-delay: 0.5s;
+      }
+
+      /* Text stagger delays */
+      .text-animate:nth-child(1) {
+        transition-delay: 0s;
+      }
+      .text-animate:nth-child(2) {
+        transition-delay: 0.15s;
+      }
+      .text-animate:nth-child(3) {
+        transition-delay: 0.3s;
+      }
+
       .navbar {
         position: fixed;
         inset: 0 0 auto 0;
@@ -403,6 +483,228 @@
       .dropdown .sublink:hover {
         background: rgba(255, 215, 0, 0.1); /* Updated with new gold color */
         color: var(--secondary-color);
+      }
+
+      @media (min-width: 1024px) {
+        .nav-item:hover > .dropdown {
+          opacity: 1;
+          visibility: visible;
+          transform: translateX(-50%) translateY(0);
+          pointer-events: auto;
+        }
+
+        /* Added padding to nav items to create hover bridge */
+        .nav-item {
+          padding-bottom: 15px;
+          margin-bottom: -15px;
+        }
+      }
+
+      /* ===========================
+                               WhatsApp CTA (desktop) - expand + typewriter + water-fill hover
+                               =========================== */
+      .whatsapp-btn {
+        --btn-h: 44px;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        height: var(--btn-h);
+        border-radius: 999px;
+        border: 0;
+        cursor: pointer;
+        padding: 0 12px;
+        width: 48px; /* initial circular */
+        overflow: hidden;
+        position: relative;
+        background: linear-gradient(180deg, #25d366, #20c55c);
+        color: #fff;
+        font-weight: 700;
+        transition: width 700ms var(--transition),
+          box-shadow 240ms var(--transition), transform 200ms var(--transition);
+        box-shadow: 0 8px 30px rgba(37, 211, 102, 0.14);
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+      }
+      .whatsapp-btn .w-icon {
+        width: 34px;
+        text-align: center;
+        font-size: 18px;
+        z-index: 2;
+      }
+      .whatsapp-btn .w-label {
+        opacity: 0;
+        transform: translateX(-6px);
+        white-space: nowrap;
+        z-index: 2;
+        transition: opacity 420ms var(--transition) 0.12s,
+          transform 420ms var(--transition) 0.12s;
+      }
+      /* background "water" : pseudo element that fills from bottom to top */
+      .whatsapp-btn::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 0%;
+        background: #000; /* fill color black on hover */
+        z-index: 1;
+        transition: height 420ms ease-in-out;
+        transform-origin: bottom;
+        border-radius: 999px;
+        opacity: 0.95;
+        pointer-events: none;
+      }
+      /* when expanded, show label */
+      .whatsapp-btn.expand {
+        width: 170px;
+      }
+      .whatsapp-btn.expand .w-label {
+        opacity: 1;
+        transform: none;
+      }
+      /* hover effect: "water fill" bottom -> top */
+      .whatsapp-btn:hover::after {
+        height: 100%;
+      }
+      /* invert label color when water covers it (use mix-blend or color change) */
+      .whatsapp-btn:hover .w-label,
+      .whatsapp-btn:hover .w-icon {
+        color: #fff; /* label and icon remain white */
+        z-index: 3;
+      }
+      /* subtle lift */
+      .whatsapp-btn:hover {
+        box-shadow: 0 18px 46px rgba(2, 6, 23, 0.12);
+      }
+
+      /* ===========================
+                               MOBILE: hamburger & slide panel
+                               =========================== */
+      .hamburger {
+        display: none;
+        background: none;
+        border: 0;
+        font-size: 20px;
+        cursor: pointer;
+        color: var(--text-color);
+      }
+
+      .mobile-panel {
+        position: fixed;
+        top: 0;
+        right: -150%;
+        width: 100%;
+        max-width: 420px;
+        height: 100vh;
+        background: linear-gradient(
+          180deg,
+          #0b0f11,
+          #091214
+        ); /* darker mobile panel */
+        box-shadow: -50px 0 80px rgba(2, 6, 23, 0.6);
+        transition: right 0.46s var(--transition);
+        z-index: 1400;
+        display: flex;
+        flex-direction: column;
+        padding: 28px;
+        color: var(--footer-text);
+      }
+      .mobile-panel.open {
+        right: 0;
+      }
+      .mobile-panel .close-btn {
+        margin-left: auto;
+        background: none;
+        border: 0;
+        font-size: 22px;
+        cursor: pointer;
+        color: var(--text-muted);
+      }
+
+      .mobile-links {
+        margin-top: 18px;
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+      }
+      .mobile-links a,
+      .mobile-links button {
+        color: var(--footer-text);
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 16px;
+        text-align: left;
+        background: none;
+        border: 0;
+        padding: 12px 6px;
+        border-radius: 8px;
+        cursor: pointer;
+      }
+      .mobile-sublinks {
+        display: none;
+        flex-direction: column;
+        gap: 6px;
+        padding-left: 12px;
+        margin-bottom: 8px;
+      }
+      .mobile-sublinks a {
+        font-weight: 600;
+        color: #cbd6d8;
+        padding: 10px 6px;
+        border-radius: 6px;
+        text-decoration: none;
+      }
+
+      .overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(2, 6, 23, 0.6);
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s ease;
+        z-index: 1350;
+      }
+      .overlay.show {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      @media (max-width: 1023px) {
+        .nav-center {
+          display: none;
+        } /* hide center nav on mobile */
+        .nav-logo {
+          left: 12px;
+        } /* keep near left */
+        .nav-cta {
+          right: 12px;
+        } /* keep near right */
+        .whatsapp-btn {
+          display: none;
+        } /* mobile CTA is inside panel */
+        .hamburger {
+          display: block;
+          position: relative;
+          right: 0;
+        }
+      }
+
+      @media (min-width: 1024px) {
+        .navbar {
+          height: 80px;
+        }
+
+        .nav-logo img {
+          height: 75px;
+          display: block;
+        }
+
+        .mobile-panel,
+        .overlay {
+          display: none;
+        }
       }
 
       /* Hero Section */
@@ -758,6 +1060,18 @@
         background-position: center;
       }
 
+      /* ANIMATIONS */
+      .reveal {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.6s ease, transform 0.6s ease;
+      }
+
+      .reveal.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
       /* Services Section */
       .services-grid {
         display: grid;
@@ -779,6 +1093,7 @@
       }
 
       .service-card:hover {
+        /* Removed transform: translateY(-5px) */
         box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
       }
 
@@ -791,7 +1106,9 @@
       /* Featured Tours Section */
       .tours-section {
         padding: 72px 0;
-        background: var(--card-bg-light);
+        background: var(
+          --card-bg-light
+        ); /* Changed to use theme-based variable */
         text-align: center;
       }
       .tours-container {
@@ -804,36 +1121,9 @@
         font-size: 1.5rem;
         margin-bottom: 8px;
         font-family: var(--font-elegant);
-        text-transform: capitalize;
+        text-transform: capitalize; /* Only first letter capitalized */
       }
       .tours-title {
-        font-size: 2.2rem;
-        font-weight: 700;
-        color: var(--primary-color);
-        margin-bottom: 28px;
-        text-transform: uppercase;
-        font-family: var(--font-secondary);
-      }
-
-      /* Work and Stay Abroad Section */
-      .work-section {
-        padding: 72px 0;
-        background: var(--bg-secondary);
-        text-align: center;
-      }
-      .work-container {
-        max-width: 1240px;
-        margin: 0 auto;
-        padding: 0 20px;
-      }
-      .work-subtitle {
-        color: var(--secondary-color);
-        font-size: 1.5rem;
-        margin-bottom: 8px;
-        font-family: var(--font-elegant);
-        text-transform: capitalize;
-      }
-      .work-title {
         font-size: 2.2rem;
         font-weight: 700;
         color: var(--primary-color);
@@ -887,7 +1177,6 @@
 
       /* Card base */
       .tour-card,
-      .work-card,
       .testimonial-card {
         background: var(--bg-primary);
         border-radius: 14px;
@@ -899,11 +1188,11 @@
         transform-origin: center;
         opacity: 0.98;
         transition: box-shadow 0.25s cubic-bezier(0.22, 0.9, 0.35, 1),
-          opacity 0.4s linear;
+          opacity 0.4s linear; /* Removed transform transition */
       }
       .tour-card:hover,
-      .work-card:hover,
       .testimonial-card:hover {
+        /* Removed transform: translateY(-6px) */
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
       }
 
@@ -977,84 +1266,11 @@
         font-weight: 700;
         display: inline-block;
         transition: color 0.2s cubic-bezier(0.22, 0.9, 0.35, 1),
-          opacity 0.2s linear;
+          opacity 0.2s linear; /* Removed transform transition */
       }
       .tour-btn:hover {
+        /* Removed transform: translateY(-3px) */
         color: var(--secondary-hover);
-      }
-
-      /* Work Card specifics */
-      .work-image {
-        position: relative;
-      }
-      .work-image img {
-        width: 100%;
-        height: 220px;
-        object-fit: cover;
-        display: block;
-      }
-      .work-badge {
-        position: absolute;
-        top: 12px;
-        left: 12px;
-        background: var(--accent-color);
-        color: #333;
-        padding: 6px 10px;
-        border-radius: 8px;
-        font-weight: 700;
-        font-size: 0.75rem;
-      }
-      .work-content {
-        padding: 14px 16px;
-        text-align: left;
-        display: flex;
-        flex-direction: column;
-        flex: 1;
-      }
-      .work-title {
-        font-size: 1.05rem;
-        margin: 6px 0;
-        font-weight: 700;
-        color: var(--text-color);
-      }
-      .work-location {
-        color: var(--text-muted);
-        font-size: 0.9rem;
-        margin-bottom: 8px;
-        display: flex;
-        gap: 8px;
-        align-items: center;
-      }
-      .work-positions {
-        margin-bottom: 12px;
-      }
-      .work-position {
-        display: inline-block;
-        background: var(--bg-secondary);
-        color: var(--text-color);
-        padding: 4px 8px;
-        margin: 2px;
-        border-radius: 4px;
-        font-size: 0.8rem;
-      }
-      .work-footer {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-top: auto;
-        color: var(--text-muted);
-        font-size: 0.9rem;
-      }
-      .work-btn {
-        text-decoration: none;
-        color: var(--accent-color);
-        font-weight: 700;
-        display: inline-block;
-        transition: color 0.2s cubic-bezier(0.22, 0.9, 0.35, 1),
-          opacity 0.2s linear;
-      }
-      .work-btn:hover {
-        color: var(--accent-hover);
       }
 
       /* Remove underline in all circumstances */
@@ -1100,10 +1316,62 @@
         font-size: 0.9rem;
       }
 
+      /* Responsive rules: exact breakpoints requested */
+      /* default (mobile-first) => 1 card */
+      .visual-items {
+        --visual-count: 1;
+      }
+
+      /* 475px -> 1 card (explicit per request) */
+      @media (min-width: 475px) {
+        .visual-items {
+          --visual-count: 1;
+        }
+      }
+
+      /* 640px -> 2 cards */
+      @media (min-width: 640px) {
+        .visual-items {
+          --visual-count: 2;
+        }
+      }
+
+      /* 1024px and above -> 4 cards */
+      @media (min-width: 1024px) {
+        .visual-items {
+          --visual-count: 4;
+        }
+
+        .why .panel {
+          box-shadow: 0 8px 30px rgba(12, 13, 14, 0.08);
+        }
+      }
+
+      /* minor mobile tweaks */
+      @media (max-width: 480px) {
+        .testimonial-avatar img {
+          width: 72px;
+          height: 72px;
+        }
+        .tour-image img {
+          height: 180px;
+        }
+        .tours-title {
+          font-size: 1.6rem;
+        }
+      }
+
+      /* helpful utility to force stable heights (if you need) */
+      .carousel-track > * {
+        display: block;
+      }
+
       /* Testimonials Section */
       .testimonials-section {
         padding: 72px 0;
-        background: var(--card-bg-light);
+        background: var(
+          --card-bg-light
+        ); /* Changed to use theme-based variable */
         text-align: center;
       }
       .testimonials-container {
@@ -1116,7 +1384,7 @@
         font-size: 1.5rem;
         margin-bottom: 8px;
         font-family: var(--font-elegant);
-        text-transform: capitalize;
+        text-transform: capitalize; /* Only first letter capitalized */
       }
       .testimonials-title {
         font-size: 2.2rem;
@@ -1168,7 +1436,7 @@
         font-weight: 700;
         font-family: var(--font-secondary);
         text-transform: uppercase;
-        color: white;
+        color: white; /* Changed to white color */
       }
 
       .cta-subtitle {
@@ -1197,7 +1465,7 @@
         position: relative;
         overflow: hidden;
         z-index: 1;
-        transition: color 0.3s ease;
+        transition: color 0.3s ease; /* Removed transform transition */
       }
 
       .cta-btn-primary {
@@ -1231,9 +1499,17 @@
         height: 100%;
       }
 
+      .cta-btn:hover {
+        /* Removed transform: translateY(-3px) */
+      }
+
       /* Footer */
       .footer {
-        background: linear-gradient(180deg, #12121fff, #000) !important;
+        background: linear-gradient(
+          180deg,
+          #12121fff,
+          #000
+        ) !important; /* Always dark */
         color: var(--footer-text);
         padding: 60px 20px 20px;
         position: relative;
@@ -1248,7 +1524,7 @@
       }
 
       .footer-column {
-        text-align: left;
+        text-align: left; /* Changed to left alignment */
       }
 
       .footer-column h4 {
@@ -1263,12 +1539,12 @@
       .footer-column ul {
         list-style: none;
         padding: 0;
-        text-align: left;
+        text-align: left; /* Changed to left alignment */
       }
 
       .footer-column ul li {
         margin-bottom: 10px;
-        text-align: left;
+        text-align: left; /* Changed to left alignment */
       }
 
       .footer-column ul li a {
@@ -1285,9 +1561,9 @@
       .social-links {
         display: flex;
         align-items: center;
-        justify-content: flex-start;
+        justify-content: flex-start; /* Changed to left alignment */
         gap: 15px;
-        margin-top: 15px;
+        margin-top: 15px; /* Added margin */
       }
 
       .social-links a {
@@ -1317,7 +1593,7 @@
         font-size: 14px;
         display: flex;
         align-items: center;
-        justify-content: center;
+        justify-content: center; /* Changed to center */
         position: relative;
       }
 
@@ -1328,7 +1604,7 @@
       /* Back to top button - positioned at bottom-right corner */
       .back-to-top {
         position: absolute;
-        right: 20px;
+        right: 50px;
         bottom: 80px;
         width: 40px;
         height: 40px;
@@ -1345,6 +1621,7 @@
 
       .back-to-top:hover {
         background: var(--secondary-hover);
+        /* Removed transform: translateY(-3px) */
       }
 
       /* WhatsApp Floating Button - Smaller and Cute */
@@ -1372,98 +1649,11 @@
         box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
       }
 
-      /* === STYLES THAT SHOULD BE MOVED TO UTILS.CSS === */
-      /* Enhanced Scroll Animation Classes */
-      .scroll-animate {
-        opacity: 0;
-        transform: translateY(60px);
-        transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-      }
-
-      .scroll-animate.animate-slide-left {
-        transform: translateX(-60px) translateY(30px);
-      }
-
-      .scroll-animate.animate-slide-right {
-        transform: translateX(60px) translateY(30px);
-      }
-
-      .scroll-animate.animate-scale {
-        transform: scale(0.8) translateY(30px);
-      }
-
-      .scroll-animate.animate-fade {
-        transform: translateY(30px);
-      }
-
-      .scroll-animate.visible {
-        opacity: 1;
-        transform: translateX(0) translateY(0) scale(1);
-      }
-
-      /* Text Animation Classes */
-      .text-animate {
-        opacity: 0;
-        transform: translateY(30px);
-        transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-      }
-
-      .text-animate.visible {
-        opacity: 1;
-        transform: translateY(0);
-      }
-
-      /* Stagger animation delays */
-      .scroll-animate:nth-child(1) {
-        transition-delay: 0s;
-      }
-      .scroll-animate:nth-child(2) {
-        transition-delay: 0.1s;
-      }
-      .scroll-animate:nth-child(3) {
-        transition-delay: 0.2s;
-      }
-      .scroll-animate:nth-child(4) {
-        transition-delay: 0.3s;
-      }
-      .scroll-animate:nth-child(5) {
-        transition-delay: 0.4s;
-      }
-      .scroll-animate:nth-child(6) {
-        transition-delay: 0.5s;
-      }
-
-      /* Text stagger delays */
-      .text-animate:nth-child(1) {
-        transition-delay: 0s;
-      }
-      .text-animate:nth-child(2) {
-        transition-delay: 0.15s;
-      }
-      .text-animate:nth-child(3) {
-        transition-delay: 0.3s;
-      }
-
-      /* ANIMATIONS */
-      .reveal {
-        opacity: 0;
-        transform: translateY(20px);
-        transition: opacity 0.6s ease, transform 0.6s ease;
-      }
-
-      .reveal.visible {
-        opacity: 1;
-        transform: translateY(0);
-      }
-
-      /* ===========================
-                         RESPONSIVE BREAKPOINTS - UNIFORM
-                        =========================================== */
+      /* ===========================================
+                                   RESPONSIVE BREAKPOINTS
+                                  =========================================== */
 
       /* xs - Default (mobile first) */
-      .visual-items {
-        --visual-count: 1;
-      }
 
       /* sm - 475px */
       @media (min-width: 475px) {
@@ -1477,9 +1667,24 @@
       }
 
       /* md - 640px */
-      @media (min-width: 640px) {
-        .visual-items {
-          --visual-count: 2;
+      @media (min-width: 1024px) {
+        .split {
+          grid-template-columns: 1fr 1fr;
+          gap: 30px; /* Reduced gap */
+        }
+
+        .why .panel {
+          grid-template-columns: 1fr 1fr;
+        }
+
+        .why .info {
+          padding: 56px;
+        }
+
+        /* Feature layout for medium screens */
+        .feature {
+          flex-direction: row;
+          text-align: left;
         }
       }
 
@@ -1514,44 +1719,7 @@
         }
 
         .split {
-          grid-template-columns: 1fr 1fr;
-          gap: 30px;
-        }
-
-        .why .panel {
-          grid-template-columns: 1fr 1fr;
-        }
-
-        .why .info {
-          padding: 56px;
-        }
-
-        /* Feature layout for medium screens */
-        .feature {
-          flex-direction: row;
-          text-align: left;
-        }
-
-        .visual-items {
-          --visual-count: 4;
-        }
-
-        .why .panel {
-          box-shadow: 0 8px 30px rgba(12, 13, 14, 0.08);
-        }
-
-        .navbar {
-          height: 80px;
-        }
-
-        .nav-logo img {
-          height: 75px;
-          display: block;
-        }
-
-        .mobile-panel,
-        .overlay {
-          display: none;
+          margin-top: 6rem;
         }
 
         /* Footer layout for desktop */
@@ -1561,29 +1729,6 @@
 
         .social-links {
           justify-content: flex-start;
-        }
-      }
-
-      /* Mobile-specific adjustments */
-      @media (max-width: 1023px) {
-        /* About Us Section - Text before image on mobile */
-        .split {
-          display: flex;
-          flex-direction: column-reverse;
-        }
-
-        .split .media {
-          height: 300px; /* Fixed height for mobile */
-        }
-
-        /* Why Choose Us Section - Adjust image height */
-        .why .image {
-          min-height: 300px; /* Fixed height for mobile */
-        }
-
-        /* Add margin between sections for better spacing */
-        .section {
-          margin-bottom: var(--spacing-xl);
         }
       }
 
@@ -1609,231 +1754,11 @@
         }
       }
 
-      /* Minor mobile tweaks */
-      @media (max-width: 480px) {
-        .testimonial-avatar img {
-          width: 72px;
-          height: 72px;
-        }
-        .tour-image img {
-          height: 180px;
-        }
-        .tours-title {
-          font-size: 1.6rem;
-        }
-      }
-
-      /* helpful utility to force stable heights */
-      .carousel-track > * {
-        display: block;
-      }
-
-      /* WhatsApp button styles */
-      .whatsapp-btn {
-        --btn-h: 44px;
-        display: inline-flex;
-        align-items: center;
-        gap: 10px;
-        height: var(--btn-h);
-        border-radius: 999px;
-        border: 0;
-        cursor: pointer;
-        padding: 0 12px;
-        width: 48px;
-        overflow: hidden;
-        position: relative;
-        background: linear-gradient(180deg, #25d366, #20c55c);
-        color: #fff;
-        font-weight: 700;
-        transition: width 700ms var(--transition),
-          box-shadow 240ms var(--transition), transform 200ms var(--transition);
-        box-shadow: 0 8px 30px rgba(37, 211, 102, 0.14);
-        display: flex;
-        align-items: center;
-        justify-content: flex-start;
-      }
-      .whatsapp-btn .w-icon {
-        width: 34px;
-        text-align: center;
-        font-size: 18px;
-        z-index: 2;
-      }
-      .whatsapp-btn .w-label {
-        opacity: 0;
-        transform: translateX(-6px);
-        white-space: nowrap;
-        z-index: 2;
-        transition: opacity 420ms var(--transition) 0.12s,
-          transform 420ms var(--transition) 0.12s;
-      }
-      .whatsapp-btn::after {
-        content: "";
-        position: absolute;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        height: 0%;
-        background: #000;
-        z-index: 1;
-        transition: height 420ms ease-in-out;
-        transform-origin: bottom;
-        border-radius: 999px;
-        opacity: 0.95;
-        pointer-events: none;
-      }
-      .whatsapp-btn.expand {
-        width: 170px;
-      }
-      .whatsapp-btn.expand .w-label {
-        opacity: 1;
-        transform: none;
-      }
-      .whatsapp-btn:hover::after {
-        height: 100%;
-      }
-      .whatsapp-btn:hover .w-label,
-      .whatsapp-btn:hover .w-icon {
-        color: #fff;
-        z-index: 3;
-      }
-      .whatsapp-btn:hover {
-        box-shadow: 0 18px 46px rgba(2, 6, 23, 0.12);
-      }
-
-      /* ===========================
-                       MOBILE: hamburger & slide panel
-                      =========================== */
-      .hamburger {
-        display: none;
-        background: none;
-        border: 0;
-        font-size: 20px;
-        cursor: pointer;
-        color: var(--text-color);
-      }
-
-      .mobile-panel {
-        position: fixed;
-        top: 0;
-        right: -150%;
-        width: 100%;
-        max-width: 420px;
-        height: 100vh;
-        background: linear-gradient(180deg, #0b0f11, #091214);
-        box-shadow: -50px 0 80px rgba(2, 6, 23, 0.6);
-        transition: right 0.46s var(--transition);
-        z-index: 1400;
-        display: flex;
-        flex-direction: column;
-        padding: 28px;
-        color: var(--footer-text);
-      }
-      .mobile-panel.open {
-        right: 0;
-      }
-      .mobile-panel .close-btn {
-        margin-left: auto;
-        background: none;
-        border: 0;
-        font-size: 22px;
-        cursor: pointer;
-        color: var(--text-muted);
-      }
-
-      .mobile-links {
-        margin-top: 18px;
-        display: flex;
-        flex-direction: column;
-        gap: 6px;
-      }
-      .mobile-links a,
-      .mobile-links button {
-        color: var(--footer-text);
-        text-decoration: none;
-        font-weight: 700;
-        font-size: 16px;
-        text-align: left;
-        background: none;
-        border: 0;
-        padding: 12px 6px;
-        border-radius: 8px;
-        cursor: pointer;
-      }
-      .mobile-sublinks {
-        display: none;
-        flex-direction: column;
-        gap: 6px;
-        padding-left: 12px;
-        margin-bottom: 8px;
-      }
-      .mobile-sublinks a {
-        font-weight: 600;
-        color: #cbd6d8;
-        padding: 10px 6px;
-        border-radius: 6px;
-        text-decoration: none;
-      }
-
-      .overlay {
-        position: fixed;
-        inset: 0;
-        background: rgba(2, 6, 23, 0.6);
-        opacity: 0;
-        visibility: hidden;
-        transition: opacity 0.3s ease;
-        z-index: 1350;
-      }
-      .overlay.show {
-        opacity: 1;
-        visibility: visible;
-      }
-
-      @media (max-width: 1023px) {
-        .nav-center {
-          display: none;
-        }
-        .nav-logo {
-          left: 12px;
-        }
-        .nav-cta {
-          right: 12px;
-        }
-        .whatsapp-btn {
-          display: none;
-        }
-        .hamburger {
-          display: block;
-          position: relative;
-          right: 0;
-        }
-      }
-
-      /* Dropdown menu fix - Prevent dropdown from closing when clicking sublinks */
-      @media (min-width: 1024px) {
-        .nav-item:hover > .dropdown {
-          opacity: 1;
-          visibility: visible;
-          transform: translateX(-50%) translateY(0);
-          pointer-events: auto;
-        }
-
-        .nav-item {
-          padding-bottom: 15px;
-          margin-bottom: -15px;
-        }
-      }
-
-      /* Hero, Navbar, Mobile Panel, and Overflow fixes */
       .hero,
       .navbar,
       .mobile-panel,
       .overlay {
         max-width: 100%;
-        overflow-x: hidden;
-      }
-
-      html,
-      body {
         overflow-x: hidden;
       }
     </style>
@@ -2383,171 +2308,6 @@
           </div>
 
           <div class="carousel-dots" id="toursDots"></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Work and Stay Abroad Section -->
-    <section class="work-section">
-      <div class="work-container">
-        <h4 class="work-subtitle">International Opportunities</h4>
-        <h2 class="work-title">Work & Stay Abroad</h2>
-
-        <div class="carousel-wrapper visual-items" id="workWrapper">
-          <div class="carousel-track" id="workTrack">
-            <!-- 6 work cards -->
-            <div class="work-card">
-              <div class="work-image">
-                <img
-                  src="assets/images/w1.webp"
-                  alt="Dubai Opportunities"
-                /><span class="work-badge">HOT</span>
-              </div>
-              <div class="work-content">
-                <h3 class="work-title">Dubai, UAE</h3>
-                <div class="work-location">
-                  <i class="fas fa-map-marker-alt"></i> United Arab Emirates
-                </div>
-                <div class="work-positions">
-                  <span class="work-position">Carpentry</span>
-                  <span class="work-position">Painter</span>
-                  <span class="work-position">Furniture Helper</span>
-                  <span class="work-position">General Worker</span>
-                </div>
-                <div class="work-footer">
-                  <span><i class="fas fa-briefcase"></i> 50+ Positions</span
-                  ><a class="work-btn" href="#">Explore →</a>
-                </div>
-              </div>
-            </div>
-
-            <div class="work-card">
-              <div class="work-image">
-                <img
-                  src="assets/images/w6.webp"
-                  alt="Abu Dhabi Opportunities"
-                /><span class="work-badge">NEW</span>
-              </div>
-              <div class="work-content">
-                <h3 class="work-title">Abu Dhabi, UAE</h3>
-                <div class="work-location">
-                  <i class="fas fa-map-marker-alt"></i> United Arab Emirates
-                </div>
-                <div class="work-positions">
-                  <span class="work-position">Carpentry</span>
-                  <span class="work-position">Painter</span>
-                  <span class="work-position">Furniture Helper</span>
-                  <span class="work-position">General Worker</span>
-                </div>
-                <div class="work-footer">
-                  <span><i class="fas fa-briefcase"></i> 30+ Positions</span
-                  ><a class="work-btn" href="#">Explore →</a>
-                </div>
-              </div>
-            </div>
-
-            <div class="work-card">
-              <div class="work-image">
-                <img src="assets/images/w2.jpg" alt="Dubai Hospitality" /><span
-                  class="work-badge"
-                  >POPULAR</span
-                >
-              </div>
-              <div class="work-content">
-                <h3 class="work-title">Dubai Hospitality</h3>
-                <div class="work-location">
-                  <i class="fas fa-map-marker-alt"></i> United Arab Emirates
-                </div>
-                <div class="work-positions">
-                  <span class="work-position">Hotel Staff</span>
-                  <span class="work-position">Restaurant Service</span>
-                  <span class="work-position">Customer Service</span>
-                  <span class="work-position">Housekeeping</span>
-                </div>
-                <div class="work-footer">
-                  <span><i class="fas fa-briefcase"></i> 40+ Positions</span
-                  ><a class="work-btn" href="#">Explore →</a>
-                </div>
-              </div>
-            </div>
-
-            <div class="work-card">
-              <div class="work-image">
-                <img
-                  src="assets/images/w3.png"
-                  alt="Abu Dhabi Construction"
-                /><span class="work-badge">URGENT</span>
-              </div>
-              <div class="work-content">
-                <h3 class="work-title">Abu Dhabi Construction</h3>
-                <div class="work-location">
-                  <i class="fas fa-map-marker-alt"></i> United Arab Emirates
-                </div>
-                <div class="work-positions">
-                  <span class="work-position">Site Supervisor</span>
-                  <span class="work-position">Skilled Labor</span>
-                  <span class="work-position">Equipment Operator</span>
-                  <span class="work-position">Safety Officer</span>
-                </div>
-                <div class="work-footer">
-                  <span><i class="fas fa-briefcase"></i> 25+ Positions</span
-                  ><a class="work-btn" href="#">Explore →</a>
-                </div>
-              </div>
-            </div>
-
-            <div class="work-card">
-              <div class="work-image">
-                <img src="assets/images/w4.png" alt="Dubai Retail" /><span
-                  class="work-badge"
-                  >NEW</span
-                >
-              </div>
-              <div class="work-content">
-                <h3 class="work-title">Dubai Retail Sector</h3>
-                <div class="work-location">
-                  <i class="fas fa-map-marker-alt"></i> United Arab Emirates
-                </div>
-                <div class="work-positions">
-                  <span class="work-position">Sales Assistant</span>
-                  <span class="work-position">Store Manager</span>
-                  <span class="work-position">Cashier</span>
-                  <span class="work-position">Merchandiser</span>
-                </div>
-                <div class="work-footer">
-                  <span><i class="fas fa-briefcase"></i> 35+ Positions</span
-                  ><a class="work-btn" href="#">Explore →</a>
-                </div>
-              </div>
-            </div>
-
-            <div class="work-card">
-              <div class="work-image">
-                <img
-                  src="assets/images/w5.webp"
-                  alt="Abu Dhabi Oil & Gas"
-                /><span class="work-badge">HIGH PAY</span>
-              </div>
-              <div class="work-content">
-                <h3 class="work-title">Abu Dhabi Oil & Gas</h3>
-                <div class="work-location">
-                  <i class="fas fa-map-marker-alt"></i> United Arab Emirates
-                </div>
-                <div class="work-positions">
-                  <span class="work-position">Technician</span>
-                  <span class="work-position">Engineer</span>
-                  <span class="work-position">Welder</span>
-                  <span class="work-position">Safety Inspector</span>
-                </div>
-                <div class="work-footer">
-                  <span><i class="fas fa-briefcase"></i> 20+ Positions</span
-                  ><a class="work-btn" href="#">Explore →</a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="carousel-dots" id="workDots"></div>
         </div>
       </div>
     </section>
@@ -3290,14 +3050,6 @@
           trackId: "toursTrack",
           dotsId: "toursDots",
           autoMs: 6000, // 6s for tours
-        });
-
-        // Work Carousel
-        new CircularCarousel({
-          wrapperId: "workWrapper",
-          trackId: "workTrack",
-          dotsId: "workDots",
-          autoMs: 4000, // 4s for work section as requested
         });
 
         // Testimonials Carousel
