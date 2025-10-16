@@ -3,7 +3,80 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>OG STAR TRAVEL & TOURS - Relish the Experience</title>
+    <title>
+      OG STAR TRAVEL & TOURS - Relish the Experience | Travel, Work & Study
+      Abroad
+    </title>
+
+    <!-- SEO Meta Tags -->
+    <meta
+      name="description"
+      content="Explore the world with OG STAR TRAVEL & TOURS. We offer travel packages, work & study abroad programs, visa assistance, and job placement services. Discover amazing destinations in Ghana and beyond."
+    />
+    <meta
+      name="keywords"
+      content="travel tours, work abroad, study abroad, visa assistance, Ghana tours, travel agency, international jobs, OG Star Travel"
+    />
+    <meta name="author" content="OG STAR TRAVEL & TOURS" />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Open Graph Meta Tags -->
+    <meta
+      property="og:title"
+      content="OG STAR TRAVEL & TOURS - Relish the Experience"
+    />
+    <meta
+      property="og:description"
+      content="Explore the world with our curated travel experiences and discover new horizons. We offer travel packages, work & study abroad programs, and visa assistance."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.ogstartravel.com" />
+    <meta
+      property="og:image"
+      content="https://www.ogstartravel.com/assets/images/logo.png"
+    />
+    <meta property="og:site_name" content="OG STAR TRAVEL & TOURS" />
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="OG STAR TRAVEL & TOURS - Relish the Experience"
+    />
+    <meta
+      name="twitter:description"
+      content="Explore the world with our curated travel experiences and discover new horizons."
+    />
+    <meta
+      name="twitter:image"
+      content="https://www.ogstartravel.com/assets/images/logo.png"
+    />
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://www.ogstartravel.com" />
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "TravelAgency",
+        "name": "OG STAR TRAVEL & TOURS",
+        "description": "Travel agency offering tours, work abroad programs, and visa assistance",
+        "url": "https://www.ogstartravel.com",
+        "logo": "https://www.ogstartravel.com/assets/images/logo.png",
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "telephone": "+233546945944",
+          "contactType": "customer service"
+        },
+        "sameAs": [
+          "https://www.facebook.com/ogstartravel",
+          "https://www.instagram.com/ogstartravel",
+          "https://wa.me/233546945944"
+        ]
+      }
+    </script>
+
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
@@ -86,7 +159,7 @@
         :root {
           --primary-color: #3fd0c6; /* Softer teal */
           --secondary-color: #ff8585; /* Gentle coral */
-          --accent-color: #ffe080; /* Warm sand glow */
+          --accent-color: #ffd042ff; /* Warm sand glow */
           --highlight-color: #48cae4; /* Ocean highlight */
 
           --text-color: #f5f5f5;
@@ -218,7 +291,7 @@
         height: 0%;
         background: rgba(0, 0, 0, 0.2);
         z-index: -1;
-        transition: height 420ms ease-in-out;
+        transition: all 0.3s ease-in-out;
         transform-origin: bottom;
         border-radius: inherit;
         opacity: 0.95;
@@ -277,6 +350,7 @@
 
       .navbar::-webkit-scrollbar {
         display: none;
+        visibility: hidden;
       }
 
       .navbar.hidden {
@@ -314,6 +388,7 @@
         display: flex;
         align-items: center;
         gap: 12px;
+        transition: all 0.3s;
       }
       .nav-center {
         margin: 0 auto;
@@ -345,8 +420,7 @@
         letter-spacing: 0.6px;
         padding: 6px 4px;
         text-decoration: none;
-        transition: color 420ms var(--transition),
-          transform 220ms var(--transition);
+        transition: all 0.3s;
         position: relative;
       }
 
@@ -361,7 +435,7 @@
         bottom: -2px;
         background: var(--secondary-color);
         border-radius: 2px;
-        transition: transform 520ms var(--transition);
+        transition: all 0.3s;
       }
       .nav-link:hover {
         color: var(--secondary-color);
@@ -369,44 +443,6 @@
       .nav-link:hover::after,
       .nav-link.active::after {
         transform: scaleX(1);
-      }
-
-      /* Desktop dropdown (floating) */
-      .dropdown {
-        position: absolute;
-        top: calc(
-          100% - 6px
-        ); /* Changed from calc(var(--nav-height) - 6px) to make it closer */
-        left: 50%;
-        transform: translateX(-50%) translateY(10px);
-        background: var(--bg-primary);
-        border-radius: 10px;
-        padding: 10px;
-        box-shadow: 0 18px 40px rgba(4, 10, 15, 0.08);
-        border: 1px solid rgba(10, 12, 13, 0.04);
-        min-width: 210px;
-        opacity: 0;
-        visibility: hidden;
-        pointer-events: none;
-        transition: opacity 260ms var(--transition),
-          transform 260ms var(--transition), visibility 260ms;
-        z-index: 50;
-        margin-top: 0; /* Added to reduce gap */
-      }
-      .dropdown .sublink {
-        display: block;
-        padding: 10px 12px;
-        color: var(--text-muted);
-        text-decoration: none;
-        border-radius: 6px;
-        font-weight: 600;
-        transition: color 180ms var(--transition),
-          background 180ms var(--transition);
-        text-align: center;
-      }
-      .dropdown .sublink:hover {
-        background: rgba(255, 215, 0, 0.1); /* Updated with new gold color */
-        color: var(--secondary-color);
       }
 
       /* Hero Section */
@@ -803,14 +839,16 @@
         margin: 0 auto;
         padding: 0 20px;
       }
-      .tours-subtitle {
+      .tours-subtitle,
+      .work-subtitle {
         color: var(--secondary-color);
         font-size: 1.5rem;
         margin-bottom: 8px;
         font-family: var(--font-elegant);
         text-transform: capitalize;
       }
-      .tours-title {
+      .tours-title,
+      .works-title {
         font-size: 2.2rem;
         font-weight: 700;
         color: var(--primary-color);
@@ -829,21 +867,6 @@
         max-width: 1240px;
         margin: 0 auto;
         padding: 0 20px;
-      }
-      .work-subtitle {
-        color: var(--secondary-color);
-        font-size: 1.5rem;
-        margin-bottom: 8px;
-        font-family: var(--font-elegant);
-        text-transform: capitalize;
-      }
-      .work-title {
-        font-size: 2.2rem;
-        font-weight: 700;
-        color: var(--primary-color);
-        margin-bottom: 28px;
-        text-transform: uppercase;
-        font-family: var(--font-secondary);
       }
 
       /* Carousel common */
@@ -944,7 +967,8 @@
         flex-direction: column;
         flex: 1;
       }
-      .tour-title {
+      .tour-title,
+      .work-title {
         font-size: 1.05rem;
         margin: 6px 0;
         font-weight: 700;
@@ -1002,7 +1026,7 @@
         top: 12px;
         left: 12px;
         background: var(--accent-color);
-        color: #333;
+        color: #111;
         padding: 6px 10px;
         border-radius: 8px;
         font-weight: 700;
@@ -1014,12 +1038,6 @@
         display: flex;
         flex-direction: column;
         flex: 1;
-      }
-      .work-title {
-        font-size: 1.05rem;
-        margin: 6px 0;
-        font-weight: 700;
-        color: var(--text-color);
       }
       .work-location {
         color: var(--text-muted);
@@ -1224,7 +1242,7 @@
         height: 0%;
         background: #000;
         z-index: -1;
-        transition: height 420ms ease-in-out;
+        transition: height 0.3s ease-in-out;
         transform-origin: bottom;
         border-radius: inherit;
         opacity: 0.95;
@@ -1549,6 +1567,11 @@
           height: 80px;
         }
 
+        .navbar::-webkit-scrollbar {
+          display: none;
+          visibility: hidden;
+        }
+
         .nav-logo img {
           height: 75px;
           display: block;
@@ -1595,7 +1618,7 @@
       /* 2xl - 1280px */
       @media (min-width: 1280px) {
         .container {
-          max-width: 1280px;
+          max-width: 120px;
         }
       }
 
@@ -1623,7 +1646,8 @@
         .tour-image img {
           height: 180px;
         }
-        .tours-title {
+        .tours-title,
+        .works-title {
           font-size: 1.6rem;
         }
       }
@@ -1641,7 +1665,7 @@
         gap: 10px;
         height: var(--btn-h);
         border-radius: 999px;
-        border: 0;
+        border: 2px solid #f0f0f0;
         cursor: pointer;
         padding: 0 12px;
         width: 48px;
@@ -1650,8 +1674,7 @@
         background: linear-gradient(180deg, #25d366, #20c55c);
         color: #fff;
         font-weight: 700;
-        transition: width 700ms var(--transition),
-          box-shadow 240ms var(--transition), transform 200ms var(--transition);
+        transition: all 0.4s;
         box-shadow: 0 8px 30px rgba(37, 211, 102, 0.14);
         display: flex;
         align-items: center;
@@ -1668,8 +1691,7 @@
         transform: translateX(-6px);
         white-space: nowrap;
         z-index: 2;
-        transition: opacity 420ms var(--transition) 0.12s,
-          transform 420ms var(--transition) 0.12s;
+        transition: all 0.4s;
       }
       .whatsapp-btn::after {
         content: "";
@@ -1680,7 +1702,7 @@
         height: 0%;
         background: #000;
         z-index: 1;
-        transition: height 420ms ease-in-out;
+        transition: all 0.3s;
         transform-origin: bottom;
         border-radius: 999px;
         opacity: 0.95;
@@ -1688,6 +1710,7 @@
       }
       .whatsapp-btn.expand {
         width: 170px;
+        transition: all 0.3s;
       }
       .whatsapp-btn.expand .w-label {
         opacity: 1;
@@ -1813,21 +1836,6 @@
         }
       }
 
-      /* Dropdown menu fix - Prevent dropdown from closing when clicking sublinks */
-      @media (min-width: 1024px) {
-        .nav-item:hover > .dropdown {
-          opacity: 1;
-          visibility: visible;
-          transform: translateX(-50%) translateY(0);
-          pointer-events: auto;
-        }
-
-        .nav-item {
-          padding-bottom: 15px;
-          margin-bottom: -15px;
-        }
-      }
-
       /* Hero, Navbar, Mobile Panel, and Overflow fixes */
       .hero,
       .navbar,
@@ -1837,9 +1845,79 @@
         overflow-x: hidden;
       }
 
+      .navbar::-webkit-scrollbar {
+        display: none;
+        visibility: hidden;
+      }
+
       html,
       body {
         overflow-x: hidden;
+      }
+
+      /* Navigation */
+      .navbar {
+        position: fixed;
+        inset: 0 0 auto 0;
+        height: var(--nav-height);
+        display: flex;
+        align-items: center;
+        background: var(--nav-bg);
+        backdrop-filter: blur(6px) saturate(120%);
+        border-bottom: 1px solid rgba(10, 12, 13, 0.06);
+        z-index: 9999;
+        box-shadow: 0 8px 30px rgba(15, 23, 42, 0.04);
+        transition: transform 0.3s ease;
+        /* Remove all overflow properties to allow dropdown to extend */
+      }
+
+      /* Hide scrollbar completely */
+      .navbar::-webkit-scrollbar {
+        display: none;
+        width: 0;
+        height: 0;
+      }
+
+      .navbar {
+        -ms-overflow-style: none; /* IE and Edge */
+        scrollbar-width: none; /* Firefox */
+      }
+
+      .nav-inner {
+        position: relative;
+        width: 100%;
+        max-width: 1240px;
+        margin: 0 auto;
+        height: 100%;
+        padding: 0 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: visible; /* Allow dropdown to extend beyond */
+      }
+
+      .nav-center {
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        pointer-events: auto;
+        overflow: visible; /* Allow dropdown to extend beyond */
+      }
+
+      .nav-menu {
+        display: flex;
+        gap: 28px;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        align-items: center;
+        overflow: visible; /* Allow dropdown to extend beyond */
+      }
+
+      .nav-item {
+        position: relative;
+        overflow: visible; /* Allow dropdown to extend beyond */
       }
     </style>
   </head>
@@ -1866,20 +1944,18 @@
 
             <li class="nav-item" role="none">
               <a href="#services" class="nav-link" role="menuitem">Services</a>
-              <div class="dropdown" role="menu" aria-hidden="true">
-                <a href="#travel" class="sublink">Travel Abroad</a>
-                <a href="#work" class="sublink">Work &amp; Stay Abroad</a>
-              </div>
+            </li>
+
+            <li class="nav-item" role="none">
+              <a href="#destinations" class="nav-link" role="menuitem"
+                >Destinations</a
+              >
             </li>
 
             <li class="nav-item" role="none">
               <a href="#information" class="nav-link" role="menuitem"
                 >Information</a
               >
-              <div class="dropdown" role="menu" aria-hidden="true">
-                <a href="#about" class="sublink">About Us</a>
-                <a href="#faq" class="sublink">Frequently Asked Questions</a>
-              </div>
             </li>
 
             <li class="nav-item" role="none">
@@ -1931,60 +2007,11 @@
 
       <nav class="mobile-links" aria-label="Mobile primary navigation">
         <a href="#home" class="m-link">Home</a>
-
-        <div>
-          <button class="m-link m-toggle" data-target="mServices">
-            Services
-            <i
-              class="fas fa-chevron-down"
-              style="opacity: 0.6; margin-left: 6px"
-            ></i>
-          </button>
-          <div class="mobile-sublinks" id="mServices">
-            <a href="#travel">Travel Abroad</a>
-            <a href="#work">Work &amp; Stay Abroad</a>
-          </div>
-        </div>
-
-        <div>
-          <button class="m-link m-toggle" data-target="mInfo">
-            Information
-            <i
-              class="fas fa-chevron-down"
-              style="opacity: 0.6; margin-left: 6px"
-            ></i>
-          </button>
-          <div class="mobile-sublinks" id="mInfo">
-            <a href="#about">About Us</a>
-            <a href="#faq">Frequently Asked Questions</a>
-          </div>
-        </div>
-
+        <a href="#services" class="m-link">Services</a>
+        <a href="#destinations" class="m-link">Destinations</a>
+        <a href="#information" class="m-link">Information</a>
         <a href="#contact" class="m-link">Contact</a>
         <a href="#blog" class="m-link">Blog</a>
-
-        <!-- WhatsApp in mobile panel as last item -->
-        <div
-          style="
-            margin-top: 18px;
-            padding-top: 12px;
-            border-top: 1px solid rgba(255, 255, 255, 0.04);
-          "
-        >
-          <button
-            class="whatsapp-btn"
-            id="whatsappMobile"
-            style="
-              width: 100%;
-              background: linear-gradient(180deg, #25d366, #20c55c);
-              color: #fff;
-              justify-content: center;
-            "
-          >
-            <span class="w-icon"><i class="fab fa-whatsapp"></i></span>
-            <span class="w-label">WhatsApp Us</span>
-          </button>
-        </div>
       </nav>
     </aside>
 
@@ -2125,6 +2152,76 @@
             <p>
               Design your perfect journey with our bespoke travel packages
               tailored to your preferences.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Destinations Section -->
+    <section class="section destinations" id="destinations">
+      <div class="container">
+        <h4 class="section-subtitle">Explore Our</h4>
+        <h2 class="section-title">Popular Destinations</h2>
+        <div class="services-grid">
+          <div class="service-card scroll-animate animate-scale">
+            <div class="service-icon">
+              <i class="fas fa-globe-africa"></i>
+            </div>
+            <h3>Ghana</h3>
+            <p>
+              Discover the rich culture, history, and natural beauty of Ghana,
+              from vibrant cities to serene beaches.
+            </p>
+          </div>
+          <div class="service-card scroll-animate animate-scale">
+            <div class="service-icon">
+              <i class="fas fa-mosque"></i>
+            </div>
+            <h3>Dubai</h3>
+            <p>
+              Experience the luxury and innovation of Dubai, a city of
+              architectural marvels and world-class entertainment.
+            </p>
+          </div>
+          <div class="service-card scroll-animate animate-scale">
+            <div class="service-icon">
+              <i class="fas fa-flag-usa"></i>
+            </div>
+            <h3>United States</h3>
+            <p>
+              Explore diverse landscapes and cultures across the United States,
+              from bustling cities to natural wonders.
+            </p>
+          </div>
+          <div class="service-card scroll-animate animate-scale">
+            <div class="service-icon">
+              <i class="fas fa-crown"></i>
+            </div>
+            <h3>United Kingdom</h3>
+            <p>
+              Immerse yourself in the history and charm of the United Kingdom,
+              with its iconic landmarks and cultural heritage.
+            </p>
+          </div>
+          <div class="service-card scroll-animate animate-scale">
+            <div class="service-icon">
+              <i class="fas fa-leaf"></i>
+            </div>
+            <h3>Canada</h3>
+            <p>
+              Experience the breathtaking natural beauty and multicultural
+              cities of Canada, from mountains to coastlines.
+            </p>
+          </div>
+          <div class="service-card scroll-animate animate-scale">
+            <div class="service-icon">
+              <i class="fas fa-torii-gate"></i>
+            </div>
+            <h3>Asia</h3>
+            <p>
+              Discover the diverse cultures, cuisines, and landscapes of Asia,
+              from ancient temples to modern metropolises.
             </p>
           </div>
         </div>
@@ -2396,7 +2493,7 @@
     <section class="work-section">
       <div class="work-container">
         <h4 class="work-subtitle">International Opportunities</h4>
-        <h2 class="work-title">Work & Stay Abroad</h2>
+        <h2 class="works-title">Work & Stay Abroad</h2>
 
         <div class="carousel-wrapper visual-items" id="workWrapper">
           <div class="carousel-track" id="workTrack">
@@ -2492,7 +2589,6 @@
                   <span class="work-position">Site Supervisor</span>
                   <span class="work-position">Skilled Labor</span>
                   <span class="work-position">Equipment Operator</span>
-                  <span class="work-position">Safety Officer</span>
                 </div>
                 <div class="work-footer">
                   <span><i class="fas fa-briefcase"></i> 25+ Positions</span
@@ -2871,8 +2967,8 @@
               </div>
               <p class="testimonial-text">
                 "From the moment I inquired about their services to the end of
-                my trip, the customer service was exceptional. They went above
-                and beyond to ensure my travel experience was seamless."
+                my trip, the customer service was exceptional. They made sure my
+                travel experience was seamless."
               </p>
               <h4 class="testimonial-name">Kofi</h4>
               <p class="testimonial-role">Customer</p>
@@ -2908,12 +3004,12 @@
           <img
             src="assets/images/logo.png"
             alt="O G Star Logo"
-            style="max-width: 150px; margin-bottom: 1rem"
+            style="max-width: 150px; margin-bottom: 0"
           />
-          <p>
+          <!-- <p style="max-width: 20ch">
             O G Star Travel & Tours helps you explore the world with ease — from
             visa assistance to full tour experiences across the globe.
-          </p>
+          </p> -->
         </div>
 
         <div class="footer-column">
@@ -2921,6 +3017,7 @@
           <ul>
             <li><a href="#home">Home</a></li>
             <li><a href="#services">Services</a></li>
+            <li><a href="#destinations">Destinations</a></li>
             <li><a href="#information">Information</a></li>
             <li><a href="#contact">Contact</a></li>
             <li><a href="#blog">Blog</a></li>
@@ -2996,7 +3093,6 @@
         initWhatsAppButton();
         initCarousels();
         initNavbarScroll();
-        initDropdownMenu();
         initBackToTop();
       });
 
@@ -3193,17 +3289,6 @@
         closeBtn.addEventListener("click", closePanel);
         overlay.addEventListener("click", closePanel);
 
-        // mobile sublink toggles
-        document.querySelectorAll(".m-toggle").forEach((btn) => {
-          btn.addEventListener("click", () => {
-            const target = btn.dataset.target;
-            const el = document.getElementById(target);
-            if (!el) return;
-            const showing = window.getComputedStyle(el).display === "flex";
-            el.style.display = showing ? "none" : "flex";
-          });
-        });
-
         // Close on link click
         document.querySelectorAll(".mobile-links a").forEach((a) => {
           a.addEventListener("click", () => closePanel());
@@ -3236,7 +3321,7 @@
           const btn = whatsappDesktop;
           const label = document.getElementById("whLabel");
           const full = "WhatsApp Us";
-          const typingDelay = 60;
+          const typingDelay = 90;
           const delayBefore = 3000;
           let typedIndex = 0;
           let typingTimer = null;
@@ -3272,18 +3357,6 @@
               );
             }
           });
-        })();
-
-        // mobile whatsapp button inside panel
-        (function () {
-          const mobileBtn = whatsappMobile;
-          if (mobileBtn)
-            mobileBtn.addEventListener("click", () => {
-              window.open(
-                "https://wa.me/233546945944?text=Hello%20OG%20Star%20Travel%20%26%20Tours,%20I'm%20interested%20in%20your%20services",
-                "_blank"
-              );
-            });
         })();
       }
 
@@ -3335,63 +3408,6 @@
           }
 
           lastScrollTop = scrollTop;
-        });
-      }
-
-      // Dropdown menu fix - Prevent dropdown from closing when clicking sublinks
-      function initDropdownMenu() {
-        const navItems = document.querySelectorAll(".nav-item");
-
-        navItems.forEach((item) => {
-          const link = item.querySelector(".nav-link");
-          const dropdown = item.querySelector(".dropdown");
-
-          if (!dropdown) return;
-
-          // Prevent dropdown from closing when moving mouse to it
-          item.addEventListener("mouseenter", () => {
-            dropdown.style.opacity = "1";
-            dropdown.style.visibility = "visible";
-            dropdown.style.transform = "translateX(-50%) translateY(0)";
-            dropdown.style.pointerEvents = "auto";
-          });
-
-          item.addEventListener("mouseleave", (e) => {
-            // Only close if not moving to dropdown
-            if (!e.relatedTarget || !e.relatedTarget.closest(".dropdown")) {
-              dropdown.style.opacity = "";
-              dropdown.style.visibility = "";
-              dropdown.style.transform = "";
-              dropdown.style.pointerEvents = "";
-            }
-          });
-
-          // Keep dropdown open when hovering over it
-          dropdown.addEventListener("mouseenter", () => {
-            dropdown.style.opacity = "1";
-            dropdown.style.visibility = "visible";
-            dropdown.style.transform = "translateX(-50%) translateY(0)";
-            dropdown.style.pointerEvents = "auto";
-          });
-
-          dropdown.addEventListener("mouseleave", (e) => {
-            // Only close if not moving back to nav item
-            if (!e.relatedTarget || !e.relatedTarget.closest(".nav-item")) {
-              dropdown.style.opacity = "";
-              dropdown.style.visibility = "";
-              dropdown.style.transform = "";
-              dropdown.style.pointerEvents = "";
-            }
-          });
-
-          // Prevent sublinks from closing dropdown
-          const sublinks = dropdown.querySelectorAll(".sublink");
-          sublinks.forEach((sublink) => {
-            sublink.addEventListener("click", (e) => {
-              e.stopPropagation();
-              // Allow the link to work normally
-            });
-          });
         });
       }
 

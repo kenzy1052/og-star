@@ -1,644 +1,827 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>OG Star — Premium Navbar + WhatsApp + Footer</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Navigation Bar</title>
 
-    <!-- Font Awesome for icons -->
+    <!-- Font Awesome for Icons -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
 
     <style>
+      /* CSS Variables */
       :root {
-        --emerald: #0b6b4a; /* luxury emerald accent */
-        --whatsapp: #25d366; /* whatsapp green for CTA base */
-        --bg: rgba(255, 255, 255, 0.82);
-        --muted: #9aa3a5;
-        --text: #0f1720;
-        --nav-h: 70px;
-        --ease: cubic-bezier(0.22, 0.9, 0.35, 1);
-        --maxw: 1240px;
-        --footer-bg: #081016; /* deep dark footer */
-        --footer-text: #d7e0e2;
+        --bg-primary: #ffffff;
+        --bg-secondary: #f8fafc;
+        --bg-tertiary: #f1f5f9;
+        --text-primary: #1e293b;
+        --text-secondary: #64748b;
+        --nav-bg: rgba(255, 255, 255, 0.95);
+        --card-bg: #ffffff;
+        --border: #e2e8f0;
+        --link-color: #2563eb;
+        --accent-color: #3b82f6;
+        --gradient-primary: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+        --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+          0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        --shadow-hover: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+          0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        --radius-sm: 0.25rem;
+        --radius-md: 0.375rem;
+        --radius-lg: 0.5rem;
+        --spacing-xs: 0.25rem;
+        --spacing-sm: 0.5rem;
+        --spacing-md: 1rem;
+        --spacing-lg: 1.5rem;
+        --spacing-xl: 2rem;
+        --spacing-2xl: 3rem;
+        --spacing-3xl: 4rem;
+        --spacing-4xl: 5rem;
+        --transition-fast: 150ms;
+        --transition-normal: 300ms;
+        --transition-slow: 500ms;
+        --font-primary: "Inter", sans-serif;
+        --font-secondary: "Playfair Display", serif;
       }
 
-      * {
-        box-sizing: border-box;
+      /* Dark Theme Variables */
+      [data-theme="dark"] {
+        --bg-primary: #0f172a;
+        --bg-secondary: #1e293b;
+        --bg-tertiary: #334155;
+        --text-primary: #f1f5f9;
+        --text-secondary: #cbd5e1;
+        --nav-bg: rgba(15, 23, 42, 0.95);
+        --card-bg: #1e293b;
+        --border: #334155;
+        --link-color: #60a5fa;
+        --accent-color: #3b82f6;
+        --gradient-primary: linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%);
+        --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3),
+          0 2px 4px -1px rgba(0, 0, 0, 0.2);
+        --shadow-hover: 0 10px 15px -3px rgba(0, 0, 0, 0.3),
+          0 4px 6px -2px rgba(0, 0, 0, 0.2);
       }
+
+      /* Base Styles */
       body {
-        margin: 0;
-        font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto,
-          "Helvetica Neue", Arial;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-        color: var(--text);
-        background: #f6f7f8;
-      }
-
-      /* ===========================
-       NAVBAR (layout + style)
-       =========================== */
-      .navbar {
-        position: fixed;
-        inset: 0 0 auto 0;
-        height: var(--nav-h);
-        display: flex;
-        align-items: center;
-        background: var(--bg);
-        backdrop-filter: blur(6px) saturate(120%);
-        border-bottom: 1px solid rgba(10, 12, 13, 0.06);
-        z-index: 1200;
-        box-shadow: 0 8px 30px rgba(15, 23, 42, 0.04);
-      }
-
-      .nav-inner {
-        position: relative;
-        width: 100%;
-        max-width: var(--maxw);
-        margin: 0 auto;
-        height: 100%;
-        padding: 0 12px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-
-      /* Logo pinned to near-left corner */
-      .nav-logo {
-        position: absolute;
-        left: 12px;
-        top: 50%;
-        transform: translateY(-50%);
-      }
-      .nav-logo img {
-        height: 44px;
-        display: block;
-      }
-
-      /* WhatsApp pinned to near-right corner */
-      .nav-cta {
-        position: absolute;
-        right: 12px;
-        top: 50%;
-        transform: translateY(-50%);
-        display: flex;
-        align-items: center;
-        gap: 12px;
-      }
-
-      /* Center nav (keeps centered even when left/right items exist) */
-      .nav-center {
-        margin: 0 auto;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        pointer-events: auto;
-      }
-
-      .nav-menu {
-        display: flex;
-        gap: 28px;
-        list-style: none;
+        font-family: var(--font-primary);
+        background-color: var(--bg-primary);
+        color: var(--text-primary);
+        transition: background-color var(--transition-normal),
+          color var(--transition-normal);
         margin: 0;
         padding: 0;
-        align-items: center;
+        min-height: 100vh;
       }
 
+      /* Demo Content */
+      .demo-content {
+        padding: 100px 20px;
+        max-width: 1200px;
+        margin: 0 auto;
+        text-align: center;
+      }
+
+      .demo-content h1 {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        color: var(--text-primary);
+      }
+
+      .demo-content p {
+        font-size: 1.2rem;
+        color: var(--text-secondary);
+        max-width: 800px;
+        margin: 0 auto 2rem;
+        line-height: 1.6;
+      }
+
+      /* ===========================================
+            NAVIGATION - MOBILE FIRST
+           =========================================== */
+      .navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 999;
+        background: var(--nav-bg);
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid var(--border);
+        transition: all var(--transition-normal);
+      }
+      .navbar.scrolled {
+        box-shadow: 0 4px 20px var(--shadow);
+      }
+      .nav-container {
+        margin: 0 auto;
+        padding: 0 8px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 60px;
+      }
+      .logo {
+        transition: all var(--transition-normal);
+      }
+      .logo:hover {
+        transform: scale(1.05);
+      }
+      .logo-icon {
+        width: 90px;
+        height: auto;
+      }
+      .nav-menu {
+        position: fixed;
+        top: 60px;
+        left: -100%;
+        width: 100%;
+        height: calc(100vh - 60px);
+        background: var(--nav-bg);
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        padding: var(--spacing-xl);
+        transition: left var(--transition-normal);
+        list-style: none;
+        overflow-y: auto;
+        box-shadow: 2px 0 10px var(--shadow);
+      }
+      .nav-menu.active {
+        left: 0;
+      }
       .nav-item {
+        width: 100%;
+        text-align: left;
         position: relative;
       }
-
-      .nav-link {
-        display: inline-block;
-        color: var(--text);
-        font-weight: 600;
-        font-size: 13px;
-        text-transform: uppercase;
-        letter-spacing: 0.6px;
-        padding: 6px 4px;
-        text-decoration: none;
-        transition: color 420ms var(--ease), transform 220ms var(--ease);
+      .nav-link-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
       }
-
-      /* underline: center -> full using scaleX */
+      .nav-link {
+        color: var(--text-primary);
+        text-decoration: none;
+        font-weight: 500;
+        font-size: 16px;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+        transition: color var(--transition-fast);
+        padding: var(--spacing-md) 0;
+        display: block;
+        position: relative;
+        flex-grow: 1;
+      }
       .nav-link::after {
         content: "";
         position: absolute;
-        left: 50%;
-        transform: translateX(-50%) scaleX(0);
-        transform-origin: center;
-        width: 100%;
+        bottom: 0;
+        left: 0;
+        width: 0;
         height: 2px;
-        bottom: -8px;
-        background: var(--emerald);
-        border-radius: 2px;
-        transition: transform 520ms var(--ease); /* slower and clean */
+        background: var(--link-color);
+        transition: width var(--transition-normal);
       }
-      .nav-link:hover {
-        color: var(--emerald);
+      .nav-link:hover,
+      .nav-link.active {
+        color: var(--link-color);
       }
-      .nav-link:hover::after,
-      .nav-link.active::after {
-        transform: translateX(-50%) scaleX(1);
-      }
-
-      /* Desktop dropdown (floating) - adjusted to remove pointer gap */
-      .dropdown {
-        position: absolute;
-        /* place directly below navbar to avoid pointer gap */
-        top: calc(var(--nav-h));
-        left: 50%;
-        transform: translateX(-50%) translateY(6px); /* small offset while hidden */
-        background: linear-gradient(#fff, #fbfbfb);
-        border-radius: 10px;
-        padding: 10px;
-        box-shadow: 0 18px 40px rgba(4, 10, 15, 0.08);
-        border: 1px solid rgba(10, 12, 13, 0.04);
-        min-width: 210px;
-        opacity: 0;
-        visibility: hidden;
-        pointer-events: none;
-        transition: opacity 180ms var(--ease), transform 180ms var(--ease),
-          visibility 180ms;
-        z-index: 50;
-      }
-      .dropdown .sublink {
-        display: block;
-        padding: 10px 12px;
-        color: var(--muted);
-        text-decoration: none;
-        border-radius: 6px;
-        font-weight: 600;
-        transition: color 180ms var(--ease), background 180ms var(--ease);
-      }
-      .dropdown .sublink:hover {
-        background: rgba(11, 107, 74, 0.06);
-        color: var(--emerald);
-      }
-
-      /* Show dropdown on hover or focus-within (keyboard accessible) */
-      @media (min-width: 1024px) {
-        .nav-item:hover > .dropdown,
-        .nav-item:focus-within > .dropdown {
-          opacity: 1;
-          visibility: visible;
-          transform: translateX(-50%) translateY(0);
-          pointer-events: auto;
-        }
-      }
-
-      /* ===========================
-       WhatsApp CTA (desktop) - expand + typewriter + water-fill hover
-       =========================== */
-      .whatsapp-btn {
-        --btn-h: 44px;
-        display: inline-flex;
-        align-items: center;
-        gap: 10px;
-        height: var(--btn-h);
-        border-radius: 999px;
-        border: 0;
+      /* Dropdown Toggle for Mobile */
+      .dropdown-toggle {
+        background: none;
+        border: none;
         cursor: pointer;
-        padding: 0 12px;
-        width: 48px; /* initial circular */
-        overflow: hidden;
-        position: relative;
-        background: linear-gradient(180deg, var(--whatsapp), #20c55c);
-        color: #fff;
-        font-weight: 700;
-        transition: width 700ms var(--ease), box-shadow 240ms var(--ease),
-          transform 200ms var(--ease);
-        box-shadow: 0 8px 30px rgba(37, 211, 102, 0.14);
+        padding: var(--spacing-md);
         display: flex;
         align-items: center;
-        justify-content: flex-start;
+        justify-content: center;
+        min-width: 40px;
+        color: var(--link-color);
       }
-      .whatsapp-btn .w-icon {
-        width: 34px;
-        text-align: center;
-        font-size: 18px;
-        z-index: 2;
+      /* Dropdown Arrow for Mobile */
+      .dropdown-arrow {
+        font-size: 12px;
+        transition: transform var(--transition-normal);
       }
-      .whatsapp-btn .w-label {
-        opacity: 0;
-        transform: translateX(-6px);
-        white-space: nowrap;
-        z-index: 2;
-        transition: opacity 420ms var(--ease) 0.12s,
-          transform 420ms var(--ease) 0.12s;
+      .dropdown-arrow.open {
+        transform: rotate(180deg);
       }
-      /* background "water" : pseudo element that fills from bottom to top */
-      .whatsapp-btn::after {
-        content: "";
-        position: absolute;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        height: 0%;
-        background: #000; /* fill color black on hover */
-        z-index: 1;
-        transition: height 420ms ease-in-out;
-        transform-origin: bottom;
-        border-radius: 999px;
-        opacity: 0.95;
-        pointer-events: none;
+      /* Dropdown Menu */
+      .dropdown-menu {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height var(--transition-normal);
+        padding-left: var(--spacing-md);
+        margin-top: 0;
       }
-      /* when expanded, show label */
-      .whatsapp-btn.expand {
-        width: 170px;
+      .dropdown-menu.open {
+        max-height: 500px;
+        margin-top: var(--spacing-sm);
       }
-      .whatsapp-btn.expand .w-label {
-        opacity: 1;
-        transform: none;
+      .dropdown-item {
+        margin-bottom: var(--spacing-sm);
       }
-      /* hover effect: "water fill" bottom -> top */
-      .whatsapp-btn:hover::after {
-        height: 100%;
+      .dropdown-link {
+        color: var(--text-secondary);
+        text-decoration: none;
+        font-size: 14px;
+        text-transform: capitalize;
+        transition: color var(--transition-fast);
+        display: block;
+        padding: var(--spacing-xs) 0;
       }
-      /* invert label color when water covers it (use mix-blend or color change) */
-      .whatsapp-btn:hover .w-label,
-      .whatsapp-btn:hover .w-icon {
-        color: #fff; /* label and icon remain white */
-        z-index: 3;
+      .dropdown-link:hover {
+        color: var(--link-color);
       }
-      /* subtle lift */
-      .whatsapp-btn:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 18px 46px rgba(2, 6, 23, 0.12);
+      .nav-controls {
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-sm);
       }
-
-      /* ===========================
-       MOBILE: hamburger & slide panel
-       =========================== */
-      .hamburger {
-        display: none;
-        background: none;
-        border: 0;
-        font-size: 20px;
+      .theme-toggle {
+        background: var(--card-bg);
+        border: 1px solid var(--border);
+        border-radius: 50px;
+        padding: 4px 8px;
         cursor: pointer;
-        color: var(--text);
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-xs);
+        font-size: 14px;
+        font-weight: 500;
+        color: var(--text-primary);
+        transition: all var(--transition-normal);
+        backdrop-filter: blur(10px);
+        box-shadow: 0 4px 12px var(--shadow);
       }
-
-      .mobile-panel {
+      .theme-toggle:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px var(--shadow-hover);
+      }
+      .theme-icon {
+        font-size: 12px;
+        transition: transform var(--transition-normal);
+      }
+      .theme-toggle:hover .theme-icon {
+        transform: rotate(180deg);
+      }
+      .mobile-menu-toggle {
+        background: none;
+        border: none;
+        color: var(--text-primary);
+        font-size: 18px;
+        cursor: pointer;
+        padding: var(--spacing-sm);
+        display: block;
+        z-index: 1000;
+      }
+      .mobile-menu-toggle.active {
+        color: var(--link-color);
+      }
+      /* Mobile Menu Overlay */
+      .mobile-menu-overlay {
         position: fixed;
         top: 0;
-        right: -100%;
+        left: 0;
         width: 100%;
-        max-width: 420px;
-        height: 100vh;
-        background: linear-gradient(
-          180deg,
-          #0b0f11,
-          #091214
-        ); /* darker mobile panel */
-        box-shadow: -50px 0 80px rgba(2, 6, 23, 0.6);
-        transition: right 0.46s var(--ease);
-        z-index: 1400;
-        display: flex;
-        flex-direction: column;
-        padding: 28px;
-        color: var(--footer-text);
-      }
-      .mobile-panel.open {
-        right: 0;
-      }
-      .mobile-panel .close-btn {
-        margin-left: auto;
-        background: none;
-        border: 0;
-        font-size: 22px;
-        cursor: pointer;
-        color: var(--muted);
-      }
-
-      .mobile-links {
-        margin-top: 18px;
-        display: flex;
-        flex-direction: column;
-        gap: 6px;
-      }
-      .mobile-links a,
-      .mobile-links button {
-        color: var(--footer-text);
-        text-decoration: none;
-        font-weight: 700;
-        font-size: 16px;
-        text-align: left;
-        background: none;
-        border: 0;
-        padding: 12px 6px;
-        border-radius: 8px;
-        cursor: pointer;
-      }
-      .mobile-sublinks {
-        display: none;
-        flex-direction: column;
-        gap: 6px;
-        padding-left: 12px;
-        margin-bottom: 8px;
-      }
-      .mobile-sublinks a {
-        font-weight: 600;
-        color: #cbd6d8;
-        padding: 10px 6px;
-        border-radius: 6px;
-        text-decoration: none;
-      }
-
-      .overlay {
-        position: fixed;
-        inset: 0;
-        background: rgba(2, 6, 23, 0.6);
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 998;
         opacity: 0;
         visibility: hidden;
-        transition: opacity 0.3s ease;
-        z-index: 1350;
+        transition: opacity var(--transition-normal),
+          visibility var(--transition-normal);
       }
-      .overlay.show {
+      .mobile-menu-overlay.active {
         opacity: 1;
         visibility: visible;
       }
 
-      @media (max-width: 1023px) {
-        .nav-center {
-          display: none;
-        } /* hide center nav on mobile */
-        .nav-logo {
-          left: 12px;
-        } /* keep near left */
-        .nav-cta {
-          right: 12px;
-        } /* keep near right */
-        .whatsapp-btn {
-          display: none;
-        } /* mobile CTA is inside panel */
-        .hamburger {
-          display: block;
-          position: relative;
-          right: 0;
+      /* ===========================================
+            RESPONSIVE DESIGN - MOBILE FIRST
+           =========================================== */
+
+      @media (min-width: 475px) {
+        .logo-icon {
+          width: 100px;
         }
       }
 
+      @media (min-width: 640px) {
+        .nav-container {
+          padding: 0 var(--spacing-lg);
+        }
+        .logo-icon {
+          width: 110px;
+        }
+        .theme-toggle {
+          padding: var(--spacing-xs) var(--spacing-sm);
+        }
+        .mobile-menu-toggle {
+          font-size: 24px;
+        }
+      }
+
+      /* Desktop screens (1024px and up) - DESKTOP NAVIGATION */
       @media (min-width: 1024px) {
-        .mobile-panel,
-        .overlay {
+        .navbar {
+          height: 70px;
+        }
+        .nav-container {
+          height: 70px;
+          padding: 0 var(--spacing-xl);
+        }
+        .logo-icon {
+          width: 120px;
+        }
+        .nav-menu {
+          position: static;
+          width: auto;
+          max-width: none;
+          height: auto;
+          background: transparent;
+          display: flex;
+          flex-direction: row;
+          justify-content: center;
+          align-items: center;
+          padding: 0;
+          transition: none;
+          gap: var(--spacing-xl);
+          margin: 0 auto;
+          box-shadow: none;
+          overflow-y: visible;
+        }
+        .nav-menu.active {
+          left: auto;
+        }
+        .nav-item {
+          width: auto;
+          text-align: center;
+          position: relative;
+        }
+        .nav-link-container {
+          display: block;
+        }
+        .nav-link {
+          font-size: 14px;
+          letter-spacing: 1px;
+          padding: var(--spacing-sm) 0;
+          position: relative;
+          justify-content: center;
+        }
+        .nav-link::after {
+          left: 0;
+          transform: none;
+        }
+        .nav-link:hover::after,
+        .nav-link.active::after {
+          width: 100%;
+        }
+        /* Hide dropdown toggle on desktop */
+        .dropdown-toggle {
           display: none;
+        }
+        /* Desktop Dropdown Menu */
+        .dropdown-arrow {
+          display: none;
+        }
+        .dropdown-menu {
+          position: absolute;
+          top: 100%;
+          left: 50%;
+          transform: translateX(-50%) translateY(10px);
+          background: var(--nav-bg);
+          backdrop-filter: blur(10px);
+          border: 1px solid var(--border);
+          border-radius: var(--radius-md);
+          padding: var(--spacing-md);
+          min-width: 200px;
+          box-shadow: 0 4px 20px var(--shadow);
+          opacity: 0;
+          visibility: hidden;
+          transition: opacity var(--transition-normal),
+            visibility var(--transition-normal),
+            transform var(--transition-normal);
+          max-height: none;
+          padding-left: var(--spacing-md);
+          margin-top: 0;
+          text-align: center;
+          list-style: none;
+        }
+        .nav-item:hover .dropdown-menu {
+          opacity: 1;
+          visibility: visible;
+          transform: translateX(-50%) translateY(0);
+        }
+        .dropdown-menu.open {
+          max-height: none;
+          margin-top: 0;
+        }
+        .dropdown-item {
+          margin-bottom: var(--spacing-sm);
+        }
+        .dropdown-item:last-child {
+          margin-bottom: 0;
+        }
+        .dropdown-link {
+          padding: var(--spacing-xs) var(--spacing-sm);
+          border-radius: var(--radius-sm);
+          transition: all var(--transition-fast);
+          display: block;
+          text-align: center;
+        }
+        .dropdown-link:hover {
+          background: var(--bg-tertiary);
+          color: var(--link-color);
+        }
+        .mobile-menu-toggle {
+          display: none;
+        }
+        .mobile-menu-overlay {
+          display: none;
+        }
+        .nav-controls {
+          position: static;
+          transform: none;
+        }
+      }
+
+      /* Extra large screens (1280px and up) */
+      @media (min-width: 1280px) {
+        .nav-container {
+          max-width: 1280px;
+        }
+        .nav-menu {
+          gap: var(--spacing-2xl);
+        }
+      }
+
+      /* 3XL screens (1536px and up) */
+      @media (min-width: 1536px) {
+        .nav-container {
+          max-width: 1536px;
         }
       }
     </style>
   </head>
   <body>
-    <!-- NAVBAR -->
-    <header class="navbar" id="navbar">
-      <div class="nav-inner">
-        <!-- LOGO pinned left -->
-        <div class="nav-logo" aria-hidden="false">
-          <a href="#" class="logo"
-            ><img src="assets/images/logo.png" alt="OG Star logo"
-          /></a>
-        </div>
+    <!-- Mobile Menu Overlay -->
+    <div
+      class="mobile-menu-overlay"
+      id="mobileMenuOverlay"
+      onclick="toggleMobileMenu()"
+    ></div>
 
-        <!-- CENTER menu (desktop) -->
-        <nav class="nav-center" aria-label="Main navigation">
-          <ul class="nav-menu" role="menubar">
-            <li class="nav-item" role="none">
-              <a href="#home" class="nav-link active" role="menuitem">Home</a>
-            </li>
-
-            <li class="nav-item" role="none">
-              <a href="#services" class="nav-link" role="menuitem">Services</a>
-              <div class="dropdown" role="menu" aria-hidden="true">
-                <a href="#travel" class="sublink">Travel Abroad</a>
-                <a href="#work" class="sublink">Work &amp; Stay Abroad</a>
-              </div>
-            </li>
-
-            <li class="nav-item" role="none">
-              <a href="#information" class="nav-link" role="menuitem"
-                >Information</a
-              >
-              <div class="dropdown" role="menu" aria-hidden="true">
-                <a href="#about" class="sublink">About Us</a>
-                <a href="#faq" class="sublink">Frequently Asked Questions</a>
-              </div>
-            </li>
-
-            <li class="nav-item" role="none">
-              <a href="#contact" class="nav-link" role="menuitem">Contact</a>
-            </li>
-
-            <li class="nav-item" role="none">
-              <a href="#blog" class="nav-link" role="menuitem">Blog</a>
-            </li>
-          </ul>
-        </nav>
-
-        <!-- RIGHT controls (WhatsApp + hamburger) pinned right -->
-        <div class="nav-cta">
-          <!-- WhatsApp CTA (desktop) -->
-          <button
-            class="whatsapp-btn"
-            id="whatsappDesktop"
-            aria-label="WhatsApp Us"
-          >
-            <span class="w-icon"><i class="fab fa-whatsapp"></i></span>
-            <span class="w-label" id="whLabel">WhatsApp Us</span>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+      <div class="nav-container">
+        <a href="#" class="logo">
+          <img
+            src="https://picsum.photos/seed/logo/120/60.jpg"
+            alt="Impasto logo"
+            class="logo-icon"
+          />
+        </a>
+        <ul class="nav-menu" id="navMenu">
+          <li class="nav-item">
+            <a href="#" class="nav-link" onclick="setActiveNav(this)">Home</a>
+          </li>
+          <li class="nav-item">
+            <div class="nav-link-container">
+              <a href="#" class="nav-link" onclick="setActiveNav(this)">
+                Information
+              </a>
+              <button class="dropdown-toggle" onclick="toggleDropdown(this)">
+                <i class="fas fa-chevron-down dropdown-arrow"></i>
+              </button>
+            </div>
+            <ul class="dropdown-menu">
+              <li class="dropdown-item">
+                <a href="#" class="dropdown-link">Frequently Asked Questions</a>
+              </li>
+              <li class="dropdown-item">
+                <a href="#" class="dropdown-link">Portfolio</a>
+              </li>
+              <li class="dropdown-item">
+                <a href="#" class="dropdown-link">Client Questionnaire</a>
+              </li>
+              <li class="dropdown-item">
+                <a href="#" class="dropdown-link">Review (Clients)</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <div class="nav-link-container">
+              <a href="#" class="nav-link active" onclick="setActiveNav(this)">
+                Ratecards
+              </a>
+              <button class="dropdown-toggle" onclick="toggleDropdown(this)">
+                <i class="fas fa-chevron-down dropdown-arrow"></i>
+              </button>
+            </div>
+            <ul class="dropdown-menu">
+              <li class="dropdown-item">
+                <a href="#" class="dropdown-link">Portrait Photography</a>
+              </li>
+              <li class="dropdown-item">
+                <a href="#" class="dropdown-link">Wedding Photography</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link" onclick="setActiveNav(this)">Store</a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link" onclick="setActiveNav(this)"
+              >Contact</a
+            >
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link" onclick="setActiveNav(this)">Blog</a>
+          </li>
+        </ul>
+        <div class="nav-controls">
+          <button class="theme-toggle" onclick="toggleTheme()">
+            <i class="fas fa-moon theme-icon"></i>
+            <span class="theme-text">Dark</span>
           </button>
-
-          <!-- Hamburger for mobile -->
-          <button
-            class="hamburger"
-            id="hamburger"
-            aria-controls="mobilePanel"
-            aria-expanded="false"
-            aria-label="Open menu"
-          >
-            <i class="fas fa-bars" style="font-size: 18px"></i>
+          <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">
+            <i class="fas fa-bars"></i>
           </button>
         </div>
       </div>
-    </header>
+    </nav>
 
-    <!-- Mobile overlay & panel -->
-    <div class="overlay" id="overlay" aria-hidden="true"></div>
-
-    <aside
-      class="mobile-panel"
-      id="mobilePanel"
-      aria-hidden="true"
-      aria-label="Mobile menu"
-    >
-      <button class="close-btn" id="closePanel" aria-label="Close menu">
-        <i class="fas fa-times"></i>
-      </button>
-
-      <nav class="mobile-links" aria-label="Mobile primary navigation">
-        <a href="#home" class="m-link">Home</a>
-
-        <div>
-          <button class="m-link m-toggle" data-target="mServices">
-            Services
-            <i
-              class="fas fa-chevron-down"
-              style="opacity: 0.6; margin-left: 6px"
-            ></i>
-          </button>
-          <div class="mobile-sublinks" id="mServices">
-            <a href="#travel">Travel Abroad</a>
-            <a href="#work">Work &amp; Stay Abroad</a>
-          </div>
-        </div>
-
-        <div>
-          <button class="m-link m-toggle" data-target="mInfo">
-            Information
-            <i
-              class="fas fa-chevron-down"
-              style="opacity: 0.6; margin-left: 6px"
-            ></i>
-          </button>
-          <div class="mobile-sublinks" id="mInfo">
-            <a href="#about">About Us</a>
-            <a href="#faq">Frequently Asked Questions</a>
-          </div>
-        </div>
-
-        <a href="#contact" class="m-link">Contact</a>
-        <a href="#blog" class="m-link">Blog</a>
-
-        <!-- WhatsApp in mobile panel as last item -->
-        <div
-          style="
-            margin-top: 18px;
-            padding-top: 12px;
-            border-top: 1px solid rgba(255, 255, 255, 0.04);
-          "
-        >
-          <button
-            class="whatsapp-btn"
-            id="whatsappMobile"
-            style="
-              width: 100%;
-              background: linear-gradient(180deg, var(--whatsapp), #20c55c);
-              color: #fff;
-              justify-content: center;
-            "
-          >
-            <span class="w-icon"><i class="fab fa-whatsapp"></i></span>
-            <span class="w-label">WhatsApp Us</span>
-          </button>
-        </div>
-      </nav>
-    </aside>
+    <!-- Demo Content -->
+    <div class="demo-content">
+      <h1>Navigation Bar Demo</h1>
+      <p>
+        This is a demonstration of the navigation bar extracted from the
+        original HTML. The navigation bar includes:
+      </p>
+      <ul style="text-align: left; max-width: 600px; margin: 0 auto">
+        <li>Responsive design that adapts to different screen sizes</li>
+        <li>Mobile menu with hamburger toggle</li>
+        <li>Dropdown menus for navigation items</li>
+        <li>Dark/light theme toggle</li>
+        <li>Active state indicators</li>
+        <li>Smooth transitions and hover effects</li>
+      </ul>
+      <p>
+        Try resizing your browser window to see how the navigation adapts to
+        different screen sizes.
+      </p>
+    </div>
 
     <script>
-      // ---------- safe footer year (guarded) ----------
-      const yearEl = document.getElementById("year");
-      if (yearEl) yearEl.textContent = new Date().getFullYear();
+      // ===========================================
+      // THEME TOGGLE FUNCTIONALITY
+      // ===========================================
+      /**
+       * Toggle between light and dark themes
+       */
+      function toggleTheme() {
+        const body = document.body;
+        const themeIcon = document.querySelector(".theme-icon");
+        const themeText = document.querySelector(".theme-text");
+        const logos = document.querySelectorAll(".logo-icon");
 
-      // ---------- open whatsapp helper ----------
-      function openWhats(
-        number = "+233546945944",
-        message = "Hello OG Star Travel & Tours, I would like to make an inquiry."
-      ) {
-        const encoded = encodeURIComponent(message);
-        const clean = number.replace(/[^0-9]/g, "");
-        const url = `https://wa.me/${clean}?text=${encoded}`;
-        window.open(url, "_blank");
+        // Check current theme and toggle
+        if (body.getAttribute("data-theme") === "dark") {
+          // Switch to light theme
+          body.removeAttribute("data-theme");
+          if (themeIcon) themeIcon.className = "fas fa-moon theme-icon";
+          if (themeText) themeText.textContent = "Dark";
+          localStorage.setItem("theme", "light");
+        } else {
+          // Switch to dark theme
+          body.setAttribute("data-theme", "dark");
+          if (themeIcon) themeIcon.className = "fas fa-sun theme-icon";
+          if (themeText) themeText.textContent = "Light";
+          localStorage.setItem("theme", "dark");
+        }
       }
 
-      // ---------- Desktop WhatsApp: expand after 3s + typewriter ----------
-      (function () {
-        const btn = document.getElementById("whatsappDesktop");
-        const label = document.getElementById("whLabel");
-        if (!btn || !label) return;
+      /**
+       * Load saved theme preference from localStorage
+       */
+      function loadSavedTheme() {
+        const savedTheme = localStorage.getItem("theme");
+        if (savedTheme === "dark") {
+          document.body.setAttribute("data-theme", "dark");
 
-        const full = "WhatsApp Us";
-        const typingDelay = 60;
-        const delayBefore = 3000;
-        let typedIndex = 0;
-        let typingTimer = null;
+          const themeIcon = document.querySelector(".theme-icon");
+          const themeText = document.querySelector(".theme-text");
 
-        // click opens
-        btn.addEventListener("click", () => openWhats());
-
-        // schedule expand & type
-        window.addEventListener("load", () => {
-          setTimeout(() => {
-            btn.classList.add("expand");
-            // clear label and type
-            label.textContent = "";
-            typedIndex = 0;
-            typingTimer = setInterval(() => {
-              label.textContent += full[typedIndex++] || "";
-              if (typedIndex >= full.length) clearInterval(typingTimer);
-            }, typingDelay);
-          }, delayBefore);
-        });
-
-        // also allow keyboard activation
-        btn.addEventListener("keyup", (e) => {
-          if (e.key === "Enter") openWhats();
-        });
-      })();
-
-      // mobile whatsapp button inside panel
-      (function () {
-        const mobileBtn = document.getElementById("whatsappMobile");
-        if (mobileBtn) mobileBtn.addEventListener("click", () => openWhats());
-      })();
-
-      // ---------- Mobile panel open/close ----------
-      (function () {
-        const hamburger = document.getElementById("hamburger");
-        const panel = document.getElementById("mobilePanel");
-        const overlay = document.getElementById("overlay");
-        const closeBtn = document.getElementById("closePanel");
-
-        function openPanel() {
-          panel.classList.add("open");
-          overlay.classList.add("show");
-          panel.setAttribute("aria-hidden", "false");
-          hamburger.setAttribute("aria-expanded", "true");
-          document.body.style.overflow = "hidden";
+          if (themeIcon) themeIcon.className = "fas fa-sun theme-icon";
+          if (themeText) themeText.textContent = "Light";
         }
-        function closePanel() {
-          panel.classList.remove("open");
-          overlay.classList.remove("show");
-          panel.setAttribute("aria-hidden", "true");
-          hamburger.setAttribute("aria-expanded", "false");
+      }
+
+      // ===========================================
+      // NAVIGATION FUNCTIONALITY
+      // ===========================================
+      /**
+       * Set active navigation link
+       * @param {HTMLElement} element - Navigation element to set as active
+       */
+      function setActiveNav(element) {
+        // Don't set active if this is a dropdown toggle
+        if (element.classList.contains("dropdown-toggle")) {
+          return;
+        }
+
+        // Remove active class from all nav links
+        document
+          .querySelectorAll(".nav-link:not(.dropdown-toggle)")
+          .forEach((link) => {
+            link.classList.remove("active");
+          });
+
+        // Add active class to clicked link
+        element.classList.add("active");
+
+        // Close mobile menu if open
+        closeMobileMenu();
+      }
+
+      /**
+       * Toggle mobile menu visibility
+       */
+      function toggleMobileMenu() {
+        const navMenu = document.getElementById("navMenu");
+        const mobileToggle = document.querySelector(".mobile-menu-toggle");
+        const overlay = document.getElementById("mobileMenuOverlay");
+
+        if (navMenu && mobileToggle && overlay) {
+          const isActive = navMenu.classList.contains("active");
+
+          if (isActive) {
+            closeMobileMenu();
+          } else {
+            openMobileMenu();
+          }
+        }
+      }
+
+      /**
+       * Open mobile menu
+       */
+      function openMobileMenu() {
+        const navMenu = document.getElementById("navMenu");
+        const mobileToggle = document.querySelector(".mobile-menu-toggle");
+        const overlay = document.getElementById("mobileMenuOverlay");
+
+        navMenu.classList.add("active");
+        mobileToggle.classList.add("active");
+        overlay.classList.add("active");
+        mobileToggle.innerHTML = '<i class="fas fa-times"></i>';
+
+        // Prevent body scroll when menu is open
+        document.body.style.overflow = "hidden";
+      }
+
+      /**
+       * Close mobile menu
+       */
+      function closeMobileMenu() {
+        const navMenu = document.getElementById("navMenu");
+        const mobileToggle = document.querySelector(".mobile-menu-toggle");
+        const overlay = document.getElementById("mobileMenuOverlay");
+
+        if (navMenu && navMenu.classList.contains("active")) {
+          navMenu.classList.remove("active");
+          if (mobileToggle) {
+            mobileToggle.classList.remove("active");
+            mobileToggle.innerHTML = '<i class="fas fa-bars"></i>';
+          }
+          if (overlay) {
+            overlay.classList.remove("active");
+          }
+
+          // Restore body scroll
           document.body.style.overflow = "";
         }
+      }
 
-        hamburger.addEventListener("click", openPanel);
-        closeBtn.addEventListener("click", closePanel);
-        overlay.addEventListener("click", closePanel);
+      /**
+       * Toggle dropdown menu (mobile only)
+       * @param {HTMLElement} element - Dropdown toggle element
+       */
+      function toggleDropdown(element) {
+        // Only for mobile view
+        if (window.innerWidth < 1024) {
+          const dropdownMenu =
+            element.parentElement.parentElement.querySelector(".dropdown-menu");
+          const dropdownArrow = element.querySelector(".dropdown-arrow");
 
-        // mobile sublink toggles
-        document.querySelectorAll(".m-toggle").forEach((btn) => {
-          btn.addEventListener("click", () => {
-            const target = btn.dataset.target;
-            const el = document.getElementById(target);
-            if (!el) return;
-            const showing = window.getComputedStyle(el).display === "flex";
-            el.style.display = showing ? "none" : "flex";
+          if (dropdownMenu && dropdownArrow) {
+            dropdownMenu.classList.toggle("open");
+            dropdownArrow.classList.toggle("open");
+
+            // Prevent event bubbling
+            if (event) {
+              event.preventDefault();
+              event.stopPropagation();
+            }
+          }
+        }
+      }
+
+      /**
+       * Handle navbar scroll effects
+       */
+      function handleNavbarScroll() {
+        const navbar = document.getElementById("navbar");
+        if (navbar) {
+          if (window.scrollY > 50) {
+            navbar.classList.add("scrolled");
+          } else {
+            navbar.classList.remove("scrolled");
+          }
+        }
+      }
+
+      /**
+       * Throttle function to limit function calls
+       * @param {Function} func - Function to throttle
+       * @param {number} limit - Time limit in milliseconds
+       */
+      function throttle(func, limit) {
+        let inThrottle;
+        return function () {
+          const args = arguments;
+          const context = this;
+          if (!inThrottle) {
+            func.apply(context, args);
+            inThrottle = true;
+            setTimeout(() => (inThrottle = false), limit);
+          }
+        };
+      }
+
+      // ===========================================
+      // INITIALIZATION AND MAIN EVENT LISTENERS
+      // ===========================================
+      /**
+       * Initialize all functionality when DOM is loaded
+       */
+      document.addEventListener("DOMContentLoaded", function () {
+        // Core initialization
+        loadSavedTheme();
+
+        // Add smooth scrolling to anchor links
+        document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+          anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            const targetId = this.getAttribute("href").substring(1);
+            if (targetId) {
+              const targetElement = document.getElementById(targetId);
+              if (targetElement) {
+                const navbarHeight =
+                  document.getElementById("navbar").offsetHeight;
+                const targetPosition =
+                  targetElement.offsetTop - navbarHeight - 20;
+
+                window.scrollTo({
+                  top: targetPosition,
+                  behavior: "smooth",
+                });
+              }
+            }
           });
         });
+      });
 
-        // Close on link click
-        document.querySelectorAll(".mobile-links a").forEach((a) => {
-          a.addEventListener("click", () => closePanel());
-        });
+      // ===========================================
+      // WINDOW EVENT LISTENERS
+      // ===========================================
+      // Optimized scroll handler
+      window.addEventListener("scroll", throttle(handleNavbarScroll, 16)); // ~60fps
 
-        // ensure panel closes if resizing to desktop
-        window.addEventListener("resize", () => {
-          if (window.innerWidth >= 1024 && panel.classList.contains("open"))
-            closePanel();
-        });
-      })();
+      // Handle window resize
+      window.addEventListener("resize", function () {
+        // Close mobile menu on resize to desktop
+        if (window.innerWidth >= 1024) {
+          closeMobileMenu();
+        }
+      });
+
+      // ===========================================
+      // KEYBOARD NAVIGATION SUPPORT
+      // ===========================================
+      document.addEventListener("keydown", function (e) {
+        // Close mobile menu on escape
+        if (e.key === "Escape") {
+          closeMobileMenu();
+        }
+      });
     </script>
   </body>
 </html>

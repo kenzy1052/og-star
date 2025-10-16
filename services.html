@@ -1,0 +1,1058 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Services - OG Star Travel and Tours</title>
+
+    <!-- Link Global Styles -->
+    <link rel="stylesheet" href="assets/styles/style.css" />
+    <link rel="stylesheet" href="assets/styles/utils.css" />
+
+    <!-- Font Awesome for Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <!-- Page-Specific Styles -->
+    <style>
+      /* ===========================================
+         SERVICES PAGE SPECIFIC STYLES
+       =========================================== */
+      /* Hero Section */
+      .hero-section {
+        position: relative;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        background: linear-gradient(
+            to right,
+            rgba(0, 0, 0, 0.7),
+            rgba(0, 0, 0, 0.3)
+          ),
+          url("https://images.unsplash.com/photo-1488646953014-85cb44e25828?q=80&w=2070")
+            center/cover no-repeat;
+      }
+
+      .hero-content {
+        text-align: center;
+        color: var(--text-light);
+        max-width: 800px;
+        padding: 0 20px;
+        z-index: 1;
+      }
+
+      .hero-title {
+        font-family: var(--font-elegant);
+        font-size: clamp(2.5rem, 5vw, 3.5rem);
+        margin-bottom: 1.5rem;
+        font-weight: 700;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+      }
+
+      .hero-subtitle {
+        font-size: clamp(1.1rem, 2vw, 1.4rem);
+        font-weight: 400;
+        line-height: 1.6;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+      }
+
+      /* Service Sections */
+      .services-section {
+        padding: 80px 0;
+      }
+
+      .service-section {
+        padding: 60px 0;
+        position: relative;
+        overflow: hidden;
+      }
+
+      /* Alternating background colors for visual rhythm */
+      .service-section:nth-child(odd) {
+        background-color: var(--bg-primary);
+      }
+
+      .service-section:nth-child(even) {
+        background-color: var(--bg-secondary);
+      }
+
+      .service-container {
+        display: flex;
+        align-items: center;
+        max-width: 1280px;
+        margin: 0 auto;
+        padding: 0 2rem;
+        position: relative;
+      }
+
+      /* Alternating layout - image left, text right */
+      .service-section:nth-child(odd) .service-container {
+        flex-direction: row;
+      }
+
+      /* Alternating layout - text left, image right */
+      .service-section:nth-child(even) .service-container {
+        flex-direction: row-reverse;
+      }
+
+      .service-image-wrapper {
+        flex: 1;
+        position: relative;
+        overflow: hidden;
+        height: 500px;
+      }
+
+      .service-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+      }
+
+      .service-image:hover {
+        transform: scale(1.05);
+      }
+
+      /* Curved edge for left image */
+      .service-section:nth-child(odd) .service-image-wrapper::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: -60px;
+        width: 60px;
+        height: 100%;
+        background: inherit;
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%, 30% 50%);
+        z-index: 1;
+      }
+
+      /* Curved edge for right image */
+      .service-section:nth-child(even) .service-image-wrapper::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -60px;
+        width: 60px;
+        height: 100%;
+        background: inherit;
+        clip-path: polygon(0 0, 100% 0, 70% 50%, 100% 100%, 0 100%);
+        z-index: 1;
+      }
+
+      .service-content {
+        flex: 1;
+        padding: 40px;
+        z-index: 2;
+      }
+
+      .service-icon {
+        font-size: 2.5rem;
+        color: var(--primary-color);
+        margin-bottom: 20px;
+      }
+
+      .service-title {
+        font-family: var(--font-secondary);
+        font-size: 2rem;
+        margin-bottom: 20px;
+        color: var(--text-color);
+        text-transform: uppercase;
+      }
+
+      .service-text {
+        font-size: 1.1rem;
+        line-height: 1.7;
+        margin-bottom: 25px;
+        color: var(--text-color);
+      }
+
+      .service-highlights {
+        margin-bottom: 30px;
+      }
+
+      .service-highlight {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+        font-size: 1rem;
+        color: var(--text-muted);
+      }
+
+      .service-highlight i {
+        color: var(--accent-color);
+        margin-right: 10px;
+        font-size: 0.9rem;
+      }
+
+      .service-cta {
+        display: inline-block;
+        padding: 12px 24px;
+        background: var(--gradient-primary);
+        color: var(--text-light);
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 1rem;
+        position: relative;
+        overflow: hidden;
+        z-index: 1;
+        transition: color 0.3s ease;
+      }
+
+      .service-cta::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 0%;
+        background: rgba(0, 0, 0, 0.8);
+        z-index: -1;
+        transition: height 0.4s ease-in-out;
+        transform-origin: bottom;
+      }
+
+      .service-cta:hover::before {
+        height: 100%;
+      }
+
+      .service-cta:hover {
+        color: var(--text-light);
+      }
+
+      /* Why Choose Us Section */
+      .why-choose-section {
+        padding: 80px 0;
+        background-color: var(--bg-tertiary);
+        text-align: center;
+      }
+
+      .why-choose-title {
+        font-family: var(--font-elegant);
+        font-size: 2.5rem;
+        margin-bottom: 20px;
+        color: var(--primary-color);
+      }
+
+      .why-choose-subtitle {
+        font-size: 1.2rem;
+        max-width: 700px;
+        margin: 0 auto 40px;
+        color: var(--text-muted);
+      }
+
+      .why-choose-features {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 30px;
+        max-width: 900px;
+        margin: 0 auto;
+      }
+
+      .why-choose-feature {
+        flex: 1;
+        min-width: 200px;
+        text-align: center;
+      }
+
+      .why-choose-icon {
+        font-size: 2.5rem;
+        color: var(--primary-color);
+        margin-bottom: 15px;
+      }
+
+      .why-choose-text {
+        font-size: 1.1rem;
+        color: var(--text-color);
+      }
+
+      /* Final CTA Section */
+      .final-cta-section {
+        padding: 100px 0;
+        background: linear-gradient(
+            to right,
+            rgba(46, 196, 182, 0.9),
+            rgba(17, 138, 178, 0.9)
+          ),
+          url("https://images.unsplash.com/photo-1488646953014-85cb44e25828?q=80&w=2070")
+            center/cover no-repeat;
+        text-align: center;
+        color: var(--text-light);
+      }
+
+      .final-cta-title {
+        font-family: var(--font-elegant);
+        font-size: 2.5rem;
+        margin-bottom: 20px;
+      }
+
+      .final-cta-subtitle {
+        font-size: 1.2rem;
+        max-width: 700px;
+        margin: 0 auto 40px;
+      }
+
+      .final-cta-buttons {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        flex-wrap: wrap;
+      }
+
+      .final-cta-button {
+        padding: 15px 30px;
+        font-size: 1.1rem;
+        font-weight: 600;
+        text-decoration: none;
+        border: 2px solid var(--text-light);
+        color: var(--text-light);
+        transition: all 0.3s ease;
+      }
+
+      .final-cta-button.primary {
+        background-color: var(--text-light);
+        color: var(--primary-color);
+      }
+
+      .final-cta-button:hover {
+        background-color: transparent;
+        color: var(--text-light);
+      }
+
+      .final-cta-button.primary:hover {
+        background-color: transparent;
+        color: var(--text-light);
+      }
+
+      /* WhatsApp Floating Button */
+      .whatsapp-float {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        width: 60px;
+        height: 60px;
+        background-color: #25d366;
+        color: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 30px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        z-index: 1000;
+        cursor: pointer;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+      }
+
+      .whatsapp-float.show {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .whatsapp-float:hover {
+        transform: scale(1.1);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        .service-container {
+          flex-direction: column !important;
+        }
+
+        .service-image-wrapper {
+          height: 300px;
+        }
+
+        .service-content {
+          padding: 30px 0;
+        }
+
+        /* Hide curved edges on mobile */
+        .service-section:nth-child(odd) .service-image-wrapper::after,
+        .service-section:nth-child(even) .service-image-wrapper::before {
+          display: none;
+        }
+
+        .why-choose-features {
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .why-choose-feature {
+          width: 100%;
+          max-width: 300px;
+        }
+
+        .final-cta-buttons {
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .final-cta-button {
+          width: 100%;
+          max-width: 300px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Mobile Menu Overlay -->
+    <div class="overlay" id="overlay" aria-hidden="true"></div>
+
+    <!-- Navigation -->
+    <header class="navbar" id="navbar">
+      <div class="nav-inner">
+        <!-- LOGO pinned left -->
+        <div class="nav-logo" aria-hidden="false">
+          <a href="index.html" class="logo">
+            <img src="assets/images/logo.png" alt="O G Star logo" />
+          </a>
+        </div>
+
+        <!-- CENTER menu (desktop) -->
+        <nav class="nav-center" aria-label="Main navigation">
+          <ul class="nav-menu" role="menubar">
+            <li class="nav-item" role="none">
+              <a href="index.html" class="nav-link" role="menuitem">Home</a>
+            </li>
+
+            <li class="nav-item" role="none">
+              <a href="services.html" class="nav-link active" role="menuitem"
+                >Services</a
+              >
+            </li>
+
+            <li class="nav-item" role="none">
+              <a href="destinations.html" class="nav-link" role="menuitem"
+                >Destinations</a
+              >
+            </li>
+
+            <li class="nav-item" role="none">
+              <a href="information.html" class="nav-link" role="menuitem"
+                >Information</a
+              >
+            </li>
+
+            <li class="nav-item" role="none">
+              <a href="contact.html" class="nav-link" role="menuitem"
+                >Contact</a
+              >
+            </li>
+
+            <li class="nav-item" role="none">
+              <a href="blog.html" class="nav-link" role="menuitem">Blog</a>
+            </li>
+          </ul>
+        </nav>
+
+        <!-- RIGHT controls (WhatsApp + hamburger) pinned right -->
+        <div class="nav-cta">
+          <!-- WhatsApp CTA (desktop) -->
+          <button
+            class="whatsapp-btn"
+            id="whatsappDesktop"
+            aria-label="WhatsApp Us"
+          >
+            <span class="w-icon"><i class="fab fa-whatsapp"></i></span>
+            <span class="w-label" id="whLabel">WhatsApp Us</span>
+          </button>
+
+          <!-- Hamburger for mobile -->
+          <button
+            class="hamburger"
+            id="hamburger"
+            aria-controls="mobilePanel"
+            aria-expanded="false"
+            aria-label="Open menu"
+          >
+            <i class="fas fa-bars" style="font-size: 18px"></i>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Mobile panel -->
+    <aside
+      class="mobile-panel"
+      id="mobilePanel"
+      aria-hidden="true"
+      aria-label="Mobile menu"
+    >
+      <button class="close-btn" id="closePanel" aria-label="Close menu">
+        <i class="fas fa-times"></i>
+      </button>
+
+      <nav class="mobile-links" aria-label="Mobile primary navigation">
+        <a href="index.html" class="m-link">Home</a>
+        <a href="services.html" class="m-link">Services</a>
+        <a href="destinations.html" class="m-link">Destinations</a>
+        <a href="information.html" class="m-link">Information</a>
+        <a href="contact.html" class="m-link">Contact</a>
+        <a href="blog.html" class="m-link">Blog</a>
+      </nav>
+    </aside>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="hero-content scroll-animate animate-fade">
+        <h1 class="hero-title">Discover Our World of Services</h1>
+        <p class="hero-subtitle">
+          Whether you're chasing adventure, a dream job abroad, or a new
+          beginning, OG Star Travel and Tours provides everything you need —
+          from travel plans to visa support — to get you there confidently.
+        </p>
+      </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services-section">
+      <!-- Service 1: Travel & Tourism -->
+      <div class="service-section">
+        <div class="service-container">
+          <div class="service-image-wrapper scroll-animate animate-slide-left">
+            <img
+              class="service-image"
+              src="https://images.unsplash.com/photo-1488646953014-85cb44e25828?q=80&w=2070"
+              alt="Travel & Tourism"
+            />
+          </div>
+          <div class="service-content scroll-animate animate-slide-right">
+            <div class="service-icon">
+              <i class="fas fa-map-marked-alt"></i>
+            </div>
+            <h2 class="service-title">Travel & Tourism</h2>
+            <p class="service-text">
+              Explore breathtaking destinations around the world with our
+              expertly curated travel and tourism packages. From tropical
+              getaways to cultural expeditions, we handle every detail —
+              flights, accommodations, and experiences — so you can focus on
+              making memories.
+            </p>
+            <div class="service-highlights">
+              <div class="service-highlight">
+                <i class="fas fa-check-circle"></i>
+                <span>Group and solo tour packages</span>
+              </div>
+              <div class="service-highlight">
+                <i class="fas fa-check-circle"></i>
+                <span>Destination guidance</span>
+              </div>
+              <div class="service-highlight">
+                <i class="fas fa-check-circle"></i>
+                <span>Local tours</span>
+              </div>
+            </div>
+            <a href="#" class="service-cta" data-service="Travel & Tourism"
+              >Start Your Adventure →</a
+            >
+          </div>
+        </div>
+      </div>
+
+      <!-- Service 2: Work & Stay Abroad -->
+      <div class="service-section">
+        <div class="service-container">
+          <div class="service-image-wrapper scroll-animate animate-slide-right">
+            <img
+              class="service-image"
+              src="https://images.unsplash.com/photo-1527631746610-ab6f6e03e6ab?q=80&w=2070"
+              alt="Work & Stay Abroad"
+            />
+          </div>
+          <div class="service-content scroll-animate animate-slide-left">
+            <div class="service-icon">
+              <i class="fas fa-briefcase"></i>
+            </div>
+            <h2 class="service-title">Work & Stay Abroad</h2>
+            <p class="service-text">
+              Ready to take your career global? We connect you with
+              international work programs and relocation opportunities that
+              match your skills and aspirations. Our team guides you every step
+              of the way — from securing offers to settling into your new
+              environment.
+            </p>
+            <div class="service-highlights">
+              <div class="service-highlight">
+                <i class="fas fa-check-circle"></i>
+                <span>Global recruiter partnerships</span>
+              </div>
+              <div class="service-highlight">
+                <i class="fas fa-check-circle"></i>
+                <span>Housing & relocation</span>
+              </div>
+              <div class="service-highlight">
+                <i class="fas fa-check-circle"></i>
+                <span>Cultural adaptation guidance</span>
+              </div>
+            </div>
+            <a href="#" class="service-cta" data-service="Work & Stay Abroad"
+              >Find Work Abroad →</a
+            >
+          </div>
+        </div>
+      </div>
+
+      <!-- Service 3: Job Placement Support -->
+      <div class="service-section">
+        <div class="service-container">
+          <div class="service-image-wrapper scroll-animate animate-slide-left">
+            <img
+              class="service-image"
+              src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?q=80&w=2070"
+              alt="Job Placement Support"
+            />
+          </div>
+          <div class="service-content scroll-animate animate-slide-right">
+            <div class="service-icon">
+              <i class="fas fa-user-tie"></i>
+            </div>
+            <h2 class="service-title">Job Placement Support</h2>
+            <p class="service-text">
+              Your dream job is closer than you think. With our job placement
+              support, we help you find opportunities, prepare your resume, and
+              navigate global hiring processes.
+            </p>
+            <div class="service-highlights">
+              <div class="service-highlight">
+                <i class="fas fa-check-circle"></i>
+                <span>Resume help</span>
+              </div>
+              <div class="service-highlight">
+                <i class="fas fa-check-circle"></i>
+                <span>Interview scheduling</span>
+              </div>
+              <div class="service-highlight">
+                <i class="fas fa-check-circle"></i>
+                <span>Partner placements</span>
+              </div>
+            </div>
+            <a href="#" class="service-cta" data-service="Job Placement Support"
+              >Get Job Support →</a
+            >
+          </div>
+        </div>
+      </div>
+
+      <!-- Service 4: Interview Preparation -->
+      <div class="service-section">
+        <div class="service-container">
+          <div class="service-image-wrapper scroll-animate animate-slide-right">
+            <img
+              class="service-image"
+              src="https://images.unsplash.com/photo-1515187029135-18ee286d815b?q=80&w=2070"
+              alt="Interview Preparation"
+            />
+          </div>
+          <div class="service-content scroll-animate animate-slide-left">
+            <div class="service-icon">
+              <i class="fas fa-comments"></i>
+            </div>
+            <h2 class="service-title">Interview Preparation</h2>
+            <p class="service-text">
+              Step into every interview with confidence. Our personalized
+              coaching helps you master communication skills and present
+              yourself as the ideal candidate.
+            </p>
+            <div class="service-highlights">
+              <div class="service-highlight">
+                <i class="fas fa-check-circle"></i>
+                <span>1-on-1 coaching</span>
+              </div>
+              <div class="service-highlight">
+                <i class="fas fa-check-circle"></i>
+                <span>Mock interviews</span>
+              </div>
+              <div class="service-highlight">
+                <i class="fas fa-check-circle"></i>
+                <span>Confidence training</span>
+              </div>
+            </div>
+            <a href="#" class="service-cta" data-service="Interview Preparation"
+              >Book a Coaching Session →</a
+            >
+          </div>
+        </div>
+      </div>
+
+      <!-- Service 5: Visa Assistance -->
+      <div class="service-section">
+        <div class="service-container">
+          <div class="service-image-wrapper scroll-animate animate-slide-left">
+            <img
+              class="service-image"
+              src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?q=80&w=2070"
+              alt="Visa Assistance"
+            />
+          </div>
+          <div class="service-content scroll-animate animate-slide-right">
+            <div class="service-icon">
+              <i class="fas fa-passport"></i>
+            </div>
+            <h2 class="service-title">Visa Assistance</h2>
+            <p class="service-text">
+              Visa applications can be complicated — but not when we're with
+              you. Our consultants provide full support, from document prep to
+              embassy interviews, ensuring a smooth process.
+            </p>
+            <div class="service-highlights">
+              <div class="service-highlight">
+                <i class="fas fa-check-circle"></i>
+                <span>Student/work/travel visas</span>
+              </div>
+              <div class="service-highlight">
+                <i class="fas fa-check-circle"></i>
+                <span>Documentation help</span>
+              </div>
+              <div class="service-highlight">
+                <i class="fas fa-check-circle"></i>
+                <span>Faster approvals</span>
+              </div>
+            </div>
+            <a href="#" class="service-cta" data-service="Visa Assistance"
+              >Get Visa Help →</a
+            >
+          </div>
+        </div>
+      </div>
+
+      <!-- Service 6: Custom Travel Packages -->
+      <div class="service-section">
+        <div class="service-container">
+          <div class="service-image-wrapper scroll-animate animate-slide-right">
+            <img
+              class="service-image"
+              src="https://images.unsplash.com/photo-1528127269322-539801943592?q=80&w=2070"
+              alt="Custom Travel Packages"
+            />
+          </div>
+          <div class="service-content scroll-animate animate-slide-left">
+            <div class="service-icon">
+              <i class="fas fa-suitcase-rolling"></i>
+            </div>
+            <h2 class="service-title">Custom Travel Packages</h2>
+            <p class="service-text">
+              No two travelers are the same. Our bespoke packages are designed
+              around you — your interests, your budget, and your travel dreams.
+            </p>
+            <div class="service-highlights">
+              <div class="service-highlight">
+                <i class="fas fa-check-circle"></i>
+                <span>Flexible itineraries</span>
+              </div>
+              <div class="service-highlight">
+                <i class="fas fa-check-circle"></i>
+                <span>Personalized recommendations</span>
+              </div>
+              <div class="service-highlight">
+                <i class="fas fa-check-circle"></i>
+                <span>Family/solo options</span>
+              </div>
+            </div>
+            <a
+              href="#"
+              class="service-cta"
+              data-service="Custom Travel Packages"
+              >Create My Package →</a
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section class="why-choose-section">
+      <div class="container">
+        <h2 class="why-choose-title scroll-animate animate-fade">
+          Why Choose OG Star Travel and Tours
+        </h2>
+        <p class="why-choose-subtitle scroll-animate animate-fade">
+          Because we don't just plan trips — we create experiences that inspire
+          growth, joy, and connection.
+        </p>
+        <div class="why-choose-features">
+          <div class="why-choose-feature scroll-animate animate-scale">
+            <div class="why-choose-icon">
+              <i class="fas fa-globe-americas"></i>
+            </div>
+            <p class="why-choose-text">Global expertise</p>
+          </div>
+          <div class="why-choose-feature scroll-animate animate-scale">
+            <div class="why-choose-icon">
+              <i class="fas fa-award"></i>
+            </div>
+            <p class="why-choose-text">Award-winning service</p>
+          </div>
+          <div class="why-choose-feature scroll-animate animate-scale">
+            <div class="why-choose-icon">
+              <i class="fas fa-cogs"></i>
+            </div>
+            <p class="why-choose-text">Customized solutions</p>
+          </div>
+          <div class="why-choose-feature scroll-animate animate-scale">
+            <div class="why-choose-icon">
+              <i class="fas fa-dollar-sign"></i>
+            </div>
+            <p class="why-choose-text">Transparent pricing</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Final CTA Section -->
+    <section class="final-cta-section">
+      <div class="container">
+        <h2 class="final-cta-title scroll-animate animate-fade">
+          Ready to Begin Your Journey?
+        </h2>
+        <p class="final-cta-subtitle scroll-animate animate-fade">
+          Whether it's travel, study, or work — your next adventure starts here.
+        </p>
+        <div class="final-cta-buttons scroll-animate animate-fade">
+          <a href="#" class="final-cta-button primary">Plan My Trip</a>
+          <a href="contact.html" class="final-cta-button">Contact Us</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer" id="contact">
+      <div class="footer-container">
+        <div class="footer-column">
+          <img
+            src="assets/images/logo.png"
+            alt="O G Star Logo"
+            style="max-width: 150px; margin-bottom: 0"
+          />
+        </div>
+
+        <div class="footer-column">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="destinations.html">Destinations</a></li>
+            <li><a href="information.html">Information</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="blog.html">Blog</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-column">
+          <h4>Our Services</h4>
+          <ul>
+            <li><a href="services.html">Travel & Tours</a></li>
+            <li><a href="services.html">Study Abroad</a></li>
+            <li><a href="services.html">Work & Stay</a></li>
+            <li><a href="services.html">Visa Assistance</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-column">
+          <h4>Connect With Us</h4>
+          <div class="social-links">
+            <a href="https://wa.me/233546945944" aria-label="WhatsApp"
+              ><i class="fab fa-whatsapp"></i
+            ></a>
+            <a href="#" aria-label="Instagram"
+              ><i class="fab fa-instagram"></i
+            ></a>
+            <a href="#" aria-label="Facebook"
+              ><i class="fab fa-facebook-f"></i
+            ></a>
+            <a href="#" aria-label="LinkedIn"
+              ><i class="fab fa-linkedin-in"></i
+            ></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span
+          >© 2025 O G Star Travel and Tours. Crafted with ❤️ by
+          Kenzyverse.</span
+        >
+
+        <!-- Back to top button moved to bottom-right corner -->
+        <div class="back-to-top" id="backToTop" aria-label="Back to top">
+          <i class="fas fa-arrow-up"></i>
+        </div>
+      </div>
+    </footer>
+
+    <!-- WhatsApp Floating Button -->
+    <div class="whatsapp-float" id="whatsappFloat">
+      <i class="fab fa-whatsapp"></i>
+    </div>
+
+    <!-- Link Global Scripts -->
+    <script src="assets/src/general.js"></script>
+
+    <!-- Page-Specific Scripts -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Initialize general functionality
+        if (typeof initGeneral === "function") {
+          initGeneral();
+        }
+
+        // Mobile panel functionality
+        const hamburger = document.getElementById("hamburger");
+        const panel = document.getElementById("mobilePanel");
+        const overlay = document.getElementById("overlay");
+        const closeBtn = document.getElementById("closePanel");
+
+        function openPanel() {
+          panel.classList.add("open");
+          overlay.classList.add("show");
+          panel.setAttribute("aria-hidden", "false");
+          hamburger.setAttribute("aria-expanded", "true");
+          document.body.style.overflow = "hidden";
+        }
+
+        function closePanel() {
+          panel.classList.remove("open");
+          overlay.classList.remove("show");
+          panel.setAttribute("aria-hidden", "true");
+          hamburger.setAttribute("aria-expanded", "false");
+          document.body.style.overflow = "";
+        }
+
+        hamburger.addEventListener("click", openPanel);
+        closeBtn.addEventListener("click", closePanel);
+        overlay.addEventListener("click", closePanel);
+
+        // Close on link click
+        document.querySelectorAll(".mobile-links a").forEach((a) => {
+          a.addEventListener("click", () => closePanel());
+        });
+
+        // WhatsApp floating button
+        const whatsappFloat = document.getElementById("whatsappFloat");
+        const heroSection = document.querySelector(".hero-section");
+
+        // Show/hide WhatsApp button based on scroll position
+        window.addEventListener("scroll", function () {
+          const heroHeight = heroSection.offsetHeight;
+          const scrollPosition = window.scrollY;
+
+          if (scrollPosition > heroHeight) {
+            whatsappFloat.classList.add("show");
+          } else {
+            whatsappFloat.classList.remove("show");
+          }
+        });
+
+        // WhatsApp button click handler
+        whatsappFloat.addEventListener("click", function () {
+          const message = encodeURIComponent(
+            "Hello OG Star Travel and Tours, I'm interested in your services. Can you provide more information?"
+          );
+          window.open(`https://wa.me/233546945944?text=${message}`, "_blank");
+        });
+
+        // Service CTA buttons click handlers
+        const serviceCtaButtons = document.querySelectorAll(".service-cta");
+        serviceCtaButtons.forEach((button) => {
+          button.addEventListener("click", function (e) {
+            e.preventDefault();
+            const serviceName = this.getAttribute("data-service");
+            const message = encodeURIComponent(
+              `Hello OG Star Travel and Tours, I'm interested in your ${serviceName} service. Can you provide more information?`
+            );
+            window.open(`https://wa.me/233546945944?text=${message}`, "_blank");
+          });
+        });
+
+        // Final CTA buttons click handlers
+        const finalCtaButtons = document.querySelectorAll(".final-cta-button");
+        finalCtaButtons.forEach((button) => {
+          button.addEventListener("click", function (e) {
+            if (this.getAttribute("href") === "#") {
+              e.preventDefault();
+              const buttonText = this.textContent.trim();
+              let message;
+
+              if (buttonText === "Plan My Trip") {
+                message = encodeURIComponent(
+                  "Hello OG Star Travel and Tours, I'd like to plan a trip. Can you help me with the options?"
+                );
+              } else {
+                message = encodeURIComponent(
+                  "Hello OG Star Travel and Tours, I'd like to get in touch with you. Can you provide more information about your services?"
+                );
+              }
+
+              window.open(
+                `https://wa.me/233546945944?text=${message}`,
+                "_blank"
+              );
+            }
+          });
+        });
+
+        // Back to top button
+        const backToTopButton = document.getElementById("backToTop");
+
+        // Show/hide button based on scroll position
+        window.addEventListener("scroll", () => {
+          if (window.pageYOffset > 300) {
+            backToTopButton.style.opacity = "1";
+          } else {
+            backToTopButton.style.opacity = "0.5";
+          }
+        });
+
+        // Scroll to top when clicked
+        backToTopButton.addEventListener("click", () => {
+          window.scrollTo({
+            top: 0,
+            behavior: "smooth",
+          });
+        });
+
+        // Scroll animations
+        const scrollElements = document.querySelectorAll(".scroll-animate");
+
+        const elementInView = (el, dividend = 1) => {
+          const elementTop = el.getBoundingClientRect().top;
+          return (
+            elementTop <=
+            (window.innerHeight || document.documentElement.clientHeight) /
+              dividend
+          );
+        };
+
+        const displayScrollElement = (element) => {
+          element.classList.add("visible");
+        };
+
+        const handleScrollAnimation = () => {
+          scrollElements.forEach((el) => {
+            if (elementInView(el, 1.25)) {
+              displayScrollElement(el);
+            }
+          });
+        };
+
+        // Initialize on load
+        handleScrollAnimation();
+
+        // Add scroll event listener
+        window.addEventListener("scroll", () => {
+          handleScrollAnimation();
+        });
+      });
+    </script>
+  </body>
+</html>

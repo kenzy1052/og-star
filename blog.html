@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OG Star Traveling Tour | Blog</title>
+    <style>
+      :root {
+        --accent: #ff7b00;
+        --text-dark: #222;
+        --text-light: #555;
+        --bg-light: #fafafa;
+      }
+      body {
+        font-family: "Poppins", sans-serif;
+        margin: 0;
+        background: var(--bg-light);
+        color: var(--text-dark);
+      }
+      header {
+        background: url("https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1400&q=80")
+          center/cover;
+        text-align: center;
+        color: #fff;
+        padding: 6rem 1rem;
+        position: relative;
+      }
+      header::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.5);
+      }
+      header h1,
+      header p {
+        position: relative;
+        z-index: 1;
+      }
+      header h1 {
+        font-size: 3rem;
+        margin-bottom: 0.5rem;
+      }
+      .blog-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        padding: 4rem 1rem;
+        max-width: 1200px;
+        margin: auto;
+      }
+      .blog-card {
+        background: #fff;
+        border-radius: 1rem;
+        overflow: hidden;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        transition: transform 0.3s ease;
+      }
+      .blog-card:hover {
+        transform: translateY(-6px);
+      }
+      .blog-card img {
+        width: 100%;
+        height: 220px;
+        object-fit: cover;
+      }
+      .blog-card-content {
+        padding: 1.5rem;
+      }
+      .tag {
+        display: inline-block;
+        background: var(--accent);
+        color: #fff;
+        padding: 0.3rem 0.8rem;
+        border-radius: 999px;
+        font-size: 0.8rem;
+        margin-bottom: 0.5rem;
+      }
+      .blog-card h3 {
+        margin: 0.5rem 0;
+        font-size: 1.25rem;
+      }
+      .blog-card p {
+        font-size: 0.95rem;
+        color: var(--text-light);
+        margin-bottom: 1rem;
+      }
+      .blog-card a {
+        text-decoration: none;
+        color: var(--accent);
+        font-weight: 600;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Travel Stories & Guides</h1>
+      <p>
+        Discover destinations, tips, and travel inspiration from around the
+        world.
+      </p>
+    </header>
+
+    <section class="blog-container">
+      <article class="blog-card">
+        <img
+          src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=800&q=80"
+          alt="Hidden Gems in Ghana"
+        />
+        <div class="blog-card-content">
+          <span class="tag">Adventure</span>
+          <h3>Top 10 Hidden Gems in Ghana You Should Visit</h3>
+          <p>
+            Explore the lesser-known destinations in Ghana that offer
+            breathtaking views and rich culture.
+          </p>
+          <a href="#">Read More →</a>
+        </div>
+      </article>
+
+      <article class="blog-card">
+        <img
+          src="https://images.unsplash.com/photo-1493558103817-58b2924bce98?auto=format&fit=crop&w=800&q=80"
+          alt="Budget Travel"
+        />
+        <div class="blog-card-content">
+          <span class="tag">Tips</span>
+          <h3>How to Travel on a Budget and Still Enjoy Luxury</h3>
+          <p>
+            Smart ways to plan your dream vacation without breaking the bank —
+            perfect for smart travelers.
+          </p>
+          <a href="#">Read More →</a>
+        </div>
+      </article>
+
+      <article class="blog-card">
+        <img
+          src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80"
+          alt="Beach Escape"
+        />
+        <div class="blog-card-content">
+          <span class="tag">Relaxation</span>
+          <h3>The Best Tropical Beaches for a Peaceful Escape</h3>
+          <p>
+            Find serenity in these breathtaking tropical getaways ideal for
+            relaxation and self-reflection.
+          </p>
+          <a href="#">Read More →</a>
+        </div>
+      </article>
+    </section>
+  </body>
+</html>

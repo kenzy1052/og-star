@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Travel Stories & Guides | OG Star Traveling Tour</title>
+
+    <!-- Link Global Styles -->
+    <link rel="stylesheet" href="assets/styles/style.css" />
+    <link rel="stylesheet" href="assets/styles/utils.css" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Lora:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Page-Specific Styles -->
+    <style>
+      /* Override primary accent color for this page */
+      :root {
+        --primary-color: #ff7b00;
+        --gradient-primary: linear-gradient(135deg, #ff7b00 0%, #ff9e40 100%);
+      }
+
+      /* Blog Page Specific Styles */
+      body {
+        font-family: "Poppins", sans-serif;
+      }
+
+      .blog-hero {
+        position: relative;
+        height: 60vh;
+        min-height: 400px;
+        background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+          url("https://picsum.photos/seed/travel-hero/1920/1080.jpg");
+        background-size: cover;
+        background-position: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: white;
+        overflow: hidden;
+      }
+
+      .blog-hero-content {
+        max-width: 800px;
+        padding: 0 20px;
+        z-index: 2;
+      }
+
+      .blog-hero h1 {
+        font-family: "Lora", serif;
+        font-size: clamp(2.5rem, 5vw, 4rem);
+        margin-bottom: 1rem;
+        color: white;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+      }
+
+      .blog-hero p {
+        font-size: clamp(1.1rem, 2vw, 1.5rem);
+        margin-bottom: 2rem;
+        color: rgba(255, 255, 255, 0.9);
+      }
+
+      .blog-section {
+        padding: 80px 0;
+        background-color: var(--bg-primary);
+      }
+
+      .blog-article {
+        margin-bottom: 60px;
+        background-color: var(--bg-secondary);
+        border-radius: var(--radius-lg);
+        overflow: hidden;
+        box-shadow: var(--shadow);
+        transition: var(--transition);
+      }
+
+      .blog-article:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--shadow-hover);
+      }
+
+      .blog-image {
+        width: 100%;
+        height: 300px;
+        object-fit: cover;
+      }
+
+      .blog-content {
+        padding: 30px;
+      }
+
+      .blog-meta {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 15px;
+        font-size: 0.9rem;
+        color: var(--text-muted);
+      }
+
+      .blog-category {
+        background-color: var(--primary-color);
+        color: white;
+        padding: 4px 12px;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-weight: 600;
+        text-transform: uppercase;
+      }
+
+      .blog-title {
+        font-family: "Lora", serif;
+        font-size: clamp(1.5rem, 3vw, 2rem);
+        margin-bottom: 20px;
+        color: var(--text-color);
+        line-height: 1.3;
+      }
+
+      .blog-text {
+        font-family: "Poppins", sans-serif;
+        font-size: 1rem;
+        line-height: 1.7;
+        color: var(--text-color);
+        margin-bottom: 20px;
+      }
+
+      .blog-text p {
+        margin-bottom: 15px;
+      }
+
+      .blog-text .hidden-content {
+        display: none;
+        overflow: hidden;
+        transition: max-height 0.5s ease;
+      }
+
+      .blog-text .hidden-content.show {
+        display: block;
+        animation: fadeIn 0.5s ease;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      .read-more-btn {
+        background-color: var(--primary-color);
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: var(--radius-md);
+        font-weight: 600;
+        cursor: pointer;
+        transition: var(--transition);
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      .read-more-btn:hover {
+        background-color: #e66d00;
+        transform: translateY(-2px);
+      }
+
+      .scroll-to-top {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        width: 50px;
+        height: 50px;
+        background-color: var(--primary-color);
+        color: white;
+        border: none;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        opacity: 0;
+        visibility: hidden;
+        transition: var(--transition);
+        z-index: 1000;
+      }
+
+      .scroll-to-top.visible {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .scroll-to-top:hover {
+        background-color: #e66d00;
+        transform: translateY(-5px);
+      }
+
+      .blog-footer {
+        background-color: var(--bg-dark);
+        color: var(--footer-text);
+        padding: 40px 0;
+        text-align: center;
+      }
+
+      .blog-footer p {
+        margin: 0;
+        font-size: 0.9rem;
+      }
+
+      /* Responsive adjustments */
+      @media (min-width: 768px) {
+        .blog-image {
+          height: 350px;
+        }
+
+        .blog-content {
+          padding: 40px;
+        }
+      }
+
+      @media (min-width: 1024px) {
+        .blog-hero {
+          height: 70vh;
+        }
+
+        .blog-section {
+          padding: 100px 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Hero Section -->
+    <header class="blog-hero">
+      <div class="blog-hero-content scroll-animate">
+        <h1>Travel Stories & Guides</h1>
+        <p>
+          Inspiration, insights, and opportunities for travelers and dreamers.
+        </p>
+      </div>
+    </header>
+
+    <!-- Blog Section -->
+    <main class="blog-section">
+      <div class="container">
+        <!-- Article 1: Top 10 Hidden Gems in Ghana -->
+        <article class="blog-article scroll-animate">
+          <img
+            src="https://picsum.photos/seed/ghana-beaches/1200/600.jpg"
+            alt="Beautiful beaches in Ghana"
+            class="blog-image"
+          />
+          <div class="blog-content">
+            <div class="blog-meta">
+              <span class="blog-category">Adventure</span>
+              <span>November 15, 2023</span>
+            </div>
+            <h2 class="blog-title">
+              Top 10 Hidden Gems in Ghana You Should Visit in 2025
+            </h2>
+            <div class="blog-text">
+              <p>
+                Ghana, often called the "Gateway to Africa," is renowned for its
+                rich history, vibrant culture, and warm hospitality. While many
+                tourists flock to popular destinations like Accra, Cape Coast
+                Castle, and Mole National Park, the country is brimming with
+                lesser-known treasures that offer authentic experiences away
+                from the crowds.
+              </p>
+
+              <p>
+                One such gem is the Tafi Atome Monkey Sanctuary, where visitors
+                can interact with sacred Mona monkeys that have been protected
+                by local communities for centuries. These friendly primates are
+                considered spiritual guardians, and the sanctuary provides a
+                unique opportunity to observe them in their natural habitat
+                while learning about the cultural significance they hold for the
+                Ewe people.
+              </p>
+
+              <div class="hidden-content">
+                <p>
+                  Another must-visit destination is the Wli Waterfalls, the
+                  highest waterfall in West Africa. Located in the Agumatsa
+                  Wildlife Sanctuary, this breathtaking cascade plunges
+                  approximately 80 meters into a pool below. The journey to the
+                  falls involves a scenic hike through lush forests, crossing
+                  rivers, and spotting diverse bird species and butterflies
+                  along the way.
+                </p>
+
+                <p>
+                  For history enthusiasts, the Nzulezu Stilt Village offers a
+                  fascinating glimpse into traditional Ghanaian life. Built
+                  entirely on stilts over Lake Tadane, this unique settlement
+                  has been inhabited for over 500 years. Visitors can take a
+                  canoe tour to learn about the community's sustainable
+                  lifestyle and how they've adapted to living on water.
+                </p>
+
+                <p>
+                  The Boabeng-Fiema Monkey Sanctuary is another hidden treasure
+                  where two different monkey species – the black-and-white
+                  colobus and the Campbell's Mona monkey – coexist peacefully
+                  with humans. According to local beliefs, these monkeys are
+                  sacred and cannot be harmed. The sanctuary provides an
+                  incredible opportunity to observe these primates up close in
+                  their natural environment.
+                </p>
+
+                <p>
+                  For beach lovers seeking tranquility away from the popular
+                  coastal areas, Ada Foah offers pristine beaches where the
+                  Volta River meets the Atlantic Ocean. This serene destination
+                  is perfect for water sports, bird watching, and enjoying fresh
+                  seafood while watching spectacular sunsets over the water.
+                </p>
+
+                <p>
+                  Other hidden gems include the mysterious Shai Hills Resource
+                  Reserve, the ancient Larabanga Mosque (one of the oldest
+                  mosques in West Africa), the picturesque Boti Falls, the
+                  remote Xavi Bird Sanctuary, and the enchanting Kintampo Falls.
+                  Each of these destinations offers a unique perspective on
+                  Ghana's natural beauty and cultural heritage.
+                </p>
+              </div>
+            </div>
+            <button class="read-more-btn" data-article="1">Read More</button>
+          </div>
+        </article>
+
+        <!-- Article 2: Budget Travel Tips -->
+        <article class="blog-article scroll-animate">
+          <img
+            src="https://picsum.photos/seed/budget-travel/1200/600.jpg"
+            alt="Budget travel planning"
+            class="blog-image"
+          />
+          <div class="blog-content">
+            <div class="blog-meta">
+              <span class="blog-category">Lifestyle</span>
+              <span>November 10, 2023</span>
+            </div>
+            <h2 class="blog-title">
+              How to Travel on a Budget and Still Live Your Dream Vacation
+            </h2>
+            <div class="blog-text">
+              <p>
+                Traveling the world doesn't have to break the bank. With
+                strategic planning and smart choices, you can explore incredible
+                destinations without draining your savings account. The key is
+                to prioritize experiences over luxury and make informed
+                decisions about where to splurge and where to save.
+              </p>
+
+              <p>
+                One of the most effective ways to reduce travel costs is by
+                being flexible with your dates and destinations. Traveling
+                during shoulder seasons – the periods just before and after peak
+                season – can save you up to 30% on flights and accommodations
+                while still offering pleasant weather. Additionally, using
+                flight comparison tools and setting up price alerts can help you
+                snag the best deals when they become available.
+              </p>
+
+              <div class="hidden-content">
+                <p>
+                  Accommodation typically consumes a significant portion of any
+                  travel budget, but there are numerous alternatives to
+                  expensive hotels. Hostels, guesthouses, and homestays not only
+                  cost less but also provide opportunities to connect with
+                  locals and fellow travelers. Platforms like Couchsurfing even
+                  offer free accommodation with hosts who are willing to share
+                  their homes and culture with visitors.
+                </p>
+
+                <p>
+                  Transportation within your destination can also be optimized
+                  for budget travel. Public transportation, walking, and cycling
+                  are not only economical but also allow you to experience
+                  destinations like a local. For longer distances, consider
+                  overnight trains or buses, which save on both transportation
+                  costs and accommodation for the night.
+                </p>
+
+                <p>
+                  Food is another area where strategic choices can lead to
+                  significant savings. Instead of dining at tourist-oriented
+                  restaurants, explore local markets, street food stalls, and
+                  eateries frequented by residents. Not only will you save
+                  money, but you'll also enjoy more authentic culinary
+                  experiences. If your accommodation includes kitchen access,
+                  preparing some of your own meals can further reduce expenses.
+                </p>
+
+                <p>
+                  When it comes to activities and attractions, research free or
+                  low-cost options in advance. Many cities offer free walking
+                  tours, museums with free admission days, and beautiful parks
+                  that cost nothing to enjoy. Additionally, investing in city
+                  tourist cards can provide discounted access to multiple
+                  attractions if you plan to visit several paid sites.
+                </p>
+
+                <p>
+                  Finally, consider destinations where your currency goes
+                  further. Countries in Southeast Asia, Eastern Europe, and
+                  parts of Latin America offer incredible experiences at a
+                  fraction of the cost of more expensive destinations. By
+                  choosing these budget-friendly locations, you can extend your
+                  travel time and enjoy more activities without increasing your
+                  overall budget.
+                </p>
+              </div>
+            </div>
+            <button class="read-more-btn" data-article="2">Read More</button>
+          </div>
+        </article>
+
+        <!-- Article 3: Landing a Job in Dubai -->
+        <article class="blog-article scroll-animate">
+          <img
+            src="https://picsum.photos/seed/dubai-career/1200/600.jpg"
+            alt="Dubai skyline and career opportunities"
+            class="blog-image"
+          />
+          <div class="blog-content">
+            <div class="blog-meta">
+              <span class="blog-category">Career</span>
+              <span>November 5, 2023</span>
+            </div>
+            <h2 class="blog-title">
+              Landing Your Dream Job in Dubai: A Step-by-Step Guide for 2025
+            </h2>
+            <div class="blog-text">
+              <p>
+                Dubai has emerged as a global hub for professionals seeking
+                career growth, tax-free income, and an unparalleled lifestyle.
+                With its booming economy, world-class infrastructure, and
+                multicultural environment, the city attracts talent from around
+                the world. However, navigating the job market in this
+                competitive landscape requires strategic planning and
+                preparation.
+              </p>
+
+              <p>
+                The first step in your Dubai job search is to understand the
+                visa requirements and work permit process. Most expatriates work
+                under a visa sponsored by their employer, making it essential to
+                secure a job offer before relocating. Research the specific
+                requirements for your profession, as certain fields like
+                healthcare, education, and engineering have additional licensing
+                procedures that must be completed before you can legally work in
+                the UAE.
+              </p>
+
+              <div class="hidden-content">
+                <p>
+                  Networking plays a crucial role in Dubai's job market. The
+                  city's business culture heavily relies on personal connections
+                  and referrals. Attend industry events, join professional
+                  associations, and leverage online platforms like LinkedIn to
+                  connect with professionals in your field. Many positions are
+                  filled through referrals before they're even advertised
+                  publicly, making a strong network invaluable.
+                </p>
+
+                <p>
+                  When applying for jobs in Dubai, tailor your CV to meet local
+                  expectations. Unlike in some Western countries, it's common to
+                  include a professional photograph, nationality, and visa
+                  status on your resume. Keep your CV concise, highlighting
+                  achievements rather than just responsibilities. Cover letters
+                  should be brief but personalized, demonstrating your
+                  understanding of the company and the local market.
+                </p>
+
+                <p>
+                  Understanding the cultural nuances of Dubai's workplace is
+                  essential for success. The business environment is a blend of
+                  traditional Islamic values and Western corporate practices.
+                  Punctuality is highly valued, and building personal
+                  relationships with colleagues and clients is crucial. The work
+                  week typically runs from Sunday to Thursday, with Friday and
+                  Saturday being the weekend.
+                </p>
+
+                <p>
+                  Salary negotiations in Dubai require knowledge of the local
+                  compensation packages. While the absence of income tax is a
+                  significant benefit, consider other factors like housing
+                  allowances, health insurance, and education benefits if you
+                  have children. Research industry standards for your position
+                  and experience level to ensure you're receiving a competitive
+                  offer.
+                </p>
+
+                <p>
+                  Finally, be prepared for a potentially lengthy recruitment
+                  process. Companies in Dubai often conduct multiple rounds of
+                  interviews, including video calls and in-person meetings. Some
+                  may require psychometric tests or technical assessments.
+                  Patience and persistence are key, as the process can take
+                  several weeks to months from initial application to final
+                  offer.
+                </p>
+              </div>
+            </div>
+            <button class="read-more-btn" data-article="3">Read More</button>
+          </div>
+        </article>
+
+        <!-- Article 4: Life in Dubai -->
+        <article class="blog-article scroll-animate">
+          <img
+            src="https://picsum.photos/seed/dubai-lifestyle/1200/600.jpg"
+            alt="Life in Dubai"
+            class="blog-image"
+          />
+          <div class="blog-content">
+            <div class="blog-meta">
+              <span class="blog-category">Lifestyle</span>
+              <span>October 28, 2023</span>
+            </div>
+            <h2 class="blog-title">
+              Life in Dubai: How to Work, Stay, and Thrive Abroad
+            </h2>
+            <div class="blog-text">
+              <p>
+                Living in Dubai offers a unique blend of traditional Middle
+                Eastern culture and ultra-modern amenities. This cosmopolitan
+                city has transformed from a small fishing village into a global
+                metropolis, attracting expatriates from over 200 nationalities.
+                The experience of living and working in Dubai is unlike any
+                other, with its tax-free income, world-class infrastructure, and
+                vibrant social scene.
+              </p>
+
+              <p>
+                One of the first considerations when moving to Dubai is
+                accommodation. The city offers a wide range of housing options,
+                from luxury apartments in iconic skyscrapers to spacious villas
+                in suburban communities. Popular expatriate areas include Dubai
+                Marina, Jumeirah Lake Towers, and Downtown Dubai. Rental prices
+                can be high, particularly in prime locations, so budgeting
+                accordingly is essential. Most landlords require annual rent
+                paid upfront, though some now offer monthly payment options.
+              </p>
+
+              <div class="hidden-content">
+                <p>
+                  The cost of living in Dubai can vary significantly depending
+                  on your lifestyle. While certain expenses like groceries and
+                  utilities are comparable to major Western cities, others like
+                  dining out and entertainment can be more expensive.
+                  Transportation is relatively affordable, with a well-developed
+                  metro system, buses, and affordable ride-sharing services.
+                  Many expatriates find that owning a car is unnecessary,
+                  especially if living near public transportation routes.
+                </p>
+
+                <p>
+                  Dubai's work culture is known for its professionalism and high
+                  standards. The typical work week runs from Sunday to Thursday,
+                  with Friday and Saturday as the weekend. Working hours can be
+                  long, particularly in certain industries, but the environment
+                  is generally collaborative and dynamic. The multicultural
+                  workforce creates an international business environment where
+                  English is commonly used as the working language, making it
+                  easier for expatriates to integrate.
+                </p>
+
+                <p>
+                  Social life in Dubai is vibrant and diverse, with countless
+                  restaurants, bars, clubs, and cultural events. While the city
+                  has a reputation for luxury, there are plenty of options for
+                  every budget. The social scene revolves around dining out,
+                  beach activities, desert excursions, and various cultural
+                  festivals throughout the year. It's worth noting that while
+                  Dubai is more liberal than other parts of the region,
+                  respecting local customs and traditions is important.
+                </p>
+
+                <p>
+                  Healthcare in Dubai is of high quality, with both public and
+                  private facilities available. Expatriates are required to have
+                  health insurance, which is typically provided by employers.
+                  The city is also home to numerous international schools,
+                  making it a suitable destination for families. However,
+                  education costs can be substantial, so this should be factored
+                  into your budget if moving with children.
+                </p>
+
+                <p>
+                  Thriving in Dubai requires adaptability and an open mind. The
+                  city's rapid pace of development means constant change and new
+                  opportunities. Building a social network, exploring the
+                  diverse cultural offerings, and maintaining a healthy
+                  work-life balance are key to making the most of your Dubai
+                  experience. With the right approach, living in Dubai can be an
+                  enriching chapter in both your personal and professional life.
+                </p>
+              </div>
+            </div>
+            <button class="read-more-btn" data-article="4">Read More</button>
+          </div>
+        </article>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="blog-footer">
+      <div class="container">
+        <p>&copy; 2023 OG Star Traveling Tour. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <!-- Scroll to Top Button -->
+    <button class="scroll-to-top" id="scrollToTop">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <polyline points="18 15 12 9 6 15"></polyline>
+      </svg>
+    </button>
+
+    <!-- Link Global Scripts -->
+    <script src="assets/src/general.js"></script>
+
+    <!-- Page-Specific Scripts -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Initialize general functionality
+        if (typeof initGeneral === "function") {
+          initGeneral();
+        }
+
+        // Read More functionality
+        const readMoreButtons = document.querySelectorAll(".read-more-btn");
+
+        readMoreButtons.forEach((button) => {
+          button.addEventListener("click", function () {
+            const articleId = this.getAttribute("data-article");
+            const hiddenContent =
+              this.previousElementSibling.querySelector(".hidden-content");
+
+            if (hiddenContent.classList.contains("show")) {
+              hiddenContent.classList.remove("show");
+              this.textContent = "Read More";
+            } else {
+              hiddenContent.classList.add("show");
+              this.textContent = "Read Less";
+            }
+          });
+        });
+
+        // Scroll to Top functionality
+        const scrollToTopButton = document.getElementById("scrollToTop");
+
+        window.addEventListener("scroll", function () {
+          if (window.pageYOffset > 300) {
+            scrollToTopButton.classList.add("visible");
+          } else {
+            scrollToTopButton.classList.remove("visible");
+          }
+        });
+
+        scrollToTopButton.addEventListener("click", function () {
+          window.scrollTo({
+            top: 0,
+            behavior: "smooth",
+          });
+        });
+
+        // Scroll animations
+        const scrollElements = document.querySelectorAll(".scroll-animate");
+
+        const elementInView = (el, dividend = 1) => {
+          const elementTop = el.getBoundingClientRect().top;
+          return (
+            elementTop <=
+            (window.innerHeight || document.documentElement.clientHeight) /
+              dividend
+          );
+        };
+
+        const displayScrollElement = (element) => {
+          element.classList.add("visible");
+        };
+
+        const handleScrollAnimation = () => {
+          scrollElements.forEach((el) => {
+            if (elementInView(el, 1.25)) {
+              displayScrollElement(el);
+            }
+          });
+        };
+
+        window.addEventListener("scroll", () => {
+          handleScrollAnimation();
+        });
+
+        // Initial check for elements in view on page load
+        handleScrollAnimation();
+      });
+    </script>
+  </body>
+</html>

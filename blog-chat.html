@@ -1,0 +1,1141 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Travel Stories & Guides — OG Star Traveling Tour</title>
+
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Playfair+Display:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      /* -------------------------
+       Variables & Base
+       ------------------------- */
+      :root {
+        --accent: #ff7b00;
+        --accent-2: #ff9900;
+        --bg: #fbfaf9;
+        --card: #ffffff;
+        --muted: #6b6b6b;
+        --text: #111214;
+        --max-width: 1200px;
+        --radius: 14px;
+        --shadow: 0 8px 30px rgba(16, 24, 40, 0.06);
+        --transition: 300ms cubic-bezier(0.2, 0.9, 0.3, 1);
+        --page-gutter: 1rem;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        height: 100%;
+      }
+      body {
+        margin: 0;
+        font-family: "Poppins", system-ui, -apple-system, Segoe UI, Roboto,
+          "Helvetica Neue", Arial;
+        background: var(--bg);
+        color: var(--text);
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        line-height: 1.6;
+        -webkit-text-size-adjust: 100%;
+      }
+
+      a {
+        color: var(--accent);
+        text-decoration: none;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+
+      img {
+        max-width: 100%;
+        display: block;
+        height: auto;
+      }
+
+      .container {
+        max-width: var(--max-width);
+        margin: 0 auto;
+        padding: 0 var(--page-gutter);
+      }
+
+      /* -------------------------
+       Hero
+       ------------------------- */
+      .hero {
+        position: relative;
+        min-height: 52vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 4rem 1rem;
+        overflow: hidden;
+      }
+      .hero::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-image: linear-gradient(
+            180deg,
+            rgba(6, 6, 8, 0.26) 0%,
+            rgba(6, 6, 8, 0.45) 60%
+          ),
+          url("https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=2000&q=80");
+        background-size: cover;
+        background-position: center;
+        filter: contrast(0.95) saturate(1.02);
+        transform: scale(1.02);
+        z-index: 0;
+      }
+      .hero-inner {
+        position: relative;
+        z-index: 2;
+        color: #fff;
+        max-width: 1100px;
+      }
+      .kicker {
+        display: inline-block;
+        font-size: 0.9rem;
+        padding: 0.4rem 0.9rem;
+        background: rgba(255, 255, 255, 0.08);
+        border-radius: 999px;
+        margin-bottom: 1rem;
+        color: rgba(255, 255, 255, 0.95);
+        letter-spacing: 0.6px;
+        font-weight: 600;
+      }
+      h1.hero-title {
+        font-family: "Playfair Display", serif;
+        font-size: clamp(2rem, 4.5vw, 3.2rem);
+        margin: 0.5rem 0 1rem;
+        font-weight: 600;
+        line-height: 1.05;
+        letter-spacing: -0.02em;
+      }
+      p.hero-sub {
+        font-size: clamp(1rem, 1.6vw, 1.15rem);
+        max-width: 780px;
+        margin: 0 auto;
+        opacity: 0.95;
+        color: rgba(255, 255, 255, 0.95);
+        font-weight: 300;
+      }
+
+      /* -------------------------
+       Editorial grid: main + aside (but we keep main only large)
+       ------------------------- */
+      .layout {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 3rem;
+        margin-top: -4rem; /* pull up into hero to feel cohesive */
+        padding-bottom: 4rem;
+      }
+
+      /* big editorial article block */
+      article.post {
+        background: linear-gradient(
+          180deg,
+          rgba(255, 255, 255, 0.9),
+          rgba(255, 255, 255, 0.98)
+        );
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        transition: transform var(--transition), box-shadow var(--transition);
+      }
+      article.post:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 18px 50px rgba(16, 24, 40, 0.08);
+      }
+
+      .post-visual {
+        position: relative;
+        min-height: 340px;
+        overflow: hidden;
+        background: #000;
+      }
+      .post-visual img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transform-origin: center;
+        transition: transform 9s cubic-bezier(0.2, 0.9, 0.3, 1);
+        will-change: transform;
+      }
+      .post-visual:hover img {
+        transform: scale(1.06);
+      }
+
+      .post-body {
+        padding: 2.25rem;
+      }
+
+      .meta {
+        display: flex;
+        gap: 1rem;
+        align-items: center;
+        flex-wrap: wrap;
+        margin-bottom: 1rem;
+      }
+      .tag {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        background: linear-gradient(90deg, var(--accent), var(--accent-2));
+        color: white;
+        padding: 0.35rem 0.75rem;
+        border-radius: 999px;
+        font-weight: 600;
+        font-size: 0.85rem;
+        box-shadow: 0 6px 18px rgba(255, 123, 0, 0.14);
+      }
+      .date {
+        color: var(--muted);
+        font-size: 0.95rem;
+      }
+
+      h2.post-title {
+        font-family: "Playfair Display", serif;
+        font-size: clamp(1.4rem, 2.6vw, 2rem);
+        margin: 0.65rem 0 1rem;
+        letter-spacing: -0.01em;
+      }
+
+      .lede {
+        font-size: 1.05rem;
+        color: var(--muted);
+        margin-bottom: 1.1rem;
+        font-weight: 300;
+      }
+
+      .post-content p {
+        margin: 0 0 1.05rem 0;
+        font-size: 1.02rem;
+        color: var(--text);
+        line-height: 1.8;
+      }
+
+      .post-content h3 {
+        margin-top: 1.25rem;
+        margin-bottom: 0.6rem;
+        font-family: "Playfair Display", serif;
+        font-weight: 600;
+        font-size: 1.05rem;
+        color: var(--text);
+      }
+
+      .post-actions {
+        margin-top: 1rem;
+        display: flex;
+        gap: 1rem;
+        align-items: center;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.6rem;
+        padding: 0.8rem 1.25rem;
+        border-radius: 10px;
+        font-weight: 600;
+        cursor: pointer;
+        border: 0;
+        transition: all var(--transition);
+        background: var(--accent);
+        color: #fff;
+        box-shadow: 0 8px 28px rgba(255, 123, 0, 0.14);
+      }
+      .btn.secondary {
+        background: transparent;
+        color: var(--accent);
+        border: 1px solid rgba(17, 18, 20, 0.06);
+        box-shadow: none;
+      }
+      .btn:active {
+        transform: translateY(1px);
+      }
+
+      /* hidden content */
+      .reveal {
+        max-height: 0;
+        overflow: hidden;
+        opacity: 0;
+        transition: max-height 420ms ease, opacity 320ms ease;
+      }
+      .reveal.open {
+        max-height: 5000px;
+        opacity: 1;
+      }
+
+      /* subtle separator between posts */
+      .spacer {
+        height: 1.5rem;
+      }
+
+      /* footer */
+      footer.site-footer {
+        padding: 2.25rem 0;
+        text-align: center;
+        color: var(--muted);
+        font-size: 0.95rem;
+      }
+
+      /* scroll to top */
+      .top {
+        position: fixed;
+        right: 1.25rem;
+        bottom: 1.25rem;
+        width: 46px;
+        height: 46px;
+        border-radius: 999px;
+        background: var(--accent);
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+        box-shadow: 0 10px 30px rgba(255, 123, 0, 0.18);
+        cursor: pointer;
+        z-index: 1200;
+        transform: translateY(12px);
+        opacity: 0;
+        transition: all 280ms ease;
+      }
+      .top.show {
+        transform: translateY(0);
+        opacity: 1;
+      }
+
+      /* -------------------------
+       Responsive breakpoints (requested)
+       ------------------------- */
+      @media (min-width: 475px) {
+        .post-body {
+          padding: 2.5rem;
+        }
+        .post-visual {
+          min-height: 380px;
+        }
+      }
+      @media (min-width: 640px) {
+        .layout {
+          gap: 3.5rem;
+        }
+        .post-visual {
+          min-height: 420px;
+        }
+        .post-body {
+          padding: 2.75rem;
+        }
+      }
+      @media (min-width: 768px) {
+        .container {
+          padding: 0 1.5rem;
+        }
+        .layout {
+          grid-template-columns: 1fr;
+          gap: 4rem;
+          margin-top: -6rem;
+        }
+        .post-visual {
+          min-height: 460px;
+        }
+      }
+      @media (min-width: 1024px) {
+        .container {
+          padding: 0 2rem;
+        }
+        .layout {
+          grid-template-columns: 2fr 1fr;
+          gap: 2.5rem;
+        }
+        /* editorial: left column main feed */
+        .main-feed {
+          grid-column: 1/2;
+        }
+        .aside {
+          grid-column: 2/3;
+        }
+        .aside-card {
+          position: sticky;
+          top: 80px;
+        }
+      }
+      @media (min-width: 1280px) {
+        :root {
+          --max-width: 1350px;
+        }
+        .post-visual {
+          min-height: 520px;
+        }
+      }
+      @media (min-width: 1536px) {
+        :root {
+          --max-width: 1500px;
+        }
+        .post-visual {
+          min-height: 600px;
+        }
+      }
+
+      /* -------------------------
+       Aside (if present) small widgets
+       ------------------------- */
+      .aside-card {
+        background: var(--card);
+        border-radius: 12px;
+        padding: 1.25rem;
+        box-shadow: var(--shadow);
+        margin-bottom: 1rem;
+      }
+      .search input {
+        width: 100%;
+        padding: 0.75rem 1rem;
+        border-radius: 10px;
+        border: 1px solid rgba(16, 24, 40, 0.06);
+        font-size: 1rem;
+        outline: none;
+      }
+      .small-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 0.6rem;
+      }
+      .small-list a {
+        color: var(--text);
+        font-weight: 600;
+        font-size: 0.98rem;
+      }
+
+      /* accessibility: reduce motion */
+      @media (prefers-reduced-motion: reduce) {
+        .post-visual img {
+          transition: none;
+        }
+        .post,
+        .btn {
+          transition: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- HERO -->
+    <header class="hero" role="banner">
+      <div class="hero-inner container">
+        <div class="kicker">Travel Stories & Guides</div>
+        <h1 class="hero-title">
+          Inspiration, insights, and opportunities for travelers & dreamers
+        </h1>
+        <p class="hero-sub">
+          Editorial features, practical guides, and career-lifestyle pieces to
+          help you explore — whether you're chasing hidden waterfalls or
+          building a life abroad.
+        </p>
+      </div>
+    </header>
+
+    <!-- MAIN CONTAINER (grid: main + aside) -->
+    <main class="container layout" role="main">
+      <!-- MAIN FEED -->
+      <section class="main-feed" aria-label="Blog posts">
+        <!-- POST 1 -->
+        <article class="post" id="post-1" aria-labelledby="p1-title">
+          <figure class="post-visual" aria-hidden="true">
+            <img
+              src="https://images.unsplash.com/photo-1589347788657-05337042d70b?auto=format&fit=crop&w=2000&q=80"
+              alt="Wli Waterfalls, Ghana - lush waterfall"
+            />
+          </figure>
+
+          <div class="post-body">
+            <div class="meta">
+              <div class="tag">Adventure</div>
+              <div class="date">Jan 12, 2025 • 10 min read</div>
+            </div>
+
+            <h2 id="p1-title" class="post-title">
+              Top 10 Hidden Gems in Ghana You Should Visit in 2025
+            </h2>
+
+            <p class="lede">
+              Beyond the coastal castles and Accra's pulse, Ghana hides intimate
+              landscapes, sacred villages, and forests waiting to be explored.
+              Here are ten places that reveal a gentler, more unexpected Ghana.
+            </p>
+
+            <div class="post-content">
+              <!-- preview -->
+              <div class="preview">
+                <p>
+                  From misted waterfalls to stilt villages floating on expansive
+                  lakes, Ghana’s diversity rewards travelers who wander off the
+                  classic routes. These destinations combine culture, wildlife,
+                  and dramatic scenery — perfect for explorers seeking
+                  authenticity.
+                </p>
+                <p>
+                  Below we highlight five standout sites with quick practical
+                  tips and links so you can learn more before you go.
+                </p>
+              </div>
+
+              <!-- reveal -->
+              <div class="reveal" id="reveal-1">
+                <h3>1. Wli Waterfalls — Volta Region</h3>
+                <p>
+                  Wli is West Africa’s tallest waterfall. The walk through the
+                  Agumatsa forest is filled with birds and butterflies; during
+                  the wet season, the falls thunder with extra force. Practical
+                  tip: hire a local guide in Hohoe to learn about the
+                  surrounding wildlife and community conservation efforts. Learn
+                  more:
+                  <a
+                    href="https://en.wikipedia.org/wiki/Wli_Waterfalls"
+                    target="_blank"
+                    rel="noopener"
+                    >Wli Waterfalls (Wikipedia)</a
+                  >.
+                </p>
+
+                <h3>2. Nzulezo Stilt Village — Western Region</h3>
+                <p>
+                  Accessed only by canoe, Nzulezo is an entire community built
+                  above the waters of Lake Tadane. The journey through mangroves
+                  is as memorable as the village itself. Plan for a guided canoe
+                  trip from Beyin or Elmina. More:
+                  <a
+                    href="https://en.wikipedia.org/wiki/Nzulezo"
+                    target="_blank"
+                    rel="noopener"
+                    >Nzulezo Stilt Village</a
+                  >.
+                </p>
+
+                <h3>3. Shai Hills Resource Reserve — Greater Accra</h3>
+                <p>
+                  Just an hour from Accra, Shai Hills blends hiking, dramatic
+                  rock outcrops, and resident wildlife. Bring sturdy shoes for
+                  scrambling and early-morning visits to avoid midday heat.
+                  Read:
+                  <a
+                    href="https://en.wikipedia.org/wiki/Shai_Hills_Resource_Reserve"
+                    target="_blank"
+                    rel="noopener"
+                    >Shai Hills Resource Reserve</a
+                  >.
+                </p>
+
+                <h3>4. Tafi Atome Monkey Sanctuary — Volta</h3>
+                <p>
+                  A community-managed sanctuary that protects Mona monkeys while
+                  offering visitors close encounters and cultural insight.
+                  Combine with a visit to nearby craft markets for an enriching
+                  day-trip. Info:
+                  <a
+                    href="https://en.wikipedia.org/wiki/Tafi_Atome"
+                    target="_blank"
+                    rel="noopener"
+                    >Tafi Atome Monkey Sanctuary</a
+                  >.
+                </p>
+
+                <h3>5. Larabanga Mosque & Northern Heritage</h3>
+                <p>
+                  Larabanga’s 15th-century mud mosque is one of West Africa’s
+                  oldest Islamic structures and a striking stop when visiting
+                  Mole National Park for safaris and birdwatching. Practical
+                  link:
+                  <a
+                    href="https://en.wikipedia.org/wiki/Larabanga_Mosque"
+                    target="_blank"
+                    rel="noopener"
+                    >Larabanga Mosque</a
+                  >. For safaris, see
+                  <a
+                    href="https://en.wikipedia.org/wiki/Mole_National_Park"
+                    target="_blank"
+                    rel="noopener"
+                    >Mole National Park</a
+                  >.
+                </p>
+
+                <h3>More spots & how to plan</h3>
+                <p>
+                  Other treasures include Boabeng-Fiema’s sacred monkey forest
+                  and lesser-known waterfalls and coastal fishing villages. For
+                  logistics, consider hiring local drivers or reputable guides
+                  who know seasonal conditions; many remote spots require a
+                  sturdy vehicle and flexibility.
+                </p>
+
+                <p>
+                  <strong>Quick travel tips:</strong> Respect community customs,
+                  carry cash for remote areas, and opt for locally-run lodges
+                  where your spending supports the local economy.
+                </p>
+              </div>
+
+              <div class="post-actions">
+                <button class="btn" data-target="1" aria-expanded="false">
+                  Read More
+                </button>
+                <a class="btn secondary" href="#post-1" aria-hidden="true"
+                  >Share</a
+                >
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <div class="spacer"></div>
+
+        <!-- POST 2 -->
+        <article class="post" id="post-2" aria-labelledby="p2-title">
+          <figure class="post-visual" aria-hidden="true">
+            <img
+              src="https://images.unsplash.com/photo-1527631746610-ab6f6e03e6ab?auto=format&fit=crop&w=2000&q=80"
+              alt="Backpacker and travel gear"
+            />
+          </figure>
+
+          <div class="post-body">
+            <div class="meta">
+              <div class="tag">Budget</div>
+              <div class="date">Jan 18, 2025 • 8 min read</div>
+            </div>
+
+            <h2 id="p2-title" class="post-title">
+              How to Travel on a Budget and Still Live Your Dream Vacation
+            </h2>
+
+            <p class="lede">
+              Budget travel today is about smart choices, not sacrifice. With
+              planning and a few strategic habits you can enjoy rich experiences
+              while keeping costs low.
+            </p>
+
+            <div class="post-content">
+              <div class="preview">
+                <p>
+                  Start with flexible dates and flying smart: small shifts in
+                  departure or arrival days can save hundreds. Use search
+                  aggregators and set alerts, and be open to alternate airports
+                  and overnight transfers.
+                </p>
+                <p>
+                  Combine platform tools with local knowledge to find
+                  affordable, authentic stays and meals.
+                </p>
+              </div>
+
+              <div class="reveal" id="reveal-2">
+                <h3>Book smarter — flights & transport</h3>
+                <p>
+                  Use tools like
+                  <a
+                    href="https://www.skyscanner.net"
+                    target="_blank"
+                    rel="noopener"
+                    >Skyscanner</a
+                  >
+                  and Google Flights to compare prices and set alerts. Consider
+                  overnight buses or trains for long distances — they save on
+                  accommodation and are often comfortable.
+                </p>
+
+                <h3>Accommodation that feels local</h3>
+                <p>
+                  Look beyond chain hotels. Platforms like
+                  <a
+                    href="https://www.airbnb.com"
+                    target="_blank"
+                    rel="noopener"
+                    >Airbnb</a
+                  >, guesthouses, and small inns offer authentic experiences.
+                  House-sitting networks such as
+                  <a
+                    href="https://www.trustedhousesitters.com"
+                    target="_blank"
+                    rel="noopener"
+                    >TrustedHousesitters</a
+                  >
+                  provide free stays in exchange for caretaking tasks.
+                </p>
+
+                <h3>Eat like a local</h3>
+                <p>
+                  Street food and market stalls often give the best food for the
+                  best prices. Seek lunchtime specials and local bakeries for
+                  inexpensive, delicious meals.
+                </p>
+
+                <h3>Free & low-cost experiences</h3>
+                <p>
+                  Find free walking tours, parks, city museums with free days,
+                  and scenic hiking routes. Many festivals host free
+                  performances — plan your trip to coincide with local events to
+                  maximize value.
+                </p>
+
+                <h3>Timing is everything</h3>
+                <p>
+                  Travel in shoulder seasons to avoid crowds and high prices.
+                  For example, late spring or early autumn often delivers mild
+                  weather and lower rates for many destinations.
+                </p>
+
+                <p>
+                  <strong>Final tip:</strong> Keep an “experience fund” for one
+                  special splurge per trip — you’ll remember it longer than a
+                  string of small frugal choices.
+                </p>
+              </div>
+
+              <div class="post-actions">
+                <button class="btn" data-target="2" aria-expanded="false">
+                  Read More
+                </button>
+                <a class="btn secondary" href="#post-2">Save</a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <div class="spacer"></div>
+
+        <!-- POST 3 -->
+        <article class="post" id="post-3" aria-labelledby="p3-title">
+          <figure class="post-visual" aria-hidden="true">
+            <img
+              src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=2000&q=80"
+              alt="Dubai skyline at sunset"
+            />
+          </figure>
+
+          <div class="post-body">
+            <div class="meta">
+              <div class="tag">Career</div>
+              <div class="date">Jan 25, 2025 • 12 min read</div>
+            </div>
+
+            <h2 id="p3-title" class="post-title">
+              Landing Your Dream Job in Dubai: A Step-by-Step Guide for 2025
+            </h2>
+
+            <p class="lede">
+              Dubai offers tax-free salaries and global mobility, but its job
+              market has local rhythms. This guide helps you approach the search
+              with confidence and cultural insight.
+            </p>
+
+            <div class="post-content">
+              <div class="preview">
+                <p>
+                  Target industries: tech, finance, hospitality, healthcare,
+                  logistics, and creative media. Free zones such as Dubai
+                  Internet City and Dubai Media City host many international
+                  firms — identify which free zones align with your skills.
+                </p>
+                <p>
+                  Start with a polished CV and a LinkedIn presence tailored to
+                  the Middle East market.
+                </p>
+              </div>
+
+              <div class="reveal" id="reveal-3">
+                <h3>Where to search</h3>
+                <p>
+                  Use region-focused job boards like
+                  <a href="https://www.bayt.com" target="_blank" rel="noopener"
+                    >Bayt</a
+                  >,
+                  <a
+                    href="https://www.gulftalent.com"
+                    target="_blank"
+                    rel="noopener"
+                    >GulfTalent</a
+                  >, and specialized recruiters. LinkedIn is essential — follow
+                  company pages and recruiters active in Dubai.
+                </p>
+
+                <h3>CV & documents</h3>
+                <p>
+                  Dubai CVs often include a short professional photo and a clear
+                  salary expectation. Make sure degrees and certificates are
+                  attested per UAE requirements if a hire progresses to visa
+                  stage.
+                </p>
+
+                <h3>Visa & sponsorship</h3>
+                <p>
+                  Most employment visas are employer-sponsored. There are also
+                  Golden Visa programs for exceptional talent and remote-work
+                  visas that allow living in Dubai while employed elsewhere —
+                  research which fits your situation.
+                </p>
+
+                <h3>Negotiation & packages</h3>
+                <p>
+                  Beyond base salary, negotiate housing allowance, flight
+                  allowance, medical coverage, and education support (if
+                  relevant). Ask about end-of-service benefits and probation
+                  terms.
+                </p>
+
+                <h3>Cultural fit & interview tips</h3>
+                <p>
+                  Understand local business etiquette, show cultural respect,
+                  and emphasize team-orientation. Prepare examples of
+                  cross-cultural collaboration and adaptability — these
+                  qualities are highly valued.
+                </p>
+
+                <p>
+                  Resources:
+                  <a
+                    href="https://www.linkedin.com"
+                    target="_blank"
+                    rel="noopener"
+                    >LinkedIn</a
+                  >,
+                  <a
+                    href="https://www.glassdoor.com"
+                    target="_blank"
+                    rel="noopener"
+                    >Glassdoor</a
+                  >
+                  for salary benchmarks, and regional job boards like
+                  <a
+                    href="https://www.gulftalent.com"
+                    target="_blank"
+                    rel="noopener"
+                    >GulfTalent</a
+                  >.
+                </p>
+              </div>
+
+              <div class="post-actions">
+                <button class="btn" data-target="3" aria-expanded="false">
+                  Read More
+                </button>
+                <a class="btn secondary" href="#post-3">Apply</a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <div class="spacer"></div>
+
+        <!-- POST 4 -->
+        <article class="post" id="post-4" aria-labelledby="p4-title">
+          <figure class="post-visual" aria-hidden="true">
+            <img
+              src="https://images.unsplash.com/photo-1518684079-3c830dcef090?auto=format&fit=crop&w=2000&q=80"
+              alt="Dubai Marina and city lifestyle"
+            />
+          </figure>
+
+          <div class="post-body">
+            <div class="meta">
+              <div class="tag">Lifestyle</div>
+              <div class="date">Feb 3, 2025 • 11 min read</div>
+            </div>
+
+            <h2 id="p4-title" class="post-title">
+              Life in Dubai: How to Work, Stay, and Thrive Abroad
+            </h2>
+
+            <p class="lede">
+              Moving to Dubai is exhilarating and practical. This piece covers
+              neighborhoods, cost of living realities, healthcare, schooling,
+              cultural norms, and strategies for long-term success.
+            </p>
+
+            <div class="post-content">
+              <div class="preview">
+                <p>
+                  Where you live matters — Dubai Marina and Downtown suit urban
+                  professionals; Arabian Ranches and Meadows appeal to families.
+                  Factor commuting time and lifestyle when choosing an area.
+                </p>
+                <p>
+                  Housing often dominates budgets, so explore allowances and
+                  negotiate as part of your package.
+                </p>
+              </div>
+
+              <div class="reveal" id="reveal-4">
+                <h3>Neighborhoods & commuting</h3>
+                <p>
+                  Marina and Downtown are vibrant but pricier. For more
+                  affordable options, consider Discovery Gardens or Deira with
+                  easy metro access. Driving is common but traffic can be heavy;
+                  proximity reduces stress and time lost commuting.
+                </p>
+
+                <h3>Cost of living & compensation</h3>
+                <p>
+                  While salaries are tax-free, high rents can offset gains.
+                  Always compare packages including housing allowance, flights,
+                  and health insurance. Use resources like
+                  <a
+                    href="https://www.numbeo.com/cost-of-living/"
+                    target="_blank"
+                    rel="noopener"
+                    >Numbeo</a
+                  >
+                  and
+                  <a
+                    href="https://www.glassdoor.com"
+                    target="_blank"
+                    rel="noopener"
+                    >Glassdoor</a
+                  >
+                  for up-to-date benchmarks.
+                </p>
+
+                <h3>Healthcare, schools & daily life</h3>
+                <p>
+                  Healthcare is excellent but insurance-based — confirm coverage
+                  levels. International schools are diverse but expensive;
+                  factor education into family relocation plans. Budget for
+                  weekends, travel, and leisure — Dubai’s attractions and
+                  regional flights make exploration easy.
+                </p>
+
+                <h3>Culture & belonging</h3>
+                <p>
+                  Respect local norms: modest dress in public spaces outside
+                  beaches, awareness around Ramadan, and photographed consent.
+                  Build community through expat networks, sports clubs, and
+                  local volunteer groups to make Dubai feel like home.
+                </p>
+
+                <h3>Long-term strategy</h3>
+                <p>
+                  Stability in Dubai is about finances, legal clarity, and
+                  professional growth. Keep skills current, build a local
+                  network, and maintain ties to your home country for future
+                  flexibility.
+                </p>
+
+                <p>
+                  Suggested community resources:
+                  <a
+                    href="https://www.meetup.com"
+                    target="_blank"
+                    rel="noopener"
+                    >Meetup</a
+                  >,
+                  <a
+                    href="https://www.internations.org"
+                    target="_blank"
+                    rel="noopener"
+                    >InterNations</a
+                  >, and local Facebook groups for housing and jobs.
+                </p>
+              </div>
+
+              <div class="post-actions">
+                <button class="btn" data-target="4" aria-expanded="false">
+                  Read More
+                </button>
+                <a class="btn secondary" href="#post-4">Discuss</a>
+              </div>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <!-- ASIDE: quick widgets (visible on wide screens) -->
+      <aside class="aside" aria-label="Sidebar">
+        <div class="aside-card search">
+          <label
+            for="search"
+            style="display: block; font-weight: 600; margin-bottom: 0.6rem"
+            >Search the blog</label
+          >
+          <input
+            id="search"
+            type="search"
+            placeholder="Search posts, places, tips..."
+          />
+        </div>
+
+        <div class="aside-card">
+          <div style="font-weight: 700; margin-bottom: 0.6rem">
+            Popular posts
+          </div>
+          <ul class="small-list">
+            <li><a href="#post-1">Hidden Gems in Ghana</a></li>
+            <li><a href="#post-2">Travel on a Budget</a></li>
+            <li><a href="#post-3">Landing Jobs in Dubai</a></li>
+            <li><a href="#post-4">Life in Dubai</a></li>
+          </ul>
+        </div>
+
+        <div class="aside-card">
+          <div style="font-weight: 700; margin-bottom: 0.6rem">Resources</div>
+          <ul class="small-list">
+            <li>
+              <a
+                href="https://www.skyscanner.net"
+                target="_blank"
+                rel="noopener"
+                >Skyscanner — cheap flights</a
+              >
+            </li>
+            <li>
+              <a href="https://www.bayt.com" target="_blank" rel="noopener"
+                >Bayt — MENA job board</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://www.gulftalent.com"
+                target="_blank"
+                rel="noopener"
+                >GulfTalent — UAE jobs</a
+              >
+            </li>
+          </ul>
+        </div>
+      </aside>
+    </main>
+
+    <!-- scroll to top -->
+    <div
+      class="top"
+      id="toTop"
+      aria-label="Scroll to top"
+      role="button"
+      title="Back to top"
+    >
+      ↑
+    </div>
+
+    <!-- site footer -->
+    <footer class="site-footer container">
+      <div>&copy; 2025 OG Star Traveling Tour — All rights reserved.</div>
+    </footer>
+
+    <!-- JAVASCRIPT: read-more toggles, search filter, interactions -->
+    <script>
+      (function () {
+        // Toggle reveal panels for read more/less
+        document.querySelectorAll(".btn").forEach((btn) => {
+          // only attach to read-more buttons (they have data-target)
+          const target = btn.getAttribute("data-target");
+          if (!target) return;
+          btn.addEventListener("click", () => {
+            const panel = document.getElementById("reveal-" + target);
+            const expanded = btn.getAttribute("aria-expanded") === "true";
+            if (!panel) return;
+            if (expanded) {
+              // collapse
+              panel.classList.remove("open");
+              btn.textContent = "Read More";
+              btn.setAttribute("aria-expanded", "false");
+              // scroll a bit so the title remains visible
+              document
+                .getElementById("post-" + target)
+                .scrollIntoView({ behavior: "smooth", block: "start" });
+            } else {
+              // open
+              panel.classList.add("open");
+              btn.textContent = "Read Less";
+              btn.setAttribute("aria-expanded", "true");
+              // optional: scroll to reveal smoothly after opening
+              setTimeout(() => {
+                panel.scrollIntoView({ behavior: "smooth", block: "center" });
+              }, 200);
+            }
+          });
+        });
+
+        // fade-in posts when they enter view
+        const posts = document.querySelectorAll("article.post");
+        const io = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((e) => {
+              if (e.isIntersecting) e.target.style.opacity = 1;
+            });
+          },
+          { threshold: 0.08 }
+        );
+
+        posts.forEach((p) => {
+          p.style.opacity = 0;
+          p.style.transformOrigin = "top center";
+          p.style.transition = "opacity 700ms ease, transform 700ms ease";
+          io.observe(p);
+          p.addEventListener("transitionend", () => {
+            p.style.transform = "none";
+          });
+        });
+
+        // reveal logic makes them visible (apply transform in CSS hover only)
+        // scroll to top button
+        const toTop = document.getElementById("toTop");
+        window.addEventListener("scroll", () => {
+          if (window.pageYOffset > 520) toTop.classList.add("show");
+          else toTop.classList.remove("show");
+        });
+        toTop.addEventListener("click", () =>
+          window.scrollTo({ top: 0, behavior: "smooth" })
+        );
+
+        // basic search filter for post titles/content (client-side)
+        const searchInput = document.getElementById("search");
+        if (searchInput) {
+          searchInput.addEventListener("input", (e) => {
+            const q = e.target.value.trim().toLowerCase();
+            document.querySelectorAll("article.post").forEach((post) => {
+              const text = post.innerText.toLowerCase();
+              if (!q || text.indexOf(q) !== -1) post.style.display = "";
+              else post.style.display = "none";
+            });
+          });
+        }
+
+        // progressive enhancement: make images slightly parallax on scroll
+        document.addEventListener(
+          "scroll",
+          () => {
+            const scrolled = window.pageYOffset;
+            document.querySelectorAll(".post-visual img").forEach((img) => {
+              const rect = img.getBoundingClientRect();
+              // only small translate when in view
+              const inView = rect.top < window.innerHeight && rect.bottom > 0;
+              if (inView) {
+                const movement = (rect.top - window.innerHeight / 2) * -0.02;
+                img.style.transform =
+                  "translateY(" + movement + "px) scale(1.03)";
+              }
+            });
+          },
+          { passive: true }
+        );
+      })();
+    </script>
+  </body>
+</html>
