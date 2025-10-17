@@ -1,807 +1,188 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>OG Star — Premium Navbar + WhatsApp + Footer</title>
-
-    <!-- Font Awesome for icons -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      OG STAR TRAVEL & TOURS - Relish the Experience | Travel, Work & Study
+      Abroad
+    </title>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
-
-    <style>
-      :root {
-        --emerald: #0b6b4a; /* luxury emerald accent */
-        --whatsapp: #25d366; /* whatsapp green for CTA base */
-        --bg: rgba(255, 255, 255, 0.82);
-        --muted: #9aa3a5;
-        --text: #0f1720;
-        --nav-h: 70px;
-        --ease: cubic-bezier(0.22, 0.9, 0.35, 1);
-        --maxw: 1240px;
-        --footer-bg: #081016; /* deep dark footer */
-        --footer-text: #d7e0e2;
-        --emerald: #046c4e;
-        --emerald-dark: #012b26;
-        --text-light: #f3f3f3;
-        --text-muted: #c0c0c0;
-        --transition: all 0.4s ease;
-      }
-
-      * {
-        box-sizing: border-box;
-      }
-      body {
-        margin: 0;
-        font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto,
-          "Helvetica Neue", Arial;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-        color: var(--text);
-        background: #f6f7f8;
-      }
-
-      /* ===========================
-       NAVBAR (layout + style)
-       =========================== */
-      .navbar {
-        position: fixed;
-        inset: 0 0 auto 0;
-        height: var(--nav-h);
-        display: flex;
-        align-items: center;
-        background: var(--bg);
-        backdrop-filter: blur(6px) saturate(120%);
-        border-bottom: 1px solid rgba(10, 12, 13, 0.06);
-        z-index: 1200;
-        box-shadow: 0 8px 30px rgba(15, 23, 42, 0.04);
-      }
-
-      .nav-inner {
-        position: relative;
-        width: 100%;
-        max-width: var(--maxw);
-        margin: 0 auto;
-        height: 100%;
-        padding: 0 12px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-
-      /* Logo pinned to near-left corner */
-      .nav-logo {
-        position: absolute;
-        left: 12px;
-        top: 50%;
-        transform: translateY(-50%);
-      }
-      .nav-logo img {
-        height: 44px;
-        display: block;
-      }
-
-      /* WhatsApp pinned to near-right corner */
-      .nav-cta {
-        position: absolute;
-        right: 12px;
-        top: 50%;
-        transform: translateY(-50%);
-        display: flex;
-        align-items: center;
-        gap: 12px;
-      }
-
-      /* Center nav (keeps centered even when left/right items exist) */
-      .nav-center {
-        margin: 0 auto;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        pointer-events: auto;
-      }
-
-      .nav-menu {
-        display: flex;
-        gap: 28px;
-        list-style: none;
-        margin: 0;
-        padding: 0;
-        align-items: center;
-      }
-
-      .nav-item {
-        position: relative;
-      }
-
-      .nav-link {
-        display: inline-block;
-        color: var(--text);
-        font-weight: 600;
-        font-size: 13px;
-        text-transform: uppercase;
-        letter-spacing: 0.6px;
-        padding: 6px 4px;
-        text-decoration: none;
-        transition: color 420ms var(--ease), transform 220ms var(--ease);
-      }
-
-      /* underline: center -> full using scaleX */
-      .nav-link::after {
-        content: "";
-        position: absolute;
-        left: 50%;
-        transform: translateX(-50%) scaleX(0);
-        transform-origin: center;
-        width: 100%;
-        height: 2px;
-        bottom: -8px;
-        background: var(--emerald);
-        border-radius: 2px;
-        transition: transform 520ms var(--ease); /* slower and clean */
-      }
-      .nav-link:hover {
-        color: var(--emerald);
-      }
-      .nav-link:hover::after,
-      .nav-link.active::after {
-        transform: translateX(-50%) scaleX(1);
-      }
-
-      /* Desktop dropdown (floating) */
-      .dropdown {
-        position: absolute;
-        top: calc(var(--nav-h) - 6px);
-        left: 50%;
-        transform: translateX(-50%) translateY(10px);
-        background: linear-gradient(#fff, #fbfbfb);
-        border-radius: 10px;
-        padding: 10px;
-        box-shadow: 0 18px 40px rgba(4, 10, 15, 0.08);
-        border: 1px solid rgba(10, 12, 13, 0.04);
-        min-width: 210px;
-        opacity: 0;
-        visibility: hidden;
-        pointer-events: none;
-        transition: opacity 260ms var(--ease), transform 260ms var(--ease),
-          visibility 260ms;
-        z-index: 50;
-      }
-      .dropdown .sublink {
-        display: block;
-        padding: 10px 12px;
-        color: var(--muted);
-        text-decoration: none;
-        border-radius: 6px;
-        font-weight: 600;
-        transition: color 180ms var(--ease), background 180ms var(--ease);
-      }
-      .dropdown .sublink:hover {
-        background: rgba(11, 107, 74, 0.06);
-        color: var(--emerald);
-      }
-
-      @media (min-width: 1024px) {
-        .nav-item:hover > .dropdown {
-          opacity: 1;
-          visibility: visible;
-          transform: translateX(-50%) translateY(0);
-          pointer-events: auto;
-        }
-      }
-
-      /* ===========================
-       WhatsApp CTA (desktop) - expand + typewriter + water-fill hover
-       =========================== */
-      .whatsapp-btn {
-        --btn-h: 44px;
-        display: inline-flex;
-        align-items: center;
-        gap: 10px;
-        height: var(--btn-h);
-        border-radius: 999px;
-        border: 0;
-        cursor: pointer;
-        padding: 0 12px;
-        width: 48px; /* initial circular */
-        overflow: hidden;
-        position: relative;
-        background: linear-gradient(180deg, var(--whatsapp), #20c55c);
-        color: #fff;
-        font-weight: 700;
-        transition: width 700ms var(--ease), box-shadow 240ms var(--ease),
-          transform 200ms var(--ease);
-        box-shadow: 0 8px 30px rgba(37, 211, 102, 0.14);
-        display: flex;
-        align-items: center;
-        justify-content: flex-start;
-      }
-      .whatsapp-btn .w-icon {
-        width: 34px;
-        text-align: center;
-        font-size: 18px;
-        z-index: 2;
-      }
-      .whatsapp-btn .w-label {
-        opacity: 0;
-        transform: translateX(-6px);
-        white-space: nowrap;
-        z-index: 2;
-        transition: opacity 420ms var(--ease) 0.12s,
-          transform 420ms var(--ease) 0.12s;
-      }
-      /* background "water" : pseudo element that fills from bottom to top */
-      .whatsapp-btn::after {
-        content: "";
-        position: absolute;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        height: 0%;
-        background: #000; /* fill color black on hover */
-        z-index: 1;
-        transition: height 420ms ease-in-out;
-        transform-origin: bottom;
-        border-radius: 999px;
-        opacity: 0.95;
-        pointer-events: none;
-      }
-      /* when expanded, show label */
-      .whatsapp-btn.expand {
-        width: 170px;
-      }
-      .whatsapp-btn.expand .w-label {
-        opacity: 1;
-        transform: none;
-      }
-      /* hover effect: "water fill" bottom -> top */
-      .whatsapp-btn:hover::after {
-        height: 100%;
-      }
-      /* invert label color when water covers it (use mix-blend or color change) */
-      .whatsapp-btn:hover .w-label,
-      .whatsapp-btn:hover .w-icon {
-        color: #fff; /* label and icon remain white */
-        z-index: 3;
-      }
-      /* subtle lift */
-      .whatsapp-btn:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 18px 46px rgba(2, 6, 23, 0.12);
-      }
-
-      /* ===========================
-       MOBILE: hamburger & slide panel
-       =========================== */
-      .hamburger {
-        display: none;
-        background: none;
-        border: 0;
-        font-size: 20px;
-        cursor: pointer;
-        color: var(--text);
-      }
-
-      .mobile-panel {
-        position: fixed;
-        top: 0;
-        right: -100%;
-        width: 100%;
-        max-width: 420px;
-        height: 100vh;
-        background: linear-gradient(
-          180deg,
-          #0b0f11,
-          #091214
-        ); /* darker mobile panel */
-        box-shadow: -50px 0 80px rgba(2, 6, 23, 0.6);
-        transition: right 0.46s var(--ease);
-        z-index: 1400;
-        display: flex;
-        flex-direction: column;
-        padding: 28px;
-        color: var(--footer-text);
-      }
-      .mobile-panel.open {
-        right: 0;
-      }
-      .mobile-panel .close-btn {
-        margin-left: auto;
-        background: none;
-        border: 0;
-        font-size: 22px;
-        cursor: pointer;
-        color: var(--muted);
-      }
-
-      .mobile-links {
-        margin-top: 18px;
-        display: flex;
-        flex-direction: column;
-        gap: 6px;
-      }
-      .mobile-links a,
-      .mobile-links button {
-        color: var(--footer-text);
-        text-decoration: none;
-        font-weight: 700;
-        font-size: 16px;
-        text-align: left;
-        background: none;
-        border: 0;
-        padding: 12px 6px;
-        border-radius: 8px;
-        cursor: pointer;
-      }
-      .mobile-sublinks {
-        display: none;
-        flex-direction: column;
-        gap: 6px;
-        padding-left: 12px;
-        margin-bottom: 8px;
-      }
-      .mobile-sublinks a {
-        font-weight: 600;
-        color: #cbd6d8;
-        padding: 10px 6px;
-        border-radius: 6px;
-        text-decoration: none;
-      }
-
-      .overlay {
-        position: fixed;
-        inset: 0;
-        background: rgba(2, 6, 23, 0.6);
-        opacity: 0;
-        visibility: hidden;
-        transition: opacity 0.3s ease;
-        z-index: 1350;
-      }
-      .overlay.show {
-        opacity: 1;
-        visibility: visible;
-      }
-
-      @media (max-width: 1023px) {
-        .nav-center {
-          display: none;
-        } /* hide center nav on mobile */
-        .nav-logo {
-          left: 12px;
-        } /* keep near left */
-        .nav-cta {
-          right: 12px;
-        } /* keep near right */
-        .whatsapp-btn {
-          display: none;
-        } /* mobile CTA is inside panel */
-        .hamburger {
-          display: block;
-          position: relative;
-          right: 0;
-        }
-      }
-
-      @media (min-width: 1024px) {
-        .mobile-panel,
-        .overlay {
-          display: none;
-        }
-      }
-
-      /* ========== FOOTER ========== */
-      footer {
-        background: linear-gradient(180deg, var(--emerald-dark), #000);
-        color: var(--text-light);
-        padding: 60px 20px 20px;
-        margin-top: 100px;
-      }
-
-      .footer-container {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-        gap: 2rem;
-        max-width: 1200px;
-        margin: 0 auto;
-      }
-
-      .footer-column h4 {
-        margin-bottom: 1rem;
-        font-size: 1.2rem;
-        font-weight: 600;
-        color: var(--text-light);
-      }
-
-      .footer-column ul {
-        list-style: none;
-        padding: 0;
-      }
-
-      .footer-column ul li {
-        margin-bottom: 10px;
-      }
-
-      .footer-column ul li a {
-        text-decoration: none;
-        color: var(--text-muted);
-        font-size: 15px;
-        transition: var(--transition);
-      }
-
-      .footer-column ul li a:hover {
-        color: var(--emerald);
-      }
-
-      .social-links {
-        display: flex;
-        align-items: center;
-        gap: 15px;
-      }
-
-      .social-links a {
-        width: 36px;
-        height: 36px;
-        border: 1px solid var(--text-light);
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: var(--text-light);
-        transition: var(--transition);
-      }
-
-      .social-links a:hover {
-        border-color: var(--emerald);
-        color: var(--emerald);
-        transform: translateY(-3px);
-      }
-
-      .footer-bottom {
-        text-align: center;
-        margin-top: 40px;
-        padding-top: 20px;
-        border-top: 1px solid rgba(255, 255, 255, 0.1);
-        color: var(--text-muted);
-        font-size: 14px;
-      }
-
-      .footer-bottom span {
-        color: var(--emerald);
-      }
-    </style>
+    <link rel="stylesheet" href="assets/styles/modern-normalize.css" />
+    <link rel="stylesheet" href="assets/styles/style.css" />
+    <link rel="stylesheet" href="assets/styles/utils.css" />
+    <link rel="stylesheet" href="assets/styles/nav-foot.css" />
   </head>
   <body>
-    <!-- NAVBAR -->
-    <header class="navbar" id="navbar">
-      <div class="nav-inner">
-        <!-- LOGO pinned left -->
-        <div class="nav-logo" aria-hidden="false">
-          <a href="#" class="logo"
-            ><img src="assets/images/logo.png" alt="OG Star logo"
-          /></a>
+    <!-- Mobile Menu Overlay -->
+    <div>
+      <div class="overlay" id="overlay"></div>
+
+      <!-- Navigation -->
+      <header class="navbar" id="navbar">
+        <div class="nav-inner">
+          <div class="nav-logo">
+            <a href="index.html" class="logo">
+              <img src="assets/images/logo.png" alt="O G Star logo" />
+            </a>
+          </div>
+
+          <nav class="nav-center" aria-label="Main navigation">
+            <ul class="nav-menu" role="menubar">
+              <li class="nav-item" role="none">
+                <a href="index.html" class="nav-link active" role="menuitem"
+                  >Home</a
+                >
+              </li>
+              <li class="nav-item" role="none">
+                <a href="services.html" class="nav-link" role="menuitem"
+                  >Services</a
+                >
+              </li>
+              <li class="nav-item" role="none">
+                <a href="destinations.html" class="nav-link" role="menuitem"
+                  >Destinations</a
+                >
+              </li>
+              <li class="nav-item" role="none">
+                <a href="information.html" class="nav-link" role="menuitem"
+                  >Information</a
+                >
+              </li>
+              <li class="nav-item" role="none">
+                <a href="contact.html" class="nav-link" role="menuitem"
+                  >Contact</a
+                >
+              </li>
+              <li class="nav-item" role="none">
+                <a href="blog.html" class="nav-link" role="menuitem">Blog</a>
+              </li>
+            </ul>
+          </nav>
+
+          <div class="nav-cta">
+            <button
+              class="whatsapp-btn"
+              id="whatsappDesktop"
+              aria-label="WhatsApp Us"
+            >
+              <span class="w-icon"><i class="fab fa-whatsapp"></i></span>
+              <span class="w-label" id="whLabel">WhatsApp Us</span>
+            </button>
+
+            <button class="hamburger" id="hamburger" aria-label="Open menu">
+              <i class="fas fa-bars"></i>
+            </button>
+          </div>
+        </div>
+      </header>
+
+      <!-- Mobile panel -->
+      <aside class="mobile-panel" id="mobilePanel">
+        <div class="mobile-panel-header">
+          <h3>Menu</h3>
+          <button class="close-btn" id="closePanel" aria-label="Close menu">
+            <i class="fas fa-times"></i>
+          </button>
         </div>
 
-        <!-- CENTER menu (desktop) -->
-        <nav class="nav-center" aria-label="Main navigation">
-          <ul class="nav-menu" role="menubar">
-            <li class="nav-item" role="none">
-              <a href="#home" class="nav-link active" role="menuitem">Home</a>
-            </li>
-
-            <li class="nav-item" role="none">
-              <a href="#services" class="nav-link" role="menuitem">Services</a>
-              <div class="dropdown" role="menu" aria-hidden="true">
-                <a href="#travel" class="sublink">Travel Abroad</a>
-                <a href="#work" class="sublink">Work &amp; Stay Abroad</a>
-              </div>
-            </li>
-
-            <li class="nav-item" role="none">
-              <a href="#information" class="nav-link" role="menuitem"
-                >Information</a
-              >
-              <div class="dropdown" role="menu" aria-hidden="true">
-                <a href="#about" class="sublink">About Us</a>
-                <a href="#faq" class="sublink">Frequently Asked Questions</a>
-              </div>
-            </li>
-
-            <li class="nav-item" role="none">
-              <a href="#contact" class="nav-link" role="menuitem">Contact</a>
-            </li>
-
-            <li class="nav-item" role="none">
-              <a href="#blog" class="nav-link" role="menuitem">Blog</a>
-            </li>
-          </ul>
+        <nav class="mobile-links">
+          <a href="index.html">Home</a>
+          <a href="services.html">Services</a>
+          <a href="destinations.html">Destinations</a>
+          <a href="information.html">Information</a>
+          <a href="contact.html">Contact</a>
+          <a href="blog.html">Blog</a>
         </nav>
+      </aside>
+    </div>
 
-        <!-- RIGHT controls (WhatsApp + hamburger) pinned right -->
-        <div class="nav-cta">
-          <!-- WhatsApp CTA (desktop) -->
-          <button
-            class="whatsapp-btn"
-            id="whatsappDesktop"
-            aria-label="WhatsApp Us"
-          >
-            <span class="w-icon"><i class="fab fa-whatsapp"></i></span>
-            <span class="w-label" id="whLabel">WhatsApp Us</span>
-          </button>
-
-          <!-- Hamburger for mobile -->
-          <button
-            class="hamburger"
-            id="hamburger"
-            aria-controls="mobilePanel"
-            aria-expanded="false"
-            aria-label="Open menu"
-          >
-            <i class="fas fa-bars" style="font-size: 18px"></i>
-          </button>
-        </div>
-      </div>
-    </header>
-
-    <!-- Mobile overlay & panel -->
-    <div class="overlay" id="overlay" aria-hidden="true"></div>
-
-    <aside
-      class="mobile-panel"
-      id="mobilePanel"
-      aria-hidden="true"
-      aria-label="Mobile menu"
-    >
-      <button class="close-btn" id="closePanel" aria-label="Close menu">
-        <i class="fas fa-times"></i>
-      </button>
-
-      <nav class="mobile-links" aria-label="Mobile primary navigation">
-        <a href="#home" class="m-link">Home</a>
-
-        <div>
-          <button class="m-link m-toggle" data-target="mServices">
-            Services
-            <i
-              class="fas fa-chevron-down"
-              style="opacity: 0.6; margin-left: 6px"
-            ></i>
-          </button>
-          <div class="mobile-sublinks" id="mServices">
-            <a href="#travel">Travel Abroad</a>
-            <a href="#work">Work &amp; Stay Abroad</a>
-          </div>
-        </div>
-
-        <div>
-          <button class="m-link m-toggle" data-target="mInfo">
-            Information
-            <i
-              class="fas fa-chevron-down"
-              style="opacity: 0.6; margin-left: 6px"
-            ></i>
-          </button>
-          <div class="mobile-sublinks" id="mInfo">
-            <a href="#about">About Us</a>
-            <a href="#faq">Frequently Asked Questions</a>
-          </div>
-        </div>
-
-        <a href="#contact" class="m-link">Contact</a>
-        <a href="#blog" class="m-link">Blog</a>
-
-        <!-- WhatsApp in mobile panel as last item -->
-        <div
-          style="
-            margin-top: 18px;
-            padding-top: 12px;
-            border-top: 1px solid rgba(255, 255, 255, 0.04);
-          "
-        >
-          <button
-            class="whatsapp-btn"
-            id="whatsappMobile"
-            style="
-              width: 100%;
-              background: linear-gradient(180deg, var(--whatsapp), #20c55c);
-              color: #fff;
-              justify-content: center;
-            "
-          >
-            <span class="w-icon"><i class="fab fa-whatsapp"></i></span>
-            <span class="w-label">WhatsApp Us</span>
-          </button>
-        </div>
-      </nav>
-    </aside>
-
-    <!-- Demo content so page scroll works -->
-    <main style="padding-top: 110px">
-      <section style="max-width: 1100px; margin: 0 auto; padding: 40px 16px">
-        <h1 style="font-size: 28px; margin-bottom: 12px">Demo content</h1>
-        <p style="color: var(--muted); margin-bottom: 18px">
-          Scroll down to see footer. Replace with your real content.
-        </p>
-        <div
-          style="
-            height: 1200px;
-            background: linear-gradient(#fff, #fafafa);
-            border-radius: 12px;
-          "
-        ></div>
-      </section>
+    <!-- Main content -->
+    <main style="height: 250vh; margin: 100px auto; padding: 20px">
+      <h1>Welcome to OG STAR TRAVEL & TOURS</h1>
+      <p>Experience the world with our exceptional travel services.</p>
     </main>
 
-    <footer>
-      <div class="footer-container">
-        <div class="footer-column">
-          <h4>About Us</h4>
-          <p>
-            OG Star Travel & Tours helps you explore the world with ease — from
-            visa assistance to full tour experiences across the globe.
-          </p>
-        </div>
+    <!-- Footer -->
+    <div>
+      <footer class="footer" id="contact">
+        <div class="footer-container">
+          <div class="footer-column">
+            <img
+              src="assets/images/logo.png"
+              alt="O G Star Logo"
+              style="max-width: 150px; margin-bottom: 0"
+            />
+          </div>
 
-        <div class="footer-column">
-          <h4>Quick Links</h4>
-          <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Services</a></li>
-            <li><a href="#">Information</a></li>
-            <li><a href="#">Contact</a></li>
-            <li><a href="#">Blog</a></li>
-          </ul>
-        </div>
+          <div class="footer-column">
+            <h4>Quick Links</h4>
+            <ul>
+              <li><a href="index.html">Home</a></li>
+              <li><a href="services.html">Services</a></li>
+              <li><a href="destinations.html">Destinations</a></li>
+              <li><a href="information.html">Information</a></li>
+              <li><a href="contact.html">Contact</a></li>
+              <li><a href="blog.html">Blog</a></li>
+            </ul>
+          </div>
 
-        <div class="footer-column">
-          <h4>Our Services</h4>
-          <ul>
-            <li><a href="#">Travel & Tours</a></li>
-            <li><a href="#">Study Abroad</a></li>
-            <li><a href="#">Work & Stay</a></li>
-            <li><a href="#">Visa Assistance</a></li>
-          </ul>
-        </div>
+          <div class="footer-column">
+            <h4>Our Services</h4>
+            <ul>
+              <li><a href="services.html">Travel & Tours</a></li>
+              <li><a href="services.html">Study Abroad</a></li>
+              <li><a href="services.html">Work & Stay</a></li>
+              <li><a href="services.html">Visa Assistance</a></li>
+            </ul>
+          </div>
 
-        <div class="footer-column">
-          <h4>Connect With Us</h4>
-          <div class="social-links">
-            <a href="#"><i class="fab fa-whatsapp"></i></a>
-            <a href="#"><i class="fab fa-instagram"></i></a>
-            <a href="#"><i class="fab fa-x-twitter"></i></a>
-            <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <div class="footer-column">
+            <h4>Connect With Us</h4>
+            <div class="social-links">
+              <a href="#" aria-label="WhatsApp"
+                ><i class="fab fa-whatsapp"></i
+              ></a>
+              <a href="#" aria-label="Instagram"
+                ><i class="fab fa-instagram"></i
+              ></a>
+              <a href="#" aria-label="Facebook"
+                ><i class="fab fa-facebook-f"></i
+              ></a>
+              <a href="#" aria-label="LinkedIn"
+                ><i class="fab fa-linkedin-in"></i
+              ></a>
+            </div>
           </div>
         </div>
+
+        <div class="footer-bottom">
+          <span
+            >© 2025 O G Star Travel & Tours. Crafted with ❤️ by
+            Kenzyverse.</span
+          >
+        </div>
+      </footer>
+
+      <!-- WhatsApp Floating Button -->
+      <a
+        href="https://wa.me/233546945944?text=Hello%20OG%20Star%20Travel%20%26%20Tours,%20I'm%20interested%20in%20your%20services"
+        class="whatsapp-float"
+        target="_blank"
+        id="whatsappFloat"
+      >
+        <i class="fab fa-whatsapp"></i>
+      </a>
+
+      <!-- Back to Top Button -->
+      <div class="back-to-top" id="backToTop" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
       </div>
+    </div>
 
-      <div class="footer-bottom">
-        © 2025 OG Star Travel & Tours. Crafted with <span>❤️</span> by
-        Kenzyverse.
-      </div>
-    </footer>
-
-    <script>
-      // ---------- footer year ----------
-      document.getElementById("year").textContent = new Date().getFullYear();
-
-      // ---------- open whatsapp helper ----------
-      function openWhats(
-        number = "+233546945944",
-        message = "Hello OG Star Travel & Tours, I would like to make an inquiry."
-      ) {
-        const encoded = encodeURIComponent(message);
-        const clean = number.replace(/[^0-9]/g, "");
-        const url = `https://wa.me/${clean}?text=${encoded}`;
-        window.open(url, "_blank");
-      }
-
-      // ---------- Desktop WhatsApp: expand after 3s + typewriter ----------
-      (function () {
-        const btn = document.getElementById("whatsappDesktop");
-        const label = document.getElementById("whLabel");
-        const full = "WhatsApp Us";
-        const typingDelay = 60;
-        const delayBefore = 3000;
-        let typedIndex = 0;
-        let typingTimer = null;
-
-        // click opens
-        btn.addEventListener("click", () => openWhats());
-
-        // schedule expand & type
-        window.addEventListener("load", () => {
-          setTimeout(() => {
-            btn.classList.add("expand");
-            // clear label and type
-            label.textContent = "";
-            typedIndex = 0;
-            typingTimer = setInterval(() => {
-              label.textContent += full[typedIndex++];
-              if (typedIndex >= full.length) clearInterval(typingTimer);
-            }, typingDelay);
-          }, delayBefore);
-        });
-
-        // also allow keyboard activation
-        btn.addEventListener("keyup", (e) => {
-          if (e.key === "Enter") openWhats();
-        });
-      })();
-
-      // mobile whatsapp button inside panel
-      (function () {
-        const mobileBtn = document.getElementById("whatsappMobile");
-        if (mobileBtn) mobileBtn.addEventListener("click", () => openWhats());
-      })();
-
-      // ---------- Mobile panel open/close ----------
-      (function () {
-        const hamburger = document.getElementById("hamburger");
-        const panel = document.getElementById("mobilePanel");
-        const overlay = document.getElementById("overlay");
-        const closeBtn = document.getElementById("closePanel");
-
-        function openPanel() {
-          panel.classList.add("open");
-          overlay.classList.add("show");
-          panel.setAttribute("aria-hidden", "false");
-          hamburger.setAttribute("aria-expanded", "true");
-          document.body.style.overflow = "hidden";
-        }
-        function closePanel() {
-          panel.classList.remove("open");
-          overlay.classList.remove("show");
-          panel.setAttribute("aria-hidden", "true");
-          hamburger.setAttribute("aria-expanded", "false");
-          document.body.style.overflow = "";
-        }
-
-        hamburger.addEventListener("click", openPanel);
-        closeBtn.addEventListener("click", closePanel);
-        overlay.addEventListener("click", closePanel);
-
-        // mobile sublink toggles
-        document.querySelectorAll(".m-toggle").forEach((btn) => {
-          btn.addEventListener("click", () => {
-            const target = btn.dataset.target;
-            const el = document.getElementById(target);
-            if (!el) return;
-            const showing = window.getComputedStyle(el).display === "flex";
-            el.style.display = showing ? "none" : "flex";
-          });
-        });
-
-        // Close on link click
-        document.querySelectorAll(".mobile-links a").forEach((a) => {
-          a.addEventListener("click", () => closePanel());
-        });
-
-        // ensure panel closes if resizing to desktop
-        window.addEventListener("resize", () => {
-          if (window.innerWidth >= 1024 && panel.classList.contains("open"))
-            closePanel();
-        });
-      })();
-
-      // ---------- Ensure center menu gets accessible focus show for dropdowns ----------
-      (function () {
-        document.querySelectorAll(".nav-item").forEach((item) => {
-          const link = item.querySelector(".nav-link");
-          const drop = item.querySelector(".dropdown");
-          if (!link || !drop) return;
-          link.addEventListener("focus", () => {
-            drop.style.opacity = "1";
-            drop.style.visibility = "visible";
-            drop.style.transform = "translateX(-50%) translateY(0)";
-          });
-          link.addEventListener("blur", () => {
-            drop.style.opacity = "";
-            drop.style.visibility = "";
-            drop.style.transform = "";
-          });
-        });
-      })();
-    </script>
+    <script src="assets/src/nav-foot.js"></script>
   </body>
 </html>

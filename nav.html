@@ -1,72 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>OG Star — Premium Navbar + WhatsApp + Footer</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      OG STAR TRAVEL & TOURS - Relish the Experience | Travel, Work & Study
+      Abroad
+    </title>
 
-    <!-- Font Awesome for icons -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    />
+    <link rel="stylesheet" href="assets/styles/modern-normalize.css" />
+    <link rel="stylesheet" href="assets/styles/style.css" />
+    <link rel="stylesheet" href="assets/styles/utils.css" />
 
     <style>
-      :root {
-        --emerald: #0b6b4a; /* luxury emerald accent */
-        --whatsapp: #25d366; /* whatsapp green for CTA base */
-        --bg: rgba(255, 255, 255, 0.82);
-        --muted: #9aa3a5;
-        --text: #0f1720;
-        --nav-h: 70px;
-        --ease: cubic-bezier(0.22, 0.9, 0.35, 1);
-        --maxw: 1240px;
-        --footer-bg: #081016; /* deep dark footer */
-        --footer-text: #d7e0e2;
-      }
-
-      * {
-        box-sizing: border-box;
-      }
-      body {
-        margin: 0;
-        font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto,
-          "Helvetica Neue", Arial;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-        color: var(--text);
-        background: #f6f7f8;
-      }
-
-      /* ===========================
-       NAVBAR (layout + style)
-       =========================== */
+      /* Navigation */
       .navbar {
         position: fixed;
         inset: 0 0 auto 0;
-        height: var(--nav-h);
+        height: var(--nav-height);
         display: flex;
         align-items: center;
-        background: var(--bg);
+        background: var(--nav-bg);
         backdrop-filter: blur(6px) saturate(120%);
         border-bottom: 1px solid rgba(10, 12, 13, 0.06);
-        z-index: 1200;
+        z-index: 9999;
         box-shadow: 0 8px 30px rgba(15, 23, 42, 0.04);
+        transition: transform 0.3s ease;
+        /* Remove all overflow properties to allow dropdown to extend */
+      }
+
+      .navbar {
+        -ms-overflow-style: none; /* IE and Edge */
+        scrollbar-width: none; /* Firefox */
+      }
+
+      .navbar::-webkit-scrollbar {
+        display: none;
+        visibility: hidden;
+        width: 0;
+        height: 0;
+      }
+
+      .navbar.hidden {
+        transform: translateY(-100%);
       }
 
       .nav-inner {
         position: relative;
         width: 100%;
-        max-width: var(--maxw);
+        max-width: 1240px;
         margin: 0 auto;
         height: 100%;
         padding: 0 12px;
         display: flex;
         align-items: center;
         justify-content: center;
+        overflow: visible; /* Allow dropdown to extend beyond */
       }
 
-      /* Logo pinned to near-left corner */
       .nav-logo {
         position: absolute;
         left: 12px;
@@ -74,11 +65,10 @@
         transform: translateY(-50%);
       }
       .nav-logo img {
-        height: 44px;
+        height: 55px;
         display: block;
       }
 
-      /* WhatsApp pinned to near-right corner */
       .nav-cta {
         position: absolute;
         right: 12px;
@@ -87,15 +77,15 @@
         display: flex;
         align-items: center;
         gap: 12px;
+        transition: all 0.3s;
       }
-
-      /* Center nav (keeps centered even when left/right items exist) */
       .nav-center {
         margin: 0 auto;
         display: flex;
         align-items: center;
         justify-content: center;
         pointer-events: auto;
+        overflow: visible; /* Allow dropdown to extend beyond */
       }
 
       .nav-menu {
@@ -105,91 +95,229 @@
         margin: 0;
         padding: 0;
         align-items: center;
+        overflow: visible; /* Allow dropdown to extend beyond */
       }
 
       .nav-item {
         position: relative;
+        overflow: visible; /* Allow dropdown to extend beyond */
       }
 
       .nav-link {
         display: inline-block;
-        color: var(--text);
+        color: var(--text-color);
         font-weight: 600;
         font-size: 13px;
         text-transform: uppercase;
         letter-spacing: 0.6px;
         padding: 6px 4px;
         text-decoration: none;
-        transition: color 420ms var(--ease), transform 220ms var(--ease);
+        transition: all 0.3s;
+        position: relative;
       }
 
-      /* underline: center -> full using scaleX */
       .nav-link::after {
         content: "";
         position: absolute;
-        left: 50%;
-        transform: translateX(-50%) scaleX(0);
-        transform-origin: center;
+        left: 0;
+        transform: scaleX(0);
+        transform-origin: left;
         width: 100%;
         height: 2px;
-        bottom: -8px;
-        background: var(--emerald);
+        bottom: -2px;
+        background: var(--secondary-color);
         border-radius: 2px;
-        transition: transform 520ms var(--ease); /* slower and clean */
+        transition: all 0.3s;
       }
       .nav-link:hover {
-        color: var(--emerald);
+        color: var(--secondary-color);
       }
       .nav-link:hover::after,
       .nav-link.active::after {
-        transform: translateX(-50%) scaleX(1);
+        transform: scaleX(1);
       }
 
-      /* Desktop dropdown (floating) */
-      .dropdown {
-        position: absolute;
-        top: calc(var(--nav-h) - 6px);
-        left: 50%;
-        transform: translateX(-50%) translateY(10px);
-        background: linear-gradient(#fff, #fbfbfb);
-        border-radius: 10px;
-        padding: 10px;
-        box-shadow: 0 18px 40px rgba(4, 10, 15, 0.08);
-        border: 1px solid rgba(10, 12, 13, 0.04);
-        min-width: 210px;
-        opacity: 0;
-        visibility: hidden;
-        pointer-events: none;
-        transition: opacity 260ms var(--ease), transform 260ms var(--ease),
-          visibility 260ms;
-        z-index: 50;
+      /* Footer */
+      .footer {
+        background: linear-gradient(180deg, #12121fff, #000) !important;
+        color: var(--footer-text);
+        padding: 60px 20px 20px;
+        position: relative;
       }
-      .dropdown .sublink {
-        display: block;
-        padding: 10px 12px;
-        color: var(--muted);
-        text-decoration: none;
-        border-radius: 6px;
+
+      .footer-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .footer-column {
+        text-align: left;
+      }
+
+      .footer-column h4 {
+        margin-bottom: 1rem;
+        font-size: 1.2rem;
         font-weight: 600;
-        transition: color 180ms var(--ease), background 180ms var(--ease);
+        color: var(--footer-text);
+        text-transform: uppercase;
+        font-family: var(--font-secondary);
       }
-      .dropdown .sublink:hover {
-        background: rgba(11, 107, 74, 0.06);
+
+      .footer-column ul {
+        list-style: none;
+        padding: 0;
+        text-align: left;
+      }
+
+      .footer-column ul li {
+        margin-bottom: 10px;
+        text-align: left;
+      }
+
+      .footer-column ul li a {
+        text-decoration: none;
+        color: var(--text-muted);
+        font-size: 15px;
+        transition: var(--transition);
+      }
+
+      .footer-column ul li a:hover {
         color: var(--emerald);
       }
 
+      .social-links {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 15px;
+        margin-top: 15px;
+      }
+
+      .social-links a {
+        width: 40px;
+        height: 40px;
+        border: 1px solid var(--footer-text);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--footer-text);
+        transition: var(--transition);
+      }
+
+      .social-links a:hover {
+        border-color: var(--emerald);
+        color: var(--emerald);
+        transform: translateY(-3px);
+      }
+
+      .footer-bottom {
+        text-align: center;
+        margin-top: 40px;
+        padding-top: 20px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        color: var(--text-muted);
+        font-size: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+      }
+
+      .footer-bottom span {
+        color: var(--emerald);
+      }
+
+      /* Back to top button - positioned at bottom-right corner */
+      .back-to-top {
+        position: absolute;
+        right: 20px;
+        bottom: 80px;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: var(--secondary-color);
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      }
+
+      .back-to-top:hover {
+        background: var(--secondary-hover);
+      }
+
+      /* WhatsApp Floating Button - Smaller and Cute */
+      .whatsapp-float {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background-color: #25d366;
+        color: white;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 24px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        z-index: 1000;
+        transition: all 0.3s ease;
+        text-decoration: none;
+      }
+
+      .whatsapp-float:hover {
+        transform: scale(1.1);
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+      }
+
+      /* xl - 1024px */
       @media (min-width: 1024px) {
-        .nav-item:hover > .dropdown {
-          opacity: 1;
-          visibility: visible;
-          transform: translateX(-50%) translateY(0);
-          pointer-events: auto;
+        .navbar {
+          height: 80px;
+        }
+
+        .navbar::-webkit-scrollbar {
+          display: none;
+          visibility: hidden;
+        }
+
+        .nav-logo img {
+          height: 75px;
+          display: block;
+        }
+
+        .mobile-panel,
+        .overlay {
+          display: none;
+        }
+
+        /* Footer layout for desktop */
+        .footer-column:first-child {
+          text-align: left;
+        }
+
+        .social-links {
+          justify-content: flex-start;
         }
       }
 
-      /* ===========================
-       WhatsApp CTA (desktop) - expand + typewriter + water-fill hover
-       =========================== */
+      /* Dark mode logo switching */
+      @media (prefers-color-scheme: dark) {
+        .nav-logo img,
+        .footer-column img {
+          content: url("assets/images/logo2.png");
+        }
+      }
+
+      /* WhatsApp button styles */
       .whatsapp-btn {
         --btn-h: 44px;
         display: inline-flex;
@@ -197,17 +325,16 @@
         gap: 10px;
         height: var(--btn-h);
         border-radius: 999px;
-        border: 0;
+        border: 2px solid #f0f0f0;
         cursor: pointer;
         padding: 0 12px;
-        width: 48px; /* initial circular */
+        width: 48px;
         overflow: hidden;
         position: relative;
-        background: linear-gradient(180deg, var(--whatsapp), #20c55c);
+        background: linear-gradient(180deg, #25d366, #20c55c);
         color: #fff;
         font-weight: 700;
-        transition: width 700ms var(--ease), box-shadow 240ms var(--ease),
-          transform 200ms var(--ease);
+        transition: all 0.4s;
         box-shadow: 0 8px 30px rgba(37, 211, 102, 0.14);
         display: flex;
         align-items: center;
@@ -224,10 +351,8 @@
         transform: translateX(-6px);
         white-space: nowrap;
         z-index: 2;
-        transition: opacity 420ms var(--ease) 0.12s,
-          transform 420ms var(--ease) 0.12s;
+        transition: all 0.4s;
       }
-      /* background "water" : pseudo element that fills from bottom to top */
       .whatsapp-btn::after {
         content: "";
         position: absolute;
@@ -235,64 +360,56 @@
         right: 0;
         bottom: 0;
         height: 0%;
-        background: #000; /* fill color black on hover */
+        background: #000;
         z-index: 1;
-        transition: height 420ms ease-in-out;
+        transition: all 0.3s;
         transform-origin: bottom;
         border-radius: 999px;
         opacity: 0.95;
         pointer-events: none;
       }
-      /* when expanded, show label */
       .whatsapp-btn.expand {
         width: 170px;
+        transition: all 0.3s;
       }
       .whatsapp-btn.expand .w-label {
         opacity: 1;
         transform: none;
       }
-      /* hover effect: "water fill" bottom -> top */
       .whatsapp-btn:hover::after {
         height: 100%;
       }
-      /* invert label color when water covers it (use mix-blend or color change) */
       .whatsapp-btn:hover .w-label,
       .whatsapp-btn:hover .w-icon {
-        color: #fff; /* label and icon remain white */
+        color: #fff;
         z-index: 3;
       }
-      /* subtle lift */
       .whatsapp-btn:hover {
-        transform: translateY(-3px);
         box-shadow: 0 18px 46px rgba(2, 6, 23, 0.12);
       }
 
       /* ===========================
-       MOBILE: hamburger & slide panel
-       =========================== */
+                       MOBILE: hamburger & slide panel
+                      =========================== */
       .hamburger {
         display: none;
         background: none;
         border: 0;
         font-size: 20px;
         cursor: pointer;
-        color: var(--text);
+        color: var(--text-color);
       }
 
       .mobile-panel {
         position: fixed;
         top: 0;
-        right: -100%;
+        right: -150%;
         width: 100%;
         max-width: 420px;
         height: 100vh;
-        background: linear-gradient(
-          180deg,
-          #0b0f11,
-          #091214
-        ); /* darker mobile panel */
+        background: linear-gradient(180deg, #0b0f11, #091214);
         box-shadow: -50px 0 80px rgba(2, 6, 23, 0.6);
-        transition: right 0.46s var(--ease);
+        transition: right 0.46s var(--transition);
         z-index: 1400;
         display: flex;
         flex-direction: column;
@@ -308,7 +425,7 @@
         border: 0;
         font-size: 22px;
         cursor: pointer;
-        color: var(--muted);
+        color: var(--text-muted);
       }
 
       .mobile-links {
@@ -362,16 +479,16 @@
       @media (max-width: 1023px) {
         .nav-center {
           display: none;
-        } /* hide center nav on mobile */
+        }
         .nav-logo {
           left: 12px;
-        } /* keep near left */
+        }
         .nav-cta {
           right: 12px;
-        } /* keep near right */
+        }
         .whatsapp-btn {
           display: none;
-        } /* mobile CTA is inside panel */
+        }
         .hamburger {
           display: block;
           position: relative;
@@ -379,128 +496,24 @@
         }
       }
 
-      @media (min-width: 1024px) {
-        .mobile-panel,
-        .overlay {
-          display: none;
-        }
-      }
-
-      /* ===========================
-       FOOTER
-       =========================== */
-      footer {
-        background: var(--footer-bg);
-        color: var(--footer-text);
-        padding: 64px 20px 28px;
-        margin-top: 40px;
-      }
-      .footer-inner {
-        max-width: var(--maxw);
-        margin: 0 auto;
-        display: flex;
-        gap: 40px;
-        justify-content: space-between;
-        align-items: flex-start;
-        flex-wrap: wrap;
-      }
-      .footer-brand {
-        flex: 0 0 280px;
-      }
-      .footer-brand .logo {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        margin-bottom: 14px;
-      }
-      .footer-brand .logo img {
-        height: 36px;
-      }
-      .footer-brand p {
-        color: #a8b3b5;
-        max-width: 300px;
-        line-height: 1.6;
-        font-size: 14px;
-      }
-
-      .footer-cols {
-        display: flex;
-        gap: 36px;
-        flex: 1 1 540px;
-        flex-wrap: wrap;
-      }
-      .col {
-        min-width: 160px;
-      }
-      .col h4 {
-        color: #9fb1ad;
-        font-weight: 700;
-        margin-bottom: 12px;
-        letter-spacing: 0.6px;
-      }
-      .col ul {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-      }
-      .col a {
-        color: #cbd6d8;
-        text-decoration: none;
-        font-size: 15px;
-        transition: color 0.18s ease;
-      }
-      .col a:hover {
-        color: var(--emerald);
-      }
-
-      .footer-bottom {
-        max-width: var(--maxw);
-        margin: 28px auto 0;
-        padding-top: 20px;
-        border-top: 1px solid rgba(255, 255, 255, 0.03);
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        gap: 12px;
-        flex-wrap: wrap;
-      }
-      .footer-bottom .left {
-        color: #9fb1ad;
-        font-size: 13px;
-      }
-      .footer-bottom .right {
-        color: #9fb1ad;
-        font-size: 13px;
-      }
-
-      @media (max-width: 720px) {
-        .footer-inner {
-          flex-direction: column;
-          gap: 20px;
-        }
-        .footer-bottom {
-          flex-direction: column;
-          align-items: flex-start;
-          gap: 8px;
-        }
-        .footer-brand p {
-          max-width: 100%;
-        }
+      html,
+      body {
+        overflow-x: hidden;
       }
     </style>
   </head>
   <body>
-    <!-- NAVBAR -->
+    <!-- Mobile Menu Overlay -->
+    <div class="overlay" id="overlay" aria-hidden="true"></div>
+
+    <!-- Navigation -->
     <header class="navbar" id="navbar">
       <div class="nav-inner">
         <!-- LOGO pinned left -->
         <div class="nav-logo" aria-hidden="false">
-          <a href="#" class="logo"
-            ><img src="assets/images/logo.png" alt="OG Star logo"
-          /></a>
+          <a href="#" class="logo">
+            <img src="assets/images/logo.png" alt="O G Star logo" />
+          </a>
         </div>
 
         <!-- CENTER menu (desktop) -->
@@ -512,20 +525,18 @@
 
             <li class="nav-item" role="none">
               <a href="#services" class="nav-link" role="menuitem">Services</a>
-              <div class="dropdown" role="menu" aria-hidden="true">
-                <a href="#travel" class="sublink">Travel Abroad</a>
-                <a href="#work" class="sublink">Work &amp; Stay Abroad</a>
-              </div>
+            </li>
+
+            <li class="nav-item" role="none">
+              <a href="#destinations" class="nav-link" role="menuitem"
+                >Destinations</a
+              >
             </li>
 
             <li class="nav-item" role="none">
               <a href="#information" class="nav-link" role="menuitem"
                 >Information</a
               >
-              <div class="dropdown" role="menu" aria-hidden="true">
-                <a href="#about" class="sublink">About Us</a>
-                <a href="#faq" class="sublink">Frequently Asked Questions</a>
-              </div>
             </li>
 
             <li class="nav-item" role="none">
@@ -564,9 +575,7 @@
       </div>
     </header>
 
-    <!-- Mobile overlay & panel -->
-    <div class="overlay" id="overlay" aria-hidden="true"></div>
-
+    <!-- Mobile panel -->
     <aside
       class="mobile-panel"
       id="mobilePanel"
@@ -579,199 +588,94 @@
 
       <nav class="mobile-links" aria-label="Mobile primary navigation">
         <a href="#home" class="m-link">Home</a>
-
-        <div>
-          <button class="m-link m-toggle" data-target="mServices">
-            Services
-            <i
-              class="fas fa-chevron-down"
-              style="opacity: 0.6; margin-left: 6px"
-            ></i>
-          </button>
-          <div class="mobile-sublinks" id="mServices">
-            <a href="#travel">Travel Abroad</a>
-            <a href="#work">Work &amp; Stay Abroad</a>
-          </div>
-        </div>
-
-        <div>
-          <button class="m-link m-toggle" data-target="mInfo">
-            Information
-            <i
-              class="fas fa-chevron-down"
-              style="opacity: 0.6; margin-left: 6px"
-            ></i>
-          </button>
-          <div class="mobile-sublinks" id="mInfo">
-            <a href="#about">About Us</a>
-            <a href="#faq">Frequently Asked Questions</a>
-          </div>
-        </div>
-
+        <a href="#services" class="m-link">Services</a>
+        <a href="#destinations" class="m-link">Destinations</a>
+        <a href="#information" class="m-link">Information</a>
         <a href="#contact" class="m-link">Contact</a>
         <a href="#blog" class="m-link">Blog</a>
-
-        <!-- WhatsApp in mobile panel as last item -->
-        <div
-          style="
-            margin-top: 18px;
-            padding-top: 12px;
-            border-top: 1px solid rgba(255, 255, 255, 0.04);
-          "
-        >
-          <button
-            class="whatsapp-btn"
-            id="whatsappMobile"
-            style="
-              width: 100%;
-              background: linear-gradient(180deg, var(--whatsapp), #20c55c);
-              color: #fff;
-              justify-content: center;
-            "
-          >
-            <span class="w-icon"><i class="fab fa-whatsapp"></i></span>
-            <span class="w-label">WhatsApp Us</span>
-          </button>
-        </div>
       </nav>
     </aside>
 
-    <!-- Demo content so page scroll works -->
-    <main style="padding-top: 110px">
-      <section style="max-width: 1100px; margin: 0 auto; padding: 40px 16px">
-        <h1 style="font-size: 28px; margin-bottom: 12px">Demo content</h1>
-        <p style="color: var(--muted); margin-bottom: 18px">
-          Scroll down to see footer. Replace with your real content.
-        </p>
-        <div
-          style="
-            height: 1200px;
-            background: linear-gradient(#fff, #fafafa);
-            border-radius: 12px;
-          "
-        ></div>
-      </section>
-    </main>
-
-    <!-- FOOTER (dark) -->
-    <footer>
-      <div class="footer-inner">
-        <div class="footer-brand">
-          <div class="logo">
-            <img src="assets/images/logo.png" alt="OG Star logo" />
-          </div>
-          <p>
-            OG Star Travel & Tours — premium travel experiences crafted with
-            care. Explore tailored tours, visa & immigration support, and
-            bespoke packages.
-          </p>
+    <!-- Footer -->
+    <footer class="footer" id="contact">
+      <div class="footer-container">
+        <div class="footer-column">
+          <img
+            src="assets/images/logo.png"
+            alt="O G Star Logo"
+            style="max-width: 150px; margin-bottom: 0"
+          />
+          <!-- <p style="max-width: 20ch">
+            O G Star Travel & Tours helps you explore the world with ease — from
+            visa assistance to full tour experiences across the globe.
+          </p> -->
         </div>
 
-        <div class="footer-cols" aria-hidden="false">
-          <div class="col">
-            <h4>What we do</h4>
-            <ul>
-              <li><a href="#features">Features</a></li>
-              <li><a href="#blog">Blog</a></li>
-              <li><a href="#security">Security</a></li>
-              <li><a href="#business">For Business</a></li>
-            </ul>
-          </div>
+        <div class="footer-column">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#destinations">Destinations</a></li>
+            <li><a href="#information">Information</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="#blog">Blog</a></li>
+          </ul>
+        </div>
 
-          <div class="col">
-            <h4>Who we are</h4>
-            <ul>
-              <li><a href="#about">About us</a></li>
-              <li><a href="#careers">Careers</a></li>
-              <li><a href="#brand">Brand Center</a></li>
-              <li><a href="#privacy">Privacy</a></li>
-            </ul>
-          </div>
+        <div class="footer-column">
+          <h4>Our Services</h4>
+          <ul>
+            <li><a href="#">Travel & Tours</a></li>
+            <li><a href="#">Study Abroad</a></li>
+            <li><a href="#">Work & Stay</a></li>
+            <li><a href="#">Visa Assistance</a></li>
+          </ul>
+        </div>
 
-          <div class="col">
-            <h4>Use WhatsApp</h4>
-            <ul>
-              <li><a href="#android">Android</a></li>
-              <li><a href="#iphone">iPhone</a></li>
-              <li><a href="#web">WhatsApp Web</a></li>
-              <li><a href="#mac">Mac/PC</a></li>
-            </ul>
-          </div>
-
-          <div class="col">
-            <h4>Need help?</h4>
-            <ul>
-              <li><a href="#contact-us">Contact Us</a></li>
-              <li><a href="#help">Help Center</a></li>
-              <li><a href="#apps">Apps</a></li>
-              <li><a href="#security-adv">Security Advisories</a></li>
-            </ul>
+        <div class="footer-column">
+          <h4>Connect With Us</h4>
+          <div class="social-links">
+            <a href="#" aria-label="WhatsApp"
+              ><i class="fab fa-whatsapp"></i
+            ></a>
+            <a href="#" aria-label="Instagram"
+              ><i class="fab fa-instagram"></i
+            ></a>
+            <a href="#" aria-label="Facebook"
+              ><i class="fab fa-facebook-f"></i
+            ></a>
+            <a href="#" aria-label="LinkedIn"
+              ><i class="fab fa-linkedin-in"></i
+            ></a>
           </div>
         </div>
       </div>
 
       <div class="footer-bottom">
-        <div class="left">© <span id="year"></span> OG Star Travel & Tours</div>
-        <div class="right">Crafted with ❤️ by Kenzyverse</div>
+        <span
+          >© 2025 O G Star Travel & Tours. Crafted with ❤️ by Kenzyverse.</span
+        >
+
+        <!-- Back to top button moved to bottom-right corner -->
+        <div class="back-to-top" id="backToTop" aria-label="Back to top">
+          <i class="fas fa-arrow-up"></i>
+        </div>
       </div>
     </footer>
 
+    <!-- WhatsApp Floating Button -->
+    <a
+      href="https://wa.me/233546945944?text=Hello%20OG%20Star%20Travel%20%26%20Tours,%20I'm%20interested%20in%20your%20services"
+      class="whatsapp-float"
+      target="_blank"
+    >
+      <i class="fab fa-whatsapp"></i>
+    </a>
+
     <script>
-      // ---------- footer year ----------
-      document.getElementById("year").textContent = new Date().getFullYear();
-
-      // ---------- open whatsapp helper ----------
-      function openWhats(
-        number = "+233546945944",
-        message = "Hello OG Star Travel & Tours, I would like to make an inquiry."
-      ) {
-        const encoded = encodeURIComponent(message);
-        const clean = number.replace(/[^0-9]/g, "");
-        const url = `https://wa.me/${clean}?text=${encoded}`;
-        window.open(url, "_blank");
-      }
-
-      // ---------- Desktop WhatsApp: expand after 3s + typewriter ----------
-      (function () {
-        const btn = document.getElementById("whatsappDesktop");
-        const label = document.getElementById("whLabel");
-        const full = "WhatsApp Us";
-        const typingDelay = 60;
-        const delayBefore = 3000;
-        let typedIndex = 0;
-        let typingTimer = null;
-
-        // click opens
-        btn.addEventListener("click", () => openWhats());
-
-        // schedule expand & type
-        window.addEventListener("load", () => {
-          setTimeout(() => {
-            btn.classList.add("expand");
-            // clear label and type
-            label.textContent = "";
-            typedIndex = 0;
-            typingTimer = setInterval(() => {
-              label.textContent += full[typedIndex++];
-              if (typedIndex >= full.length) clearInterval(typingTimer);
-            }, typingDelay);
-          }, delayBefore);
-        });
-
-        // also allow keyboard activation
-        btn.addEventListener("keyup", (e) => {
-          if (e.key === "Enter") openWhats();
-        });
-      })();
-
-      // mobile whatsapp button inside panel
-      (function () {
-        const mobileBtn = document.getElementById("whatsappMobile");
-        if (mobileBtn) mobileBtn.addEventListener("click", () => openWhats());
-      })();
-
-      // ---------- Mobile panel open/close ----------
-      (function () {
+      // Mobile Panel
+      function initMobilePanel() {
         const hamburger = document.getElementById("hamburger");
         const panel = document.getElementById("mobilePanel");
         const overlay = document.getElementById("overlay");
@@ -796,17 +700,6 @@
         closeBtn.addEventListener("click", closePanel);
         overlay.addEventListener("click", closePanel);
 
-        // mobile sublink toggles
-        document.querySelectorAll(".m-toggle").forEach((btn) => {
-          btn.addEventListener("click", () => {
-            const target = btn.dataset.target;
-            const el = document.getElementById(target);
-            if (!el) return;
-            const showing = window.getComputedStyle(el).display === "flex";
-            el.style.display = showing ? "none" : "flex";
-          });
-        });
-
         // Close on link click
         document.querySelectorAll(".mobile-links a").forEach((a) => {
           a.addEventListener("click", () => closePanel());
@@ -817,26 +710,88 @@
           if (window.innerWidth >= 1024 && panel.classList.contains("open"))
             closePanel();
         });
-      })();
+      }
 
-      // ---------- Ensure center menu gets accessible focus show for dropdowns ----------
-      (function () {
-        document.querySelectorAll(".nav-item").forEach((item) => {
-          const link = item.querySelector(".nav-link");
-          const drop = item.querySelector(".dropdown");
-          if (!link || !drop) return;
-          link.addEventListener("focus", () => {
-            drop.style.opacity = "1";
-            drop.style.visibility = "visible";
-            drop.style.transform = "translateX(-50%) translateY(0)";
+      // WhatsApp Button
+      function initWhatsAppButton() {
+        const whatsappButton = document.querySelector(".whatsapp-float");
+        const whatsappDesktop = document.getElementById("whatsappDesktop");
+        const whatsappMobile = document.getElementById("whatsappMobile");
+
+        // Add hover effect
+        whatsappButton?.addEventListener("mouseenter", () => {
+          whatsappButton.style.transform = "scale(1.1) rotate(15deg)";
+        });
+
+        whatsappButton?.addEventListener("mouseleave", () => {
+          whatsappButton.style.transform = "scale(1) rotate(0deg)";
+        });
+
+        // Desktop WhatsApp: expand after 3s + typewriter
+        (function () {
+          const btn = whatsappDesktop;
+          const label = document.getElementById("whLabel");
+          const full = "WhatsApp Us";
+          const typingDelay = 90;
+          const delayBefore = 3000;
+          let typedIndex = 0;
+          let typingTimer = null;
+
+          // click opens
+          btn.addEventListener("click", () => {
+            window.open(
+              "https://wa.me/233546945944?text=Hello%20OG%20Star%20Travel%20%26%20Tours,%20I'm%20interested%20in%20your%20services",
+              "_blank"
+            );
           });
-          link.addEventListener("blur", () => {
-            drop.style.opacity = "";
-            drop.style.visibility = "";
-            drop.style.transform = "";
+
+          // schedule expand & type
+          window.addEventListener("load", () => {
+            setTimeout(() => {
+              btn.classList.add("expand");
+              // clear label and type
+              label.textContent = "";
+              typedIndex = 0;
+              typingTimer = setInterval(() => {
+                label.textContent += full[typedIndex++];
+                if (typedIndex >= full.length) clearInterval(typingTimer);
+              }, typingDelay);
+            }, delayBefore);
+          });
+
+          // also allow keyboard activation
+          btn.addEventListener("keyup", (e) => {
+            if (e.key === "Enter") {
+              window.open(
+                "https://wa.me/233546945944?text=Hello%20OG%20Star%20Travel%20%26%20Tours,%20I'm%20interested%20in%20your%20services",
+                "_blank"
+              );
+            }
+          });
+        })();
+      }
+
+      // Back to top button
+      function initBackToTop() {
+        const backToTopButton = document.getElementById("backToTop");
+
+        // Show/hide button based on scroll position
+        window.addEventListener("scroll", () => {
+          if (window.pageYOffset > 300) {
+            backToTopButton.style.opacity = "1";
+          } else {
+            backToTopButton.style.opacity = "0.5";
+          }
+        });
+
+        // Scroll to top when clicked
+        backToTopButton.addEventListener("click", () => {
+          window.scrollTo({
+            top: 0,
+            behavior: "smooth",
           });
         });
-      })();
+      }
     </script>
   </body>
 </html>

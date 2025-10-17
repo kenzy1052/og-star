@@ -3,151 +3,1481 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>OG Star Traveling Tour | Blog</title>
+    <title>OG STAR Travel & Tour - Blog</title>
+
+    <!-- Link Global Styles -->
+    <link rel="stylesheet" href="assets/styles/style.css" />
+    <link rel="stylesheet" href="assets/styles/utils.css" />
+
+    <!-- Page-Specific Styles -->
     <style>
-      :root {
-        --accent: #ff7b00;
-        --text-dark: #222;
-        --text-light: #555;
-        --bg-light: #fafafa;
-      }
-      body {
-        font-family: "Poppins", sans-serif;
-        margin: 0;
-        background: var(--bg-light);
-        color: var(--text-dark);
-      }
-      header {
-        background: url("https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1400&q=80")
-          center/cover;
-        text-align: center;
-        color: #fff;
-        padding: 6rem 1rem;
-        position: relative;
-      }
-      header::after {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background: rgba(0, 0, 0, 0.5);
-      }
-      header h1,
-      header p {
-        position: relative;
-        z-index: 1;
-      }
-      header h1 {
-        font-size: 3rem;
-        margin-bottom: 0.5rem;
-      }
-      .blog-container {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 2rem;
-        padding: 4rem 1rem;
+      /* ===========================================
+         BLOG PAGE SPECIFIC STYLES
+       =========================================== */
+      /* Page max width */
+      .container {
         max-width: 1200px;
-        margin: auto;
+        margin: 0 auto;
+        padding: 0 20px;
       }
-      .blog-card {
-        background: #fff;
-        border-radius: 1rem;
+
+      /* Hero Section */
+      .hero-section {
+        position: relative;
+        height: 100vh;
+        min-height: 400px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         overflow: hidden;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-        transition: transform 0.3s ease;
       }
-      .blog-card:hover {
-        transform: translateY(-6px);
-      }
-      .blog-card img {
+
+      .hero-background {
+        position: absolute;
+        top: 0;
+        left: 0;
         width: 100%;
-        height: 220px;
+        height: 100%;
+        z-index: -2;
+      }
+
+      .hero-background video {
+        width: 100%;
+        height: 100%;
         object-fit: cover;
       }
-      .blog-card-content {
-        padding: 1.5rem;
+
+      .hero-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          to bottom,
+          rgba(0, 0, 0, 0.3),
+          rgba(0, 0, 0, 0.6)
+        );
+        z-index: -1;
       }
-      .tag {
-        display: inline-block;
-        background: var(--accent);
-        color: #fff;
-        padding: 0.3rem 0.8rem;
-        border-radius: 999px;
-        font-size: 0.8rem;
-        margin-bottom: 0.5rem;
-      }
-      .blog-card h3 {
-        margin: 0.5rem 0;
-        font-size: 1.25rem;
-      }
-      .blog-card p {
-        font-size: 0.95rem;
+
+      .hero-content {
+        text-align: center;
         color: var(--text-light);
-        margin-bottom: 1rem;
+        padding: 0 20px;
       }
-      .blog-card a {
-        text-decoration: none;
-        color: var(--accent);
+
+      .hero-title {
+        font-family: var(--font-elegant);
+        font-size: clamp(2rem, 5vw, 3.5rem);
+        margin-bottom: 1rem;
+        font-weight: 700;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+      }
+
+      .hero-subtitle {
+        font-size: clamp(1rem, 2vw, 1.3rem);
+        font-weight: 400;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+      }
+
+      /* Blog Section */
+      .blog-section {
+        padding: 80px 0;
+        background-color: var(--bg-primary);
+      }
+
+      .blog-header {
+        text-align: center;
+        margin-bottom: 60px;
+      }
+
+      .blog-header h2 {
+        font-family: var(--font-elegant);
+        color: var(--primary-color);
+        margin-bottom: 15px;
+      }
+
+      .blog-header p {
+        font-size: 1.1rem;
+        color: var(--text-muted);
+        max-width: 700px;
+        margin: 0 auto;
+      }
+
+      /* Blog Grid with Alternating Layout */
+      .blog-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 50px;
+      }
+
+      .blog-row {
+        display: flex;
+        gap: 40px;
+        align-items: center;
+        background: var(--bg-secondary);
+        border-radius: var(--radius-lg);
+        overflow: hidden;
+        box-shadow: var(--shadow);
+        transition: var(--transition);
+      }
+
+      .blog-row:hover {
+        box-shadow: var(--shadow-hover);
+        transform: translateY(-3px);
+      }
+
+      .blog-row:nth-child(even) {
+        flex-direction: row-reverse;
+      }
+
+      .blog-image {
+        flex: 0 0 45%;
+        height: 400px;
+        overflow: hidden;
+      }
+
+      .blog-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: var(--transition);
+      }
+
+      .blog-row:hover .blog-image img {
+        transform: scale(1.05);
+      }
+
+      .blog-content {
+        flex: 1;
+        padding: 40px;
+      }
+
+      .blog-meta {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 15px;
+        font-size: 0.9rem;
+        color: var(--text-muted);
+        gap: 20px;
+      }
+
+      .blog-category {
+        color: var(--secondary-color);
         font-weight: 600;
+        text-transform: uppercase;
+        font-size: 0.85rem;
+      }
+
+      .blog-title {
+        font-family: var(--font-elegant);
+        font-size: 1.7rem;
+        margin-bottom: 15px;
+        color: var(--primary-color);
+        transition: var(--transition);
+        line-height: 1.3;
+      }
+
+      .blog-row:hover .blog-title {
+        color: var(--primary-color);
+      }
+
+      .blog-excerpt {
+        margin-bottom: 25px;
+        color: var(--text-muted);
+        line-height: 1.6;
+        font-size: 0.95rem;
+      }
+
+      /* Water fill hover effect for buttons with meniscus */
+      .blog-btn,
+      .read-more-btn,
+      .blog-back-btn {
+        display: inline-block;
+        padding: 12px 28px;
+        background: var(--gradient-secondary);
+        color: var(--text-light);
+        border-radius: var(--radius-md);
+        font-weight: 600;
+        cursor: pointer;
+        transition: var(--transition);
+        font-size: 0.9rem;
+        position: relative;
+        overflow: hidden;
+        z-index: 1;
+        border: none;
+      }
+
+      .blog-btn::before,
+      .read-more-btn::before,
+      .blog-back-btn::before {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 0;
+        background-color: #000;
+        border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+        transform: translateY(100%);
+        transition: all 0.4s cubic-bezier(0.34, 0, 0.64, 1);
+        z-index: -1;
+        border: none;
+      }
+
+      .blog-btn:hover::before,
+      .read-more-btn:hover::before,
+      .blog-back-btn:hover::before {
+        transform: translateY(0);
+        height: 100%;
+        border-radius: 0;
+      }
+
+      .blog-btn:hover,
+      .read-more-btn:hover,
+      .blog-back-btn:hover {
+        color: var(--text-light);
+      }
+
+      /* Blog Expanded View */
+      .blog-expanded {
+        display: none;
+        animation: fadeIn 0.5s ease-in-out;
+      }
+
+      .blog-expanded.active {
+        display: block;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      .blog-expanded-container {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+      }
+
+      .blog-expanded-content {
+        flex: 2;
+        max-height: none;
+        overflow-y: auto;
+        padding-right: 0;
+      }
+
+      .blog-expanded-sidebar {
+        display: none; /* Hide sidebar in expanded view */
+      }
+
+      .blog-expanded-image {
+        width: 100%;
+        height: 400px;
+        object-fit: cover;
+        border-radius: var(--radius-lg);
+        margin-bottom: 30px;
+      }
+
+      .blog-expanded-meta {
+        display: flex;
+        gap: 20px;
+        margin-bottom: 20px;
+        color: var(--text-muted);
+      }
+
+      .blog-expanded-title {
+        font-family: var(--font-elegant);
+        font-size: 2.5rem;
+        margin-bottom: 20px;
+        color: var(--text-color);
+      }
+
+      .blog-expanded-text {
+        line-height: 1.8;
+        color: var(--text-color);
+      }
+
+      .blog-expanded-text p {
+        margin-bottom: 20px;
+      }
+
+      .blog-back-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 20px;
+        padding: 8px 16px;
+        background-color: var(--bg-secondary);
+        border-radius: var(--radius-md);
+        color: var(--text-color);
+        cursor: pointer;
+        transition: var(--transition);
+      }
+
+      .blog-back-btn:hover {
+        background-color: var(--primary-color);
+        color: var(--text-light);
+      }
+
+      .blog-back-btn svg {
+        width: 20px;
+        height: 20px;
+      }
+
+      /* Featured Blogs Section - Grid Layout */
+      .featured-blogs-section {
+        background-color: var(--bg-secondary);
+        border-radius: var(--radius-lg);
+        padding: 30px;
+        margin-top: 40px;
+      }
+
+      .featured-blogs {
+        width: 100%;
+      }
+
+      .featured-blogs h3 {
+        font-family: var(--font-elegant);
+        margin-bottom: 30px;
+        color: var(--secondary-color);
+        text-align: center;
+      }
+
+      .featured-blogs-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 25px;
+      }
+
+      .featured-blog-item {
+        display: flex;
+        flex-direction: column;
+        cursor: pointer;
+        transition: var(--transition);
+        border-radius: var(--radius-md);
+        overflow: hidden;
+        background: var(--bg-primary);
+      }
+
+      .featured-blog-item:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--shadow-hover);
+      }
+
+      .featured-blog-image {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+      }
+
+      .featured-blog-content {
+        padding: 20px;
+      }
+
+      .featured-blog-title {
+        font-family: var(--font-elegant);
+        font-size: 1.1rem;
+        margin-bottom: 8px;
+        color: var(--text-color);
+        line-height: 1.3;
+      }
+
+      .featured-blog-date {
+        font-size: 0.85rem;
+        color: var(--text-muted);
+      }
+
+      /* Article Styles */
+      .blog-article {
+        display: none;
+      }
+
+      .blog-article.active {
+        display: block;
+      }
+
+      .article-image-wrapper {
+        margin-bottom: 20px;
+      }
+
+      .article-image {
+        width: 100%;
+        height: 400px;
+        object-fit: cover;
+        /* border-radius: var(--radius-lg); */
+      }
+
+      /* .article-content {
+        background-color: var(--bg-secondary);
+        padding: 30px;
+        border-radius: var(--radius-lg);
+      } */
+
+      .article-meta {
+        display: flex;
+        gap: 20px;
+        margin-bottom: 15px;
+        color: var(--text-muted);
+      }
+
+      .article-category {
+        color: coral;
+        font-weight: 600;
+      }
+
+      .article-title {
+        font-family: var(--font-elegant);
+        font-size: 2rem;
+        margin-bottom: 20px;
+        color: var(--primary-color);
+      }
+
+      .article-text p {
+        margin-bottom: 20px;
+        line-height: 1.8;
+      }
+
+      strong {
+        color: var(--secondary-color);
+      }
+
+      .article-hidden {
+        display: none;
+      }
+
+      .article-hidden.show {
+        display: block;
+      }
+
+      .read-more-btn {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: var(--primary-color);
+        color: var(--text-light);
+        border-radius: var(--radius-md);
+        font-weight: 600;
+        cursor: pointer;
+        transition: var(--transition);
+        border: none;
+      }
+
+      .read-more-btn:hover {
+        background-color: var(--highlight-color);
+      }
+
+      /* Hide read more button in expanded view */
+      .blog-expanded .read-more-btn {
+        display: none;
+      }
+
+      /* Floating Scroll to Top Button */
+      .scroll-to-top {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        width: 50px;
+        height: 50px;
+        background-color: var(--primary-color);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        opacity: 0;
+        visibility: hidden;
+        transition: var(--transition);
+        z-index: 100;
+      }
+
+      .scroll-to-top.visible {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .scroll-to-top:hover {
+        background-color: var(--highlight-color);
+      }
+
+      .scroll-to-top svg {
+        width: 24px;
+        height: 24px;
+        fill: var(--text-light);
+      }
+
+      /* Responsive Design with specific breakpoints */
+      @media (min-width: 475px) {
+        .featured-blogs-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      @media (min-width: 640px) {
+        .blog-row {
+          flex-direction: row !important;
+        }
+
+        .blog-row:nth-child(even) {
+          flex-direction: row-reverse !important;
+        }
+
+        .blog-image {
+          flex: 0 0 45%;
+          height: 350px;
+        }
+
+        .article-image {
+          height: 450px;
+        }
+      }
+
+      @media (min-width: 768px) {
+        .blog-content {
+          padding: 35px;
+        }
+
+        .blog-title {
+          font-size: 1.5rem;
+        }
+
+        .blog-expanded-title {
+          font-size: 2.2rem;
+        }
+
+        .featured-blogs-grid {
+          grid-template-columns: repeat(3, 1fr);
+        }
+      }
+
+      @media (min-width: 1024px) {
+        .blog-row {
+          gap: 40px;
+        }
+
+        .blog-image {
+          height: 400px;
+        }
+
+        .article-image {
+          height: 500px;
+        }
+      }
+
+      @media (min-width: 1280px) {
+        .blog-title {
+          font-size: 1.7rem;
+        }
+
+        .blog-expanded-title {
+          font-size: 2.5rem;
+        }
+
+        .featured-blog-title {
+          font-size: 1.2rem;
+        }
+      }
+
+      @media (min-width: 1536px) {
+        .blog-content {
+          padding: 40px;
+        }
+
+        .article-image {
+          height: 550px;
+        }
+
+        .featured-blog-image {
+          height: 220px;
+        }
+      }
+
+      /* Mobile fallback */
+      @media (max-width: 474px) {
+        .featured-blogs-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .blog-row {
+          flex-direction: column !important;
+        }
+
+        .blog-image {
+          flex: 0 0 250px;
+          height: 250px;
+        }
+
+        .blog-content {
+          padding: 25px;
+        }
+
+        .blog-title {
+          font-size: 1.4rem;
+        }
+
+        .blog-expanded-title {
+          font-size: 1.8rem;
+        }
+
+        .blog-meta {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 5px;
+        }
       }
     </style>
   </head>
   <body>
-    <header>
-      <h1>Travel Stories & Guides</h1>
-      <p>
-        Discover destinations, tips, and travel inspiration from around the
-        world.
-      </p>
-    </header>
-
-    <section class="blog-container">
-      <article class="blog-card">
-        <img
-          src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=800&q=80"
-          alt="Hidden Gems in Ghana"
-        />
-        <div class="blog-card-content">
-          <span class="tag">Adventure</span>
-          <h3>Top 10 Hidden Gems in Ghana You Should Visit</h3>
-          <p>
-            Explore the lesser-known destinations in Ghana that offer
-            breathtaking views and rich culture.
-          </p>
-          <a href="#">Read More →</a>
-        </div>
-      </article>
-
-      <article class="blog-card">
-        <img
-          src="https://images.unsplash.com/photo-1493558103817-58b2924bce98?auto=format&fit=crop&w=800&q=80"
-          alt="Budget Travel"
-        />
-        <div class="blog-card-content">
-          <span class="tag">Tips</span>
-          <h3>How to Travel on a Budget and Still Enjoy Luxury</h3>
-          <p>
-            Smart ways to plan your dream vacation without breaking the bank —
-            perfect for smart travelers.
-          </p>
-          <a href="#">Read More →</a>
-        </div>
-      </article>
-
-      <article class="blog-card">
-        <img
-          src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80"
-          alt="Beach Escape"
-        />
-        <div class="blog-card-content">
-          <span class="tag">Relaxation</span>
-          <h3>The Best Tropical Beaches for a Peaceful Escape</h3>
-          <p>
-            Find serenity in these breathtaking tropical getaways ideal for
-            relaxation and self-reflection.
-          </p>
-          <a href="#">Read More →</a>
-        </div>
-      </article>
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="hero-background">
+        <video autoplay muted loop>
+          <source src="assets/images/blog-vid.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      </div>
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <h1 class="hero-title">Explore the World with O G STAR</h1>
+        <p class="hero-subtitle">
+          Stories, guides, and experiences from our journeys across the globe.
+        </p>
+      </div>
     </section>
+
+    <!-- Blog Section -->
+    <section class="blog-section">
+      <div class="container">
+        <div class="blog-header">
+          <h2 class="heading-xl">Travel Stories & Guides</h2>
+          <p>
+            Discover inspiring destinations, practical travel tips, and personal
+            experiences from our team of globetrotters.
+          </p>
+        </div>
+
+        <!-- Blog Grid View with Alternating Layout -->
+        <div class="blog-grid" id="blogGrid">
+          <!-- Blog rows will be dynamically generated here -->
+        </div>
+
+        <!-- Blog Expanded View -->
+        <div class="blog-expanded" id="blogExpanded">
+          <div class="blog-back-btn" id="blogBackBtn">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <path
+                d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"
+              />
+            </svg>
+            Back to Blog
+          </div>
+          <div class="blog-expanded-container">
+            <div class="blog-expanded-content" id="blogExpandedContent">
+              <!-- Blog content will be dynamically inserted here -->
+            </div>
+          </div>
+
+          <!-- Featured Blogs Section - Grid Layout -->
+          <div class="featured-blogs-section">
+            <div class="featured-blogs">
+              <h3>Featured Blogs</h3>
+              <div class="featured-blogs-grid" id="featuredBlogsList">
+                <!-- Featured blogs will be dynamically generated here -->
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Blog Articles Container -->
+        <div class="blog-container">
+          <!-- Article 1: Hidden Gems in Ghana -->
+          <article class="blog-article" data-article="1">
+            <div class="article-image-wrapper">
+              <img
+                src="assets/images/hidden.jpg"
+                alt="Beautiful landscape in Ghana"
+                class="article-image"
+              />
+            </div>
+            <div class="article-content">
+              <div class="article-meta">
+                <span class="article-category">Adventure</span>
+                <span class="article-date">January 12, 2025</span>
+              </div>
+              <h2 class="article-title">
+                Top 10 Hidden Gems in Ghana You Should Visit in 2025
+              </h2>
+              <div class="article-text">
+                <div class="article-preview">
+                  <p>
+                    Ghana, the gateway to West Africa, is home to stunning
+                    landscapes, vibrant cultures, and historical treasures that
+                    extend far beyond its famous coastal castles. While many
+                    travelers flock to Accra and Cape Coast, the true magic of
+                    Ghana lies in its hidden corners—places where nature,
+                    tradition, and adventure come together in breathtaking
+                    harmony.
+                  </p>
+
+                  <p>
+                    From pristine waterfalls tucked in lush rainforests to
+                    remote villages where ancient customs thrive, Ghana offers
+                    experiences that few tourists ever discover. Whether you're
+                    seeking serenity, cultural immersion, or adrenaline-pumping
+                    adventures, these ten hidden gems will redefine your
+                    understanding of this incredible nation.
+                  </p>
+                </div>
+
+                <div class="article-hidden">
+                  <p>
+                    <strong>1. Wli Waterfalls, Volta Region</strong><br />
+                    The highest waterfall in West Africa, Wli cascades down from
+                    80 meters in the Agumatsa Wildlife Sanctuary. The journey
+                    through tropical forest to reach the falls is as rewarding
+                    as the destination itself. Visit during the rainy season for
+                    the most spectacular flow, and keep an eye out for fruit
+                    bats that nest near the upper falls.
+                  </p>
+
+                  <p>
+                    <strong>2. Nzulezo Stilt Village, Western Region</strong
+                    ><br />
+                    This remarkable village sits entirely on stilts above Lake
+                    Tadane, accessible only by canoe. Dating back over 400
+                    years, Nzulezo offers a glimpse into a unique way of life
+                    where homes, schools, and churches all float on water. The
+                    journey through mangrove forests to reach this UNESCO World
+                    Heritage site is unforgettable.
+                  </p>
+
+                  <p>
+                    <strong
+                      >3. Shai Hills Resource Reserve, Greater Accra</strong
+                    ><br />
+                    Just an hour from Accra, this reserve features stunning rock
+                    formations, ancient caves, and wildlife including baboons,
+                    antelopes, and ostriches. The hiking trails offer panoramic
+                    views, and the reserve holds deep cultural significance for
+                    the Shai people who once inhabited these hills.
+                  </p>
+
+                  <p>
+                    <strong>4. Tafi Atome Monkey Sanctuary, Volta Region</strong
+                    ><br />
+                    Home to the sacred Mona monkeys, this community-based
+                    ecotourism project allows visitors to walk freely among
+                    these friendly primates. The village considers the monkeys
+                    sacred, and the bond between community and wildlife creates
+                    a truly special experience that supports conservation and
+                    local development.
+                  </p>
+
+                  <p>
+                    <strong>5. Larabanga Mosque, Northern Region</strong><br />
+                    Built in 1421, this is West Africa's oldest mosque and a
+                    masterpiece of Sudanese architecture. The mud-and-stick
+                    structure has been maintained using traditional methods for
+                    six centuries. Nearby Mole National Park offers excellent
+                    safari opportunities with elephants, warthogs, and numerous
+                    bird species.
+                  </p>
+
+                  <p>
+                    <strong
+                      >6. Boabeng-Fiema Monkey Sanctuary, Bono Region</strong
+                    ><br />
+                    Another sacred monkey sanctuary where black-and-white
+                    colobus monkeys and Lowe's monkeys roam freely. The forest
+                    atmosphere and cultural traditions surrounding these
+                    protected primates create an enchanting experience that
+                    emphasizes Ghana's commitment to wildlife conservation
+                    through community engagement.
+                  </p>
+                </div>
+
+                <button class="read-more-btn" onclick="toggleArticle(1)">
+                  Read More
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Article 2: Budget Travel -->
+          <article class="blog-article" data-article="2">
+            <div class="article-image-wrapper">
+              <img
+                src="assets/images/travel.jpg"
+                alt="Budget travel essentials"
+                class="article-image"
+              />
+            </div>
+            <div class="article-content">
+              <div class="article-meta">
+                <span class="article-category">Lifestyle</span>
+                <span class="article-date">January 18, 2025</span>
+              </div>
+              <h2 class="article-title">
+                How to Travel on a Budget and Still Live Your Dream Vacation
+              </h2>
+              <div class="article-text">
+                <div class="article-preview">
+                  <p>
+                    The dream of exploring new destinations doesn't have to
+                    remain just a dream because of budget constraints. With
+                    smart planning, flexibility, and insider knowledge, you can
+                    experience incredible adventures without draining your
+                    savings. The secret isn't about cutting corners—it's about
+                    traveling smarter and making every dollar work harder for
+                    you.
+                  </p>
+
+                  <p>
+                    Budget travel has evolved beyond backpacking and hostels.
+                    Today's savvy travelers use technology, strategic timing,
+                    and local knowledge to access experiences that once seemed
+                    reserved for luxury travelers. From hidden accommodation
+                    gems to transportation hacks, the modern budget traveler can
+                    unlock premium experiences at a fraction of the traditional
+                    cost.
+                  </p>
+                </div>
+
+                <div class="article-hidden">
+                  <p>
+                    <strong>Strategic Flight Booking</strong><br />
+                    The difference between an expensive and affordable trip
+                    often starts with airfare. Book flights on Tuesday or
+                    Wednesday when prices typically drop, and use incognito mode
+                    to avoid dynamic pricing. Consider nearby airports—flying
+                    into a secondary airport and taking ground transportation
+                    can save hundreds. Set price alerts on Google Flights or
+                    Skyscanner, and be flexible with dates; shifting your trip
+                    by just a few days can dramatically reduce costs.
+                  </p>
+
+                  <p>
+                    <strong>Accommodation Alternatives</strong><br />
+                    Skip expensive hotels and explore alternatives that offer
+                    authentic experiences. Airbnb apartments with kitchens let
+                    you save on meals while living like a local. House-sitting
+                    platforms like TrustedHousesitters offer free accommodation
+                    in exchange for pet care. Couchsurfing connects travelers
+                    with locals offering free stays, providing cultural
+                    immersion and insider tips. Consider guesthouses in
+                    residential neighborhoods rather than tourist zones—they're
+                    often cleaner, quieter, and half the price.
+                  </p>
+
+                  <p>
+                    <strong>Eating Smart</strong><br />
+                    Food is where budgets can spiral out of control or where you
+                    can save significantly while eating better. Eat where locals
+                    eat—street food and local markets offer authentic cuisine at
+                    local prices. Grocery stores and supermarkets provide
+                    ingredients for simple meals; even preparing just breakfast
+                    and snacks saves substantially. Many cities offer free
+                    walking tours where guides work for tips, and they'll share
+                    the best budget-friendly eating spots.
+                  </p>
+
+                  <p>
+                    <strong>Transportation Hacks</strong><br />
+                    Within destinations, avoid tourist taxis and ride-sharing
+                    surge pricing. Use local buses, metro systems, and shared
+                    vans—they're not just cheaper but offer authentic local
+                    experiences. Many cities have visitor transport cards
+                    offering unlimited rides. Rent bicycles for exploration;
+                    it's economical, healthy, and lets you discover hidden gems.
+                    For longer distances, overnight buses or trains save both
+                    transport and accommodation costs.
+                  </p>
+
+                  <p>
+                    <strong>Free Attractions and Activities</strong><br />
+                    Most destinations offer incredible free experiences if you
+                    know where to look. Many museums have free entry days or
+                    discounted evening hours. City parks, beaches, hiking
+                    trails, and architectural landmarks cost nothing but provide
+                    memorable experiences. Join free walking tours, attend local
+                    festivals, visit public markets, and watch street
+                    performances. Nature rarely charges admission—national parks
+                    and scenic viewpoints offer some of the best travel memories
+                    without entry fees.
+                  </p>
+
+                  <p>
+                    <strong>Travel During Shoulder Season</strong><br />
+                    Timing is everything in budget travel. Shoulder season—the
+                    period between peak and off-peak—offers the best value.
+                    You'll find lower prices on flights and accommodation, fewer
+                    crowds, and often better weather than the off-season. Europe
+                    in May or September, Southeast Asia in November or March,
+                    and the Caribbean in early December provide excellent
+                    conditions at reduced prices. Research your destination's
+                    seasonal patterns to find these sweet spots.
+                  </p>
+                </div>
+
+                <button class="read-more-btn" onclick="toggleArticle(2)">
+                  Read More
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Article 3: Landing Jobs in Dubai -->
+          <article class="blog-article" data-article="3">
+            <div class="article-image-wrapper">
+              <img
+                src="assets/images/dubai1.jpeg"
+                alt="Dubai skyline"
+                class="article-image"
+              />
+            </div>
+            <div class="article-content">
+              <div class="article-meta">
+                <span class="article-category">Career</span>
+                <span class="article-date">January 25, 2025</span>
+              </div>
+              <h2 class="article-title">
+                Landing Your Dream Job in Dubai: A Step-by-Step Guide for 2025
+              </h2>
+              <div class="article-text">
+                <div class="article-preview">
+                  <p>
+                    Dubai has transformed from a desert trading port into a
+                    global employment hub that attracts professionals from over
+                    200 nationalities. With its tax-free salaries, modern
+                    infrastructure, and strategic position bridging East and
+                    West, Dubai offers career opportunities that combine
+                    professional growth with an enviable lifestyle. However,
+                    navigating Dubai's unique job market requires understanding
+                    its distinct hiring practices and cultural nuances.
+                  </p>
+
+                  <p>
+                    The landscape for international workers in Dubai continues
+                    to evolve in 2025, with new visa categories, remote work
+                    options, and emerging industries creating fresh
+                    opportunities. Whether you're in technology, finance,
+                    hospitality, healthcare, or creative fields, Dubai's dynamic
+                    economy offers pathways for those who approach the job
+                    search strategically and understand what makes the Emirates
+                    employment market unique.
+                  </p>
+                </div>
+
+                <div class="article-hidden">
+                  <p>
+                    <strong>Understanding the Dubai Job Market</strong><br />
+                    Dubai's economy thrives on sectors like real estate,
+                    tourism, finance, technology, and trade. The free
+                    zones—specialized business districts offering 100% foreign
+                    ownership—are major employers, particularly in media,
+                    technology, and healthcare. Understanding which sectors are
+                    growing and which free zones align with your expertise is
+                    crucial. Dubai Internet City focuses on tech, Dubai Media
+                    City on communications, and Dubai Healthcare City on medical
+                    services. Research companies in your field that have Dubai
+                    operations, as many international corporations use Dubai as
+                    their Middle East headquarters.
+                  </p>
+
+                  <p>
+                    <strong>Preparing Your Application Materials</strong><br />
+                    Dubai employers expect specific documentation formats. Your
+                    CV should be comprehensive, typically 2-3 pages, including
+                    your photo, nationality, visa status, and expected salary
+                    range. Unlike Western markets, including personal
+                    information is standard practice. Highlight international
+                    experience and any Arabic language skills. Professional
+                    certificates and degrees should be attested—a process where
+                    your educational credentials are verified by your home
+                    country's government and then by UAE authorities. Start this
+                    process early as it can take several weeks.
+                  </p>
+
+                  <p>
+                    <strong>Job Search Strategies</strong><br />
+                    Multiple channels exist for finding Dubai employment.
+                    International job sites like Bayt.com, GulfTalent, and
+                    Naukrigulf specialize in Middle East positions. LinkedIn is
+                    increasingly important—ensure your profile highlights
+                    international experience and includes relevant keywords.
+                    Many positions are filled through recruitment agencies that
+                    specialize in placing international candidates. Consider
+                    attending job fairs in Dubai or major cities; companies
+                    often conduct mass hiring events. Networking matters
+                    immensely—join professional associations and attend industry
+                    events, as personal connections frequently lead to
+                    opportunities.
+                  </p>
+
+                  <p>
+                    <strong>Understanding the Visa Process</strong><br />
+                    Employment in Dubai requires employer sponsorship for your
+                    residence visa. The typical process involves receiving a job
+                    offer, undergoing medical examinations, obtaining security
+                    clearance, and having your employer process your residence
+                    visa. The new Golden Visa program offers long-term residency
+                    for highly skilled professionals, investors, and exceptional
+                    students. Since 2021, remote work visas allow individuals to
+                    live in Dubai while working for companies based elsewhere—a
+                    game-changer for digital professionals. Understanding these
+                    visa categories helps you position yourself correctly with
+                    potential employers.
+                  </p>
+
+                  <p>
+                    <strong>Salary Negotiations and Benefits</strong><br />
+                    Dubai compensation packages typically include basic salary
+                    plus substantial benefits. Standard packages include housing
+                    allowance, annual flight tickets home, medical insurance,
+                    and education allowances if you have children.
+                    End-of-service benefits (similar to severance pay) are
+                    mandatory. Salaries are tax-free, but cost of living,
+                    particularly housing, is high. Research typical compensation
+                    for your role and experience level—sites like Salary
+                    Explorer and Glassdoor provide benchmarks. Don't accept the
+                    first offer; negotiation is expected, especially regarding
+                    housing allowances and flights.
+                  </p>
+
+                  <p>
+                    <strong>Cultural Adaptation and Expectations</strong><br />
+                    Success in Dubai requires understanding local business
+                    culture. The work week runs Sunday through Thursday, with
+                    Friday and Saturday as the weekend. Respect for Islamic
+                    practices is essential—be aware of prayer times and Ramadan
+                    customs. Professional dress codes are conservative,
+                    particularly in government-linked entities. Building
+                    relationships takes time; business often happens after
+                    establishing personal connections over coffee or meals.
+                    Punctuality is valued, and hierarchical respect is
+                    important. Understanding and embracing these cultural
+                    elements significantly improves your chances of not just
+                    landing a job but thriving in Dubai's unique professional
+                    environment.
+                  </p>
+                </div>
+
+                <button class="read-more-btn" onclick="toggleArticle(3)">
+                  Read More
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Article 4: Living in Dubai -->
+          <article class="blog-article" data-article="4">
+            <div class="article-image-wrapper">
+              <img
+                src="assets/images/life.jpg"
+                alt="Dubai Marina lifestyle"
+                class="article-image"
+              />
+            </div>
+            <div class="article-content">
+              <div class="article-meta">
+                <span class="article-category">Lifestyle</span>
+                <span class="article-date">February 3, 2025</span>
+              </div>
+              <h2 class="article-title">
+                Life in Dubai: How to Work, Stay, and Thrive Abroad
+              </h2>
+              <div class="article-text">
+                <div class="article-preview">
+                  <p>
+                    Moving to Dubai represents more than a career change—it's a
+                    complete lifestyle transformation. This gleaming metropolis
+                    where ancient Bedouin traditions meet futuristic innovation
+                    offers expatriates an experience unlike any other global
+                    city. With over 85% of its population being foreign-born,
+                    Dubai has perfected the art of welcoming international
+                    residents while maintaining its unique cultural identity.
+                  </p>
+
+                  <p>
+                    Life in Dubai balances cosmopolitan luxury with practical
+                    challenges. From finding the right neighborhood to
+                    navigating social customs, understanding local banking to
+                    building a social network, success in Dubai requires
+                    preparation, flexibility, and cultural awareness. Those who
+                    invest time in understanding the city's rhythms and
+                    unwritten rules discover a quality of life that keeps many
+                    expatriates extending their planned "two-year stint" into
+                    decades-long residencies.
+                  </p>
+                </div>
+
+                <div class="article-hidden">
+                  <p>
+                    <strong>Finding Your Perfect Neighborhood</strong><br />
+                    Dubai's neighborhoods each have distinct personalities and
+                    price points. Dubai Marina offers waterfront living with a
+                    cosmopolitan vibe, popular among young professionals and
+                    featuring numerous restaurants and beaches. Jumeirah Beach
+                    Residence (JBR) provides beachfront apartments with
+                    resort-style amenities. Downtown Dubai, home to Burj
+                    Khalifa, offers luxury high-rises within walking distance of
+                    Dubai Mall. For families, Springs, Meadows, and Arabian
+                    Ranches provide villa communities with parks and schools.
+                    More affordable options include International City,
+                    Discovery Gardens, and older areas like Deira and Bur Dubai.
+                    Consider proximity to your workplace—traffic during rush
+                    hour can be intense, and living near your office
+                    significantly improves daily life.
+                  </p>
+
+                  <p>
+                    <strong>Cost of Living Reality Check</strong><br />
+                    While Dubai salaries are tax-free, living costs vary
+                    dramatically based on lifestyle choices. Rent typically
+                    consumes 30-40% of income, with annual payment required
+                    upfront (though multiple checks spread throughout the year
+                    are standard). A one-bedroom apartment in popular areas
+                    costs AED 50,000-100,000 annually ($13,600-$27,200).
+                    Groceries from supermarkets are comparable to Western
+                    prices; local markets offer savings. Dining out ranges from
+                    inexpensive local restaurants (AED 20-30 per meal) to
+                    high-end establishments (AED 300+). Transportation costs
+                    depend on car ownership versus using Dubai's excellent metro
+                    and bus system. Entertainment, from desert safaris to theme
+                    parks, can add up, but free activities like beaches and
+                    parks help balance the budget.
+                  </p>
+
+                  <p>
+                    <strong>Healthcare and Education</strong><br />
+                    Dubai's healthcare system is excellent but operates on
+                    health insurance. Employers must provide basic medical
+                    insurance, but many upgrade to premium plans for
+                    comprehensive coverage including international hospitals.
+                    Major hospitals like American Hospital, Mediclinic, and
+                    Aster offer world-class care. For families, education is a
+                    significant expense—international schools follow various
+                    curricula (British, American, IB, French) with annual fees
+                    ranging from AED 20,000 to over AED 100,000 depending on the
+                    school and grade level. Many employment packages include
+                    education allowances; negotiate this thoroughly if you have
+                    children. The quality of education in top international
+                    schools is exceptional, offering global perspectives and
+                    strong academic programs.
+                  </p>
+
+                  <p>
+                    <strong>Social Life and Community Building</strong><br />
+                    Dubai's transient nature means most residents are building
+                    new social networks. Join groups through Meetup, Facebook
+                    communities, or platforms like InterNations that organize
+                    professional and social gatherings. Sports clubs, fitness
+                    centers, and hobby groups provide natural networking
+                    opportunities. Professional associations and business
+                    networking events help build career connections that often
+                    evolve into friendships. Many people meet through their
+                    compounds or neighborhoods, particularly in family-friendly
+                    communities. The weekend starts Thursday evening; beach
+                    clubs, brunch, and desert activities fill Fridays. Beach
+                    access is plentiful—both public beaches and private beach
+                    clubs offer year-round enjoyment. Understanding that most
+                    relationships are with other expatriates helps set realistic
+                    expectations; embrace the global nature of friendships
+                    rather than seeking only connections with people from your
+                    home country.
+                  </p>
+
+                  <p>
+                    <strong>Navigating Cultural Norms</strong><br />
+                    Dubai balances Islamic tradition with international
+                    cosmopolitanism, requiring cultural sensitivity. Dress
+                    modestly in public spaces, though beach wear is acceptable
+                    at pools and beaches. Public displays of affection beyond
+                    holding hands are frowned upon. During Ramadan, eating,
+                    drinking, and smoking in public during daylight hours is
+                    prohibited and disrespectful. Alcohol is available in
+                    licensed venues—hotels, restaurants, and clubs—and residents
+                    can obtain liquor licenses for home consumption. Friday is
+                    the holy day; many businesses are closed or operate on
+                    reduced hours. Photography requires consent, particularly
+                    when photographing people or government buildings.
+                    Understanding these boundaries shows respect and helps avoid
+                    legal issues. Most importantly, approach cultural
+                    differences with curiosity rather than judgment; Dubai's
+                    success comes from cultural respect and adaptation.
+                  </p>
+
+                  <p>
+                    <strong>Long-term Success Strategies</strong><br />
+                    Thriving in Dubai extends beyond the initial adjustment
+                    period. Build financial resilience by maintaining savings
+                    despite tax-free income—remember you'll eventually need to
+                    move. Keep professional skills current and network actively;
+                    Dubai's job market is competitive and companies restructure
+                    regularly. Maintain connections with your home country for
+                    eventual repatriation. Take advantage of Dubai's global
+                    connectivity—travel to Asia, Africa, and Europe is
+                    affordable and easy. Engage with Emirati culture through
+                    heritage sites, museums, and cultural programs;
+                    understanding your host country enriches the experience.
+                    Join volunteer programs—organizations like Dubai Cares and
+                    Emirates Red Crescent welcome expatriate involvement.
+                    Balance work with life; Dubai's intensity can lead to
+                    burnout if you don't actively create boundaries. Those who
+                    view Dubai as a temporary chapter but invest fully in the
+                    experience find it among the most rewarding periods of their
+                    lives, opening perspectives and opportunities that extend
+                    far beyond the time spent in this remarkable city.
+                  </p>
+                </div>
+
+                <button class="read-more-btn" onclick="toggleArticle(4)">
+                  Read More
+                </button>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Floating Scroll to Top Button -->
+    <div class="scroll-to-top" id="scrollToTop">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z" />
+      </svg>
+    </div>
+
+    <!-- Link Global Scripts -->
+    <script src="assets/src/general.js"></script>
+
+    <!-- Page-Specific Scripts -->
+    <script>
+      // Blog functionality
+      document.addEventListener("DOMContentLoaded", function () {
+        // Initialize general functionality
+        if (typeof initGeneral === "function") {
+          initGeneral();
+        }
+
+        // Blog data
+        const blogData = [
+          {
+            id: 1,
+            title: "Top 10 Hidden Gems in Ghana You Should Visit in 2025",
+            category: "Adventure",
+            date: "MAY 15, 2025",
+            excerpt:
+              "Ghana, the gateway to West Africa, is home to stunning landscapes, vibrant cultures, and historical treasures that extend far beyond its famous coastal castles. From pristine waterfalls to remote villages where ancient customs thrive, discover the true magic of this incredible nation.",
+            image: "assets/images/hidden.jpg",
+          },
+          {
+            id: 2,
+            title:
+              "How to Travel on a Budget and Still Live Your Dream Vacation",
+            category: "Lifestyle",
+            date: "APRIL 28, 2025",
+            excerpt:
+              "The dream of exploring new destinations doesn't have to remain just a dream because of budget constraints. With smart planning, flexibility, and insider knowledge, you can experience incredible adventures without draining your savings.",
+            image: "assets/images/travel.jpg",
+          },
+          {
+            id: 3,
+            title:
+              "Landing Your Dream Job in Dubai: A Step-by-Step Guide for 2025",
+            category: "Career",
+            date: "APRIL 15, 2025",
+            excerpt:
+              "Dubai has transformed from a desert trading port into a global employment hub that attracts professionals from over 200 nationalities. With its tax-free salaries and strategic position, Dubai offers career opportunities like nowhere else.",
+            image: "assets/images/dubai1.jpeg",
+          },
+          {
+            id: 4,
+            title: "Life in Dubai: How to Work, Stay, and Thrive Abroad",
+            category: "Lifestyle",
+            date: "MARCH 30, 2025",
+            excerpt:
+              "Moving to Dubai represents more than a career change—it's a complete lifestyle transformation. With over 85% of its population being foreign-born, Dubai has perfected the art of welcoming international residents.",
+            image: "assets/images/life.jpg",
+          },
+        ];
+
+        // Generate blog rows with alternating layout
+        function generateBlogRows() {
+          const blogGrid = document.getElementById("blogGrid");
+          blogGrid.innerHTML = "";
+
+          blogData.forEach((blog, index) => {
+            const blogRow = document.createElement("div");
+            blogRow.className = "blog-row";
+            blogRow.setAttribute("data-blog-id", blog.id);
+
+            blogRow.innerHTML = `
+              <div class="blog-image">
+                <img src="${blog.image}" alt="${blog.title}">
+              </div>
+              <div class="blog-content">
+                <div class="blog-meta">
+                  <span class="blog-category">${blog.category}</span>
+                  <span class="blog-date">${blog.date}</span>
+                </div>
+                <h3 class="blog-title">${blog.title}</h3>
+                <p class="blog-excerpt">${blog.excerpt}</p>
+                <button class="blog-btn" onclick="openBlog(${blog.id})">Read More</button>
+              </div>
+            `;
+
+            blogGrid.appendChild(blogRow);
+          });
+        }
+
+        // Generate featured blogs in grid layout
+        function generateFeaturedBlogs(currentBlogId) {
+          const featuredBlogsList =
+            document.getElementById("featuredBlogsList");
+          featuredBlogsList.innerHTML = "";
+
+          // Filter out the current blog
+          const otherBlogs = blogData.filter(
+            (blog) => blog.id !== currentBlogId
+          );
+
+          otherBlogs.forEach((blog) => {
+            const featuredBlog = document.createElement("div");
+            featuredBlog.className = "featured-blog-item";
+            featuredBlog.setAttribute("data-blog-id", blog.id);
+
+            featuredBlog.innerHTML = `
+              <img src="${blog.image}" alt="${blog.title}" class="featured-blog-image">
+              <div class="featured-blog-content">
+                <h4 class="featured-blog-title">${blog.title}</h4>
+                <p class="featured-blog-date">${blog.date}</p>
+              </div>
+            `;
+
+            featuredBlog.addEventListener("click", () => openBlog(blog.id));
+            featuredBlogsList.appendChild(featuredBlog);
+          });
+        }
+
+        // Open blog in expanded view
+        function openBlog(blogId) {
+          const blogGrid = document.getElementById("blogGrid");
+          const blogExpanded = document.getElementById("blogExpanded");
+          const blogExpandedContent = document.getElementById(
+            "blogExpandedContent"
+          );
+          const blog = blogData.find((b) => b.id === blogId);
+
+          // Hide grid view and show expanded view
+          blogGrid.style.display = "none";
+          blogExpanded.classList.add("active");
+
+          // Get the article content
+          const article = document.querySelector(
+            `.blog-article[data-article="${blogId}"]`
+          );
+
+          if (article) {
+            // Clone the article content
+            const articleClone = article.cloneNode(true);
+            articleClone.classList.add("active");
+
+            // Show all content in expanded view (no need for read more)
+            const hiddenContent = articleClone.querySelector(".article-hidden");
+            if (hiddenContent) {
+              hiddenContent.classList.add("show");
+            }
+
+            // Hide the read more button
+            const readMoreBtn = articleClone.querySelector(".read-more-btn");
+            if (readMoreBtn) {
+              readMoreBtn.style.display = "none";
+            }
+
+            // Clear and populate the expanded content
+            blogExpandedContent.innerHTML = "";
+            blogExpandedContent.appendChild(articleClone);
+
+            // Generate featured blogs (excluding current blog)
+            generateFeaturedBlogs(blogId);
+
+            // Scroll to top of expanded view
+            window.scrollTo({
+              top: document.querySelector(".blog-section").offsetTop - 100,
+              behavior: "smooth",
+            });
+          }
+        }
+
+        // Close expanded view and return to grid
+        function closeBlog() {
+          const blogGrid = document.getElementById("blogGrid");
+          const blogExpanded = document.getElementById("blogExpanded");
+
+          blogExpanded.classList.remove("active");
+          blogGrid.style.display = "flex";
+
+          // Scroll to top of blog section
+          window.scrollTo({
+            top: document.querySelector(".blog-section").offsetTop - 100,
+            behavior: "smooth",
+          });
+        }
+
+        // Toggle article content (Read More functionality)
+        function toggleArticle(articleId) {
+          const article = document.querySelector(
+            `.blog-article[data-article="${articleId}"]`
+          );
+          if (!article) return;
+
+          const hiddenContent = article.querySelector(".article-hidden");
+          const readMoreBtn = article.querySelector(".read-more-btn");
+
+          if (hiddenContent.classList.contains("show")) {
+            hiddenContent.classList.remove("show");
+            readMoreBtn.textContent = "Read More";
+          } else {
+            hiddenContent.classList.add("show");
+            readMoreBtn.textContent = "Read Less";
+          }
+        }
+
+        // Back button functionality
+        const blogBackBtn = document.getElementById("blogBackBtn");
+        blogBackBtn.addEventListener("click", closeBlog);
+
+        // Scroll to top functionality
+        const scrollToTop = document.getElementById("scrollToTop");
+        scrollToTop.addEventListener("click", function () {
+          window.scrollTo({
+            top: 0,
+            behavior: "smooth",
+          });
+        });
+
+        // Show/hide scroll to top button based on scroll position
+        window.addEventListener("scroll", function () {
+          if (window.pageYOffset > 300) {
+            scrollToTop.classList.add("visible");
+          } else {
+            scrollToTop.classList.remove("visible");
+          }
+        });
+
+        // Initialize blog rows on page load
+        generateBlogRows();
+
+        // Make functions globally accessible
+        window.openBlog = openBlog;
+        window.toggleArticle = toggleArticle;
+      });
+    </script>
   </body>
 </html>
