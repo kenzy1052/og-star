@@ -6,8 +6,14 @@
     <title>OG STAR Travel & Tour - Blog</title>
 
     <!-- Link Global Styles -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="assets/styles/modern-normalize.css" />
     <link rel="stylesheet" href="assets/styles/style.css" />
     <link rel="stylesheet" href="assets/styles/utils.css" />
+    <link rel="stylesheet" href="assets/styles/nav-foot.css" />
 
     <!-- Page-Specific Styles -->
     <style>
@@ -68,6 +74,7 @@
       }
 
       .hero-title {
+        color: #ffffff;
         font-family: var(--font-elegant);
         font-size: clamp(2rem, 5vw, 3.5rem);
         margin-bottom: 1rem;
@@ -633,11 +640,89 @@
     </style>
   </head>
   <body>
+    <!-- Mobile Menu Overlay -->
+    <div>
+      <div class="overlay" id="overlay"></div>
+
+      <!-- Navigation -->
+      <header class="navbar" id="navbar">
+        <div class="nav-inner">
+          <div class="nav-logo">
+            <a href="index.html" class="logo">
+              <img src="assets/images/logo.png" alt="O G Star logo" />
+            </a>
+          </div>
+
+          <nav class="nav-center" aria-label="Main navigation">
+            <ul class="nav-menu" role="menubar">
+              <li class="nav-item" role="none">
+                <a href="index.html" class="nav-link" role="menuitem">Home</a>
+              </li>
+              <li class="nav-item" role="none">
+                <a href="services.html" class="nav-link" role="menuitem"
+                  >Services</a
+                >
+              </li>
+              <li class="nav-item" role="none">
+                <a href="destinations.html" class="nav-link" role="menuitem"
+                  >Destinations</a
+                >
+              </li>
+              <li class="nav-item" role="none">
+                <a href="information.html" class="nav-link" role="menuitem"
+                  >Information</a
+                >
+              </li>
+              <li class="nav-item" role="none">
+                <a href="contact.html" class="nav-link" role="menuitem"
+                  >Contact</a
+                >
+              </li>
+              <li class="nav-item" role="none">
+                <a href="blog.html" class="nav-link active" role="menuitem"
+                  >Blog</a
+                >
+              </li>
+            </ul>
+          </nav>
+
+          <div class="nav-cta">
+            <button class="book-now-btn" id="bookNowBtn" aria-label="Book Now">
+              <span>Book Now</span>
+            </button>
+
+            <button class="hamburger" id="hamburger" aria-label="Open menu">
+              <i class="fas fa-bars"></i>
+            </button>
+          </div>
+        </div>
+      </header>
+
+      <!-- Mobile panel -->
+      <aside class="mobile-panel" id="mobilePanel">
+        <div class="mobile-panel-header">
+          <h3>Menu</h3>
+          <button class="close-btn" id="closePanel" aria-label="Close menu">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+
+        <nav class="mobile-links">
+          <a href="index.html">Home</a>
+          <a href="services.html">Services</a>
+          <a href="destinations.html">Destinations</a>
+          <a href="information.html">Information</a>
+          <a href="contact.html">Contact</a>
+          <a href="blog.html">Blog</a>
+        </nav>
+      </aside>
+    </div>
+
     <!-- Hero Section -->
     <section class="hero-section">
       <div class="hero-background">
         <video autoplay muted loop>
-          <source src="assets/images/blog-vid2.mp4" type="video/mp4" />
+          <source src="assets/images/blog-vid.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
       </div>
@@ -1253,7 +1338,70 @@
       </svg>
     </div>
 
+    <!-- Footer -->
+    <div>
+      <footer class="footer" id="contact">
+        <div class="footer-container">
+          <div class="footer-column">
+            <img
+              src="assets/images/logo2.png"
+              alt="O G Star Logo"
+              style="max-width: 150px; margin-bottom: 0"
+            />
+          </div>
+
+          <div class="footer-column">
+            <h4>Quick Links</h4>
+            <ul>
+              <li><a href="index.html">Home</a></li>
+              <li><a href="services.html">Services</a></li>
+              <li><a href="destinations.html">Destinations</a></li>
+              <li><a href="information.html">Information</a></li>
+              <li><a href="contact.html">Contact</a></li>
+              <li><a href="blog.html">Blog</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-column">
+            <h4>Our Services</h4>
+            <ul>
+              <li><a href="services.html">Travel & Tours</a></li>
+              <li><a href="services.html">Study Abroad</a></li>
+              <li><a href="services.html">Work & Stay</a></li>
+              <li><a href="services.html">Visa Assistance</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-column">
+            <h4>Connect With Us</h4>
+            <div class="social-links">
+              <a href="#" aria-label="WhatsApp"
+                ><i class="fab fa-whatsapp"></i
+              ></a>
+              <a href="#" aria-label="Instagram"
+                ><i class="fab fa-instagram"></i
+              ></a>
+              <a href="#" aria-label="Facebook"
+                ><i class="fab fa-facebook-f"></i
+              ></a>
+              <a href="#" aria-label="LinkedIn"
+                ><i class="fab fa-linkedin-in"></i
+              ></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <span
+            >© 2025 O G Star Travel & Tours. Crafted with ❤️ by
+            Kenzyverse.</span
+          >
+        </div>
+      </footer>
+    </div>
+
     <!-- Link Global Scripts -->
+    <script src="assets/src/nav-foot.js"></script>
     <script src="assets/src/general.js"></script>
 
     <!-- Page-Specific Scripts -->

@@ -1,0 +1,1027 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Testimonials - OG STAR TRAVEL & TOURS</title>
+    
+    <!-- External Stylesheets -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="assets/styles/modern-normalize.css" />
+    <link rel="stylesheet" href="assets/styles/style.css" />
+    <link rel="stylesheet" href="assets/styles/utils.css" />
+    <link rel="stylesheet" href="assets/styles/nav-foot.css" />
+    
+    <style>
+        /* CSS Variables */
+        :root {
+            /* === BRAND COLORS === */
+            --primary-color: #2ec4b6;
+            --secondary-color: #ff6b6b;
+            --accent-color: coral;
+            --highlight-color: #118ab2;
+
+            /* === TEXT COLORS === */
+            --text-color: #1a1a1a;
+            --text-muted: #6c757d;
+            --text-light: #ffffff;
+
+            /* === BACKGROUNDS === */
+            --bg-primary: #ffffff;
+            --bg-secondary: #f6f9fa;
+            --bg-tertiary: #eef2f3;
+            --bg-dark: #212529;
+            --bg-darker: #141414;
+
+            /* === GRADIENTS === */
+            --gradient-primary: linear-gradient(135deg, #2ec4b6 0%, #118ab2 100%);
+            --gradient-secondary: linear-gradient(135deg, #ff6b6b 0%, #ffd166 100%);
+            --gradient-accent: linear-gradient(135deg, #2ec4b6 0%, #ff6b6b 100%);
+
+            /* === EFFECTS === */
+            --shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            --shadow-hover: 0 10px 20px rgba(0, 0, 0, 0.15);
+            --transition: all 0.3s ease-in-out;
+            --radius-sm: 0.25rem;
+            --radius-md: 0.75rem;
+            --radius-lg: 1.25rem;
+
+            /* === TYPOGRAPHY === */
+            --font-primary: "Poppins", sans-serif;
+            --font-secondary: "Montserrat", sans-serif;
+            --font-elegant: "Playfair Display", serif;
+
+            /* === LAYOUT === */
+            --spacing-xs: 0.5rem;
+            --spacing-sm: 1rem;
+            --spacing-md: 1.5rem;
+            --spacing-lg: 2rem;
+            --spacing-xl: 3rem;
+            --spacing-2xl: 4rem;
+            --spacing-3xl: 5rem;
+            --spacing-4xl: 6rem;
+            --card-bg-light: #ffffff;
+            --card-bg-dark: #2a2a2a;
+        }
+
+        /* Dark Theme */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --primary-color: #3fd0c6;
+                --secondary-color: #ff8585;
+                --accent-color: #ffd042ff;
+                --highlight-color: #48cae4;
+
+                --text-color: #f5f5f5;
+                --text-muted: #b0b0b0;
+                --text-light: #ffffff;
+
+                --bg-primary: #0e1a1a;
+                --bg-secondary: #152020;
+                --bg-tertiary: #1e2a2a;
+                --bg-dark: #0b1212;
+                --bg-darker: #050909;
+
+                --gradient-primary: linear-gradient(135deg, #3fd0c6 0%, #48cae4 100%);
+                --gradient-secondary: linear-gradient(135deg, #ff8585 0%, #ffe080 100%);
+                --gradient-accent: linear-gradient(135deg, #3fd0c6 0%, #ff8585 100%);
+
+                --card-bg-light: #1f2a2a;
+                --card-bg-dark: #121c1c;
+            }
+        }
+
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-primary);
+            line-height: 1.6;
+            color: var(--text-color);
+            background: var(--bg-primary);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* Typography */
+        h2 {
+            font-size: clamp(1.5rem, 4vw, 2rem);
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+            text-transform: uppercase;
+            font-family: var(--font-secondary);
+            font-weight: 700;
+        }
+
+        h4 {
+            font-size: clamp(1.1rem, 2.5vw, 1.25rem);
+            margin-bottom: 0.6rem;
+            text-transform: uppercase;
+            font-family: var(--font-secondary);
+            font-weight: 600;
+        }
+
+        /* Section subtitle styling */
+        .testimonials-subtitle {
+            color: var(--secondary-color);
+            font-size: 1.5rem;
+            font-family: var(--font-elegant);
+            text-align: center;
+            margin-bottom: 15px;
+            text-transform: capitalize;
+        }
+
+        /* Carousel common */
+        .carousel-wrapper {
+            position: relative;
+            overflow: hidden;
+            margin: 0 auto;
+        }
+        .carousel-track {
+            display: flex;
+            gap: 20px;
+            transition: transform 0.6s cubic-bezier(0.22, 0.9, 0.35, 1),
+              opacity 0.35s linear;
+            will-change: transform;
+            cursor: grab;
+            align-items: stretch;
+        }
+        .carousel-track.grabbing {
+            cursor: grabbing;
+        }
+
+        .carousel-dots {
+            margin-top: 18px;
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+        }
+        .carousel-dots .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #d3d3d3;
+            cursor: pointer;
+            transition: background 0.25s;
+        }
+        .carousel-dots .dot.active {
+            background: var(--secondary-color);
+        }
+
+        img {
+            -webkit-user-drag: none;
+            user-drag: none;
+            display: block;
+        }
+
+        /* Card base */
+        .testimonial-card {
+            background: var(--bg-primary);
+            border-radius: 14px;
+            box-shadow: 0 6px 24px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            min-height: 100%;
+            transform-origin: center;
+            opacity: 0.98;
+            transition: box-shadow 0.25s cubic-bezier(0.22, 0.9, 0.35, 1),
+              opacity 0.4s linear;
+        }
+        .testimonial-card:hover {
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+        }
+
+        /* small fade increase when flagged in view */
+        .in-view {
+            opacity: 1;
+        }
+
+        /* Testimonials specifics */
+        .testimonial-card {
+            padding: 18px;
+            align-items: center;
+            text-align: center;
+        }
+        .testimonial-avatar img {
+            width: 86px;
+            height: 86px;
+            object-fit: cover;
+            border-radius: 50%;
+            display: block;
+            margin: 0 auto 10px;
+        }
+        .testimonial-rating {
+            color: #f5a623;
+            display: flex;
+            gap: 6px;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 10px;
+        }
+        .testimonial-text {
+            color: var(--text-color);
+            font-size: 0.95rem;
+            margin: 8px 0 12px;
+            line-height: 1.45;
+        }
+        .testimonial-name {
+            font-weight: 700;
+            margin-bottom: 4px;
+            color: var(--text-color);
+        }
+        .testimonial-role {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Testimonials Section */
+        .testimonials-section {
+            padding: 72px 0;
+            background: var(--card-bg-light);
+            text-align: center;
+        }
+        .testimonials-container {
+            max-width: 1240px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .testimonials-subtitle {
+            color: var(--secondary-color);
+            font-size: 1.5rem;
+            margin-bottom: 8px;
+            font-family: var(--font-elegant);
+            text-transform: capitalize;
+        }
+        .testimonials-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 28px;
+            text-transform: uppercase;
+            font-family: var(--font-secondary);
+        }
+
+        /* Remove underline in all circumstances */
+        a {
+            text-decoration: none !important;
+        }
+
+        /* Responsive Breakpoints */
+        /* xs - Default (mobile first) */
+        .visual-items {
+            --visual-count: 1;
+        }
+
+        /* sm - 475px */
+        @media (min-width: 475px) {
+            /* Add styles if needed */
+        }
+
+        /* md - 640px */
+        @media (min-width: 640px) {
+            .visual-items {
+                --visual-count: 2;
+            }
+        }
+
+        /* lg - 768px */
+        @media (min-width: 768px) {
+            .container {
+                padding: 0 20px;
+            }
+        }
+
+        /* xl - 1024px */
+        @media (min-width: 1024px) {
+            .visual-items {
+                --visual-count: 4;
+            }
+        }
+
+        /* 2xl - 1280px */
+        @media (min-width: 1280px) {
+            .container {
+                max-width: 1240px;
+            }
+        }
+
+        /* 3xl - 1536px */
+        @media (min-width: 1536px) {
+            .container {
+                max-width: 1536px;
+            }
+        }
+
+        /* Minor mobile tweaks */
+        @media (max-width: 480px) {
+            .testimonial-avatar img {
+                width: 72px;
+                height: 72px;
+            }
+            .testimonials-title {
+                font-size: 1.6rem;
+            }
+        }
+
+        /* helpful utility to force stable heights */
+        .carousel-track > * {
+            display: block;
+        }
+
+        html,
+        body {
+            overflow-x: hidden;
+        }
+    </style>
+</head>
+<body>
+    <!-- Testimonials Section -->
+    <section class="testimonials-section">
+        <div class="testimonials-container">
+            <h4 class="testimonials-subtitle">Testimonials</h4>
+            <h2 class="testimonials-title">What Customers Say</h2>
+
+            <div class="carousel-wrapper visual-items" id="testimonialsWrapper">
+                <div class="carousel-track" id="testimonialsTrack">
+                    <!-- testimonial cards -->
+                    <div class="testimonial-card">
+                        <div class="testimonial-avatar">
+                            <img src="assets/images/p1.jpg" alt="Jane Doe" />
+                        </div>
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i
+                            ><i class="fas fa-star"></i><i class="fas fa-star"></i
+                            ><i class="fas fa-star"></i
+                            ><span
+                                style="
+                                    margin-left: 8px;
+                                    color: var(--text-color);
+                                    font-weight: 700;
+                                "
+                                >5.0</span
+                            >
+                        </div>
+                        <p class="testimonial-text">
+                            "O G Star Travel & Tours made my Ghana trip absolutely
+                            unforgettable. The guides were knowledgeable and the itinerary
+                            was perfectly planned."
+                        </p>
+                        <h4 class="testimonial-name">Jane Doe</h4>
+                        <p class="testimonial-role">Customer</p>
+                    </div>
+
+                    <div class="testimonial-card">
+                        <div class="testimonial-avatar">
+                            <img src="assets/images/p2.jpg" alt="Kwame" />
+                        </div>
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i
+                            ><i class="fas fa-star"></i><i class="fas fa-star"></i
+                            ><i class="fas fa-star"></i
+                            ><span
+                                style="
+                                    margin-left: 8px;
+                                    color: var(--text-color);
+                                    font-weight: 700;
+                                "
+                                >5.0</span
+                            >
+                        </div>
+                        <p class="testimonial-text">
+                            "The visa assistance service was exceptional. They guided me
+                            through every step and made the process so much easier than I
+                            expected."
+                        </p>
+                        <h4 class="testimonial-name">Kwame</h4>
+                        <p class="testimonial-role">Customer</p>
+                    </div>
+
+                    <div class="testimonial-card">
+                        <div class="testimonial-avatar">
+                            <img src="assets/images/p3.jpg" alt="Sarah Johnson" />
+                        </div>
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i
+                            ><i class="fas fa-star"></i><i class="fas fa-star"></i
+                            ><i class="fas fa-star-half-alt"></i
+                            ><span
+                                style="
+                                    margin-left: 8px;
+                                    color: var(--text-color);
+                                    font-weight: 700;
+                                "
+                                >4.5</span
+                            >
+                        </div>
+                        <p class="testimonial-text">
+                            "Thanks to O G Star's work abroad program, I'm now working in my
+                            dream job in Canada. Their interview preparation was
+                            invaluable."
+                        </p>
+                        <h4 class="testimonial-name">Sarah Johnson</h4>
+                        <p class="testimonial-role">Customer</p>
+                    </div>
+
+                    <div class="testimonial-card">
+                        <div class="testimonial-avatar">
+                            <img src="assets/images/p4.jpg" alt="Michael" />
+                        </div>
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i
+                            ><i class="fas fa-star"></i><i class="fas fa-star"></i
+                            ><i class="fas fa-star"></i
+                            ><span
+                                style="
+                                    margin-left: 8px;
+                                    color: var(--text-color);
+                                    font-weight: 700;
+                                "
+                                >5.0</span
+                            >
+                        </div>
+                        <p class="testimonial-text">
+                            "The custom travel package they created for my family was
+                            perfect. Every detail was taken care of, from accommodations to
+                            activities."
+                        </p>
+                        <h4 class="testimonial-name">Michael</h4>
+                        <p class="testimonial-role">Customer</p>
+                    </div>
+
+                    <div class="testimonial-card">
+                        <div class="testimonial-avatar">
+                            <img src="assets/images/p5.jpg" alt="Ama" />
+                        </div>
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i
+                            ><i class="fas fa-star"></i><i class="fas fa-star"></i
+                            ><i class="fas fa-star"></i
+                            ><span
+                                style="
+                                    margin-left: 8px;
+                                    color: var(--text-color);
+                                    font-weight: 700;
+                                "
+                                >5.0</span
+                            >
+                        </div>
+                        <p class="testimonial-text">
+                            "I've traveled with many companies, but O G Star stands out for
+                            their professionalism and attention to detail. The Cape Coast
+                            tour was exceptional."
+                        </p>
+                        <h4 class="testimonial-name">Ama</h4>
+                        <p class="testimonial-role">Customer</p>
+                    </div>
+
+                    <div class="testimonial-card">
+                        <div class="testimonial-avatar">
+                            <img src="assets/images/p6.jpg" alt="David" />
+                        </div>
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i
+                            ><i class="fas fa-star"></i><i class="fas fa-star"></i
+                            ><i class="far fa-star"></i
+                            ><span
+                                style="
+                                    margin-left: 8px;
+                                    color: var(--text-color);
+                                    font-weight: 700;
+                                "
+                                >4.0</span
+                            >
+                        </div>
+                        <p class="testimonial-text">
+                            "The work and stay abroad guidance helped me navigate the
+                            complex process of relocating. I'm now happily settled in the UK
+                            thanks to their support."
+                        </p>
+                        <h4 class="testimonial-name">David</h4>
+                        <p class="testimonial-role">Customer</p>
+                    </div>
+
+                    <div class="testimonial-card">
+                        <div class="testimonial-avatar">
+                            <img src="assets/images/p7.jpg" alt="Grace" />
+                        </div>
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i
+                            ><i class="fas fa-star"></i><i class="fas fa-star"></i
+                            ><i class="fas fa-star"></i
+                            ><span
+                                style="
+                                    margin-left: 8px;
+                                    color: var(--text-color);
+                                    font-weight: 700;
+                                "
+                                >5.0</span
+                            >
+                        </div>
+                        <p class="testimonial-text">
+                            "The Mole National Park safari was a dream come true! Our guide
+                            was incredibly knowledgeable about the wildlife and made the
+                            experience educational."
+                        </p>
+                        <h4 class="testimonial-name">Grace</h4>
+                        <p class="testimonial-role">Customer</p>
+                    </div>
+
+                    <div class="testimonial-card">
+                        <div class="testimonial-avatar">
+                            <img src="assets/images/p8.jpeg" alt="Samuel" />
+                        </div>
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i
+                            ><i class="fas fa-star"></i><i class="fas fa-star"></i
+                            ><i class="fas fa-star-half-alt"></i
+                            ><span
+                                style="
+                                    margin-left: 8px;
+                                    color: var(--text-color);
+                                    font-weight: 700;
+                                "
+                                >4.5</span
+                            >
+                        </div>
+                        <p class="testimonial-text">
+                            "I was nervous about the visa application process, but O G
+                            Star's team was with me every step of the way. They made it
+                            stress-free and straightforward."
+                        </p>
+                        <h4 class="testimonial-name">Samuel</h4>
+                        <p class="testimonial-role">Customer</p>
+                    </div>
+
+                    <div class="testimonial-card">
+                        <div class="testimonial-avatar">
+                            <img src="assets/images/p9.jpeg" alt="Fatima" />
+                        </div>
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i
+                            ><i class="fas fa-star"></i><i class="fas fa-star"></i
+                            ><i class="fas fa-star"></i
+                            ><span
+                                style="
+                                    margin-left: 8px;
+                                    color: var(--text-color);
+                                    font-weight: 700;
+                                "
+                                >5.0</span
+                            >
+                        </div>
+                        <p class="testimonial-text">
+                            "The Ashanti Kingdom tour was a cultural immersion like no
+                            other. Our guide's deep knowledge of the history and traditions
+                            made every site come alive."
+                        </p>
+                        <h4 class="testimonial-name">Fatima</h4>
+                        <p class="testimonial-role">Customer</p>
+                    </div>
+
+                    <div class="testimonial-card">
+                        <div class="testimonial-avatar">
+                            <img src="assets/images/p10.jpeg" alt="John" />
+                        </div>
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i
+                            ><i class="fas fa-star"></i><i class="fas fa-star"></i
+                            ><i class="fas fa-star-half-alt"></i
+                            ><span
+                                style="
+                                    margin-left: 8px;
+                                    color: var(--text-color);
+                                    font-weight: 700;
+                                "
+                                >4.5</span
+                            >
+                        </div>
+                        <p class="testimonial-text">
+                            "The interview preparation sessions were invaluable. They helped
+                            me refine my answers and build confidence. I landed the job on
+                            my first interview!"
+                        </p>
+                        <h4 class="testimonial-name">John</h4>
+                        <p class="testimonial-role">Customer</p>
+                    </div>
+
+                    <div class="testimonial-card">
+                        <div class="testimonial-avatar">
+                            <img src="assets/images/p11.jpeg" alt="Yaa" />
+                        </div>
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i
+                            ><i class="fas fa-star"></i><i class="fas fa-star"></i
+                            ><i class="fas fa-star"></i
+                            ><span
+                                style="
+                                    margin-left: 8px;
+                                    color: var(--text-color);
+                                    font-weight: 700;
+                                "
+                                >5.0</span
+                            >
+                        </div>
+                        <p class="testimonial-text">
+                            "The Lake Volta cruise was the highlight of our trip. The sunset
+                            views were breathtaking, and the crew made sure we were
+                            comfortable throughout."
+                        </p>
+                        <h4 class="testimonial-name">Yaa</h4>
+                        <p class="testimonial-role">Customer</p>
+                    </div>
+
+                    <div class="testimonial-card">
+                        <div class="testimonial-avatar">
+                            <img src="assets/images/p12.jpeg" alt="Kofi" />
+                        </div>
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i
+                            ><i class="fas fa-star"></i><i class="fas fa-star"></i
+                            ><i class="fas fa-star"></i
+                            ><span
+                                style="
+                                    margin-left: 8px;
+                                    color: var(--text-color);
+                                    font-weight: 700;
+                                "
+                                >5.0</span
+                            >
+                        </div>
+                        <p class="testimonial-text">
+                            "From the moment I inquired about their services to the end of
+                            my trip, the customer service was exceptional. They made sure my
+                            travel experience was seamless."
+                        </p>
+                        <h4 class="testimonial-name">Kofi</h4>
+                        <p class="testimonial-role">Customer</p>
+                    </div>
+                </div>
+
+                <div class="carousel-dots" id="testimonialsDots"></div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Initialize page
+        document.addEventListener("DOMContentLoaded", function () {
+            initTestimonialsCarousel();
+        });
+
+        // Testimonials Carousel
+        function initTestimonialsCarousel() {
+            new CircularCarousel({
+                wrapperId: "testimonialsWrapper",
+                trackId: "testimonialsTrack",
+                dotsId: "testimonialsDots",
+                autoMs: 8000, // 8s for testimonials (slower for readability)
+            });
+        }
+
+        // CircularCarousel Class
+        class CircularCarousel {
+            constructor({ wrapperId, trackId, dotsId, autoMs = 6000 }) {
+                this.wrapper = document.getElementById(wrapperId);
+                this.track = document.getElementById(trackId);
+                this.dotsWrap = document.getElementById(dotsId);
+                this.autoMs = autoMs;
+
+                this.gap = 20;
+                this.cloneCount = 0;
+                this.index = 0; // logical index among originals (0..n-1)
+                this.cardWidth = 0;
+                this.moveIncrement = 0;
+                this.autoTimer = null;
+
+                // drag state
+                this.isDragging = false;
+                this.startX = 0;
+                this.prevTranslate = 0;
+                this.dragThreshold = 60;
+
+                // store original nodes as templates
+                this.originalTemplateNodes = Array.from(this.track.children).map(
+                    (n) => n.cloneNode(true)
+                );
+                this.originalCount = this.originalTemplateNodes.length;
+
+                // bind
+                this._onTransitionEnd = this._onTransitionEnd.bind(this);
+                this._onResize = this._onResize.bind(this);
+                this._onVisibility = this._onVisibility.bind(this);
+
+                // init
+                this._init();
+            }
+
+            _readVisualCount() {
+                const val = getComputedStyle(this.wrapper).getPropertyValue(
+                    "--visual-count"
+                );
+                const n = parseInt(val);
+                return n && n > 0 ? n : 1;
+            }
+
+            _init() {
+                // rebuild track with original nodes (no clones)
+                this.track.innerHTML = "";
+                this.originalTemplateNodes.forEach((n) =>
+                    this.track.appendChild(n.cloneNode(true))
+                );
+                this.originalCount = Array.from(this.track.children).length;
+
+                // visual count & clones
+                this.visualCount = this._readVisualCount();
+                this.cloneCount = this.visualCount;
+
+                // create clones
+                this._createClones();
+
+                // items reference
+                this.items = Array.from(this.track.children);
+
+                // build dots
+                this._buildDots();
+
+                // layout sizes
+                this._layout();
+
+                // initial jump (no transition)
+                this._jumpToIndex(this.index, false);
+
+                // events
+                this.track.addEventListener("transitionend", this._onTransitionEnd);
+                window.addEventListener("resize", this._onResize);
+                document.addEventListener("visibilitychange", this._onVisibility);
+
+                // interactions
+                this._enableDragTouch();
+
+                // auto
+                this._startAuto();
+            }
+
+            _createClones() {
+                const originals = Array.from(this.track.children);
+                // append clones of first cloneCount to end
+                for (let i = 0; i < this.cloneCount; i++) {
+                    const clone = originals[i].cloneNode(true);
+                    clone.setAttribute("data-clone", "end-" + i);
+                    this.track.appendChild(clone);
+                }
+                // prepend clones of last cloneCount to beginning
+                for (let i = 0; i < this.cloneCount; i++) {
+                    const clone = originals[originals.length - 1 - i].cloneNode(true);
+                    clone.setAttribute("data-clone", "start-" + i);
+                    this.track.insertBefore(clone, this.track.firstChild);
+                }
+            }
+
+            _buildDots() {
+                this.dotsWrap.innerHTML = "";
+                this.dots = [];
+                for (let i = 0; i < this.originalCount; i++) {
+                    const d = document.createElement("span");
+                    d.className = "dot";
+                    if (i === 0) d.classList.add("active");
+                    ((idx) =>
+                        d.addEventListener("click", () => {
+                            this.index = idx;
+                            this._moveToIndex(this.index);
+                            this._resetAuto();
+                        }))(i);
+                    this.dotsWrap.appendChild(d);
+                    this.dots.push(d);
+                }
+            }
+
+            _layout() {
+                this.visualCount = this._readVisualCount();
+                const wrapperW = this.wrapper.clientWidth;
+                const totalGaps = (this.visualCount - 1) * this.gap;
+                const cardW = (wrapperW - totalGaps) / this.visualCount;
+                this.cardWidth = Math.floor(cardW);
+                // apply flex-basis to all items
+                Array.from(this.track.children).forEach((node) => {
+                    node.style.flex = `0 0 ${this.cardWidth}px`;
+                });
+                this.moveIncrement = this.cardWidth + this.gap;
+                // remove transition while layout to avoid flashes
+                this.track.style.transition = "none";
+                this._jumpToIndex(this.index, false);
+                requestAnimationFrame(() => {
+                    this.track.style.transition = "";
+                });
+                // update in-view visual after layout
+                this._setInViewClass();
+            }
+
+            _enableDragTouch() {
+                // mouse
+                this.track.addEventListener("mousedown", (e) => {
+                    e.preventDefault();
+                    this.isDragging = true;
+                    this.startX = e.clientX;
+                    this.prevTranslate =
+                        -(this.index + this.cloneCount) * this.moveIncrement;
+                    this.track.style.transition = "none";
+                    this.track.classList.add("grabbing");
+                    this._stopAuto();
+                });
+                window.addEventListener("mousemove", (e) => {
+                    if (!this.isDragging) return;
+                    const dx = e.clientX - this.startX;
+                    this._setTranslate(this.prevTranslate + dx);
+                });
+                window.addEventListener("mouseup", (e) => {
+                    if (!this.isDragging) return;
+                    this.isDragging = false;
+                    this.track.classList.remove("grabbing");
+                    const dx = e.clientX - this.startX;
+                    if (dx < -this.dragThreshold)
+                        this.index = (this.index + 1) % this.originalCount;
+                    else if (dx > this.dragThreshold)
+                        this.index =
+                            (this.index - 1 + this.originalCount) % this.originalCount;
+                    this._moveToIndex(this.index);
+                    this._resetAuto();
+                });
+
+                // touch
+                this.track.addEventListener(
+                    "touchstart",
+                    (e) => {
+                        this.isDragging = true;
+                        this.startX = e.touches[0].clientX;
+                        this.prevTranslate =
+                            -(this.index + this.cloneCount) * this.moveIncrement;
+                        this.track.style.transition = "none";
+                        this._stopAuto();
+                    },
+                    { passive: true }
+                );
+
+                this.track.addEventListener(
+                    "touchmove",
+                    (e) => {
+                        if (!this.isDragging) return;
+                        const dx = e.touches[0].clientX - this.startX;
+                        this._setTranslate(this.prevTranslate + dx);
+                    },
+                    { passive: true }
+                );
+
+                this.track.addEventListener("touchend", (e) => {
+                    if (!this.isDragging) return;
+                    this.isDragging = false;
+                    const dx = e.changedTouches[0].clientX - this.startX;
+                    if (dx < -this.dragThreshold)
+                        this.index = (this.index + 1) % this.originalCount;
+                    else if (dx > this.dragThreshold)
+                        this.index =
+                            (this.index - 1 + this.originalCount) % this.originalCount;
+                    this._moveToIndex(this.index);
+                    this._resetAuto();
+                });
+
+                // prevent default image drag
+                this.track.addEventListener("dragstart", (e) => e.preventDefault());
+            }
+
+            _setTranslate(x) {
+                this.track.style.transform = `translateX(${x}px)`;
+            }
+
+            _moveToIndex(i) {
+                this.track.style.transition = `transform .6s cubic-bezier(0.22, 0.9, 0.35, 1)`;
+                const x = -(i + this.cloneCount) * this.moveIncrement;
+                this._setTranslate(x);
+                this._updateDots(i);
+                this._setInViewClass();
+            }
+
+            _jumpToIndex(i, withTransition = false) {
+                if (!withTransition) this.track.style.transition = "none";
+                const x = -(i + this.cloneCount) * this.moveIncrement;
+                this._setTranslate(x);
+                this._updateDots(i);
+                this._setInViewClass();
+                if (!withTransition)
+                    requestAnimationFrame(() => {
+                        this.track.style.transition = "";
+                    });
+            }
+
+            _onTransitionEnd() {
+                // check if we are inside the clone zones, then jump to real counterpart
+                const transformX = this._currentTransform();
+                const alignedIndex = Math.round(-transformX / this.moveIncrement); // index among items (incl clones)
+                const firstReal = this.cloneCount;
+                const lastRealStart = firstReal + this.originalCount - 1;
+
+                if (alignedIndex > lastRealStart) {
+                    // beyond last real -> wrap
+                    const offset = alignedIndex - (firstReal + this.originalCount);
+                    this.index = offset % this.originalCount;
+                    this._jumpToIndex(this.index, false);
+                } else if (alignedIndex < firstReal) {
+                    // before first real -> wrap forward
+                    const offset = alignedIndex - firstReal + this.originalCount;
+                    this.index = offset % this.originalCount;
+                    this._jumpToIndex(this.index, false);
+                } else {
+                    // in real zone
+                    this.index = (alignedIndex - firstReal) % this.originalCount;
+                    this._updateDots(this.index);
+                    this._setInViewClass();
+                }
+            }
+
+            _currentTransform() {
+                const st = window.getComputedStyle(this.track).transform;
+                if (!st || st === "none") return 0;
+                const values = st.match(/matrix.*\((.+)\)/)[1].split(", ");
+                return parseFloat(values[4]);
+            }
+
+            _updateDots(i) {
+                if (!this.dots) return;
+                this.dots.forEach((d, idx) =>
+                    d.classList.toggle("active", idx === i % this.originalCount)
+                );
+            }
+
+            _setInViewClass() {
+                // Add .in-view to the leftmost visible card (logical index)
+                // First remove from all
+                Array.from(this.track.children).forEach((n) =>
+                    n.classList.remove("in-view")
+                );
+                // The node that corresponds to leftmost visible = cloneCount + index
+                const pos = this.cloneCount + this.index;
+                const node = this.track.children[pos];
+                if (node) node.classList.add("in-view");
+            }
+
+            _startAuto() {
+                this._stopAuto();
+                this.autoTimer = setInterval(() => {
+                    this.index = (this.index + 1) % this.originalCount;
+                    this._moveToIndex(this.index);
+                }, this.autoMs);
+                // pause on hover (desktop)
+                this.wrapper.addEventListener("mouseenter", () => this._stopAuto());
+                this.wrapper.addEventListener("mouseleave", () => this._resetAuto());
+            }
+
+            _stopAuto() {
+                clearInterval(this.autoTimer);
+                this.autoTimer = null;
+            }
+            _resetAuto() {
+                this._stopAuto();
+                this._startAuto();
+            }
+
+            _onResize() {
+                // Re-init layout because visual count might change
+                const savedIndex = this.index;
+                // remove listeners for safety
+                this.track.removeEventListener(
+                    "transitionend",
+                    this._onTransitionEnd
+                );
+                window.removeEventListener("resize", this._onResize);
+
+                // rebuild original nodes
+                this.track.innerHTML = "";
+                this.originalTemplateNodes.forEach((n) =>
+                    this.track.appendChild(n.cloneNode(true))
+                );
+                this.originalCount = Array.from(this.track.children).length;
+
+                // re-init
+                this._init();
+                this.index = savedIndex % this.originalCount;
+                this._jumpToIndex(this.index, false);
+            }
+
+            _onVisibility() {
+                if (document.hidden) this._stopAuto();
+                else this._resetAuto();
+            }
+        } // end class
+    </script>
+</body>
+</html>

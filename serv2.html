@@ -120,8 +120,7 @@
         transform: scale(1.05);
       }
 
-      /* Curved edge for left image */
-      .service-section:nth-child(odd) .service-image-wrapper::after {
+      /* .service-section:nth-child(odd) .service-image-wrapper::after {
         content: "";
         position: absolute;
         top: 0;
@@ -131,9 +130,10 @@
         background: inherit;
         clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%, 30% 50%);
         z-index: 1;
+        
       }
 
-      /* Curved edge for right image */
+     
       .service-section:nth-child(even) .service-image-wrapper::before {
         content: "";
         position: absolute;
@@ -144,6 +144,20 @@
         background: inherit;
         clip-path: polygon(0 0, 100% 0, 70% 50%, 100% 100%, 0 100%);
         z-index: 1;
+      } */
+
+      /* Curved edge for left image */
+      .service-section:nth-child(even) .service-image-wrapper {
+        border-top-right-radius: 100px;
+        border-bottom-right-radius: 100px;
+        overflow: hidden;
+      }
+
+      /* Curved edge for right image */
+      .service-section:nth-child(odd) .service-image-wrapper {
+        border-top-left-radius: 100px;
+        border-bottom-left-radius: 100px;
+        overflow: hidden;
       }
 
       .service-content {

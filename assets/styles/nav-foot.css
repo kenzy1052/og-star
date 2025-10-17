@@ -8,7 +8,7 @@
   backdrop-filter: blur(6px) saturate(120%);
   border-bottom: 1px solid rgba(10, 12, 13, 0.06);
   z-index: 9999;
-  box-shadow: 0 8px 30px rgba(15, 23, 42, 0.04);
+  box-shadow: 0 8px 30px rgba(15, 23, 42, 0.15);
   transition: transform 0.3s ease;
 }
 
@@ -113,8 +113,7 @@
   transition: all 0.3s;
 }
 
-.nav-link:hover::after,
-.nav-link.active::after {
+.nav-link:hover::after {
   transform: scaleX(1);
 }
 
@@ -237,6 +236,7 @@
   visibility: hidden;
   z-index: 999;
   transform: translateY(20px);
+  overflow: hidden;
 }
 
 .back-to-top.visible {
@@ -245,9 +245,29 @@
   transform: translateY(0);
 }
 
-.back-to-top:hover {
-  background: var(--secondary-hover);
-  transform: translateY(-5px);
+.back-to-top::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 0%;
+  background: var(--primary-color);
+  z-index: 1;
+  transition: all 0.3s;
+  transform-origin: bottom;
+  border-radius: 50%;
+  opacity: 0.95;
+  pointer-events: none;
+}
+
+.back-to-top:hover::after {
+  height: 100%;
+}
+
+.back-to-top i {
+  position: relative;
+  z-index: 2;
 }
 
 .whatsapp-float {
@@ -267,17 +287,85 @@
   z-index: 1000;
   transition: all 0.3s ease;
   text-decoration: none;
+  overflow: hidden;
 }
 
-.whatsapp-float:hover {
-  transform: scale(1.1);
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+.whatsapp-float::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 0%;
+  background: #000;
+  z-index: 1;
+  transition: all 0.3s;
+  transform-origin: bottom;
+  border-radius: 50%;
+  opacity: 0.95;
+  pointer-events: none;
+}
+
+.whatsapp-float:hover::after {
+  height: 100%;
+}
+
+.whatsapp-float i {
+  position: relative;
+  z-index: 2;
 }
 
 .whatsapp-float.hidden {
   opacity: 0;
   visibility: hidden;
   transform: translateY(20px);
+}
+
+/* Book Now button styles */
+.book-now-btn {
+  --btn-h: 44px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  height: var(--btn-h);
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  padding: 0 20px;
+  overflow: hidden;
+  position: relative;
+  background: var(--gradient-primary);
+  color: #fff;
+  font-weight: 600;
+  font-size: 14px;
+  transition: all 0.4s;
+}
+
+.book-now-btn::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 0%;
+  background: #000;
+  z-index: 1;
+  transition: all 0.3s;
+  transform-origin: bottom;
+  border: none;
+  border-radius: 999px;
+  opacity: 0.95;
+  pointer-events: none;
+}
+
+.book-now-btn:hover::after {
+  height: 100%;
+  border: none;
+}
+
+.book-now-btn span {
+  position: relative;
+  z-index: 2;
 }
 
 /* WhatsApp button styles */
@@ -298,7 +386,7 @@
   color: #fff;
   font-weight: 400;
   transition: all 0.4s;
-  box-shadow: 0 8px 30px rgba(37, 211, 102, 0.14);
+  box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
 }
 .whatsapp-btn .w-icon {
   width: 34px;
@@ -321,7 +409,7 @@
   right: 0;
   bottom: 0;
   height: 0%;
-  background: #000;
+  background: #128c7e;
   z-index: 1;
   transition: all 0.3s;
   transform-origin: bottom;
@@ -344,9 +432,6 @@
 .whatsapp-btn:hover .w-icon {
   color: #fff;
   z-index: 3;
-}
-.whatsapp-btn:hover {
-  box-shadow: 0 18px 46px rgba(2, 6, 23, 0.12);
 }
 
 @keyframes pulse {
@@ -501,7 +586,7 @@
     display: none;
   }
 
-  .whatsapp-btn {
+  .book-now-btn {
     display: none;
   }
 
@@ -513,8 +598,7 @@
 }
 
 @media (prefers-color-scheme: dark) {
-  .nav-logo img,
-  .footer-column img {
+  .nav-logo img {
     content: url("../images/logo2.png");
   }
 }

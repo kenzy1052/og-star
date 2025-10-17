@@ -6,23 +6,24 @@ const closeBtn = document.getElementById("closePanel");
 const body = document.body;
 
 function openPanel() {
-  panel.classList.add("open");
-  overlay.classList.add("show");
-  body.classList.add("menu-open");
+  if (panel) panel.classList.add("open");
+  if (overlay) overlay.classList.add("show");
+  if (body) body.classList.add("menu-open");
 }
 
 function closePanel() {
-  panel.classList.remove("open");
-  overlay.classList.remove("show");
-  body.classList.remove("menu-open");
+  if (panel) panel.classList.remove("open");
+  if (overlay) overlay.classList.remove("show");
+  if (body) body.classList.remove("menu-open");
 }
 
-hamburger.addEventListener("click", openPanel);
-closeBtn.addEventListener("click", closePanel);
-overlay.addEventListener("click", closePanel);
+if (hamburger) hamburger.addEventListener("click", openPanel);
+if (closeBtn) closeBtn.addEventListener("click", closePanel);
+if (overlay) overlay.addEventListener("click", closePanel);
 
 // Close on link click
-document.querySelectorAll(".mobile-links a").forEach((link) => {
+const mobileLinks = document.querySelectorAll(".mobile-links a");
+mobileLinks.forEach((link) => {
   link.addEventListener("click", closePanel);
 });
 
@@ -31,79 +32,94 @@ window.addEventListener("resize", () => {
   if (window.innerWidth >= 1024) closePanel();
 });
 
-// Desktop WhatsApp button
-const whatsappBtn = document.getElementById("whatsappDesktop");
-const whLabel = document.getElementById("whLabel");
-const fullText = "WhatsApp Us";
-let typedIndex = 0;
-
-whatsappBtn.addEventListener("click", () => {
-  window.open(
-    "https://wa.me/233546945944?text=Hello%20OG%20Star%20Travel%20%26%20Tours,%20I'm%20interested%20in%20your%20services",
-    "_blank"
-  );
-});
-
-// Auto-expand and type after 3 seconds with more natural effect
-setTimeout(() => {
-  whatsappBtn.classList.add("expand");
-  whLabel.textContent = "";
-
-  // Natural typing effect with variable speed
-  const typeInterval = setInterval(() => {
-    if (typedIndex < fullText.length) {
-      whLabel.textContent += fullText[typedIndex];
-      typedIndex++;
-
-      // Variable typing speed for more natural effect
-      const randomDelay = Math.random() * 80 + 40; // Random delay between 40-120ms
-      clearInterval(typeInterval);
-      setTimeout(() => {
-        const newInterval = setInterval(() => {
-          if (typedIndex < fullText.length) {
-            whLabel.textContent += fullText[typedIndex];
-            typedIndex++;
-          } else {
-            clearInterval(newInterval);
-          }
-        }, randomDelay);
-      }, randomDelay);
-    } else {
-      clearInterval(typeInterval);
-    }
-  }, 100);
-}, 3000);
+// Book Now button
+const bookNowBtn = document.getElementById("bookNowBtn");
+if (bookNowBtn) {
+  bookNowBtn.addEventListener("click", () => {
+    // Redirect to booking page or open booking modal
+    window.location.href = "contact.html";
+  });
+}
 
 // Back to top button and WhatsApp float toggle
 const backToTop = document.getElementById("backToTop");
+const scrollToTop = document.getElementById("scrollToTop"); // Alternative ID used in blog page
 const whatsappFloat = document.getElementById("whatsappFloat");
 const footer = document.querySelector(".footer");
+const navbar = document.getElementById("navbar");
 
 // Function to check if element is in viewport
 function isInViewport(element) {
+  if (!element) return false;
   const rect = element.getBoundingClientRect();
   return rect.top <= window.innerHeight && rect.bottom >= 0;
 }
 
-// Handle scroll events
+// Navbar hide/show on scroll
+let lastScrollTop = 0;
+let scrollThreshold = 100; // Only start hiding after scrolling 100px
+
 window.addEventListener("scroll", () => {
+  const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
   // Show/hide back to top button based on scroll position
-  if (window.pageYOffset > 300) {
-    backToTop.classList.add("visible");
-  } else {
-    backToTop.classList.remove("visible");
+  if (backToTop) {
+    if (window.pageYOffset > 300) {
+      backToTop.classList.add("visible");
+    } else {
+      backToTop.classList.remove("visible");
+    }
+  }
+
+  // Handle the alternative scroll-to-top button in blog page
+  if (scrollToTop) {
+    if (window.pageYOffset > 300) {
+      scrollToTop.classList.add("visible");
+    } else {
+      scrollToTop.classList.remove("visible");
+    }
   }
 
   // Toggle between WhatsApp and back to top when footer is visible
-  if (isInViewport(footer)) {
-    whatsappFloat.classList.add("hidden");
-    backToTop.classList.add("visible");
-  } else if (window.pageYOffset > 300) {
-    whatsappFloat.classList.remove("hidden");
-    backToTop.classList.remove("visible");
+  if (footer && whatsappFloat && backToTop) {
+    if (isInViewport(footer)) {
+      whatsappFloat.classList.add("hidden");
+      backToTop.classList.add("visible");
+    } else if (window.pageYOffset > 300) {
+      whatsappFloat.classList.remove("hidden");
+      backToTop.classList.remove("visible");
+    }
   }
+
+  // Hide/show navbar based on scroll direction
+  if (navbar) {
+    if (scrollTop > scrollThreshold) {
+      if (scrollTop > lastScrollTop) {
+        // Scrolling down
+        navbar.classList.add("hidden");
+      } else {
+        // Scrolling up
+        navbar.classList.remove("hidden");
+      }
+    } else {
+      // At the top of the page
+      navbar.classList.remove("hidden");
+    }
+  }
+
+  lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
 });
 
-backToTop.addEventListener("click", () => {
-  window.scrollTo({ top: 0, behavior: "smooth" });
-});
+// Back to top functionality
+if (backToTop) {
+  backToTop.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+}
+
+// Handle the alternative scroll-to-top button in blog page
+if (scrollToTop) {
+  scrollToTop.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+}
