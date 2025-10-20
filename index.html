@@ -425,31 +425,23 @@
       }
 
       .hero-title {
-        font-size: clamp(1.75rem, 5vw, 2.5rem);
-        font-weight: 600;
+        font-size: clamp(2rem, 5vw, 3.5rem);
+        font-weight: 700;
         color: white;
         margin-bottom: var(--spacing-md);
-        text-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
         line-height: 1.3;
-        font-family: var(
-          --font-elegant
-        ); /* Changed to elegant font (Playfair Display) */
+        font-family: var(--font-elegant);
         text-transform: uppercase;
       }
 
       .hero-subtitle {
-        font-size: clamp(0.9rem, 2.5vw, 1.25rem);
         color: rgba(255, 255, 255, 0.9);
         margin-bottom: var(--spacing-2xl);
-        font-weight: 300;
-        line-height: 1.5;
-        font-family: var(
-          --font-elegant
-        ); /* Changed to elegant font (Playfair Display) */
-        text-shadow: 0 1px 10px rgba(0, 0, 0, 0.4); /* Added subtle text shadow */
-        font-style: italic; /* Added italic for elegant look */
+        font-size: clamp(1rem, 2vw, 1.3rem);
+        font-weight: 400;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
       }
-
       /* Hero Navigation Buttons */
       .hero-nav {
         position: absolute;
@@ -1222,17 +1214,6 @@
         --visual-count: 1;
       }
 
-      /* sm - 475px */
-      @media (min-width: 475px) {
-        .hero-title {
-          font-size: clamp(2rem, 5vw, 2.5rem);
-          margin-bottom: var(--spacing-md);
-        }
-        .hero-subtitle {
-          font-size: clamp(1rem, 2.5vw, 1.25rem);
-        }
-      }
-
       /* md - 640px */
       @media (min-width: 640px) {
         .visual-items {
@@ -1259,14 +1240,6 @@
         }
         .hero-content {
           max-width: 800px;
-        }
-
-        .hero-title {
-          font-size: clamp(2.5rem, 5vw, 3rem);
-        }
-        .hero-subtitle {
-          font-size: clamp(1.25rem, 2.5vw, 1.5rem);
-          margin-bottom: var(--spacing-3xl);
         }
 
         .split {
@@ -1583,76 +1556,6 @@
       </div>
     </section>
 
-    <!-- Destinations Section -->
-    <section class="section destinations" id="destinations">
-      <div class="container">
-        <h4 class="section-subtitle">Explore Our</h4>
-        <h2 class="section-title">Popular Destinations</h2>
-        <div class="services-grid">
-          <div class="service-card scroll-animate animate-scale">
-            <div class="service-icon">
-              <i class="fas fa-globe-africa"></i>
-            </div>
-            <h3>Ghana</h3>
-            <p>
-              Discover the rich culture, history, and natural beauty of Ghana,
-              from vibrant cities to serene beaches.
-            </p>
-          </div>
-          <div class="service-card scroll-animate animate-scale">
-            <div class="service-icon">
-              <i class="fas fa-mosque"></i>
-            </div>
-            <h3>Dubai</h3>
-            <p>
-              Experience the luxury and innovation of Dubai, a city of
-              architectural marvels and world-class entertainment.
-            </p>
-          </div>
-          <div class="service-card scroll-animate animate-scale">
-            <div class="service-icon">
-              <i class="fas fa-flag-usa"></i>
-            </div>
-            <h3>United States</h3>
-            <p>
-              Explore diverse landscapes and cultures across the United States,
-              from bustling cities to natural wonders.
-            </p>
-          </div>
-          <div class="service-card scroll-animate animate-scale">
-            <div class="service-icon">
-              <i class="fas fa-crown"></i>
-            </div>
-            <h3>United Kingdom</h3>
-            <p>
-              Immerse yourself in the history and charm of the United Kingdom,
-              with its iconic landmarks and cultural heritage.
-            </p>
-          </div>
-          <div class="service-card scroll-animate animate-scale">
-            <div class="service-icon">
-              <i class="fas fa-leaf"></i>
-            </div>
-            <h3>Canada</h3>
-            <p>
-              Experience the breathtaking natural beauty and multicultural
-              cities of Canada, from mountains to coastlines.
-            </p>
-          </div>
-          <div class="service-card scroll-animate animate-scale">
-            <div class="service-icon">
-              <i class="fas fa-torii-gate"></i>
-            </div>
-            <h3>Asia</h3>
-            <p>
-              Discover the diverse cultures, cuisines, and landscapes of Asia,
-              from ancient temples to modern metropolises.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <!-- Why Choose Us Section - New Design -->
     <section id="why" class="container why">
       <div class="why panel reveal">
@@ -1707,7 +1610,7 @@
 
         <div class="carousel-wrapper visual-items" id="toursWrapper">
           <div class="carousel-track" id="toursTrack">
-            <!-- 10 tour cards -->
+            <!-- Original 10 tour cards -->
             <div class="tour-card">
               <div class="tour-image">
                 <img
@@ -1723,7 +1626,9 @@
                 <div class="tour-price">Starting from <span>$50</span></div>
                 <div class="tour-footer">
                   <span><i class="fas fa-users"></i> 100</span
-                  ><a class="tour-btn" href="#">Explore →</a>
+                  ><a class="tour-btn" href="book/accra-city-tour.html"
+                    >Explore →</a
+                  >
                 </div>
               </div>
             </div>
@@ -1743,7 +1648,9 @@
                 <div class="tour-price">Starting from <span>$75</span></div>
                 <div class="tour-footer">
                   <span><i class="fas fa-users"></i> 100</span
-                  ><a class="tour-btn" href="#">Explore →</a>
+                  ><a class="tour-btn" href="book/cape-coast-castle.html"
+                    >Explore →</a
+                  >
                 </div>
               </div>
             </div>
@@ -1763,7 +1670,9 @@
                 <div class="tour-price">Starting from <span>$120</span></div>
                 <div class="tour-footer">
                   <span><i class="fas fa-users"></i> 100</span
-                  ><a class="tour-btn" href="#">Explore →</a>
+                  ><a class="tour-btn" href="book/mole-national-park.html"
+                    >Explore →</a
+                  >
                 </div>
               </div>
             </div>
@@ -1783,7 +1692,9 @@
                 <div class="tour-price">Starting from <span>$85</span></div>
                 <div class="tour-footer">
                   <span><i class="fas fa-users"></i> 100</span
-                  ><a class="tour-btn" href="#">Explore →</a>
+                  ><a class="tour-btn" href="book/kakum-national-park.html"
+                    >Explore →</a
+                  >
                 </div>
               </div>
             </div>
@@ -1803,7 +1714,9 @@
                 <div class="tour-price">Starting from <span>$95</span></div>
                 <div class="tour-footer">
                   <span><i class="fas fa-users"></i> 100</span
-                  ><a class="tour-btn" href="#">Explore →</a>
+                  ><a class="tour-btn" href="book/lake-volta-cruise.html"
+                    >Explore →</a
+                  >
                 </div>
               </div>
             </div>
@@ -1823,27 +1736,9 @@
                 <div class="tour-price">Starting from <span>$110</span></div>
                 <div class="tour-footer">
                   <span><i class="fas fa-users"></i> 100</span
-                  ><a class="tour-btn" href="#">Explore →</a>
-                </div>
-              </div>
-            </div>
-
-            <div class="tour-card">
-              <div class="tour-image">
-                <img src="assets/images/beach2.jpeg" alt="Beach Getaway" /><span
-                  class="tour-badge"
-                  >FEATURED</span
-                >
-              </div>
-              <div class="tour-content">
-                <h3 class="tour-title">Beach Getaway</h3>
-                <div class="tour-location">
-                  <i class="fas fa-map-marker-alt"></i> Coastal Ghana
-                </div>
-                <div class="tour-price">Starting from <span>$130</span></div>
-                <div class="tour-footer">
-                  <span><i class="fas fa-users"></i> 100</span
-                  ><a class="tour-btn" href="#">Explore →</a>
+                  ><a class="tour-btn" href="book/ashanti-kingdom.html"
+                    >Explore →</a
+                  >
                 </div>
               </div>
             </div>
@@ -1863,7 +1758,9 @@
                 <div class="tour-price">Starting from <span>$100</span></div>
                 <div class="tour-footer">
                   <span><i class="fas fa-users"></i> 100</span
-                  ><a class="tour-btn" href="#">Explore →</a>
+                  ><a class="tour-btn" href="book/wli-waterfalls.html"
+                    >Explore →</a
+                  >
                 </div>
               </div>
             </div>
@@ -1883,7 +1780,9 @@
                 <div class="tour-price">Starting from <span>$80</span></div>
                 <div class="tour-footer">
                   <span><i class="fas fa-users"></i> 100</span
-                  ><a class="tour-btn" href="#">Explore →</a>
+                  ><a class="tour-btn" href="book/ada-foah-beach.html"
+                    >Explore →</a
+                  >
                 </div>
               </div>
             </div>
@@ -1903,7 +1802,142 @@
                 <div class="tour-price">Starting from <span>$90</span></div>
                 <div class="tour-footer">
                   <span><i class="fas fa-users"></i> 100</span
-                  ><a class="tour-btn" href="#">Explore →</a>
+                  ><a class="tour-btn" href="book/paga-crocodile-pond.html"
+                    >Explore →</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- New tour cards -->
+            <div class="tour-card">
+              <div class="tour-image">
+                <img src="assets/images/elmina.jpeg" alt="Elmina Castle" /><span
+                  class="tour-badge"
+                  >FEATURED</span
+                >
+              </div>
+              <div class="tour-content">
+                <h3 class="tour-title">Elmina Castle</h3>
+                <div class="tour-location">
+                  <i class="fas fa-map-marker-alt"></i> Elmina, Ghana
+                </div>
+                <div class="tour-price">Starting from <span>$75</span></div>
+                <div class="tour-footer">
+                  <span><i class="fas fa-users"></i> 100</span
+                  ><a class="tour-btn" href="book/elmina-castle.html"
+                    >Explore →</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <div class="tour-card">
+              <div class="tour-image">
+                <img
+                  src="assets/images/manhyia.jpeg"
+                  alt="Manhyia Palace"
+                /><span class="tour-badge">FEATURED</span>
+              </div>
+              <div class="tour-content">
+                <h3 class="tour-title">Manhyia Palace</h3>
+                <div class="tour-location">
+                  <i class="fas fa-map-marker-alt"></i> Kumasi, Ghana
+                </div>
+                <div class="tour-price">Starting from <span>$80</span></div>
+                <div class="tour-footer">
+                  <span><i class="fas fa-users"></i> 100</span
+                  ><a class="tour-btn" href="book/manhyia-palace.html"
+                    >Explore →</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <div class="tour-card">
+              <div class="tour-image">
+                <img
+                  src="assets/images/monkey.jpeg"
+                  alt="Boabeng-Fiema Monkey Sanctuary"
+                /><span class="tour-badge">FEATURED</span>
+              </div>
+              <div class="tour-content">
+                <h3 class="tour-title">Boabeng-Fiema Monkey Sanctuary</h3>
+                <div class="tour-location">
+                  <i class="fas fa-map-marker-alt"></i> Brong-Ahafo Region
+                </div>
+                <div class="tour-price">Starting from <span>$70</span></div>
+                <div class="tour-footer">
+                  <span><i class="fas fa-users"></i> 100</span
+                  ><a class="tour-btn" href="book/boabeng-fiema.html "
+                    >Explore →</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <div class="tour-card">
+              <div class="tour-image">
+                <img
+                  src="assets/images/kintampo.jpeg"
+                  alt="Kintampo Waterfalls"
+                /><span class="tour-badge">FEATURED</span>
+              </div>
+              <div class="tour-content">
+                <h3 class="tour-title">Kintampo Waterfalls</h3>
+                <div class="tour-location">
+                  <i class="fas fa-map-marker-alt"></i> Brong-Ahafo Region
+                </div>
+                <div class="tour-price">Starting from <span>$85</span></div>
+                <div class="tour-footer">
+                  <span><i class="fas fa-users"></i> 100</span
+                  ><a class="tour-btn" href="book/kintampo-waterfalls.html"
+                    >Explore →</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <div class="tour-card">
+              <div class="tour-image">
+                <img
+                  src="assets/images/nzulezu.jpeg"
+                  alt="Nzulezu Village"
+                /><span class="tour-badge">FEATURED</span>
+              </div>
+              <div class="tour-content">
+                <h3 class="tour-title">Nzulezu Village</h3>
+                <div class="tour-location">
+                  <i class="fas fa-map-marker-alt"></i> Western Region
+                </div>
+                <div class="tour-price">Starting from <span>$95</span></div>
+                <div class="tour-footer">
+                  <span><i class="fas fa-users"></i> 100</span
+                  ><a class="tour-btn" href="book/nzulezu-village.html"
+                    >Explore →</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <div class="tour-card">
+              <div class="tour-image">
+                <img
+                  src="assets/images/afadjato.jpeg"
+                  alt="Mountain Afadjato"
+                /><span class="tour-badge">FEATURED</span>
+              </div>
+              <div class="tour-content">
+                <h3 class="tour-title">Mountain Afadjato</h3>
+                <div class="tour-location">
+                  <i class="fas fa-map-marker-alt"></i> Volta Region
+                </div>
+                <div class="tour-price">Starting from <span>$90</span></div>
+                <div class="tour-footer">
+                  <span><i class="fas fa-users"></i> 100</span
+                  ><a class="tour-btn" href="book/mountain-afadjato.html"
+                    >Explore →</a
+                  >
                 </div>
               </div>
             </div>

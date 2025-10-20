@@ -1,0 +1,1384 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mountain Afadjato - OG Star Travel & Tours</title>
+
+    <!-- Link Global Styles -->
+    <link rel="stylesheet" href="assets/styles/style.css" />
+    <link rel="stylesheet" href="assets/styles/utils.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <!-- Page-Specific Styles -->
+    <style>
+      /* Destination Hero Section */
+      .destination-hero {
+        height: 65vh;
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .destination-hero-background {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url("assets/images/mount-hero.jpeg");
+        background-size: cover;
+        background-position: center;
+        z-index: -2;
+      }
+
+      .destination-hero-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: -1;
+      }
+
+      .destination-hero-content {
+        max-width: 1040px;
+        margin: 0 auto;
+        padding: 0 20px;
+        text-align: center;
+        color: white;
+        z-index: 1;
+      }
+
+      .destination-hero-title {
+        font-size: clamp(2rem, 5vw, 3.5rem);
+        font-weight: 700;
+        color: white;
+        margin-bottom: var(--spacing-md);
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        line-height: 1.3;
+        font-family: var(--font-elegant);
+        text-transform: uppercase;
+      }
+
+      .destination-hero-subtitle {
+        color: rgba(255, 255, 255, 0.9);
+        margin-bottom: var(--spacing-2xl);
+        font-size: clamp(1rem, 2vw, 1.3rem);
+        font-weight: 400;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+      }
+      /* Section Styles */
+      .destination-section {
+        padding: 80px 0;
+      }
+
+      .destination-container {
+        max-width: 1040px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      .section-header {
+        text-align: center;
+        margin-bottom: 3rem;
+      }
+
+      .section-title {
+        font-size: clamp(2rem, 4vw, 2.5rem);
+        margin-bottom: 1rem;
+        color: var(--primary-color);
+        font-family: var(--font-secondary);
+        text-transform: uppercase;
+      }
+
+      .section-divider {
+        width: 80px;
+        height: 3px;
+        background: var(--gradient-primary);
+        margin: 0 auto;
+      }
+
+      /* Info Cards */
+      .info-cards-grid {
+        display: grid;
+        gap: 2rem;
+        margin-top: 3rem;
+      }
+
+      .info-card {
+        background: var(--card-bg-light);
+        border-radius: var(--radius-lg);
+        padding: 2rem;
+        box-shadow: var(--shadow);
+        transition: var(--transition);
+        height: 100%;
+      }
+
+      .info-card:hover {
+        transform: translateY(-10px);
+        box-shadow: var(--shadow-hover);
+      }
+
+      .info-card-icon {
+        font-size: 2.5rem;
+        color: var(--primary-color);
+        margin-bottom: 1rem;
+      }
+
+      .info-card-title {
+        font-size: 1.25rem;
+        margin-bottom: 1rem;
+        color: var(--text-color);
+        font-family: var(--font-secondary);
+      }
+
+      .info-card-text {
+        color: var(--text-muted);
+        line-height: 1.6;
+      }
+
+      /* Fun Facts */
+      .facts-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1.5rem;
+        margin-top: 2rem;
+        justify-content: center;
+      }
+
+      .fact-item {
+        background: var(--bg-secondary);
+        border-radius: var(--radius-md);
+        padding: 1.5rem;
+        max-width: 300px;
+        flex: 1 1 calc(50% - 1.5rem);
+        min-width: 250px;
+        box-shadow: var(--shadow);
+        transition: var(--transition);
+      }
+
+      .fact-item:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--shadow-hover);
+      }
+
+      .fact-icon {
+        font-size: 1.5rem;
+        color: var(--secondary-color);
+        margin-bottom: 0.5rem;
+      }
+
+      .fact-text {
+        color: var(--text-color);
+        font-size: 1rem;
+      }
+
+      /* Carousel Styles for Explore Other Destinations */
+      :root {
+        --gap: 20; /* px gap between cards (JS reads numeric value) */
+        --accent: #ff7b00;
+        --badge: #00bcd4;
+        --maxw: 1240px;
+        --dot-size: 10px;
+      }
+
+      .carousel-wrapper {
+        position: relative;
+        overflow: hidden;
+        margin: 0 auto;
+      }
+
+      .carousel-track {
+        display: flex;
+        gap: calc(var(--gap) * 1px);
+        transition: transform 0.6s cubic-bezier(0.22, 0.9, 0.35, 1);
+        will-change: transform;
+        cursor: grab;
+      }
+
+      .carousel-track.grabbing {
+        cursor: grabbing;
+      }
+
+      .destination-card {
+        background: var(--card-bg-light);
+        border-radius: var(--radius-lg);
+        overflow: hidden;
+        box-shadow: var(--shadow);
+        transition: var(--transition);
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        min-height: 100%;
+      }
+
+      .destination-card:hover {
+        transform: translateY(-10px);
+        box-shadow: var(--shadow-hover);
+      }
+
+      .destination-image {
+        height: 220px;
+        overflow: hidden;
+        position: relative;
+      }
+
+      .destination-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: var(--transition);
+      }
+
+      .destination-card:hover .destination-image img {
+        transform: scale(1.1);
+      }
+
+      .destination-badge {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        background: var(--gradient-secondary);
+        color: white;
+        padding: 5px 10px;
+        border-radius: var(--radius-sm);
+        font-size: 0.75rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      .destination-content {
+        padding: 1.5rem;
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .destination-title {
+        font-size: 1.25rem;
+        margin-bottom: 0.5rem;
+        color: var(--text-color);
+        font-family: var(--font-secondary);
+      }
+
+      .destination-location {
+        display: flex;
+        align-items: center;
+        margin-bottom: 1rem;
+        color: var(--text-muted);
+        font-size: 0.9rem;
+      }
+
+      .destination-location i {
+        margin-right: 0.5rem;
+        color: var(--primary-color);
+      }
+
+      .destination-price {
+        margin-bottom: 1.5rem;
+        font-size: 1rem;
+        color: var(--text-color);
+      }
+
+      .destination-price span {
+        font-weight: 700;
+        color: var(--primary-color);
+        font-size: 1.2rem;
+      }
+
+      .destination-footer {
+        margin-top: auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .destination-users {
+        display: flex;
+        align-items: center;
+        color: var(--text-muted);
+        font-size: 0.9rem;
+      }
+
+      .destination-users i {
+        margin-right: 0.5rem;
+        color: var(--secondary-color);
+      }
+
+      .destination-btn {
+        display: inline-block;
+        padding: 8px 16px;
+        background: var(--gradient-primary);
+        color: white;
+        text-decoration: none;
+        border-radius: var(--radius-md);
+        font-weight: 600;
+        transition: var(--transition);
+        font-size: 0.9rem;
+        position: relative;
+        overflow: hidden;
+        z-index: 1;
+      }
+
+      .destination-btn::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 0%;
+        background: rgba(0, 0, 0);
+        z-index: -1;
+        transition: height 420ms ease-in-out;
+        transform-origin: bottom;
+        border-radius: inherit;
+        opacity: 0.95;
+        pointer-events: none;
+      }
+
+      .destination-btn:hover::before {
+        height: 100%;
+      }
+
+      .destination-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      }
+
+      /* Dots */
+      .carousel-dots {
+        margin-top: 18px;
+        display: flex;
+        justify-content: center;
+        gap: 8px;
+      }
+
+      .carousel-dots .dot {
+        width: var(--dot-size);
+        height: var(--dot-size);
+        border-radius: 50%;
+        background: #d3d3d3;
+        cursor: pointer;
+        transition: background 0.25s;
+      }
+
+      .carousel-dots .dot.active {
+        background: var(--accent);
+      }
+
+      /* Breakpoints: we set CSS variable --visual-count per wrapper. JS reads it. */
+      /* Default (xs) - mobile first: 1 card */
+      .visual-items {
+        --visual-count: 1;
+      }
+
+      /* 475px still 1 card */
+      @media (min-width: 475px) {
+        .visual-items {
+          --visual-count: 1;
+        }
+      }
+
+      /* 640px -> 2 cards (tablets) */
+      @media (min-width: 640px) {
+        .visual-items {
+          --visual-count: 2;
+        }
+      }
+
+      /* 768px -> 2 cards (iPads) */
+      @media (min-width: 768px) {
+        .visual-items {
+          --visual-count: 2;
+        }
+      }
+
+      /* 1024px and up -> 3 cards (laptops) */
+      @media (min-width: 1024px) {
+        .visual-items {
+          --visual-count: 3;
+        }
+      }
+
+      /* Animation classes */
+      .fade-in {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: opacity 0.8s ease, transform 0.8s ease;
+      }
+
+      .fade-in.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* Stagger animation delays */
+      .fade-in:nth-child(1) {
+        transition-delay: 0.1s;
+      }
+      .fade-in:nth-child(2) {
+        transition-delay: 0.2s;
+      }
+      .fade-in:nth-child(3) {
+        transition-delay: 0.3s;
+      }
+      .fade-in:nth-child(4) {
+        transition-delay: 0.4s;
+      }
+      .fade-in:nth-child(5) {
+        transition-delay: 0.5s;
+      }
+      .fade-in:nth-child(6) {
+        transition-delay: 0.6s;
+      }
+
+      /* Responsive Breakpoints */
+      /* xs - Default (mobile first) */
+      .info-cards-grid {
+        grid-template-columns: repeat(1, 1fr);
+      }
+
+      /* sm - 475px */
+      @media (min-width: 475px) {
+        /* Add styles if needed */
+      }
+
+      /* md - 640px */
+      @media (min-width: 640px) {
+        .info-cards-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      /* lg - 768px */
+      @media (min-width: 768px) {
+        .info-cards-grid {
+          grid-template-columns: repeat(3, 1fr);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Hero Section -->
+    <section class="destination-hero">
+      <div class="destination-hero-background"></div>
+      <div class="destination-hero-overlay"></div>
+      <div class="destination-hero-content text-animate">
+        <h1 class="destination-hero-title">Mount Afadja (Afadjato)</h1>
+        <p class="destination-hero-subtitle">Volta Region, Ghana</p>
+      </div>
+    </section>
+
+    <!-- Overview Section -->
+    <section class="destination-section">
+      <div class="destination-container">
+        <div class="section-header fade-in">
+          <h2 class="section-title">Overview</h2>
+          <div class="section-divider"></div>
+        </div>
+
+        <div class="fade-in">
+          <p>
+            Mount Afadjato, standing at 885 meters above sea level, is the
+            highest mountain in Ghana. Located in the Agumatsa Range near the
+            villages of Gbledi and Liati Wote, this majestic peak offers
+            breathtaking views of the surrounding landscape and the Togo border.
+            The mountain is part of the Ghana-Togo Highlands and is a popular
+            destination for hikers and nature enthusiasts.
+          </p>
+          <p>
+            The name "Afadjato" comes from the Ewe word "Avadzeto," which means
+            "to fight with war." Local legend tells of a time when the people of
+            the area fought against invading tribes on this mountain. Today, it
+            stands as a symbol of strength and natural beauty, attracting
+            visitors from around the world who come to experience its
+            challenging trails and stunning vistas.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Travel Information Section -->
+    <section
+      class="destination-section"
+      style="background-color: var(--bg-secondary)"
+    >
+      <div class="destination-container">
+        <div class="section-header fade-in">
+          <h2 class="section-title">Travel Information</h2>
+          <div class="section-divider"></div>
+        </div>
+
+        <div class="info-cards-grid">
+          <div class="info-card fade-in">
+            <div class="info-card-icon">
+              <i class="fas fa-calendar-alt"></i>
+            </div>
+            <h3 class="info-card-title">Best Time to Visit</h3>
+            <p class="info-card-text">
+              The dry season from November to March offers the best hiking
+              conditions with clear skies and comfortable temperatures. The
+              rainy season (April to October) can make trails slippery and
+              challenging.
+            </p>
+          </div>
+
+          <div class="info-card fade-in">
+            <div class="info-card-icon">
+              <i class="fas fa-hiking"></i>
+            </div>
+            <h3 class="info-card-title">Difficulty Level</h3>
+            <p class="info-card-text">
+              Moderate to challenging. The hike takes approximately 2-3 hours to
+              reach the summit. Good physical fitness is recommended, and proper
+              hiking shoes are essential.
+            </p>
+          </div>
+
+          <div class="info-card fade-in">
+            <div class="info-card-icon">
+              <i class="fas fa-clock"></i>
+            </div>
+            <h3 class="info-card-title">Duration</h3>
+            <p class="info-card-text">
+              Plan for a full day trip. Allow 4-5 hours for the complete hike,
+              including time at the summit to enjoy the views and rest before
+              descending.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Fun Facts & Nearby Attractions Section -->
+    <section class="destination-section">
+      <div class="destination-container">
+        <div class="section-header fade-in">
+          <h2 class="section-title">Fun Facts & Nearby Attractions</h2>
+          <div class="section-divider"></div>
+        </div>
+
+        <div class="facts-list">
+          <div class="fact-item fade-in">
+            <div class="fact-icon">
+              <i class="fas fa-mountain"></i>
+            </div>
+            <p class="fact-text">
+              Mount Afadjato is home to over 300 species of butterflies and
+              diverse birdlife, making it a paradise for nature enthusiasts and
+              photographers.
+            </p>
+          </div>
+
+          <div class="fact-item fade-in">
+            <div class="fact-icon">
+              <i class="fas fa-water"></i>
+            </div>
+            <p class="fact-text">
+              The nearby Tagbo Falls and Wli Waterfalls (the highest in West
+              Africa) can be visited in the same trip for a complete nature
+              experience.
+            </p>
+          </div>
+
+          <div class="fact-item fade-in">
+            <div class="fact-icon">
+              <i class="fas fa-tree"></i>
+            </div>
+            <p class="fact-text">
+              The mountain is surrounded by lush tropical forest with unique
+              flora, including several medicinal plants used by local
+              communities.
+            </p>
+          </div>
+
+          <div class="fact-item fade-in">
+            <div class="fact-icon">
+              <i class="fas fa-camera"></i>
+            </div>
+            <p class="fact-text">
+              On a clear day, hikers can see across to Togo and even spot Lake
+              Volta from the summit, offering spectacular photo opportunities.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Explore Other Destinations Section -->
+    <section
+      class="destination-section"
+      style="background-color: var(--bg-secondary)"
+    >
+      <div class="destination-container">
+        <div class="section-header fade-in">
+          <h2 class="section-title">Explore Other Destinations</h2>
+          <div class="section-divider"></div>
+        </div>
+
+        <div class="carousel-wrapper visual-items" id="destinationsWrapper">
+          <div class="carousel-track" id="destinationsTrack">
+            <!-- Accra City Tour -->
+            <div class="destination-card">
+              <div class="destination-image">
+                <img src="assets/images/accra.jpeg" alt="Accra City Tour" />
+                <span class="destination-badge">Featured</span>
+              </div>
+              <div class="destination-content">
+                <h3 class="destination-title">Accra City Tour</h3>
+                <div class="destination-location">
+                  <i class="fas fa-map-marker-alt"></i> Accra, Ghana
+                </div>
+                <div class="destination-price">
+                  Starting from <span>$50</span>
+                </div>
+                <div class="destination-footer">
+                  <span class="destination-users"
+                    ><i class="fas fa-users"></i> 100</span
+                  >
+                  <a href="book/accra-city-tour.html" class="destination-btn"
+                    >Explore →</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- Cape Coast Castle -->
+            <div class="destination-card">
+              <div class="destination-image">
+                <img src="assets/images/Cape.jpeg" alt="Cape Coast Castle" />
+                <span class="destination-badge">Featured</span>
+              </div>
+              <div class="destination-content">
+                <h3 class="destination-title">Cape Coast Castle</h3>
+                <div class="destination-location">
+                  <i class="fas fa-map-marker-alt"></i> Cape Coast, Ghana
+                </div>
+                <div class="destination-price">
+                  Starting from <span>$75</span>
+                </div>
+                <div class="destination-footer">
+                  <span class="destination-users"
+                    ><i class="fas fa-users"></i> 100</span
+                  >
+                  <a href="book/cape-coast-castle.html" class="destination-btn"
+                    >Explore →</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- Mole National Park -->
+            <div class="destination-card">
+              <div class="destination-image">
+                <img src="assets/images/mole2.jpeg" alt="Mole National Park" />
+                <span class="destination-badge">Featured</span>
+              </div>
+              <div class="destination-content">
+                <h3 class="destination-title">Mole National Park</h3>
+                <div class="destination-location">
+                  <i class="fas fa-map-marker-alt"></i> Northern Ghana
+                </div>
+                <div class="destination-price">
+                  Starting from <span>$120</span>
+                </div>
+                <div class="destination-footer">
+                  <span class="destination-users"
+                    ><i class="fas fa-users"></i> 100</span
+                  >
+                  <a href="book/mole-national-park.html" class="destination-btn"
+                    >Explore →</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- Kakum National Park -->
+            <div class="destination-card">
+              <div class="destination-image">
+                <img src="assets/images/kakum2.jpg" alt="Kakum National Park" />
+                <span class="destination-badge">Featured</span>
+              </div>
+              <div class="destination-content">
+                <h3 class="destination-title">Kakum National Park</h3>
+                <div class="destination-location">
+                  <i class="fas fa-map-marker-alt"></i> Central Ghana
+                </div>
+                <div class="destination-price">
+                  Starting from <span>$85</span>
+                </div>
+                <div class="destination-footer">
+                  <span class="destination-users"
+                    ><i class="fas fa-users"></i> 100</span
+                  >
+                  <a
+                    href="book/kakum-national-park.html"
+                    class="destination-btn"
+                    >Explore →</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- Lake Volta Cruise -->
+            <div class="destination-card">
+              <div class="destination-image">
+                <img src="assets/images/lake.jpeg" alt="Lake Volta Cruise" />
+                <span class="destination-badge">Featured</span>
+              </div>
+              <div class="destination-content">
+                <h3 class="destination-title">Lake Volta Cruise</h3>
+                <div class="destination-location">
+                  <i class="fas fa-map-marker-alt"></i> Volta Region
+                </div>
+                <div class="destination-price">
+                  Starting from <span>$95</span>
+                </div>
+                <div class="destination-footer">
+                  <span class="destination-users"
+                    ><i class="fas fa-users"></i> 100</span
+                  >
+                  <a href="book/lake-volta-cruise.html" class="destination-btn"
+                    >Explore →</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- Ashanti Kingdom Tour -->
+            <div class="destination-card">
+              <div class="destination-image">
+                <img
+                  src="assets/images/ashanti.jpeg"
+                  alt="Ashanti Kingdom Tour"
+                />
+                <span class="destination-badge">Featured</span>
+              </div>
+              <div class="destination-content">
+                <h3 class="destination-title">Ashanti Kingdom Tour</h3>
+                <div class="destination-location">
+                  <i class="fas fa-map-marker-alt"></i> Kumasi, Ghana
+                </div>
+                <div class="destination-price">
+                  Starting from <span>$110</span>
+                </div>
+                <div class="destination-footer">
+                  <span class="destination-users"
+                    ><i class="fas fa-users"></i> 100</span
+                  >
+                  <a href="book/ashanti-kingdom.html" class="destination-btn"
+                    >Explore →</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- Wli Waterfalls -->
+            <div class="destination-card">
+              <div class="destination-image">
+                <img src="assets/images/wli2.jpeg" alt="Wli Waterfalls" />
+                <span class="destination-badge">Featured</span>
+              </div>
+              <div class="destination-content">
+                <h3 class="destination-title">Wli Waterfalls</h3>
+                <div class="destination-location">
+                  <i class="fas fa-map-marker-alt"></i> Volta Region
+                </div>
+                <div class="destination-price">
+                  Starting from <span>$100</span>
+                </div>
+                <div class="destination-footer">
+                  <span class="destination-users"
+                    ><i class="fas fa-users"></i> 100</span
+                  >
+                  <a href="book/wli-waterfalls.html" class="destination-btn"
+                    >Explore →</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- Ada Foah Beach -->
+            <div class="destination-card">
+              <div class="destination-image">
+                <img src="assets/images/ada-beach.jpeg" alt="Ada Foah Beach" />
+                <span class="destination-badge">Featured</span>
+              </div>
+              <div class="destination-content">
+                <h3 class="destination-title">Ada Foah Beach</h3>
+                <div class="destination-location">
+                  <i class="fas fa-map-marker-alt"></i> Greater Accra
+                </div>
+                <div class="destination-price">
+                  Starting from <span>$80</span>
+                </div>
+                <div class="destination-footer">
+                  <span class="destination-users"
+                    ><i class="fas fa-users"></i> 100</span
+                  >
+                  <a href="book/ada-foah-beach.html" class="destination-btn"
+                    >Explore →</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- Paga Crocodile Pond -->
+            <div class="destination-card">
+              <div class="destination-image">
+                <img src="assets/images/croc2.jpeg" alt="Paga Crocodile Pond" />
+                <span class="destination-badge">Featured</span>
+              </div>
+              <div class="destination-content">
+                <h3 class="destination-title">Paga Crocodile Pond</h3>
+                <div class="destination-location">
+                  <i class="fas fa-map-marker-alt"></i> Upper East Region
+                </div>
+                <div class="destination-price">
+                  Starting from <span>$90</span>
+                </div>
+                <div class="destination-footer">
+                  <span class="destination-users"
+                    ><i class="fas fa-users"></i> 100</span
+                  >
+                  <a
+                    href="book/paga-crocodile-pond.html"
+                    class="destination-btn"
+                    >Explore →</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- Elmina Castle -->
+            <div class="destination-card">
+              <div class="destination-image">
+                <img src="assets/images/elmina.jpeg" alt="Elmina Castle" />
+                <span class="destination-badge">Featured</span>
+              </div>
+              <div class="destination-content">
+                <h3 class="destination-title">Elmina Castle</h3>
+                <div class="destination-location">
+                  <i class="fas fa-map-marker-alt"></i> Elmina, Ghana
+                </div>
+                <div class="destination-price">
+                  Starting from <span>$75</span>
+                </div>
+                <div class="destination-footer">
+                  <span class="destination-users"
+                    ><i class="fas fa-users"></i> 100</span
+                  >
+                  <a href="book/elmina-castle.html" class="destination-btn"
+                    >Explore →</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- Manhyia Palace -->
+            <div class="destination-card">
+              <div class="destination-image">
+                <img src="assets/images/manhyia.jpeg" alt="Manhyia Palace" />
+                <span class="destination-badge">Featured</span>
+              </div>
+              <div class="destination-content">
+                <h3 class="destination-title">Manhyia Palace</h3>
+                <div class="destination-location">
+                  <i class="fas fa-map-marker-alt"></i> Kumasi, Ghana
+                </div>
+                <div class="destination-price">
+                  Starting from <span>$80</span>
+                </div>
+                <div class="destination-footer">
+                  <span class="destination-users"
+                    ><i class="fas fa-users"></i> 100</span
+                  >
+                  <a href="book/manhyia-palace.html" class="destination-btn"
+                    >Explore →</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- Boabeng-Fiema Monkey Sanctuary -->
+            <div class="destination-card">
+              <div class="destination-image">
+                <img
+                  src="assets/images/monkey.jpeg"
+                  alt="Boabeng-Fiema Monkey Sanctuary"
+                />
+                <span class="destination-badge">Featured</span>
+              </div>
+              <div class="destination-content">
+                <h3 class="destination-title">
+                  Boabeng-Fiema Monkey Sanctuary
+                </h3>
+                <div class="destination-location">
+                  <i class="fas fa-map-marker-alt"></i> Brong-Ahafo Region
+                </div>
+                <div class="destination-price">
+                  Starting from <span>$70</span>
+                </div>
+                <div class="destination-footer">
+                  <span class="destination-users"
+                    ><i class="fas fa-users"></i> 100</span
+                  >
+                  <a href="book/boabeng-fiema.html" class="destination-btn"
+                    >Explore →</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- Kintampo Waterfalls -->
+            <div class="destination-card">
+              <div class="destination-image">
+                <img
+                  src="assets/images/kintampo.jpeg"
+                  alt="Kintampo Waterfalls"
+                />
+                <span class="destination-badge">Featured</span>
+              </div>
+              <div class="destination-content">
+                <h3 class="destination-title">Kintampo Waterfalls</h3>
+                <div class="destination-location">
+                  <i class="fas fa-map-marker-alt"></i> Brong-Ahafo Region
+                </div>
+                <div class="destination-price">
+                  Starting from <span>$85</span>
+                </div>
+                <div class="destination-footer">
+                  <span class="destination-users"
+                    ><i class="fas fa-users"></i> 100</span
+                  >
+                  <a
+                    href="book/kintampo-waterfalls.html"
+                    class="destination-btn"
+                    >Explore →</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- Nzulezu Village -->
+            <div class="destination-card">
+              <div class="destination-image">
+                <img src="assets/images/nzulezu.jpeg" alt="Nzulezu Village" />
+                <span class="destination-badge">Featured</span>
+              </div>
+              <div class="destination-content">
+                <h3 class="destination-title">Nzulezu Village</h3>
+                <div class="destination-location">
+                  <i class="fas fa-map-marker-alt"></i> Western Region
+                </div>
+                <div class="destination-price">
+                  Starting from <span>$95</span>
+                </div>
+                <div class="destination-footer">
+                  <span class="destination-users"
+                    ><i class="fas fa-users"></i> 100</span
+                  >
+                  <a href="book/nzulezu-village.html" class="destination-btn"
+                    >Explore →</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="carousel-dots" id="destinationsDots"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Link Global Scripts -->
+    <script src="assets/src/general.js"></script>
+
+    <!-- Page-Specific Scripts -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Initialize general functionality
+        if (typeof initGeneral === "function") {
+          initGeneral();
+        }
+
+        // Scroll animations
+        const observerOptions = {
+          threshold: 0.1,
+          rootMargin: "0px 0px -50px 0px",
+        };
+
+        const observer = new IntersectionObserver(function (entries) {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
+            }
+          });
+        }, observerOptions);
+
+        // Observe all fade-in elements
+        const fadeElements = document.querySelectorAll(".fade-in");
+        fadeElements.forEach((element) => {
+          observer.observe(element);
+        });
+
+        // Observe text-animate elements
+        const textElements = document.querySelectorAll(".text-animate");
+        textElements.forEach((element) => {
+          observer.observe(element);
+        });
+
+        // Initialize carousel for destinations
+        const destinations = new CircularCarousel({
+          wrapperId: "destinationsWrapper",
+          trackId: "destinationsTrack",
+          dotsId: "destinationsDots",
+          autoMs: 6000,
+        });
+      });
+
+      /*
+        CircularCarousel class (clean and robust)
+        - clones visibleCount items on both ends for infinite feel
+        - computes card widths so visualCount fits exactly
+        - supports dots, auto-slide, mouse drag, touch swipe
+      */
+      class CircularCarousel {
+        constructor({ wrapperId, trackId, dotsId, autoMs = 6000 }) {
+          this.wrapper = document.getElementById(wrapperId);
+          this.track = document.getElementById(trackId);
+          this.dotsWrap = document.getElementById(dotsId);
+          this.autoMs = autoMs;
+
+          this.gap =
+            parseInt(
+              getComputedStyle(document.documentElement).getPropertyValue(
+                "--gap"
+              )
+            ) || 20;
+          this.visualCount = this._readVisualCount();
+          this.originalNodes = Array.from(this.track.children);
+          this.originalCount = this.originalNodes.length;
+
+          this.index = 0; // logical index of leftmost visible original item (0..originalCount-1)
+          this.cloneCount = 0;
+          this.cardWidth = 0;
+          this.moveIncrement = 0;
+
+          // drag state
+          this.isDragging = false;
+          this.startX = 0;
+          this.prevTranslate = 0;
+          this.dragThreshold = 60;
+
+          // timers
+          this.autoTimer = null;
+
+          // bind handlers
+          this._onTransitionEnd = this._onTransitionEnd.bind(this);
+          this._onResize = this._onResize.bind(this);
+          this._onVisibility = this._onVisibility.bind(this);
+
+          this._init();
+        }
+
+        _readVisualCount() {
+          const val = getComputedStyle(this.wrapper).getPropertyValue(
+            "--visual-count"
+          );
+          const n = parseInt(val);
+          return n && n > 0 ? n : 1;
+        }
+
+        _init() {
+          // ensure track contains original nodes (clone-free)
+          this.track.innerHTML = "";
+          this.originalNodes.forEach((node) =>
+            this.track.appendChild(node.cloneNode(true))
+          );
+
+          // refresh references
+          this.originalNodes = Array.from(this.track.children);
+          this.originalCount = this.originalNodes.length;
+
+          // compute visual count and clone count
+          this.visualCount = this._readVisualCount();
+          this.cloneCount = this.visualCount;
+
+          // create clones
+          this._createClones();
+
+          // set items array including clones
+          this.items = Array.from(this.track.children);
+
+          // build dots
+          this._buildDots();
+
+          // layout (compute widths)
+          this._layout();
+
+          // initial jump to logical index (after clones)
+          this._jumpToIndex(this.index, false);
+
+          // events
+          this.track.addEventListener("transitionend", this._onTransitionEnd);
+          window.addEventListener("resize", this._onResize);
+          document.addEventListener("visibilitychange", this._onVisibility);
+
+          // interactions
+          this._enableDragTouch();
+
+          // auto
+          this._startAuto();
+        }
+
+        _createClones() {
+          const originals = Array.from(this.track.children).slice(
+            this.cloneCount,
+            this.cloneCount + this.originalCount
+          );
+          // Note: track currently contains only originals, so we use originalNodes
+          // Append clones of first cloneCount to end
+          for (let i = 0; i < this.cloneCount; i++) {
+            const clone = this.originalNodes[i].cloneNode(true);
+            clone.setAttribute("data-clone", "end-" + i);
+            this.track.appendChild(clone);
+          }
+          // Prepend clones of last cloneCount to start
+          for (let i = 0; i < this.cloneCount; i++) {
+            const clone =
+              this.originalNodes[this.originalCount - 1 - i].cloneNode(true);
+            clone.setAttribute("data-clone", "start-" + i);
+            this.track.insertBefore(clone, this.track.firstChild);
+          }
+        }
+
+        _buildDots() {
+          this.dotsWrap.innerHTML = "";
+          this.dots = [];
+          for (let i = 0; i < this.originalCount; i++) {
+            const d = document.createElement("span");
+            d.className = "dot";
+            if (i === 0) d.classList.add("active");
+            ((idx) =>
+              d.addEventListener("click", () => {
+                this.index = idx;
+                this._moveToIndex(this.index);
+                this._resetAuto();
+              }))(i);
+            this.dotsWrap.appendChild(d);
+            this.dots.push(d);
+          }
+        }
+
+        _layout() {
+          // compute widths so exactly visualCount cards fit inside wrapper
+          this.visualCount = this._readVisualCount();
+          const wrapperW = this.wrapper.clientWidth;
+          const totalGaps = (this.visualCount - 1) * this.gap;
+          const cardW = (wrapperW - totalGaps) / this.visualCount;
+          this.cardWidth = Math.floor(cardW);
+          // apply flex-basis to all items (including clones)
+          Array.from(this.track.children).forEach((node) => {
+            node.style.flex = `0 0 ${this.cardWidth}px`;
+          });
+          this.moveIncrement = this.cardWidth + this.gap;
+          // ensure track has no transition while layout
+          this.track.style.transition = "none";
+          // reposition
+          this._jumpToIndex(this.index, false);
+          // clear transition none next frame
+          requestAnimationFrame(() => {
+            this.track.style.transition = "";
+          });
+        }
+
+        _enableDragTouch() {
+          // mouse drag
+          this.track.addEventListener("mousedown", (e) => {
+            e.preventDefault();
+            this.isDragging = true;
+            this.startX = e.clientX;
+            this.prevTranslate =
+              -(this.index + this.cloneCount) * this.moveIncrement;
+            this.track.style.transition = "none";
+            this.track.classList.add("grabbing");
+            this._stopAuto();
+          });
+          window.addEventListener("mousemove", (e) => {
+            if (!this.isDragging) return;
+            const dx = e.clientX - this.startX;
+            this._setTranslate(this.prevTranslate + dx);
+          });
+          window.addEventListener("mouseup", (e) => {
+            if (!this.isDragging) return;
+            this.isDragging = false;
+            this.track.classList.remove("grabbing");
+            const dx = e.clientX - this.startX;
+            if (dx < -this.dragThreshold)
+              this.index = (this.index + 1) % this.originalCount;
+            else if (dx > this.dragThreshold)
+              this.index =
+                (this.index - 1 + this.originalCount) % this.originalCount;
+            this._moveToIndex(this.index);
+            this._resetAuto();
+          });
+          // touch
+          this.track.addEventListener(
+            "touchstart",
+            (e) => {
+              this.isDragging = true;
+              this.startX = e.touches[0].clientX;
+              this.prevTranslate =
+                -(this.index + this.cloneCount) * this.moveIncrement;
+              this.track.style.transition = "none";
+              this._stopAuto();
+            },
+            { passive: true }
+          );
+          this.track.addEventListener(
+            "touchmove",
+            (e) => {
+              if (!this.isDragging) return;
+              const dx = e.touches[0].clientX - this.startX;
+              this._setTranslate(this.prevTranslate + dx);
+            },
+            { passive: true }
+          );
+          this.track.addEventListener("touchend", (e) => {
+            if (!this.isDragging) return;
+            this.isDragging = false;
+            const dx = e.changedTouches[0].clientX - this.startX;
+            if (dx < -this.dragThreshold)
+              this.index = (this.index + 1) % this.originalCount;
+            else if (dx > this.dragThreshold)
+              this.index =
+                (this.index - 1 + this.originalCount) % this.originalCount;
+            this._moveToIndex(this.index);
+            this._resetAuto();
+          });
+
+          // prevent image dragging glitch
+          this.track.addEventListener("dragstart", (e) => e.preventDefault());
+        }
+
+        _setTranslate(x) {
+          this.track.style.transform = `translateX(${x}px)`;
+        }
+
+        _moveToIndex(i) {
+          this.track.style.transition =
+            "transform 0.6s cubic-bezier(.22,.9,.35,1)";
+          const x = -(i + this.cloneCount) * this.moveIncrement;
+          this._setTranslate(x);
+          this._updateDots(i);
+        }
+
+        _jumpToIndex(i, withTransition = false) {
+          if (!withTransition) this.track.style.transition = "none";
+          const x = -(i + this.cloneCount) * this.moveIncrement;
+          this._setTranslate(x);
+          this._updateDots(i);
+          if (!withTransition)
+            requestAnimationFrame(() => {
+              this.track.style.transition = "";
+            });
+        }
+
+        _onTransitionEnd() {
+          // detect if we are in clones zone and jump to correct real index without transition
+          const transformX = this._currentTransform();
+          const alignedIdx = Math.round(-transformX / this.moveIncrement); // index among items including clones
+          const firstRealIdx = this.cloneCount;
+          const lastRealIdxStart = firstRealIdx + this.originalCount - 1;
+
+          if (alignedIdx > lastRealIdxStart) {
+            // moved beyond last real (in appended clones) -> wrap to corresponding real
+            const offset = alignedIdx - (firstRealIdx + this.originalCount);
+            this.index = offset % this.originalCount;
+            this._jumpToIndex(this.index, false);
+          } else if (alignedIdx < firstRealIdx) {
+            // moved before first real (in prepended clones) -> wrap forward
+            const offset = alignedIdx - firstRealIdx + this.originalCount;
+            this.index = offset % this.originalCount;
+            this._jumpToIndex(this.index, false);
+          } else {
+            // normal: set logical index
+            this.index = (alignedIdx - firstRealIdx) % this.originalCount;
+            this._updateDots(this.index);
+          }
+        }
+
+        _currentTransform() {
+          const st = window.getComputedStyle(this.track).transform;
+          if (!st || st === "none") return 0;
+          const values = st.match(/matrix.*\((.+)\)/)[1].split(", ");
+          return parseFloat(values[4]);
+        }
+
+        _updateDots(i) {
+          if (!this.dots) return;
+          this.dots.forEach((d, idx) =>
+            d.classList.toggle("active", idx === i % this.originalCount)
+          );
+        }
+
+        _startAuto() {
+          this._stopAuto();
+          this.autoTimer = setInterval(() => {
+            this.index = (this.index + 1) % this.originalCount;
+            this._moveToIndex(this.index);
+          }, this.autoMs);
+          // pause on hover (desktop)
+          this.wrapper.addEventListener("mouseenter", () => this._stopAuto());
+          this.wrapper.addEventListener("mouseleave", () => this._resetAuto());
+        }
+
+        _stopAuto() {
+          clearInterval(this.autoTimer);
+          this.autoTimer = null;
+        }
+        _resetAuto() {
+          this._stopAuto();
+          this._startAuto();
+        }
+
+        _onResize() {
+          // Save logical index, re-init layout (clones depend on visualCount)
+          const savedIndex = this.index;
+          // clear listeners
+          this.track.removeEventListener(
+            "transitionend",
+            this._onTransitionEnd
+          );
+          window.removeEventListener("resize", this._onResize);
+
+          // rebuild track with original nodes (no clones)
+          const originals = this.originalNodes.map((n) => n.cloneNode(true));
+          this.track.innerHTML = "";
+          originals.forEach((n) => this.track.appendChild(n));
+          this.originalNodes = Array.from(this.track.children);
+          this.originalCount = this.originalNodes.length;
+          // re-init fully
+          this._init();
+          // restore index safely
+          this.index = savedIndex % this.originalCount;
+          this._jumpToIndex(this.index, false);
+        }
+
+        _onVisibility() {
+          if (document.hidden) this._stopAuto();
+          else this._resetAuto();
+        }
+      } /* end CircularCarousel */
+    </script>
+  </body>
+</html>
