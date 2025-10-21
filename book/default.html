@@ -6,8 +6,9 @@
     <title>Mountain Afadjato - OG Star Travel & Tours</title>
 
     <!-- Link Global Styles -->
-    <link rel="stylesheet" href="assets/styles/style.css" />
-    <link rel="stylesheet" href="assets/styles/utils.css" />
+    <link rel="stylesheet" href="../assets/styles/style.css" />
+    <link rel="stylesheet" href="../assets/styles/utils.css" />
+    <link rel="stylesheet" href="../assets/styles/nav-foot.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
@@ -17,6 +18,7 @@
     <style>
       /* Destination Hero Section */
       .destination-hero {
+        margin-top: 60px;
         height: 65vh;
         position: relative;
         overflow: hidden;
@@ -31,7 +33,7 @@
         left: 0;
         width: 100%;
         height: 100%;
-        background-image: url("assets/images/mount-hero.jpeg");
+        background-image: url("../assets/images/mount-hero.jpeg");
         background-size: cover;
         background-position: center;
         z-index: -2;
@@ -91,7 +93,7 @@
       }
 
       .section-title {
-        font-size: clamp(2rem, 4vw, 2.5rem);
+        font-size: clamp(1.6rem, 4vw, 2.2rem);
         margin-bottom: 1rem;
         color: var(--primary-color);
         font-family: var(--font-secondary);
@@ -263,7 +265,7 @@
       }
 
       .destination-title {
-        font-size: 1.25rem;
+        font-size: 1.05rem;
         margin-bottom: 0.5rem;
         color: var(--text-color);
         font-family: var(--font-secondary);
@@ -284,14 +286,15 @@
 
       .destination-price {
         margin-bottom: 1.5rem;
-        font-size: 1rem;
+        font-size: 0.9rem;
         color: var(--text-color);
       }
 
       .destination-price span {
+        font-family: var(--font-primary);
         font-weight: 700;
         color: var(--primary-color);
-        font-size: 1.2rem;
+        font-size: 0.95rem;
       }
 
       .destination-footer {
@@ -464,9 +467,267 @@
           grid-template-columns: repeat(3, 1fr);
         }
       }
+
+      /* Call to Action Section */
+      .cta-section {
+        padding: 80px 0;
+        background: linear-gradient(
+          135deg,
+          var(--primary-color) 0%,
+          var(--secondary-color) 100%
+        );
+        position: relative;
+        overflow: hidden;
+      }
+
+      .cta-section::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: url("../assets/images/pattern.png") repeat;
+        opacity: 0.1;
+        z-index: 0;
+      }
+
+      .cta-content {
+        text-align: center;
+        margin-bottom: 3rem;
+        position: relative;
+        z-index: 1;
+      }
+
+      .cta-text {
+        color: white;
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      .cta-title {
+        font-size: clamp(1.8rem, 4vw, 2.5rem);
+        margin-bottom: 1.5rem;
+        color: white;
+        font-family: var(--font-secondary);
+        line-height: 1.3;
+      }
+
+      .cta-subtitle {
+        font-size: 1.1rem;
+        line-height: 1.6;
+        margin-bottom: 2rem;
+        color: rgba(255, 255, 255, 0.9);
+      }
+
+      .cta-highlights {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1.5rem;
+      }
+
+      .cta-highlight {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: white;
+        font-size: 1rem;
+      }
+
+      .cta-highlight i {
+        color: rgba(255, 255, 255, 0.9);
+      }
+
+      .cta-buttons {
+        display: flex;
+        justify-content: center;
+        gap: 1.5rem;
+        position: relative;
+        z-index: 1;
+      }
+
+      .cta-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        padding: 15px 30px;
+        border-radius: var(--radius-md);
+        font-weight: 600;
+        font-size: 1.1rem;
+        text-decoration: none;
+        transition: var(--transition);
+        position: relative;
+        overflow: hidden;
+        z-index: 1;
+      }
+
+      .cta-btn.primary {
+        background: white;
+        color: var(--primary-color);
+      }
+
+      .cta-btn.primary::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 0%;
+        background: rgba(0, 0, 0, 0.9);
+        z-index: -1;
+        transition: height 420ms ease-in-out;
+        transform-origin: bottom;
+        border-radius: inherit;
+        opacity: 0.95;
+        pointer-events: none;
+      }
+
+      .cta-btn.primary:hover::before {
+        height: 100%;
+      }
+
+      .cta-btn.primary:hover {
+        color: white;
+        transform: translateY(-3px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+      }
+
+      .cta-btn.secondary {
+        background: transparent;
+        color: white;
+        border: 2px solid white;
+      }
+
+      .cta-btn.secondary::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 0%;
+        background: white;
+        z-index: -1;
+        transition: height 420ms ease-in-out;
+        transform-origin: bottom;
+        border-radius: inherit;
+        opacity: 0.95;
+        pointer-events: none;
+      }
+
+      .cta-btn.secondary:hover::before {
+        height: 100%;
+      }
+
+      .cta-btn.secondary:hover {
+        color: var(--primary-color);
+        transform: translateY(-3px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+      }
+
+      /* Responsive adjustments for CTA section */
+      @media (max-width: 768px) {
+        .cta-buttons {
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .cta-btn {
+          width: 100%;
+          max-width: 300px;
+        }
+      }
     </style>
   </head>
   <body>
+    <!-- Mobile Menu Overlay -->
+    <div>
+      <div class="overlay" id="overlay"></div>
+
+      <!-- Navigation -->
+      <header class="navbar" id="navbar">
+        <div class="nav-inner">
+          <div class="nav-logo">
+            <a href="../index.html" class="logo">
+              <img src="../assets/images/logo.png" alt="O G Star logo" />
+            </a>
+          </div>
+
+          <nav class="nav-center" aria-label="Main navigation">
+            <ul class="nav-menu" role="menubar">
+              <li class="nav-item" role="none">
+                <a href="../index.html" class="nav-link" role="menuitem"
+                  >Home</a
+                >
+              </li>
+              <li class="nav-item" role="none">
+                <a href="../services.html" class="nav-link" role="menuitem"
+                  >Services</a
+                >
+              </li>
+              <li class="nav-item" role="none">
+                <a
+                  href="../destinations.html"
+                  class="nav-link active"
+                  role="menuitem"
+                  >Destinations</a
+                >
+              </li>
+              <li class="nav-item" role="none">
+                <a href="../information.html" class="nav-link" role="menuitem"
+                  >Information</a
+                >
+              </li>
+              <li class="nav-item" role="none">
+                <a href="../contact.html" class="nav-link" role="menuitem"
+                  >Contact</a
+                >
+              </li>
+              <li class="nav-item" role="none">
+                <a href="../blog.html" class="nav-link" role="menuitem">Blog</a>
+              </li>
+            </ul>
+          </nav>
+
+          <div class="nav-cta">
+            <a href="../contact.html">
+              <button
+                class="book-now-btn"
+                id="bookNowBtn"
+                aria-label="Book Now"
+              >
+                <span>Book Now</span>
+              </button>
+            </a>
+
+            <button class="hamburger" id="hamburger" aria-label="Open menu">
+              <i class="fas fa-bars"></i>
+            </button>
+          </div>
+        </div>
+      </header>
+
+      <!-- Mobile panel -->
+      <aside class="mobile-panel" id="mobilePanel">
+        <div class="mobile-panel-header">
+          <h3>Menu</h3>
+          <button class="close-btn" id="closePanel" aria-label="Close menu">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+
+        <nav class="mobile-links">
+          <a href="../index.html">Home</a>
+          <a href="../services.html">Services</a>
+          <a href="../destinations.html">Destinations</a>
+          <a href="../information.html">Information</a>
+          <a href="../contact.html">Contact</a>
+          <a href="../blog.html">Blog</a>
+        </nav>
+      </aside>
+    </div>
+
     <!-- Hero Section -->
     <section class="destination-hero">
       <div class="destination-hero-background"></div>
@@ -629,7 +890,7 @@
             <!-- Accra City Tour -->
             <div class="destination-card">
               <div class="destination-image">
-                <img src="assets/images/accra.jpeg" alt="Accra City Tour" />
+                <img src="../assets/images/accra.jpeg" alt="Accra City Tour" />
                 <span class="destination-badge">Featured</span>
               </div>
               <div class="destination-content">
@@ -644,7 +905,7 @@
                   <span class="destination-users"
                     ><i class="fas fa-users"></i> 100</span
                   >
-                  <a href="book/accra-city-tour.html" class="destination-btn"
+                  <a href="accra-city-tour.html" class="destination-btn"
                     >Explore →</a
                   >
                 </div>
@@ -654,7 +915,7 @@
             <!-- Cape Coast Castle -->
             <div class="destination-card">
               <div class="destination-image">
-                <img src="assets/images/Cape.jpeg" alt="Cape Coast Castle" />
+                <img src="../assets/images/Cape.jpeg" alt="Cape Coast Castle" />
                 <span class="destination-badge">Featured</span>
               </div>
               <div class="destination-content">
@@ -669,7 +930,7 @@
                   <span class="destination-users"
                     ><i class="fas fa-users"></i> 100</span
                   >
-                  <a href="book/cape-coast-castle.html" class="destination-btn"
+                  <a href="cape-coast-castle.html" class="destination-btn"
                     >Explore →</a
                   >
                 </div>
@@ -679,7 +940,10 @@
             <!-- Mole National Park -->
             <div class="destination-card">
               <div class="destination-image">
-                <img src="assets/images/mole2.jpeg" alt="Mole National Park" />
+                <img
+                  src="../assets/images/mole2.jpeg"
+                  alt="Mole National Park"
+                />
                 <span class="destination-badge">Featured</span>
               </div>
               <div class="destination-content">
@@ -694,7 +958,7 @@
                   <span class="destination-users"
                     ><i class="fas fa-users"></i> 100</span
                   >
-                  <a href="book/mole-national-park.html" class="destination-btn"
+                  <a href="mole-national-park.html" class="destination-btn"
                     >Explore →</a
                   >
                 </div>
@@ -704,7 +968,10 @@
             <!-- Kakum National Park -->
             <div class="destination-card">
               <div class="destination-image">
-                <img src="assets/images/kakum2.jpg" alt="Kakum National Park" />
+                <img
+                  src="../assets/images/kakum2.jpg"
+                  alt="Kakum National Park"
+                />
                 <span class="destination-badge">Featured</span>
               </div>
               <div class="destination-content">
@@ -719,34 +986,33 @@
                   <span class="destination-users"
                     ><i class="fas fa-users"></i> 100</span
                   >
-                  <a
-                    href="book/kakum-national-park.html"
-                    class="destination-btn"
+                  <a href="kakum-national-park.html" class="destination-btn"
                     >Explore →</a
                   >
                 </div>
               </div>
             </div>
 
-            <!-- Lake Volta Cruise -->
+            <!--Mountain Afadja -->
             <div class="destination-card">
               <div class="destination-image">
-                <img src="assets/images/lake.jpeg" alt="Lake Volta Cruise" />
-                <span class="destination-badge">Featured</span>
+                <img
+                  src="../assets/images/afadjato.jpeg"
+                  alt="Mountain Afadjato"
+                /><span class="destination-badge">FEATURED</span>
               </div>
               <div class="destination-content">
-                <h3 class="destination-title">Lake Volta Cruise</h3>
+                <h3 class="destination-title">Mountain Afadjato</h3>
                 <div class="destination-location">
                   <i class="fas fa-map-marker-alt"></i> Volta Region
                 </div>
                 <div class="destination-price">
-                  Starting from <span>$95</span>
+                  Starting from <span>$90</span>
                 </div>
                 <div class="destination-footer">
                   <span class="destination-users"
                     ><i class="fas fa-users"></i> 100</span
-                  >
-                  <a href="book/lake-volta-cruise.html" class="destination-btn"
+                  ><a class="destination-btn" href="mountain-afadjato.html"
                     >Explore →</a
                   >
                 </div>
@@ -757,7 +1023,7 @@
             <div class="destination-card">
               <div class="destination-image">
                 <img
-                  src="assets/images/ashanti.jpeg"
+                  src="../assets/images/ashanti.jpeg"
                   alt="Ashanti Kingdom Tour"
                 />
                 <span class="destination-badge">Featured</span>
@@ -774,7 +1040,7 @@
                   <span class="destination-users"
                     ><i class="fas fa-users"></i> 100</span
                   >
-                  <a href="book/ashanti-kingdom.html" class="destination-btn"
+                  <a href="ashanti-kingdom.html" class="destination-btn"
                     >Explore →</a
                   >
                 </div>
@@ -784,7 +1050,7 @@
             <!-- Wli Waterfalls -->
             <div class="destination-card">
               <div class="destination-image">
-                <img src="assets/images/wli2.jpeg" alt="Wli Waterfalls" />
+                <img src="../assets/images/wli2.jpeg" alt="Wli Waterfalls" />
                 <span class="destination-badge">Featured</span>
               </div>
               <div class="destination-content">
@@ -799,7 +1065,7 @@
                   <span class="destination-users"
                     ><i class="fas fa-users"></i> 100</span
                   >
-                  <a href="book/wli-waterfalls.html" class="destination-btn"
+                  <a href="wli-waterfalls.html" class="destination-btn"
                     >Explore →</a
                   >
                 </div>
@@ -809,7 +1075,10 @@
             <!-- Ada Foah Beach -->
             <div class="destination-card">
               <div class="destination-image">
-                <img src="assets/images/ada-beach.jpeg" alt="Ada Foah Beach" />
+                <img
+                  src="../assets/images/ada-beach.jpeg"
+                  alt="Ada Foah Beach"
+                />
                 <span class="destination-badge">Featured</span>
               </div>
               <div class="destination-content">
@@ -824,7 +1093,7 @@
                   <span class="destination-users"
                     ><i class="fas fa-users"></i> 100</span
                   >
-                  <a href="book/ada-foah-beach.html" class="destination-btn"
+                  <a href="ada-foah-beach.html" class="destination-btn"
                     >Explore →</a
                   >
                 </div>
@@ -834,7 +1103,10 @@
             <!-- Paga Crocodile Pond -->
             <div class="destination-card">
               <div class="destination-image">
-                <img src="assets/images/croc2.jpeg" alt="Paga Crocodile Pond" />
+                <img
+                  src="../assets/images/croc2.jpeg"
+                  alt="Paga Crocodile Pond"
+                />
                 <span class="destination-badge">Featured</span>
               </div>
               <div class="destination-content">
@@ -849,9 +1121,7 @@
                   <span class="destination-users"
                     ><i class="fas fa-users"></i> 100</span
                   >
-                  <a
-                    href="book/paga-crocodile-pond.html"
-                    class="destination-btn"
+                  <a href="paga-crocodile-pond.html" class="destination-btn"
                     >Explore →</a
                   >
                 </div>
@@ -861,7 +1131,7 @@
             <!-- Elmina Castle -->
             <div class="destination-card">
               <div class="destination-image">
-                <img src="assets/images/elmina.jpeg" alt="Elmina Castle" />
+                <img src="../assets/images/elmina.jpeg" alt="Elmina Castle" />
                 <span class="destination-badge">Featured</span>
               </div>
               <div class="destination-content">
@@ -876,7 +1146,7 @@
                   <span class="destination-users"
                     ><i class="fas fa-users"></i> 100</span
                   >
-                  <a href="book/elmina-castle.html" class="destination-btn"
+                  <a href="elmina-castle.html" class="destination-btn"
                     >Explore →</a
                   >
                 </div>
@@ -886,7 +1156,7 @@
             <!-- Manhyia Palace -->
             <div class="destination-card">
               <div class="destination-image">
-                <img src="assets/images/manhyia.jpeg" alt="Manhyia Palace" />
+                <img src="../assets/images/manhyia.jpeg" alt="Manhyia Palace" />
                 <span class="destination-badge">Featured</span>
               </div>
               <div class="destination-content">
@@ -901,7 +1171,7 @@
                   <span class="destination-users"
                     ><i class="fas fa-users"></i> 100</span
                   >
-                  <a href="book/manhyia-palace.html" class="destination-btn"
+                  <a href="manhyia-palace.html" class="destination-btn"
                     >Explore →</a
                   >
                 </div>
@@ -912,7 +1182,7 @@
             <div class="destination-card">
               <div class="destination-image">
                 <img
-                  src="assets/images/monkey.jpeg"
+                  src="../assets/images/monkey.jpeg"
                   alt="Boabeng-Fiema Monkey Sanctuary"
                 />
                 <span class="destination-badge">Featured</span>
@@ -931,7 +1201,7 @@
                   <span class="destination-users"
                     ><i class="fas fa-users"></i> 100</span
                   >
-                  <a href="book/boabeng-fiema.html" class="destination-btn"
+                  <a href="boabeng-fiema.html" class="destination-btn"
                     >Explore →</a
                   >
                 </div>
@@ -942,7 +1212,7 @@
             <div class="destination-card">
               <div class="destination-image">
                 <img
-                  src="assets/images/kintampo.jpeg"
+                  src="../assets/images/kintampo.jpeg"
                   alt="Kintampo Waterfalls"
                 />
                 <span class="destination-badge">Featured</span>
@@ -959,9 +1229,7 @@
                   <span class="destination-users"
                     ><i class="fas fa-users"></i> 100</span
                   >
-                  <a
-                    href="book/kintampo-waterfalls.html"
-                    class="destination-btn"
+                  <a href="kintampo-waterfalls.html" class="destination-btn"
                     >Explore →</a
                   >
                 </div>
@@ -971,7 +1239,10 @@
             <!-- Nzulezu Village -->
             <div class="destination-card">
               <div class="destination-image">
-                <img src="assets/images/nzulezu.jpeg" alt="Nzulezu Village" />
+                <img
+                  src="../assets/images/nzulezu.jpeg"
+                  alt="Nzulezu Village"
+                />
                 <span class="destination-badge">Featured</span>
               </div>
               <div class="destination-content">
@@ -986,7 +1257,7 @@
                   <span class="destination-users"
                     ><i class="fas fa-users"></i> 100</span
                   >
-                  <a href="book/nzulezu-village.html" class="destination-btn"
+                  <a href="nzulezu-village.html" class="destination-btn"
                     >Explore →</a
                   >
                 </div>
@@ -999,8 +1270,126 @@
       </div>
     </section>
 
+    <!-- Call to Action Section -->
+    <section class="cta-section">
+      <div class="destination-container">
+        <div class="cta-content fade-in">
+          <div class="cta-text">
+            <h2 class="cta-title">Ready to Conquer Ghana's Highest Peak?</h2>
+            <p class="cta-subtitle">
+              Join us for an unforgettable adventure to Mount Afadjato.
+              Experience the breathtaking views, diverse wildlife, and the
+              thrill of reaching the summit. Our expert guides will ensure your
+              safety while you create memories that will last a lifetime.
+            </p>
+            <div class="cta-highlights">
+              <div class="cta-highlight">
+                <i class="fas fa-check-circle"></i>
+                <span>Expert Local Guides</span>
+              </div>
+              <div class="cta-highlight">
+                <i class="fas fa-check-circle"></i>
+                <span>Small Group Tours</span>
+              </div>
+              <div class="cta-highlight">
+                <i class="fas fa-check-circle"></i>
+                <span>All Equipment Provided</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="cta-buttons fade-in">
+          <a href="../contact.html" class="cta-btn primary">
+            <span>Book Your Adventure</span>
+            <i class="fas fa-arrow-right"></i>
+          </a>
+          <a href="../destinations.html" class="cta-btn secondary">
+            <span>Explore More Destinations</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <div>
+      <footer class="footer" id="contact">
+        <div class="footer-container">
+          <div class="footer-column">
+            <img
+              src="../assets/images/logo2.png"
+              alt="O G Star Logo"
+              style="max-width: 150px; margin-bottom: 0"
+            />
+          </div>
+
+          <div class="footer-column">
+            <h4>Quick Links</h4>
+            <ul>
+              <li><a href="../index.html">Home</a></li>
+              <li><a href="../services.html">Services</a></li>
+              <li><a href="../destinations.html">Destinations</a></li>
+              <li><a href="../information.html">Information</a></li>
+              <li><a href="../contact.html">Contact</a></li>
+              <li><a href="../blog.html">Blog</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-column">
+            <h4>Our Services</h4>
+            <ul>
+              <li><a href="services.html">Travel & Tours</a></li>
+              <li><a href="../services.html">Study Abroad</a></li>
+              <li><a href="../services.html">Work & Stay</a></li>
+              <li><a href="../services.html">Visa Assistance</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-column">
+            <h4>Connect With Us</h4>
+            <div class="social-links">
+              <a href="#" aria-label="WhatsApp"
+                ><i class="fab fa-whatsapp"></i
+              ></a>
+              <a href="#" aria-label="Instagram"
+                ><i class="fab fa-instagram"></i
+              ></a>
+              <a href="#" aria-label="Facebook"
+                ><i class="fab fa-facebook-f"></i
+              ></a>
+              <a href="#" aria-label="LinkedIn"
+                ><i class="fab fa-linkedin-in"></i
+              ></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <span
+            >© 2025 O G Star Travel & Tours. Crafted with ❤️ by
+            Kenzyverse.</span
+          >
+        </div>
+      </footer>
+
+      <!-- WhatsApp Floating Button -->
+      <a
+        href="https://wa.me/233546945944?text=Hello%20OG%20Star%20Travel%20%26%20Tours,%20I'm%20interested%20in%20your%20services"
+        class="whatsapp-float"
+        target="_blank"
+        id="whatsappFloat"
+      >
+        <i class="fab fa-whatsapp"></i>
+      </a>
+
+      <!-- Back to Top Button -->
+      <div class="back-to-top" id="backToTop" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+      </div>
+    </div>
+
     <!-- Link Global Scripts -->
-    <script src="assets/src/general.js"></script>
+    <script src="../assets/src/general.js"></script>
+    <script src="../assets/src/nav-foot1.js"></script>
 
     <!-- Page-Specific Scripts -->
     <script>

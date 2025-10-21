@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lake Volta Cruise - OG Star Travel & Tours</title>
+
+    <!-- Link Global Styles -->
+    <link rel="stylesheet" href="../assets/styles/style.css" />
+    <link rel="stylesheet" href="../assets/styles/utils.css" />
+    <link rel="stylesheet" href="../assets/styles/nav-foot.css" />
+    <link rel="stylesheet" href="../assets/styles/book.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <!-- Mobile Menu Overlay -->
+    <div>
+      <div class="overlay" id="overlay"></div>
+
+      <!-- Navigation -->
+      <header class="navbar" id="navbar">
+        <div class="nav-inner">
+          <div class="nav-logo">
+            <a href="../index.html" class="logo">
+              <img src="../assets/images/logo.png" alt="O G Star logo" />
+            </a>
+          </div>
+
+          <nav class="nav-center" aria-label="Main navigation">
+            <ul class="nav-menu" role="menubar">
+              <li class="nav-item" role="none">
+                <a href="../index.html" class="nav-link" role="menuitem"
+                  >Home</a
+                >
+              </li>
+              <li class="nav-item" role="none">
+                <a href="../services.html" class="nav-link" role="menuitem"
+                  >Services</a
+                >
+              </li>
+              <li class="nav-item" role="none">
+                <a href="../destinations.html" class="nav-link" role="menuitem"
+                  >Destinations</a
+                >
+              </li>
+              <li class="nav-item" role="none">
+                <a href="../information.html" class="nav-link" role="menuitem"
+                  >Information</a
+                >
+              </li>
+              <li class="nav-item" role="none">
+                <a href="../contact.html" class="nav-link" role="menuitem"
+                  >Contact</a
+                >
+              </li>
+              <li class="nav-item" role="none">
+                <a href="../blog.html" class="nav-link" role="menuitem">Blog</a>
+              </li>
+            </ul>
+          </nav>
+
+          <div class="nav-cta">
+            <a href="../contact.html">
+              <button
+                class="book-now-btn"
+                id="bookNowBtn"
+                aria-label="Book Now"
+              >
+                <span>Book Now</span>
+              </button>
+            </a>
+
+            <button class="hamburger" id="hamburger" aria-label="Open menu">
+              <i class="fas fa-bars"></i>
+            </button>
+          </div>
+        </div>
+      </header>
+
+      <!-- Mobile panel -->
+      <aside class="mobile-panel" id="mobilePanel">
+        <div class="mobile-panel-header">
+          <h3>Menu</h3>
+          <button class="close-btn" id="closePanel" aria-label="Close menu">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+
+        <nav class="mobile-links">
+          <a href="../index.html">Home</a>
+          <a href="../services.html">Services</a>
+          <a href="../destinations.html">Destinations</a>
+          <a href="../information.html">Information</a>
+          <a href="../contact.html">Contact</a>
+          <a href="../blog.html">Blog</a>
+        </nav>
+      </aside>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="destination-hero">
+      <div
+        class="destination-hero-background"
+        style="background-image: url('../assets/images/lake.jpeg')"
+      ></div>
+      <div class="destination-hero-overlay"></div>
+      <div class="destination-hero-content text-animate">
+        <h1 class="destination-hero-title">Lake Volta Cruise</h1>
+        <p class="destination-hero-subtitle">Volta Region, Ghana</p>
+      </div>
+    </section>
+
+    <!-- Overview Section -->
+    <section class="destination-section">
+      <div class="destination-container">
+        <div class="section-header fade-in">
+          <h2 class="section-title">Overview</h2>
+          <div class="section-divider"></div>
+        </div>
+
+        <div class="fade-in">
+          <p>
+            Lake Volta is one of the world's largest man-made reservoirs by
+            surface area, covering approximately 8,502 square kilometers and
+            extending for over 520 kilometers. Created by the construction of
+            the Akosombo Dam in 1965, this massive lake has become one of
+            Ghana's most spectacular natural and engineering wonders. A cruise
+            on Lake Volta offers a unique opportunity to experience the sheer
+            scale of this inland sea, with its countless islands, secluded
+            coves, and vibrant shoreline communities that depend on its waters
+            for their livelihood.
+          </p>
+          <p>
+            Our Lake Volta cruise experience takes you on a journey of discovery
+            across these expansive waters, where you'll witness breathtaking
+            sunsets, observe traditional fishing villages, and visit fascinating
+            islands along the way. The cruise provides a perfect blend of
+            relaxation and adventure, allowing you to unwind while taking in the
+            stunning scenery and learning about the lake's ecological and
+            cultural significance. Whether you're seeking a romantic getaway, a
+            family adventure, or a peaceful retreat, a Lake Volta cruise
+            promises an unforgettable experience on Ghana's great inland sea.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Travel Information Section -->
+    <section
+      class="destination-section"
+      style="background-color: var(--bg-secondary)"
+    >
+      <div class="destination-container">
+        <div class="section-header fade-in">
+          <h2 class="section-title">Travel Information</h2>
+          <div class="section-divider"></div>
+        </div>
+
+        <div class="info-cards-grid">
+          <div class="info-card fade-in">
+            <div class="info-card-icon">
+              <i class="fas fa-ship"></i>
+            </div>
+            <h3 class="info-card-title">Cruise Experience</h3>
+            <p class="info-card-text">
+              Our cruises operate on spacious pontoon boats equipped with
+              comfortable seating, refreshments, and onboard entertainment. Day
+              cruises typically last 4-6 hours, while sunset cruises offer 2-3
+              hours of magical evening views. Multi-day cruises with overnight
+              camping on islands are also available for adventure seekers.
+            </p>
+          </div>
+
+          <div class="info-card fade-in">
+            <div class="info-card-icon">
+              <i class="fas fa-mountain"></i>
+            </div>
+            <h3 class="info-card-title">Scenic Highlights</h3>
+            <p class="info-card-text">
+              The cruise offers spectacular views of the lake's vast expanse,
+              surrounded by rolling hills and lush vegetation. You'll pass
+              numerous islands of varying sizes, see traditional fishing boats
+              gliding across the water, and witness the dramatic meeting point
+              where the Volta River feeds into the lake.
+            </p>
+          </div>
+
+          <div class="info-card fade-in">
+            <div class="info-card-icon">
+              <i class="fas fa-camera"></i>
+            </div>
+            <h3 class="info-card-title">Photography Opportunities</h3>
+            <p class="info-card-text">
+              Lake Volta is a photographer's paradise, especially during the
+              golden hours of sunrise and sunset. Capture stunning reflections
+              on the calm waters, colorful fishing villages, local wildlife
+              including birds and occasional monkeys along the shores, and the
+              impressive Akosombo Dam from unique water-level perspectives.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Fun Facts & Nearby Attractions Section -->
+    <section class="destination-section">
+      <div class="destination-container">
+        <div class="section-header fade-in">
+          <h2 class="section-title">Scenic Highlights & Side Attractions</h2>
+          <div class="section-divider"></div>
+        </div>
+
+        <div class="facts-list">
+          <div class="fact-item fade-in">
+            <div class="fact-icon">
+              <i class="fas fa-bolt"></i>
+            </div>
+            <p class="fact-text">
+              The Akosombo Dam, an engineering marvel that created Lake Volta,
+              is a key attraction. The dam generates most of Ghana's electricity
+              and offers guided tours where visitors can learn about
+              hydroelectric power and enjoy panoramic views of the lake from the
+              dam wall.
+            </p>
+          </div>
+
+          <div class="fact-item fade-in">
+            <div class="fact-icon">
+              <i class="fas fa-island-tropical"></i>
+            </div>
+            <p class="fact-text">
+              Dodi Island is a popular stop on many cruises, featuring the
+              Princess Dodi Resort. This peaceful island offers swimming
+              opportunities, beach relaxation, and a chance to experience island
+              life. It's an ideal spot for lunch breaks during full-day cruises.
+            </p>
+          </div>
+
+          <div class="fact-item fade-in">
+            <div class="fact-icon">
+              <i class="fas fa-bridge"></i>
+            </div>
+            <p class="fact-text">
+              The Adome Bridge, a picturesque suspension bridge spanning the
+              Volta River, is one of Ghana's most photographed landmarks. The
+              bridge offers stunning views and is a perfect spot for photos
+              before or after your cruise, especially during sunrise or sunset.
+            </p>
+          </div>
+
+          <div class="fact-item fade-in">
+            <div class="fact-icon">
+              <i class="fas fa-home"></i>
+            </div>
+            <p class="fact-text">
+              Traditional fishing villages dot the shoreline, offering authentic
+              cultural experiences. Many cruises include stops at villages like
+              Dzemeni, where you can interact with local communities, witness
+              traditional fishing methods, and purchase fresh fish directly from
+              the fishermen.
+            </p>
+          </div>
+
+          <div class="fact-item fade-in">
+            <div class="fact-icon">
+              <i class="fas fa-crow"></i>
+            </div>
+            <p class="fact-text">
+              The lake and its surrounding wetlands are a haven for
+              birdwatchers, with over 200 species recorded. Look out for African
+              fish eagles, kingfishers, herons, egrets, and various migratory
+              birds that use the lake as a stopover point, making it a paradise
+              for ornithologists.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Explore Other Destinations Section -->
+    <section
+      class="destination-section"
+      style="background-color: var(--bg-secondary)"
+    >
+      <div class="destination-container">
+        <div class="section-header fade-in">
+          <h2 class="section-title">Explore Other Destinations</h2>
+          <div class="section-divider"></div>
+        </div>
+
+        <div class="carousel-wrapper visual-items" id="destinationsWrapper">
+          <div class="carousel-track" id="destinationsTrack">
+            <!-- Accra City Tour -->
+            <div class="destination-card">
+              <div class="destination-image">
+                <img src="../assets/images/accra.jpeg" alt="Accra City Tour" />
+                <span class="destination-badge">Featured</span>
+              </div>
+              <div class="destination-content">
+                <h3 class="destination-title">Accra City Tour</h3>
+                <div class="destination-location">
+                  <i class="fas fa-map-marker-alt"></i> Accra, Ghana
+                </div>
+                <div class="destination-price">
+                  Starting from <span>$50</span>
+                </div>
+                <div class="destination-footer">
+                  <span class="destination-users"
+                    ><i class="fas fa-users"></i> 100</span
+                  >
+                  <a href="accra-city-tour.html" class="destination-btn"
+                    >Explore →</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- Cape Coast Castle -->
+            <div class="destination-card">
+              <div class="destination-image">
+                <img src="../assets/images/Cape.jpeg" alt="Cape Coast Castle" />
+                <span class="destination-badge">Featured</span>
+              </div>
+              <div class="destination-content">
+                <h3 class="destination-title">Cape Coast Castle</h3>
+                <div class="destination-location">
+                  <i class="fas fa-map-marker-alt"></i> Cape Coast, Ghana
+                </div>
+                <div class="destination-price">
+                  Starting from <span>$75</span>
+                </div>
+                <div class="destination-footer">
+                  <span class="destination-users"
+                    ><i class="fas fa-users"></i> 100</span
+                  >
+                  <a href="cape-coast-castle.html" class="destination-btn"
+                    >Explore →</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- Mole National Park -->
+            <div class="destination-card">
+              <div class="destination-image">
+                <img
+                  src="../assets/images/mole2.jpeg"
+                  alt="Mole National Park"
+                />
+                <span class="destination-badge">Featured</span>
+              </div>
+              <div class="destination-content">
+                <h3 class="destination-title">Mole National Park</h3>
+                <div class="destination-location">
+                  <i class="fas fa-map-marker-alt"></i> Northern Ghana
+                </div>
+                <div class="destination-price">
+                  Starting from <span>$120</span>
+                </div>
+                <div class="destination-footer">
+                  <span class="destination-users"
+                    ><i class="fas fa-users"></i> 100</span
+                  >
+                  <a href="mole-national-park.html" class="destination-btn"
+                    >Explore →</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- Kakum National Park -->
+            <div class="destination-card">
+              <div class="destination-image">
+                <img
+                  src="../assets/images/kakum2.jpg"
+                  alt="Kakum National Park"
+                />
+                <span class="destination-badge">Featured</span>
+              </div>
+              <div class="destination-content">
+                <h3 class="destination-title">Kakum National Park</h3>
+                <div class="destination-location">
+                  <i class="fas fa-map-marker-alt"></i> Central Ghana
+                </div>
+                <div class="destination-price">
+                  Starting from <span>$85</span>
+                </div>
+                <div class="destination-footer">
+                  <span class="destination-users"
+                    ><i class="fas fa-users"></i> 100</span
+                  >
+                  <a href="kakum-national-park.html" class="destination-btn"
+                    >Explore →</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!--Mountain Afadja -->
+            <div class="destination-card">
+              <div class="destination-image">
+                <img
+                  src="../assets/images/afadjato.jpeg"
+                  alt="Mountain Afadjato"
+                /><span class="destination-badge">FEATURED</span>
+              </div>
+              <div class="destination-content">
+                <h3 class="destination-title">Mountain Afadjato</h3>
+                <div class="destination-location">
+                  <i class="fas fa-map-marker-alt"></i> Volta Region
+                </div>
+                <div class="destination-price">
+                  Starting from <span>$90</span>
+                </div>
+                <div class="destination-footer">
+                  <span class="destination-users"
+                    ><i class="fas fa-users"></i> 100</span
+                  ><a class="destination-btn" href="mountain-afadjato.html"
+                    >Explore →</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- Ashanti Kingdom Tour -->
+            <div class="destination-card">
+              <div class="destination-image">
+                <img
+                  src="../assets/images/ashanti.jpeg"
+                  alt="Ashanti Kingdom Tour"
+                />
+                <span class="destination-badge">Featured</span>
+              </div>
+              <div class="destination-content">
+                <h3 class="destination-title">Ashanti Kingdom Tour</h3>
+                <div class="destination-location">
+                  <i class="fas fa-map-marker-alt"></i> Kumasi, Ghana
+                </div>
+                <div class="destination-price">
+                  Starting from <span>$110</span>
+                </div>
+                <div class="destination-footer">
+                  <span class="destination-users"
+                    ><i class="fas fa-users"></i> 100</span
+                  >
+                  <a href="ashanti-kingdom.html" class="destination-btn"
+                    >Explore →</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- Wli Waterfalls -->
+            <div class="destination-card">
+              <div class="destination-image">
+                <img src="../assets/images/wli2.jpeg" alt="Wli Waterfalls" />
+                <span class="destination-badge">Featured</span>
+              </div>
+              <div class="destination-content">
+                <h3 class="destination-title">Wli Waterfalls</h3>
+                <div class="destination-location">
+                  <i class="fas fa-map-marker-alt"></i> Volta Region
+                </div>
+                <div class="destination-price">
+                  Starting from <span>$100</span>
+                </div>
+                <div class="destination-footer">
+                  <span class="destination-users"
+                    ><i class="fas fa-users"></i> 100</span
+                  >
+                  <a href="wli-waterfalls.html" class="destination-btn"
+                    >Explore →</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- Ada Foah Beach -->
+            <div class="destination-card">
+              <div class="destination-image">
+                <img
+                  src="../assets/images/ada-beach.jpeg"
+                  alt="Ada Foah Beach"
+                />
+                <span class="destination-badge">Featured</span>
+              </div>
+              <div class="destination-content">
+                <h3 class="destination-title">Ada Foah Beach</h3>
+                <div class="destination-location">
+                  <i class="fas fa-map-marker-alt"></i> Greater Accra
+                </div>
+                <div class="destination-price">
+                  Starting from <span>$80</span>
+                </div>
+                <div class="destination-footer">
+                  <span class="destination-users"
+                    ><i class="fas fa-users"></i> 100</span
+                  >
+                  <a href="ada-foah-beach.html" class="destination-btn"
+                    >Explore →</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- Paga Crocodile Pond -->
+            <div class="destination-card">
+              <div class="destination-image">
+                <img
+                  src="../assets/images/croc2.jpeg"
+                  alt="Paga Crocodile Pond"
+                />
+                <span class="destination-badge">Featured</span>
+              </div>
+              <div class="destination-content">
+                <h3 class="destination-title">Paga Crocodile Pond</h3>
+                <div class="destination-location">
+                  <i class="fas fa-map-marker-alt"></i> Upper East Region
+                </div>
+                <div class="destination-price">
+                  Starting from <span>$90</span>
+                </div>
+                <div class="destination-footer">
+                  <span class="destination-users"
+                    ><i class="fas fa-users"></i> 100</span
+                  >
+                  <a href="paga-crocodile-pond.html" class="destination-btn"
+                    >Explore →</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- Elmina Castle -->
+            <div class="destination-card">
+              <div class="destination-image">
+                <img src="../assets/images/elmina.jpeg" alt="Elmina Castle" />
+                <span class="destination-badge">Featured</span>
+              </div>
+              <div class="destination-content">
+                <h3 class="destination-title">Elmina Castle</h3>
+                <div class="destination-location">
+                  <i class="fas fa-map-marker-alt"></i> Elmina, Ghana
+                </div>
+                <div class="destination-price">
+                  Starting from <span>$75</span>
+                </div>
+                <div class="destination-footer">
+                  <span class="destination-users"
+                    ><i class="fas fa-users"></i> 100</span
+                  >
+                  <a href="elmina-castle.html" class="destination-btn"
+                    >Explore →</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- Manhyia Palace -->
+            <div class="destination-card">
+              <div class="destination-image">
+                <img src="../assets/images/manhyia.jpeg" alt="Manhyia Palace" />
+                <span class="destination-badge">Featured</span>
+              </div>
+              <div class="destination-content">
+                <h3 class="destination-title">Manhyia Palace</h3>
+                <div class="destination-location">
+                  <i class="fas fa-map-marker-alt"></i> Kumasi, Ghana
+                </div>
+                <div class="destination-price">
+                  Starting from <span>$80</span>
+                </div>
+                <div class="destination-footer">
+                  <span class="destination-users"
+                    ><i class="fas fa-users"></i> 100</span
+                  >
+                  <a href="manhyia-palace.html" class="destination-btn"
+                    >Explore →</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- Boabeng-Fiema Monkey Sanctuary -->
+            <div class="destination-card">
+              <div class="destination-image">
+                <img
+                  src="../assets/images/monkey.jpeg"
+                  alt="Boabeng-Fiema Monkey Sanctuary"
+                />
+                <span class="destination-badge">Featured</span>
+              </div>
+              <div class="destination-content">
+                <h3 class="destination-title">
+                  Boabeng-Fiema Monkey Sanctuary
+                </h3>
+                <div class="destination-location">
+                  <i class="fas fa-map-marker-alt"></i> Brong-Ahafo Region
+                </div>
+                <div class="destination-price">
+                  Starting from <span>$70</span>
+                </div>
+                <div class="destination-footer">
+                  <span class="destination-users"
+                    ><i class="fas fa-users"></i> 100</span
+                  >
+                  <a href="boabeng-fiema.html" class="destination-btn"
+                    >Explore →</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- Kintampo Waterfalls -->
+            <div class="destination-card">
+              <div class="destination-image">
+                <img
+                  src="../assets/images/kintampo.jpeg"
+                  alt="Kintampo Waterfalls"
+                />
+                <span class="destination-badge">Featured</span>
+              </div>
+              <div class="destination-content">
+                <h3 class="destination-title">Kintampo Waterfalls</h3>
+                <div class="destination-location">
+                  <i class="fas fa-map-marker-alt"></i> Brong-Ahafo Region
+                </div>
+                <div class="destination-price">
+                  Starting from <span>$85</span>
+                </div>
+                <div class="destination-footer">
+                  <span class="destination-users"
+                    ><i class="fas fa-users"></i> 100</span
+                  >
+                  <a href="kintampo-waterfalls.html" class="destination-btn"
+                    >Explore →</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- Nzulezu Village -->
+            <div class="destination-card">
+              <div class="destination-image">
+                <img
+                  src="../assets/images/nzulezu.jpeg"
+                  alt="Nzulezu Village"
+                />
+                <span class="destination-badge">Featured</span>
+              </div>
+              <div class="destination-content">
+                <h3 class="destination-title">Nzulezu Village</h3>
+                <div class="destination-location">
+                  <i class="fas fa-map-marker-alt"></i> Western Region
+                </div>
+                <div class="destination-price">
+                  Starting from <span>$95</span>
+                </div>
+                <div class="destination-footer">
+                  <span class="destination-users"
+                    ><i class="fas fa-users"></i> 100</span
+                  >
+                  <a href="nzulezu-village.html" class="destination-btn"
+                    >Explore →</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="carousel-dots" id="destinationsDots"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Call to Action Section -->
+    <section class="cta-section">
+      <div class="destination-container">
+        <div class="cta-content fade-in">
+          <div class="cta-text">
+            <h2 class="cta-title">
+              Ready to Sail on Ghana's Great Inland Sea?
+            </h2>
+            <p class="cta-subtitle">
+              Join us for an unforgettable journey across the vast waters of
+              Lake Volta, where every turn reveals a new breathtaking vista.
+              Experience the tranquility of the world's largest reservoir,
+              discover hidden islands, and immerse yourself in the rich culture
+              of lakeside communities. Our experienced captains and crew ensure
+              your safety while you create memories that will last a lifetime on
+              this spectacular water adventure.
+            </p>
+            <div class="cta-highlights">
+              <div class="cta-highlight">
+                <i class="fas fa-check-circle"></i>
+                <span>Experienced Cruise Captains</span>
+              </div>
+              <div class="cta-highlight">
+                <i class="fas fa-check-circle"></i>
+                <span>Scenic Island Hopping</span>
+              </div>
+              <div class="cta-highlight">
+                <i class="fas fa-check-circle"></i>
+                <span>Cultural Village Visits</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="cta-buttons fade-in">
+          <a href="../contact.html" class="cta-btn primary">
+            <span>Book Your Lake Cruise</span>
+            <i class="fas fa-arrow-right"></i>
+          </a>
+          <a href="../destinations.html" class="cta-btn secondary">
+            <span>Explore More Destinations</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <div>
+      <footer class="footer" id="contact">
+        <div class="footer-container">
+          <div class="footer-column">
+            <img
+              src="../assets/images/logo2.png"
+              alt="O G Star Logo"
+              style="max-width: 150px; margin-bottom: 0"
+            />
+          </div>
+
+          <div class="footer-column">
+            <h4>Quick Links</h4>
+            <ul>
+              <li><a href="../index.html">Home</a></li>
+              <li><a href="../services.html">Services</a></li>
+              <li><a href="../destinations.html">Destinations</a></li>
+              <li><a href="../information.html">Information</a></li>
+              <li><a href="../contact.html">Contact</a></li>
+              <li><a href="../blog.html">Blog</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-column">
+            <h4>Our Services</h4>
+            <ul>
+              <li><a href="../services.html">Travel & Tours</a></li>
+              <li><a href="../services.html">Study Abroad</a></li>
+              <li><a href="../services.html">Work & Stay</a></li>
+              <li><a href="../services.html">Visa Assistance</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-column">
+            <h4>Contact Us</h4>
+            <div class="contact-info">
+              <div class="contact-item">
+                <i class="fas fa-map-marker-alt"></i>
+                <span
+                  >Dome-CFC Estate, Near the Dome Market, P.O BOX MS 46 New
+                  Achimota, Accra - Ghana</span
+                >
+              </div>
+              <div class="contact-item">
+                <i class="fas fa-envelope"></i>
+                <a href="mailto:j.asamoah@yahoo.com">j.asamoah@yahoo.com</a>
+              </div>
+              <div class="contact-item">
+                <i class="fas fa-phone"></i>
+                <a href="tel:+233206521474">+233 (0) 206521474</a>
+              </div>
+              <div class="contact-item">
+                <i class="fas fa-phone"></i>
+                <a href="tel:+233545503479">+233 (0) 545503479</a>
+              </div>
+            </div>
+            <div class="social-links">
+              <a href="#" aria-label="WhatsApp"
+                ><i class="fab fa-whatsapp"></i
+              ></a>
+              <a href="#" aria-label="Instagram"
+                ><i class="fab fa-instagram"></i
+              ></a>
+              <a href="#" aria-label="Facebook"
+                ><i class="fab fa-facebook-f"></i
+              ></a>
+              <a href="#" aria-label="LinkedIn"
+                ><i class="fab fa-linkedin-in"></i
+              ></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <span
+            >© 2025 O G Star Travel & Tours. Crafted with ❤️ by
+            Kenzyverse.</span
+          >
+        </div>
+      </footer>
+
+      <!-- WhatsApp Floating Button -->
+      <a
+        href="https://wa.me/233546945944?text=Hello%20OG%20Star%20Travel%20%26%20Tours,%20I'm%20interested%20in%20your%20services"
+        class="whatsapp-float"
+        target="_blank"
+        id="whatsappFloat"
+      >
+        <i class="fab fa-whatsapp"></i>
+      </a>
+
+      <!-- Back to Top Button -->
+      <div class="back-to-top" id="backToTop" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+      </div>
+    </div>
+
+    <!-- Link Global Scripts -->
+    <script src="../assets/src/general.js"></script>
+    <script src="../assets/src/nav-foot1.js"></script>
+    <script src="../assets/src/book.js"></script>
+  </body>
+</html>

@@ -611,3 +611,73 @@ body {
 body.menu-open {
   overflow: hidden;
 }
+
+/* Contact Information Styles */
+.contact-info {
+  margin-bottom: 20px;
+}
+
+.contact-item {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 12px;
+  color: var(--text-muted);
+  font-size: 15px;
+}
+
+.contact-item i {
+  margin-right: 10px;
+  color: var(--emerald);
+  min-width: 20px;
+  text-align: center;
+  margin-top: 3px;
+}
+
+.contact-item a {
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+.contact-item a:hover {
+  color: var(--emerald);
+}
+
+/* Social Links - Updated to work with contact info */
+.social-links {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 15px;
+  margin-top: 15px;
+}
+
+.social-links a {
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--footer-text);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--footer-text);
+  transition: var(--transition);
+  text-decoration: none;
+}
+
+.social-links a:hover {
+  border-color: var(--emerald);
+  color: var(--emerald);
+  transform: translateY(-3px);
+}
+
+/* Responsive adjustments for contact info */
+@media (max-width: 768px) {
+  .contact-item {
+    font-size: 14px;
+  }
+
+  .contact-item span {
+    line-height: 1.4;
+  }
+}

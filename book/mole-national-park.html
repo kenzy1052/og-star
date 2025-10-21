@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mole National Park - OG Star Travel & Tours</title>
+
+    <!-- Link Global Styles -->
+    <link rel="stylesheet" href="../assets/styles/style.css" />
+    <link rel="stylesheet" href="../assets/styles/utils.css" />
+    <link rel="stylesheet" href="../assets/styles/nav-foot.css" />
+    <link rel="stylesheet" href="../assets/styles/book.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <!-- Mobile Menu Overlay -->
+    <div>
+      <div class="overlay" id="overlay"></div>
+
+      <!-- Navigation -->
+      <header class="navbar" id="navbar">
+        <div class="nav-inner">
+          <div class="nav-logo">
+            <a href="../index.html" class="logo">
+              <img src="../assets/images/logo.png" alt="O G Star logo" />
+            </a>
+          </div>
+
+          <nav class="nav-center" aria-label="Main navigation">
+            <ul class="nav-menu" role="menubar">
+              <li class="nav-item" role="none">
+                <a href="../index.html" class="nav-link" role="menuitem"
+                  >Home</a
+                >
+              </li>
+              <li class="nav-item" role="none">
+                <a href="../services.html" class="nav-link" role="menuitem"
+                  >Services</a
+                >
+              </li>
+              <li class="nav-item" role="none">
+                <a href="../destinations.html" class="nav-link" role="menuitem"
+                  >Destinations</a
+                >
+              </li>
+              <li class="nav-item" role="none">
+                <a href="../information.html" class="nav-link" role="menuitem"
+                  >Information</a
+                >
+              </li>
+              <li class="nav-item" role="none">
+                <a href="../contact.html" class="nav-link" role="menuitem"
+                  >Contact</a
+                >
+              </li>
+              <li class="nav-item" role="none">
+                <a href="../blog.html" class="nav-link" role="menuitem">Blog</a>
+              </li>
+            </ul>
+          </nav>
+
+          <div class="nav-cta">
+            <a href="../contact.html">
+              <button
+                class="book-now-btn"
+                id="bookNowBtn"
+                aria-label="Book Now"
+              >
+                <span>Book Now</span>
+              </button>
+            </a>
+
+            <button class="hamburger" id="hamburger" aria-label="Open menu">
+              <i class="fas fa-bars"></i>
+            </button>
+          </div>
+        </div>
+      </header>
+
+      <!-- Mobile panel -->
+      <aside class="mobile-panel" id="mobilePanel">
+        <div class="mobile-panel-header">
+          <h3>Menu</h3>
+          <button class="close-btn" id="closePanel" aria-label="Close menu">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+
+        <nav class="mobile-links">
+          <a href="../index.html">Home</a>
+          <a href="../services.html">Services</a>
+          <a href="../destinations.html">Destinations</a>
+          <a href="../information.html">Information</a>
+          <a href="../contact.html">Contact</a>
+          <a href="../blog.html">Blog</a>
+        </nav>
+      </aside>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="destination-hero">
+      <div
+        class="destination-hero-background"
+        style="background-image: url('../assets/images/mole-hero.jpeg')"
+      ></div>
+      <div class="destination-hero-overlay"></div>
+      <div class="destination-hero-content text-animate">
+        <h1 class="destination-hero-title">Mole National Park</h1>
+        <p class="destination-hero-subtitle">Northern Region, Ghana</p>
+      </div>
+    </section>
+
+    <!-- Overview Section -->
+    <section class="destination-section">
+      <div class="destination-container">
+        <div class="section-header fade-in">
+          <h2 class="section-title">Overview</h2>
+          <div class="section-divider"></div>
+        </div>
+
+        <div class="fade-in">
+          <p>
+            Mole National Park is Ghana's largest and most prestigious wildlife
+            protected area, covering approximately 4,840 square kilometers of
+            savannah and woodland in the Northern Region. Established in 1958
+            and elevated to national park status in 1971, Mole is home to an
+            incredible diversity of wildlife including over 93 mammal species
+            and 334 bird species. The park's pristine wilderness offers visitors
+            an authentic African safari experience with opportunities to see
+            elephants, antelopes, baboons, warthogs, and various predators in
+            their natural habitat.
+          </p>
+          <p>
+            What makes Mole National Park truly special is its accessibility and
+            the unique walking safari experiences it offers. Unlike many African
+            wildlife reserves, Mole allows guided walking safaris where visitors
+            can get remarkably close to wildlife under the protection of armed
+            rangers. The park features the Mole Motel, situated on a escarpment
+            with stunning views of a waterhole where elephants and other animals
+            regularly gather. This combination of diverse wildlife, accessible
+            viewing opportunities, and comfortable accommodation makes Mole a
+            must-visit destination for nature enthusiasts and wildlife
+            photographers.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Travel Information Section -->
+    <section
+      class="destination-section"
+      style="background-color: var(--bg-secondary)"
+    >
+      <div class="destination-container">
+        <div class="section-header fade-in">
+          <h2 class="section-title">Travel Information</h2>
+          <div class="section-divider"></div>
+        </div>
+
+        <div class="info-cards-grid">
+          <div class="info-card fade-in">
+            <div class="info-card-icon">
+              <i class="fas fa-calendar-alt"></i>
+            </div>
+            <h3 class="info-card-title">Best Time to Visit</h3>
+            <p class="info-card-text">
+              The dry season from November to March is ideal for wildlife
+              viewing as animals congregate around water sources. The dry season
+              also offers better road accessibility within the park. The rainy
+              season (April-October) makes wildlife spotting more challenging
+              but the landscape is lush and green.
+            </p>
+          </div>
+
+          <div class="info-card fade-in">
+            <div class="info-card-icon">
+              <i class="fas fa-binoculars"></i>
+            </div>
+            <h3 class="info-card-title">Wildlife Viewing Opportunities</h3>
+            <p class="info-card-text">
+              Mole offers exceptional wildlife viewing with regular sightings of
+              elephants, kob antelopes, waterbucks, bushbucks, warthogs, and
+              olive baboons. Lucky visitors may spot leopards, hyenas, or the
+              rare African buffalo. Early morning and late afternoon drives
+              provide the best viewing opportunities.
+            </p>
+          </div>
+
+          <div class="info-card fade-in">
+            <div class="info-card-icon">
+              <i class="fas fa-bed"></i>
+            </div>
+            <h3 class="info-card-title">Accommodation Options</h3>
+            <p class="info-card-text">
+              The Mole Motel is the primary accommodation within the park,
+              offering rooms and chalets with views of the waterhole. The motel
+              features a swimming pool, restaurant, and bar. Budget options are
+              available in nearby communities like Larabanga, while more upscale
+              options exist in Tamale, about 2 hours drive away.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Fun Facts & Nearby Attractions Section -->
+    <section class="destination-section">
+      <div class="destination-container">
+        <div class="section-header fade-in">
+          <h2 class="section-title">
+            Wildlife Highlights & Nearby Attractions
+          </h2>
+          <div class="section-divider"></div>
+        </div>
+
+        <div class="facts-list">
+          <div class="fact-item fade-in">
+            <div class="fact-icon">
+              <i class="fas fa-paw"></i>
+            </div>
+            <p class="fact-text">
+              Mole National Park is Ghana's largest wildlife refuge, covering
+              4,840 km² and home to over 93 mammal species including the African
+              elephant, which is the park's main attraction with an estimated
+              population of 800 individuals.
+            </p>
+          </div>
+
+          <div class="fact-item fade-in">
+            <div class="fact-icon">
+              <i class="fas fa-hiking"></i>
+            </div>
+            <p class="fact-text">
+              The park offers unique walking safari experiences where visitors
+              can approach wildlife on foot under the protection of armed
+              rangers. These guided walks provide intimate wildlife encounters
+              and are a highlight of any visit to Mole.
+            </p>
+          </div>
+
+          <div class="fact-item fade-in">
+            <div class="fact-icon">
+              <i class="fas fa-dove"></i>
+            </div>
+            <p class="fact-text">
+              Bird watching is exceptional at Mole with 334 recorded species,
+              including the violet turaco, various kingfishers, eagles, and
+              migratory birds. The park is a paradise for ornithologists and
+              bird photographers.
+            </p>
+          </div>
+
+          <div class="fact-item fade-in">
+            <div class="fact-icon">
+              <i class="fas fa-mosque"></i>
+            </div>
+            <p class="fact-text">
+              The ancient Larabanga Mosque, believed to be built in 1421 and one
+              of the oldest mosques in West Africa, is located just 15km from
+              the park entrance. This Sudanese-style architectural masterpiece
+              is a significant cultural and historical site.
+            </p>
+          </div>
+
+          <div class="fact-item fade-in">
+            <div class="fact-icon">
+              <i class="fas fa-tree"></i>
+            </div>
+            <p class="fact-text">
+              The park features diverse ecosystems including savannah woodland,
+              riverine forests, and rocky outcrops. The unique landscape
+              supports different wildlife communities and provides stunning
+              backdrops for photography and nature appreciation.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Explore Other Destinations Section -->
+    <section
+      class="destination-section"
+      style="background-color: var(--bg-secondary)"
+    >
+      <div class="destination-container">
+        <div class="section-header fade-in">
+          <h2 class="section-title">Explore Other Destinations</h2>
+          <div class="section-divider"></div>
+        </div>
+
+        <div class="carousel-wrapper visual-items" id="destinationsWrapper">
+          <div class="carousel-track" id="destinationsTrack">
+            <!-- Accra City Tour -->
+            <div class="destination-card">
+              <div class="destination-image">
+                <img src="../assets/images/accra.jpeg" alt="Accra City Tour" />
+                <span class="destination-badge">Featured</span>
+              </div>
+              <div class="destination-content">
+                <h3 class="destination-title">Accra City Tour</h3>
+                <div class="destination-location">
+                  <i class="fas fa-map-marker-alt"></i> Accra, Ghana
+                </div>
+                <div class="destination-price">
+                  Starting from <span>$50</span>
+                </div>
+                <div class="destination-footer">
+                  <span class="destination-users"
+                    ><i class="fas fa-users"></i> 100</span
+                  >
+                  <a href="accra-city-tour.html" class="destination-btn"
+                    >Explore →</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- Cape Coast Castle -->
+            <div class="destination-card">
+              <div class="destination-image">
+                <img src="../assets/images/Cape.jpeg" alt="Cape Coast Castle" />
+                <span class="destination-badge">Featured</span>
+              </div>
+              <div class="destination-content">
+                <h3 class="destination-title">Cape Coast Castle</h3>
+                <div class="destination-location">
+                  <i class="fas fa-map-marker-alt"></i> Cape Coast, Ghana
+                </div>
+                <div class="destination-price">
+                  Starting from <span>$75</span>
+                </div>
+                <div class="destination-footer">
+                  <span class="destination-users"
+                    ><i class="fas fa-users"></i> 100</span
+                  >
+                  <a href="cape-coast-castle.html" class="destination-btn"
+                    >Explore →</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- Mole National Park -->
+            <div class="destination-card">
+              <div class="destination-image">
+                <img
+                  src="../assets/images/mole2.jpeg"
+                  alt="Mole National Park"
+                />
+                <span class="destination-badge">Featured</span>
+              </div>
+              <div class="destination-content">
+                <h3 class="destination-title">Mole National Park</h3>
+                <div class="destination-location">
+                  <i class="fas fa-map-marker-alt"></i> Northern Ghana
+                </div>
+                <div class="destination-price">
+                  Starting from <span>$120</span>
+                </div>
+                <div class="destination-footer">
+                  <span class="destination-users"
+                    ><i class="fas fa-users"></i> 100</span
+                  >
+                  <a href="mole-national-park.html" class="destination-btn"
+                    >Explore →</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- Kakum National Park -->
+            <div class="destination-card">
+              <div class="destination-image">
+                <img
+                  src="../assets/images/kakum2.jpg"
+                  alt="Kakum National Park"
+                />
+                <span class="destination-badge">Featured</span>
+              </div>
+              <div class="destination-content">
+                <h3 class="destination-title">Kakum National Park</h3>
+                <div class="destination-location">
+                  <i class="fas fa-map-marker-alt"></i> Central Ghana
+                </div>
+                <div class="destination-price">
+                  Starting from <span>$85</span>
+                </div>
+                <div class="destination-footer">
+                  <span class="destination-users"
+                    ><i class="fas fa-users"></i> 100</span
+                  >
+                  <a href="kakum-national-park.html" class="destination-btn"
+                    >Explore →</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!--Mountain Afadja -->
+            <div class="destination-card">
+              <div class="destination-image">
+                <img
+                  src="../assets/images/afadjato.jpeg"
+                  alt="Mountain Afadjato"
+                /><span class="destination-badge">FEATURED</span>
+              </div>
+              <div class="destination-content">
+                <h3 class="destination-title">Mountain Afadjato</h3>
+                <div class="destination-location">
+                  <i class="fas fa-map-marker-alt"></i> Volta Region
+                </div>
+                <div class="destination-price">
+                  Starting from <span>$90</span>
+                </div>
+                <div class="destination-footer">
+                  <span class="destination-users"
+                    ><i class="fas fa-users"></i> 100</span
+                  ><a class="destination-btn" href="mountain-afadjato.html"
+                    >Explore →</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- Ashanti Kingdom Tour -->
+            <div class="destination-card">
+              <div class="destination-image">
+                <img
+                  src="../assets/images/ashanti.jpeg"
+                  alt="Ashanti Kingdom Tour"
+                />
+                <span class="destination-badge">Featured</span>
+              </div>
+              <div class="destination-content">
+                <h3 class="destination-title">Ashanti Kingdom Tour</h3>
+                <div class="destination-location">
+                  <i class="fas fa-map-marker-alt"></i> Kumasi, Ghana
+                </div>
+                <div class="destination-price">
+                  Starting from <span>$110</span>
+                </div>
+                <div class="destination-footer">
+                  <span class="destination-users"
+                    ><i class="fas fa-users"></i> 100</span
+                  >
+                  <a href="ashanti-kingdom.html" class="destination-btn"
+                    >Explore →</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- Wli Waterfalls -->
+            <div class="destination-card">
+              <div class="destination-image">
+                <img src="../assets/images/wli2.jpeg" alt="Wli Waterfalls" />
+                <span class="destination-badge">Featured</span>
+              </div>
+              <div class="destination-content">
+                <h3 class="destination-title">Wli Waterfalls</h3>
+                <div class="destination-location">
+                  <i class="fas fa-map-marker-alt"></i> Volta Region
+                </div>
+                <div class="destination-price">
+                  Starting from <span>$100</span>
+                </div>
+                <div class="destination-footer">
+                  <span class="destination-users"
+                    ><i class="fas fa-users"></i> 100</span
+                  >
+                  <a href="wli-waterfalls.html" class="destination-btn"
+                    >Explore →</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- Ada Foah Beach -->
+            <div class="destination-card">
+              <div class="destination-image">
+                <img
+                  src="../assets/images/ada-beach.jpeg"
+                  alt="Ada Foah Beach"
+                />
+                <span class="destination-badge">Featured</span>
+              </div>
+              <div class="destination-content">
+                <h3 class="destination-title">Ada Foah Beach</h3>
+                <div class="destination-location">
+                  <i class="fas fa-map-marker-alt"></i> Greater Accra
+                </div>
+                <div class="destination-price">
+                  Starting from <span>$80</span>
+                </div>
+                <div class="destination-footer">
+                  <span class="destination-users"
+                    ><i class="fas fa-users"></i> 100</span
+                  >
+                  <a href="ada-foah-beach.html" class="destination-btn"
+                    >Explore →</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- Paga Crocodile Pond -->
+            <div class="destination-card">
+              <div class="destination-image">
+                <img
+                  src="../assets/images/croc2.jpeg"
+                  alt="Paga Crocodile Pond"
+                />
+                <span class="destination-badge">Featured</span>
+              </div>
+              <div class="destination-content">
+                <h3 class="destination-title">Paga Crocodile Pond</h3>
+                <div class="destination-location">
+                  <i class="fas fa-map-marker-alt"></i> Upper East Region
+                </div>
+                <div class="destination-price">
+                  Starting from <span>$90</span>
+                </div>
+                <div class="destination-footer">
+                  <span class="destination-users"
+                    ><i class="fas fa-users"></i> 100</span
+                  >
+                  <a href="paga-crocodile-pond.html" class="destination-btn"
+                    >Explore →</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- Elmina Castle -->
+            <div class="destination-card">
+              <div class="destination-image">
+                <img src="../assets/images/elmina.jpeg" alt="Elmina Castle" />
+                <span class="destination-badge">Featured</span>
+              </div>
+              <div class="destination-content">
+                <h3 class="destination-title">Elmina Castle</h3>
+                <div class="destination-location">
+                  <i class="fas fa-map-marker-alt"></i> Elmina, Ghana
+                </div>
+                <div class="destination-price">
+                  Starting from <span>$75</span>
+                </div>
+                <div class="destination-footer">
+                  <span class="destination-users"
+                    ><i class="fas fa-users"></i> 100</span
+                  >
+                  <a href="elmina-castle.html" class="destination-btn"
+                    >Explore →</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- Manhyia Palace -->
+            <div class="destination-card">
+              <div class="destination-image">
+                <img src="../assets/images/manhyia.jpeg" alt="Manhyia Palace" />
+                <span class="destination-badge">Featured</span>
+              </div>
+              <div class="destination-content">
+                <h3 class="destination-title">Manhyia Palace</h3>
+                <div class="destination-location">
+                  <i class="fas fa-map-marker-alt"></i> Kumasi, Ghana
+                </div>
+                <div class="destination-price">
+                  Starting from <span>$80</span>
+                </div>
+                <div class="destination-footer">
+                  <span class="destination-users"
+                    ><i class="fas fa-users"></i> 100</span
+                  >
+                  <a href="manhyia-palace.html" class="destination-btn"
+                    >Explore →</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- Boabeng-Fiema Monkey Sanctuary -->
+            <div class="destination-card">
+              <div class="destination-image">
+                <img
+                  src="../assets/images/monkey.jpeg"
+                  alt="Boabeng-Fiema Monkey Sanctuary"
+                />
+                <span class="destination-badge">Featured</span>
+              </div>
+              <div class="destination-content">
+                <h3 class="destination-title">
+                  Boabeng-Fiema Monkey Sanctuary
+                </h3>
+                <div class="destination-location">
+                  <i class="fas fa-map-marker-alt"></i> Brong-Ahafo Region
+                </div>
+                <div class="destination-price">
+                  Starting from <span>$70</span>
+                </div>
+                <div class="destination-footer">
+                  <span class="destination-users"
+                    ><i class="fas fa-users"></i> 100</span
+                  >
+                  <a href="boabeng-fiema.html" class="destination-btn"
+                    >Explore →</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- Kintampo Waterfalls -->
+            <div class="destination-card">
+              <div class="destination-image">
+                <img
+                  src="../assets/images/kintampo.jpeg"
+                  alt="Kintampo Waterfalls"
+                />
+                <span class="destination-badge">Featured</span>
+              </div>
+              <div class="destination-content">
+                <h3 class="destination-title">Kintampo Waterfalls</h3>
+                <div class="destination-location">
+                  <i class="fas fa-map-marker-alt"></i> Brong-Ahafo Region
+                </div>
+                <div class="destination-price">
+                  Starting from <span>$85</span>
+                </div>
+                <div class="destination-footer">
+                  <span class="destination-users"
+                    ><i class="fas fa-users"></i> 100</span
+                  >
+                  <a href="kintampo-waterfalls.html" class="destination-btn"
+                    >Explore →</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- Nzulezu Village -->
+            <div class="destination-card">
+              <div class="destination-image">
+                <img
+                  src="../assets/images/nzulezu.jpeg"
+                  alt="Nzulezu Village"
+                />
+                <span class="destination-badge">Featured</span>
+              </div>
+              <div class="destination-content">
+                <h3 class="destination-title">Nzulezu Village</h3>
+                <div class="destination-location">
+                  <i class="fas fa-map-marker-alt"></i> Western Region
+                </div>
+                <div class="destination-price">
+                  Starting from <span>$95</span>
+                </div>
+                <div class="destination-footer">
+                  <span class="destination-users"
+                    ><i class="fas fa-users"></i> 100</span
+                  >
+                  <a href="nzulezu-village.html" class="destination-btn"
+                    >Explore →</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="carousel-dots" id="destinationsDots"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Call to Action Section -->
+    <section class="cta-section">
+      <div class="destination-container">
+        <div class="cta-content fade-in">
+          <div class="cta-text">
+            <h2 class="cta-title">Ready for an Authentic African Safari?</h2>
+            <p class="cta-subtitle">
+              Join us for an unforgettable wildlife adventure at Mole National
+              Park, Ghana's premier safari destination. Experience the thrill of
+              encountering elephants and other wildlife in their natural
+              habitat, enjoy guided walking safaris, and immerse yourself in the
+              pristine wilderness of Northern Ghana. Our experienced guides will
+              ensure your safety while providing fascinating insights into the
+              park's ecosystem and wildlife behavior.
+            </p>
+            <div class="cta-highlights">
+              <div class="cta-highlight">
+                <i class="fas fa-check-circle"></i>
+                <span>Expert Wildlife Guides</span>
+              </div>
+              <div class="cta-highlight">
+                <i class="fas fa-check-circle"></i>
+                <span>Walking Safari Experiences</span>
+              </div>
+              <div class="cta-highlight">
+                <i class="fas fa-check-circle"></i>
+                <span>Guaranteed Wildlife Sightings</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="cta-buttons fade-in">
+          <a href="../contact.html" class="cta-btn primary">
+            <span>Book Your Safari Adventure</span>
+            <i class="fas fa-arrow-right"></i>
+          </a>
+          <a href="../destinations.html" class="cta-btn secondary">
+            <span>Explore More Destinations</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <div>
+      <footer class="footer" id="contact">
+        <div class="footer-container">
+          <div class="footer-column">
+            <img
+              src="../assets/images/logo2.png"
+              alt="O G Star Logo"
+              style="max-width: 150px; margin-bottom: 0"
+            />
+          </div>
+
+          <div class="footer-column">
+            <h4>Quick Links</h4>
+            <ul>
+              <li><a href="../index.html">Home</a></li>
+              <li><a href="../services.html">Services</a></li>
+              <li><a href="../destinations.html">Destinations</a></li>
+              <li><a href="../information.html">Information</a></li>
+              <li><a href="../contact.html">Contact</a></li>
+              <li><a href="../blog.html">Blog</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-column">
+            <h4>Our Services</h4>
+            <ul>
+              <li><a href="../services.html">Travel & Tours</a></li>
+              <li><a href="../services.html">Study Abroad</a></li>
+              <li><a href="../services.html">Work & Stay</a></li>
+              <li><a href="../services.html">Visa Assistance</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-column">
+            <h4>Contact Us</h4>
+            <div class="contact-info">
+              <div class="contact-item">
+                <i class="fas fa-map-marker-alt"></i>
+                <span
+                  >Dome-CFC Estate, Near the Dome Market, P.O BOX MS 46 New
+                  Achimota, Accra - Ghana</span
+                >
+              </div>
+              <div class="contact-item">
+                <i class="fas fa-envelope"></i>
+                <a href="mailto:j.asamoah@yahoo.com">j.asamoah@yahoo.com</a>
+              </div>
+              <div class="contact-item">
+                <i class="fas fa-phone"></i>
+                <a href="tel:+233206521474">+233 (0) 206521474</a>
+              </div>
+              <div class="contact-item">
+                <i class="fas fa-phone"></i>
+                <a href="tel:+233545503479">+233 (0) 545503479</a>
+              </div>
+            </div>
+            <div class="social-links">
+              <a href="#" aria-label="WhatsApp"
+                ><i class="fab fa-whatsapp"></i
+              ></a>
+              <a href="#" aria-label="Instagram"
+                ><i class="fab fa-instagram"></i
+              ></a>
+              <a href="#" aria-label="Facebook"
+                ><i class="fab fa-facebook-f"></i
+              ></a>
+              <a href="#" aria-label="LinkedIn"
+                ><i class="fab fa-linkedin-in"></i
+              ></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <span
+            >© 2025 O G Star Travel & Tours. Crafted with ❤️ by
+            Kenzyverse.</span
+          >
+        </div>
+      </footer>
+
+      <!-- WhatsApp Floating Button -->
+      <a
+        href="https://wa.me/233546945944?text=Hello%20OG%20Star%20Travel%20%26%20Tours,%20I'm%20interested%20in%20your%20services"
+        class="whatsapp-float"
+        target="_blank"
+        id="whatsappFloat"
+      >
+        <i class="fab fa-whatsapp"></i>
+      </a>
+
+      <!-- Back to Top Button -->
+      <div class="back-to-top" id="backToTop" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+      </div>
+    </div>
+
+    <!-- Link Global Scripts -->
+    <script src="../assets/src/general.js"></script>
+    <script src="../assets/src/nav-foot1.js"></script>
+    <script src="../assets/src/book.js"></script>
+  </body>
+</html>

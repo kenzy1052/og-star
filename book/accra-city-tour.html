@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Accra City Tour - OG Star Travel & Tours</title>
+
+    <!-- Link Global Styles -->
+    <link rel="stylesheet" href="../assets/styles/style.css" />
+    <link rel="stylesheet" href="../assets/styles/utils.css" />
+    <link rel="stylesheet" href="../assets/styles/nav-foot.css" />
+    <link rel="stylesheet" href="../assets/styles/book.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+  <style>
+    .destination-hero-background {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url("../assets/images/accra-hero.jpg");
+      background-size: cover;
+      background-position: center;
+      z-index: -2;
+    }
+  </style>
+  <body>
+    <!-- Mobile Menu Overlay -->
+    <div>
+      <div class="overlay" id="overlay"></div>
+
+      <!-- Navigation -->
+      <header class="navbar" id="navbar">
+        <div class="nav-inner">
+          <div class="nav-logo">
+            <a href="../index.html" class="logo">
+              <img src="../assets/images/logo.png" alt="O G Star logo" />
+            </a>
+          </div>
+
+          <nav class="nav-center" aria-label="Main navigation">
+            <ul class="nav-menu" role="menubar">
+              <li class="nav-item" role="none">
+                <a href="../index.html" class="nav-link" role="menuitem"
+                  >Home</a
+                >
+              </li>
+              <li class="nav-item" role="none">
+                <a href="../services.html" class="nav-link" role="menuitem"
+                  >Services</a
+                >
+              </li>
+              <li class="nav-item" role="none">
+                <a href="../destinations.html" class="nav-link" role="menuitem"
+                  >Destinations</a
+                >
+              </li>
+              <li class="nav-item" role="none">
+                <a href="../information.html" class="nav-link" role="menuitem"
+                  >Information</a
+                >
+              </li>
+              <li class="nav-item" role="none">
+                <a href="../contact.html" class="nav-link" role="menuitem"
+                  >Contact</a
+                >
+              </li>
+              <li class="nav-item" role="none">
+                <a href="../blog.html" class="nav-link" role="menuitem">Blog</a>
+              </li>
+            </ul>
+          </nav>
+
+          <div class="nav-cta">
+            <a href="../contact.html">
+              <button
+                class="book-now-btn"
+                id="bookNowBtn"
+                aria-label="Book Now"
+              >
+                <span>Book Now</span>
+              </button>
+            </a>
+
+            <button class="hamburger" id="hamburger" aria-label="Open menu">
+              <i class="fas fa-bars"></i>
+            </button>
+          </div>
+        </div>
+      </header>
+
+      <!-- Mobile panel -->
+      <aside class="mobile-panel" id="mobilePanel">
+        <div class="mobile-panel-header">
+          <h3>Menu</h3>
+          <button class="close-btn" id="closePanel" aria-label="Close menu">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+
+        <nav class="mobile-links">
+          <a href="../index.html">Home</a>
+          <a href="../services.html">Services</a>
+          <a href="../destinations.html">Destinations</a>
+          <a href="../information.html">Information</a>
+          <a href="../contact.html">Contact</a>
+          <a href="../blog.html">Blog</a>
+        </nav>
+      </aside>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="destination-hero">
+      <div
+        class="destination-hero-background"
+        style="background-image: url('../assets/images/accra-hero.jpg')"
+      ></div>
+      <div class="destination-hero-overlay"></div>
+      <div class="destination-hero-content text-animate">
+        <h1 class="destination-hero-title">Accra City Tour</h1>
+        <p class="destination-hero-subtitle">Greater Accra Region, Ghana</p>
+      </div>
+    </section>
+
+    <!-- Overview Section -->
+    <section class="destination-section">
+      <div class="destination-container">
+        <div class="section-header fade-in">
+          <h2 class="section-title">Overview</h2>
+          <div class="section-divider"></div>
+        </div>
+
+        <div class="fade-in">
+          <p>
+            Accra, the vibrant capital city of Ghana, is a bustling metropolis
+            that beautifully blends rich history with modern urban life. Founded
+            in the 17th century by the Ga people, Accra has grown into Ghana's
+            largest city and economic hub, offering visitors a unique glimpse
+            into the country's past, present, and future. From colonial-era
+            architecture to contemporary art galleries, traditional markets to
+            upscale shopping centers, Accra presents a diverse tapestry of
+            experiences that capture the essence of Ghanaian culture.
+          </p>
+          <p>
+            Our comprehensive city tour takes you through the most significant
+            landmarks and hidden gems of Accra, including the iconic
+            Independence Square, the bustling Makola Market, the historic James
+            Town, and the serene Labadi Beach. You'll explore museums that
+            chronicle Ghana's journey to independence, visit centers dedicated
+            to Pan-African history, and experience the vibrant energy of local
+            markets where traditional commerce meets modern life. This tour
+            offers a perfect introduction to Ghana's capital, providing insights
+            into the country's history, culture, and contemporary lifestyle.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Travel Information Section -->
+    <section
+      class="destination-section"
+      style="background-color: var(--bg-secondary)"
+    >
+      <div class="destination-container">
+        <div class="section-header fade-in">
+          <h2 class="section-title">Travel Information</h2>
+          <div class="section-divider"></div>
+        </div>
+
+        <div class="info-cards-grid">
+          <div class="info-card fade-in">
+            <div class="info-card-icon">
+              <i class="fas fa-calendar-alt"></i>
+            </div>
+            <h3 class="info-card-title">Best Time to Visit</h3>
+            <p class="info-card-text">
+              The dry season from November to March offers the most pleasant
+              weather for city exploration with less humidity and minimal
+              rainfall. Early morning tours (8-10 AM) are recommended to avoid
+              traffic and the midday heat.
+            </p>
+          </div>
+
+          <div class="info-card fade-in">
+            <div class="info-card-icon">
+              <i class="fas fa-walking"></i>
+            </div>
+            <h3 class="info-card-title">Difficulty Level</h3>
+            <p class="info-card-text">
+              Easy. The tour involves walking on city streets and visiting
+              various sites with minimal physical exertion. Comfortable walking
+              shoes are recommended, and the tour is suitable for all ages and
+              fitness levels.
+            </p>
+          </div>
+
+          <div class="info-card fade-in">
+            <div class="info-card-icon">
+              <i class="fas fa-clock"></i>
+            </div>
+            <h3 class="info-card-title">Duration</h3>
+            <p class="info-card-text">
+              Full day tour (8-10 hours) including lunch break. The tour can be
+              customized to focus on specific interests such as history,
+              culture, shopping, or nightlife, with durations ranging from
+              half-day to full-day experiences.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Fun Facts & Nearby Attractions Section -->
+    <section class="destination-section">
+      <div class="destination-container">
+        <div class="section-header fade-in">
+          <h2 class="section-title">Key Attractions & Highlights</h2>
+          <div class="section-divider"></div>
+        </div>
+
+        <div class="facts-list">
+          <div class="fact-item fade-in">
+            <div class="fact-icon">
+              <i class="fas fa-landmark"></i>
+            </div>
+            <p class="fact-text">
+              Independence Square (Kwame Nkrumah Memorial Park) is Ghana's most
+              iconic landmark, featuring the Independence Arch and the Black
+              Star Gate, symbolizing the country's liberation from colonial rule
+              in 1957. The adjacent museum houses artifacts from Ghana's
+              independence movement.
+            </p>
+          </div>
+
+          <div class="fact-item fade-in">
+            <div class="fact-icon">
+              <i class="fas fa-store"></i>
+            </div>
+            <p class="fact-text">
+              Makola Market is the commercial heart of Accra, where thousands of
+              vendors sell everything from fresh produce and traditional
+              textiles to modern electronics. This vibrant marketplace offers an
+              authentic glimpse into daily Ghanaian life and commerce.
+            </p>
+          </div>
+
+          <div class="fact-item fade-in">
+            <div class="fact-icon">
+              <i class="fas fa-umbrella-beach"></i>
+            </div>
+            <p class="fact-text">
+              Labadi Beach is Accra's most popular beach destination, offering
+              golden sands, Atlantic Ocean views, and lively beach bars with
+              live music and cultural performances on weekends. It's the perfect
+              place to relax after a day of city exploration.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Explore Other Destinations Section -->
+    <section
+      class="destination-section"
+      style="background-color: var(--bg-secondary)"
+    >
+      <div class="destination-container">
+        <div class="section-header fade-in">
+          <h2 class="section-title">Explore Other Destinations</h2>
+          <div class="section-divider"></div>
+        </div>
+
+        <div class="carousel-wrapper visual-items" id="destinationsWrapper">
+          <div class="carousel-track" id="destinationsTrack">
+            <!-- Accra City Tour -->
+            <div class="destination-card">
+              <div class="destination-image">
+                <img src="../assets/images/accra.jpeg" alt="Accra City Tour" />
+                <span class="destination-badge">Featured</span>
+              </div>
+              <div class="destination-content">
+                <h3 class="destination-title">Accra City Tour</h3>
+                <div class="destination-location">
+                  <i class="fas fa-map-marker-alt"></i> Accra, Ghana
+                </div>
+                <div class="destination-price">
+                  Starting from <span>$50</span>
+                </div>
+                <div class="destination-footer">
+                  <span class="destination-users"
+                    ><i class="fas fa-users"></i> 100</span
+                  >
+                  <a href="accra-city-tour.html" class="destination-btn"
+                    >Explore →</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- Cape Coast Castle -->
+            <div class="destination-card">
+              <div class="destination-image">
+                <img src="../assets/images/Cape.jpeg" alt="Cape Coast Castle" />
+                <span class="destination-badge">Featured</span>
+              </div>
+              <div class="destination-content">
+                <h3 class="destination-title">Cape Coast Castle</h3>
+                <div class="destination-location">
+                  <i class="fas fa-map-marker-alt"></i> Cape Coast, Ghana
+                </div>
+                <div class="destination-price">
+                  Starting from <span>$75</span>
+                </div>
+                <div class="destination-footer">
+                  <span class="destination-users"
+                    ><i class="fas fa-users"></i> 100</span
+                  >
+                  <a href="cape-coast-castle.html" class="destination-btn"
+                    >Explore →</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- Mole National Park -->
+            <div class="destination-card">
+              <div class="destination-image">
+                <img
+                  src="../assets/images/mole2.jpeg"
+                  alt="Mole National Park"
+                />
+                <span class="destination-badge">Featured</span>
+              </div>
+              <div class="destination-content">
+                <h3 class="destination-title">Mole National Park</h3>
+                <div class="destination-location">
+                  <i class="fas fa-map-marker-alt"></i> Northern Ghana
+                </div>
+                <div class="destination-price">
+                  Starting from <span>$120</span>
+                </div>
+                <div class="destination-footer">
+                  <span class="destination-users"
+                    ><i class="fas fa-users"></i> 100</span
+                  >
+                  <a href="mole-national-park.html" class="destination-btn"
+                    >Explore →</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- Kakum National Park -->
+            <div class="destination-card">
+              <div class="destination-image">
+                <img
+                  src="../assets/images/kakum2.jpg"
+                  alt="Kakum National Park"
+                />
+                <span class="destination-badge">Featured</span>
+              </div>
+              <div class="destination-content">
+                <h3 class="destination-title">Kakum National Park</h3>
+                <div class="destination-location">
+                  <i class="fas fa-map-marker-alt"></i> Central Ghana
+                </div>
+                <div class="destination-price">
+                  Starting from <span>$85</span>
+                </div>
+                <div class="destination-footer">
+                  <span class="destination-users"
+                    ><i class="fas fa-users"></i> 100</span
+                  >
+                  <a href="kakum-national-park.html" class="destination-btn"
+                    >Explore →</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!--Mountain Afadja -->
+            <div class="destination-card">
+              <div class="destination-image">
+                <img
+                  src="../assets/images/afadjato.jpeg"
+                  alt="Mountain Afadjato"
+                /><span class="destination-badge">FEATURED</span>
+              </div>
+              <div class="destination-content">
+                <h3 class="destination-title">Mountain Afadjato</h3>
+                <div class="destination-location">
+                  <i class="fas fa-map-marker-alt"></i> Volta Region
+                </div>
+                <div class="destination-price">
+                  Starting from <span>$90</span>
+                </div>
+                <div class="destination-footer">
+                  <span class="destination-users"
+                    ><i class="fas fa-users"></i> 100</span
+                  ><a class="destination-btn" href="mountain-afadjato.html"
+                    >Explore →</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- Ashanti Kingdom Tour -->
+            <div class="destination-card">
+              <div class="destination-image">
+                <img
+                  src="../assets/images/ashanti.jpeg"
+                  alt="Ashanti Kingdom Tour"
+                />
+                <span class="destination-badge">Featured</span>
+              </div>
+              <div class="destination-content">
+                <h3 class="destination-title">Ashanti Kingdom Tour</h3>
+                <div class="destination-location">
+                  <i class="fas fa-map-marker-alt"></i> Kumasi, Ghana
+                </div>
+                <div class="destination-price">
+                  Starting from <span>$110</span>
+                </div>
+                <div class="destination-footer">
+                  <span class="destination-users"
+                    ><i class="fas fa-users"></i> 100</span
+                  >
+                  <a href="ashanti-kingdom.html" class="destination-btn"
+                    >Explore →</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- Wli Waterfalls -->
+            <div class="destination-card">
+              <div class="destination-image">
+                <img src="../assets/images/wli2.jpeg" alt="Wli Waterfalls" />
+                <span class="destination-badge">Featured</span>
+              </div>
+              <div class="destination-content">
+                <h3 class="destination-title">Wli Waterfalls</h3>
+                <div class="destination-location">
+                  <i class="fas fa-map-marker-alt"></i> Volta Region
+                </div>
+                <div class="destination-price">
+                  Starting from <span>$100</span>
+                </div>
+                <div class="destination-footer">
+                  <span class="destination-users"
+                    ><i class="fas fa-users"></i> 100</span
+                  >
+                  <a href="wli-waterfalls.html" class="destination-btn"
+                    >Explore →</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- Ada Foah Beach -->
+            <div class="destination-card">
+              <div class="destination-image">
+                <img
+                  src="../assets/images/ada-beach.jpeg"
+                  alt="Ada Foah Beach"
+                />
+                <span class="destination-badge">Featured</span>
+              </div>
+              <div class="destination-content">
+                <h3 class="destination-title">Ada Foah Beach</h3>
+                <div class="destination-location">
+                  <i class="fas fa-map-marker-alt"></i> Greater Accra
+                </div>
+                <div class="destination-price">
+                  Starting from <span>$80</span>
+                </div>
+                <div class="destination-footer">
+                  <span class="destination-users"
+                    ><i class="fas fa-users"></i> 100</span
+                  >
+                  <a href="ada-foah-beach.html" class="destination-btn"
+                    >Explore →</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- Paga Crocodile Pond -->
+            <div class="destination-card">
+              <div class="destination-image">
+                <img
+                  src="../assets/images/croc2.jpeg"
+                  alt="Paga Crocodile Pond"
+                />
+                <span class="destination-badge">Featured</span>
+              </div>
+              <div class="destination-content">
+                <h3 class="destination-title">Paga Crocodile Pond</h3>
+                <div class="destination-location">
+                  <i class="fas fa-map-marker-alt"></i> Upper East Region
+                </div>
+                <div class="destination-price">
+                  Starting from <span>$90</span>
+                </div>
+                <div class="destination-footer">
+                  <span class="destination-users"
+                    ><i class="fas fa-users"></i> 100</span
+                  >
+                  <a href="paga-crocodile-pond.html" class="destination-btn"
+                    >Explore →</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- Elmina Castle -->
+            <div class="destination-card">
+              <div class="destination-image">
+                <img src="../assets/images/elmina.jpeg" alt="Elmina Castle" />
+                <span class="destination-badge">Featured</span>
+              </div>
+              <div class="destination-content">
+                <h3 class="destination-title">Elmina Castle</h3>
+                <div class="destination-location">
+                  <i class="fas fa-map-marker-alt"></i> Elmina, Ghana
+                </div>
+                <div class="destination-price">
+                  Starting from <span>$75</span>
+                </div>
+                <div class="destination-footer">
+                  <span class="destination-users"
+                    ><i class="fas fa-users"></i> 100</span
+                  >
+                  <a href="elmina-castle.html" class="destination-btn"
+                    >Explore →</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- Manhyia Palace -->
+            <div class="destination-card">
+              <div class="destination-image">
+                <img src="../assets/images/manhyia.jpeg" alt="Manhyia Palace" />
+                <span class="destination-badge">Featured</span>
+              </div>
+              <div class="destination-content">
+                <h3 class="destination-title">Manhyia Palace</h3>
+                <div class="destination-location">
+                  <i class="fas fa-map-marker-alt"></i> Kumasi, Ghana
+                </div>
+                <div class="destination-price">
+                  Starting from <span>$80</span>
+                </div>
+                <div class="destination-footer">
+                  <span class="destination-users"
+                    ><i class="fas fa-users"></i> 100</span
+                  >
+                  <a href="manhyia-palace.html" class="destination-btn"
+                    >Explore →</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- Boabeng-Fiema Monkey Sanctuary -->
+            <div class="destination-card">
+              <div class="destination-image">
+                <img
+                  src="../assets/images/monkey.jpeg"
+                  alt="Boabeng-Fiema Monkey Sanctuary"
+                />
+                <span class="destination-badge">Featured</span>
+              </div>
+              <div class="destination-content">
+                <h3 class="destination-title">
+                  Boabeng-Fiema Monkey Sanctuary
+                </h3>
+                <div class="destination-location">
+                  <i class="fas fa-map-marker-alt"></i> Brong-Ahafo Region
+                </div>
+                <div class="destination-price">
+                  Starting from <span>$70</span>
+                </div>
+                <div class="destination-footer">
+                  <span class="destination-users"
+                    ><i class="fas fa-users"></i> 100</span
+                  >
+                  <a href="boabeng-fiema.html" class="destination-btn"
+                    >Explore →</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- Kintampo Waterfalls -->
+            <div class="destination-card">
+              <div class="destination-image">
+                <img
+                  src="../assets/images/kintampo.jpeg"
+                  alt="Kintampo Waterfalls"
+                />
+                <span class="destination-badge">Featured</span>
+              </div>
+              <div class="destination-content">
+                <h3 class="destination-title">Kintampo Waterfalls</h3>
+                <div class="destination-location">
+                  <i class="fas fa-map-marker-alt"></i> Brong-Ahafo Region
+                </div>
+                <div class="destination-price">
+                  Starting from <span>$85</span>
+                </div>
+                <div class="destination-footer">
+                  <span class="destination-users"
+                    ><i class="fas fa-users"></i> 100</span
+                  >
+                  <a href="kintampo-waterfalls.html" class="destination-btn"
+                    >Explore →</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- Nzulezu Village -->
+            <div class="destination-card">
+              <div class="destination-image">
+                <img
+                  src="../assets/images/nzulezu.jpeg"
+                  alt="Nzulezu Village"
+                />
+                <span class="destination-badge">Featured</span>
+              </div>
+              <div class="destination-content">
+                <h3 class="destination-title">Nzulezu Village</h3>
+                <div class="destination-location">
+                  <i class="fas fa-map-marker-alt"></i> Western Region
+                </div>
+                <div class="destination-price">
+                  Starting from <span>$95</span>
+                </div>
+                <div class="destination-footer">
+                  <span class="destination-users"
+                    ><i class="fas fa-users"></i> 100</span
+                  >
+                  <a href="nzulezu-village.html" class="destination-btn"
+                    >Explore →</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="carousel-dots" id="destinationsDots"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Call to Action Section -->
+    <section class="cta-section">
+      <div class="destination-container">
+        <div class="cta-content fade-in">
+          <div class="cta-text">
+            <h2 class="cta-title">Ready to Explore Ghana's Vibrant Capital?</h2>
+            <p class="cta-subtitle">
+              Join us for an unforgettable journey through Accra, where history
+              meets modernity. Experience the energy of bustling markets, the
+              solemnity of historic landmarks, and the warmth of Ghanaian
+              hospitality. Our expert local guides will share fascinating
+              stories and insights that bring the city to life, ensuring you
+              discover both the famous attractions and hidden gems of Ghana's
+              capital.
+            </p>
+            <div class="cta-highlights">
+              <div class="cta-highlight">
+                <i class="fas fa-check-circle"></i>
+                <span>Expert Local Guides</span>
+              </div>
+              <div class="cta-highlight">
+                <i class="fas fa-check-circle"></i>
+                <span>Small Group Tours</span>
+              </div>
+              <div class="cta-highlight">
+                <i class="fas fa-check-circle"></i>
+                <span>Cultural Immersion</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="cta-buttons fade-in">
+          <a href="../contact.html" class="cta-btn primary">
+            <span>Book Your City Tour</span>
+            <i class="fas fa-arrow-right"></i>
+          </a>
+          <a href="../destinations.html" class="cta-btn secondary">
+            <span>Explore More Destinations</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <div>
+      <footer class="footer" id="contact">
+        <div class="footer-container">
+          <div class="footer-column">
+            <img
+              src="../assets/images/logo2.png"
+              alt="O G Star Logo"
+              style="max-width: 150px; margin-bottom: 0"
+            />
+          </div>
+
+          <div class="footer-column">
+            <h4>Quick Links</h4>
+            <ul>
+              <li><a href="../index.html">Home</a></li>
+              <li><a href="../services.html">Services</a></li>
+              <li><a href="../destinations.html">Destinations</a></li>
+              <li><a href="../information.html">Information</a></li>
+              <li><a href="../contact.html">Contact</a></li>
+              <li><a href="../blog.html">Blog</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-column">
+            <h4>Our Services</h4>
+            <ul>
+              <li><a href="../services.html">Travel & Tours</a></li>
+              <li><a href="../services.html">Study Abroad</a></li>
+              <li><a href="../services.html">Work & Stay</a></li>
+              <li><a href="../services.html">Visa Assistance</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-column">
+            <h4>Contact Us</h4>
+            <div class="contact-info">
+              <div class="contact-item">
+                <i class="fas fa-map-marker-alt"></i>
+                <span
+                  >Dome-CFC Estate, Near the Dome Market, P.O BOX MS 46 New
+                  Achimota, Accra - Ghana</span
+                >
+              </div>
+              <div class="contact-item">
+                <i class="fas fa-envelope"></i>
+                <a href="mailto:j.asamoah@yahoo.com">j.asamoah@yahoo.com</a>
+              </div>
+              <div class="contact-item">
+                <i class="fas fa-phone"></i>
+                <a href="tel:+233206521474">+233 (0) 206521474</a>
+              </div>
+              <div class="contact-item">
+                <i class="fas fa-phone"></i>
+                <a href="tel:+233545503479">+233 (0) 545503479</a>
+              </div>
+            </div>
+            <div class="social-links">
+              <a href="#" aria-label="WhatsApp"
+                ><i class="fab fa-whatsapp"></i
+              ></a>
+              <a href="#" aria-label="Instagram"
+                ><i class="fab fa-instagram"></i
+              ></a>
+              <a href="#" aria-label="Facebook"
+                ><i class="fab fa-facebook-f"></i
+              ></a>
+              <a href="#" aria-label="LinkedIn"
+                ><i class="fab fa-linkedin-in"></i
+              ></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <span
+            >© 2025 O G Star Travel & Tours. Crafted with ❤️ by
+            Kenzyverse.</span
+          >
+        </div>
+      </footer>
+
+      <!-- WhatsApp Floating Button -->
+      <a
+        href="https://wa.me/233546945944?text=Hello%20OG%20Star%20Travel%20%26%20Tours,%20I'm%20interested%20in%20your%20services"
+        class="whatsapp-float"
+        target="_blank"
+        id="whatsappFloat"
+      >
+        <i class="fab fa-whatsapp"></i>
+      </a>
+
+      <!-- Back to Top Button -->
+      <div class="back-to-top" id="backToTop" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+      </div>
+    </div>
+
+    <!-- Link Global Scripts -->
+    <script src="../assets/src/general.js"></script>
+    <script src="../assets/src/nav-foot1.js"></script>
+    <script src="../assets/src/book.js"></script>
+  </body>
+</html>

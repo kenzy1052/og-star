@@ -1,0 +1,851 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Boabeng-Fiema Monkey Sanctuary - OG Star Travel & Tours</title>
+
+    <!-- Link Global Styles -->
+    <link rel="stylesheet" href="../assets/styles/style.css" />
+    <link rel="stylesheet" href="../assets/styles/utils.css" />
+    <link rel="stylesheet" href="../assets/styles/nav-foot.css" />
+    <link rel="stylesheet" href="../assets/styles/book.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <!-- Mobile Menu Overlay -->
+    <div>
+      <div class="overlay" id="overlay"></div>
+
+      <!-- Navigation -->
+      <header class="navbar" id="navbar">
+        <div class="nav-inner">
+          <div class="nav-logo">
+            <a href="../index.html" class="logo">
+              <img src="../assets/images/logo.png" alt="O G Star logo" />
+            </a>
+          </div>
+
+          <nav class="nav-center" aria-label="Main navigation">
+            <ul class="nav-menu" role="menubar">
+              <li class="nav-item" role="none">
+                <a href="../index.html" class="nav-link" role="menuitem"
+                  >Home</a
+                >
+              </li>
+              <li class="nav-item" role="none">
+                <a href="../services.html" class="nav-link" role="menuitem"
+                  >Services</a
+                >
+              </li>
+              <li class="nav-item" role="none">
+                <a href="../destinations.html" class="nav-link" role="menuitem"
+                  >Destinations</a
+                >
+              </li>
+              <li class="nav-item" role="none">
+                <a href="../information.html" class="nav-link" role="menuitem"
+                  >Information</a
+                >
+              </li>
+              <li class="nav-item" role="none">
+                <a href="../contact.html" class="nav-link" role="menuitem"
+                  >Contact</a
+                >
+              </li>
+              <li class="nav-item" role="none">
+                <a href="../blog.html" class="nav-link" role="menuitem">Blog</a>
+              </li>
+            </ul>
+          </nav>
+
+          <div class="nav-cta">
+            <a href="../contact.html">
+              <button
+                class="book-now-btn"
+                id="bookNowBtn"
+                aria-label="Book Now"
+              >
+                <span>Book Now</span>
+              </button>
+            </a>
+
+            <button class="hamburger" id="hamburger" aria-label="Open menu">
+              <i class="fas fa-bars"></i>
+            </button>
+          </div>
+        </div>
+      </header>
+
+      <!-- Mobile panel -->
+      <aside class="mobile-panel" id="mobilePanel">
+        <div class="mobile-panel-header">
+          <h3>Menu</h3>
+          <button class="close-btn" id="closePanel" aria-label="Close menu">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+
+        <nav class="mobile-links">
+          <a href="../index.html">Home</a>
+          <a href="../services.html">Services</a>
+          <a href="../destinations.html">Destinations</a>
+          <a href="../information.html">Information</a>
+          <a href="../contact.html">Contact</a>
+          <a href="../blog.html">Blog</a>
+        </nav>
+      </aside>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="destination-hero">
+      <div
+        class="destination-hero-background"
+        style="background-image: url('../assets/images/monkey-hero1.jpg')"
+      ></div>
+      <div class="destination-hero-overlay"></div>
+      <div class="destination-hero-content text-animate">
+        <h1 class="destination-hero-title">Boabeng-Fiema Monkey Sanctuary</h1>
+        <p class="destination-hero-subtitle">Brong-Ahafo Region, Ghana</p>
+      </div>
+    </section>
+
+    <!-- Overview Section -->
+    <section class="destination-section">
+      <div class="destination-container">
+        <div class="section-header fade-in">
+          <h2 class="section-title">Overview</h2>
+          <div class="section-divider"></div>
+        </div>
+
+        <div class="fade-in">
+          <p>
+            Boabeng-Fiema Monkey Sanctuary is a unique conservation area located
+            between the villages of Boabeng and Fiema in the Brong-Ahafo Region
+            of Ghana. Established in 1974, this sanctuary covers approximately
+            4.4 square kilometers of semi-deciduous forest and is home to over
+            700 monkeys, including two main species: the black-and-white colobus
+            and the Mona monkey. What makes this sanctuary truly special is the
+            traditional belief system of the local communities, who consider the
+            monkeys sacred and believe they are the children of their gods.
+          </p>
+          <p>
+            The sanctuary represents a remarkable example of successful
+            community-based conservation, where traditional cultural beliefs and
+            modern conservation efforts work in harmony. The monkeys here are
+            completely protected by local taboos, and harming them is considered
+            sacrilegious. Visitors to Boabeng-Fiema can witness these primates
+            up close in their natural habitat, with monkeys often approaching
+            humans fearlessly. The sanctuary also features a sacred grove,
+            traditional burial grounds for monkeys, and a small museum that
+            explains the cultural significance of the monkeys to the local
+            communities. This peaceful coexistence between humans and primates
+            offers a heartwarming example of how cultural traditions can support
+            wildlife conservation.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Travel Information Section -->
+    <section
+      class="destination-section"
+      style="background-color: var(--bg-secondary)"
+    >
+      <div class="destination-container">
+        <div class="section-header fade-in">
+          <h2 class="section-title">Travel Information</h2>
+          <div class="section-divider"></div>
+        </div>
+
+        <div class="info-cards-grid">
+          <div class="info-card fade-in">
+            <div class="info-card-icon">
+              <i class="fas fa-calendar-alt"></i>
+            </div>
+            <h3 class="info-card-title">Best Time to Visit</h3>
+            <p class="info-card-text">
+              The sanctuary is accessible year-round, but the dry season from
+              November to March offers the best hiking conditions. Early morning
+              visits (6-8 AM) provide the best opportunity to see the monkeys
+              when they are most active and foraging for food. The rainy season
+              (April-October) makes trails muddy but the forest is lush and
+              green.
+            </p>
+          </div>
+
+          <div class="info-card fade-in">
+            <div class="info-card-icon">
+              <i class="fas fa-hand-paper"></i>
+            </div>
+            <h3 class="info-card-title">Monkey Interaction Guidelines</h3>
+            <p class="info-card-text">
+              While the monkeys are accustomed to humans, maintain a respectful
+              distance and do not attempt to touch or feed them. The sanctuary
+              provides bananas for feeding at designated times. Follow your
+              guide's instructions and avoid making sudden movements or loud
+              noises that might disturb the monkeys.
+            </p>
+          </div>
+
+          <div class="info-card fade-in">
+            <div class="info-card-icon">
+              <i class="fas fa-hiking"></i>
+            </div>
+            <h3 class="info-card-title">Sanctuary Experience</h3>
+            <p class="info-card-text">
+              Guided tours last approximately 2-3 hours and include walking
+              through the forest trails to observe monkeys in their natural
+              habitat. The tour includes visits to the sacred grove, monkey
+              burial grounds, and the community museum. Moderate fitness is
+              required as some trails involve walking uphill.
+            </p>
+          </div>
+
+          <div class="info-card fade-in">
+            <div class="info-card-icon">
+              <i class="fas fa-camera"></i>
+            </div>
+            <h3 class="info-card-title">Photography Tips</h3>
+            <p class="info-card-text">
+              The sanctuary offers excellent photography opportunities,
+              especially in the early morning when monkeys are active. Use a
+              zoom lens for close-up shots without disturbing the animals. The
+              forest canopy can be dark, so adjust your camera settings
+              accordingly. Flash photography is not permitted.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Fun Facts & Nearby Attractions Section -->
+    <section class="destination-section">
+      <div class="destination-container">
+        <div class="section-header fade-in">
+          <h2 class="section-title">
+            Sanctuary Highlights & Nearby Attractions
+          </h2>
+          <div class="section-divider"></div>
+        </div>
+
+        <div class="facts-list">
+          <div class="fact-item fade-in">
+            <div class="fact-icon">
+              <i class="fas fa-pray"></i>
+            </div>
+            <p class="fact-text">
+              According to local legend, a hunter discovered the monkeys when
+              they led him to a sacred grove. The oracle advised that the
+              monkeys should be protected as they were the children of the gods.
+              Since then, the local communities have maintained strict taboos
+              against harming the monkeys, making this one of the few places
+              where primates are completely safe from human persecution.
+            </p>
+          </div>
+
+          <div class="fact-item fade-in">
+            <div class="fact-icon">
+              <i class="fas fa-leaf"></i>
+            </div>
+            <p class="fact-text">
+              The sanctuary is home to approximately 700 monkeys, including
+              around 400 black-and-white colobus monkeys and 300 Mona monkeys.
+              The colobus monkeys are particularly striking with their long
+              white tails and black fur, while the Mona monkeys are more playful
+              and curious, often approaching visitors closely.
+            </p>
+          </div>
+
+          <div class="fact-item fade-in">
+            <div class="fact-icon">
+              <i class="fas fa-monument"></i>
+            </div>
+            <p class="fact-text">
+              The monkey burial grounds are a unique feature of the sanctuary,
+              where deceased monkeys are given traditional funeral rites and
+              buried with respect. This practice demonstrates the deep cultural
+              connection between the local communities and the primates they
+              protect. Visitors can observe these sacred burial sites during
+              guided tours.
+            </p>
+          </div>
+
+          <div class="fact-item fade-in">
+            <div class="fact-icon">
+              <i class="fas fa-water"></i>
+            </div>
+            <p class="fact-text">
+              The Kintampo Waterfalls, located just 30km from the sanctuary, are
+              among Ghana's most beautiful natural attractions. The falls
+              consist of three main cascades with a total drop of about 70
+              meters into a refreshing pool below. It's an ideal stop to combine
+              with your sanctuary visit for a full day of nature experiences.
+            </p>
+          </div>
+
+          <div class="fact-item fade-in">
+            <div class="fact-icon">
+              <i class="fas fa-tree"></i>
+            </div>
+            <p class="fact-text">
+              The sanctuary's forest is home to diverse flora including valuable
+              medicinal plants used by the local communities. The guides often
+              share knowledge about traditional uses of various plants, adding
+              an educational component to the nature walk. The forest also
+              supports numerous bird species, making it a paradise for
+              birdwatchers.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Explore Other Destinations Section -->
+    <section
+      class="destination-section"
+      style="background-color: var(--bg-secondary)"
+    >
+      <div class="destination-container">
+        <div class="section-header fade-in">
+          <h2 class="section-title">Explore Other Destinations</h2>
+          <div class="section-divider"></div>
+        </div>
+
+        <div class="carousel-wrapper visual-items" id="destinationsWrapper">
+          <div class="carousel-track" id="destinationsTrack">
+            <!-- Accra City Tour -->
+            <div class="destination-card">
+              <div class="destination-image">
+                <img src="../assets/images/accra.jpeg" alt="Accra City Tour" />
+                <span class="destination-badge">Featured</span>
+              </div>
+              <div class="destination-content">
+                <h3 class="destination-title">Accra City Tour</h3>
+                <div class="destination-location">
+                  <i class="fas fa-map-marker-alt"></i> Accra, Ghana
+                </div>
+                <div class="destination-price">
+                  Starting from <span>$50</span>
+                </div>
+                <div class="destination-footer">
+                  <span class="destination-users"
+                    ><i class="fas fa-users"></i> 100</span
+                  >
+                  <a href="accra-city-tour.html" class="destination-btn"
+                    >Explore →</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- Cape Coast Castle -->
+            <div class="destination-card">
+              <div class="destination-image">
+                <img src="../assets/images/Cape.jpeg" alt="Cape Coast Castle" />
+                <span class="destination-badge">Featured</span>
+              </div>
+              <div class="destination-content">
+                <h3 class="destination-title">Cape Coast Castle</h3>
+                <div class="destination-location">
+                  <i class="fas fa-map-marker-alt"></i> Cape Coast, Ghana
+                </div>
+                <div class="destination-price">
+                  Starting from <span>$75</span>
+                </div>
+                <div class="destination-footer">
+                  <span class="destination-users"
+                    ><i class="fas fa-users"></i> 100</span
+                  >
+                  <a href="cape-coast-castle.html" class="destination-btn"
+                    >Explore →</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- Mole National Park -->
+            <div class="destination-card">
+              <div class="destination-image">
+                <img
+                  src="../assets/images/mole2.jpeg"
+                  alt="Mole National Park"
+                />
+                <span class="destination-badge">Featured</span>
+              </div>
+              <div class="destination-content">
+                <h3 class="destination-title">Mole National Park</h3>
+                <div class="destination-location">
+                  <i class="fas fa-map-marker-alt"></i> Northern Ghana
+                </div>
+                <div class="destination-price">
+                  Starting from <span>$120</span>
+                </div>
+                <div class="destination-footer">
+                  <span class="destination-users"
+                    ><i class="fas fa-users"></i> 100</span
+                  >
+                  <a href="mole-national-park.html" class="destination-btn"
+                    >Explore →</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- Kakum National Park -->
+            <div class="destination-card">
+              <div class="destination-image">
+                <img
+                  src="../assets/images/kakum2.jpg"
+                  alt="Kakum National Park"
+                />
+                <span class="destination-badge">Featured</span>
+              </div>
+              <div class="destination-content">
+                <h3 class="destination-title">Kakum National Park</h3>
+                <div class="destination-location">
+                  <i class="fas fa-map-marker-alt"></i> Central Ghana
+                </div>
+                <div class="destination-price">
+                  Starting from <span>$85</span>
+                </div>
+                <div class="destination-footer">
+                  <span class="destination-users"
+                    ><i class="fas fa-users"></i> 100</span
+                  >
+                  <a href="kakum-national-park.html" class="destination-btn"
+                    >Explore →</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!--Mountain Afadja -->
+            <div class="destination-card">
+              <div class="destination-image">
+                <img
+                  src="../assets/images/afadjato.jpeg"
+                  alt="Mountain Afadjato"
+                /><span class="destination-badge">FEATURED</span>
+              </div>
+              <div class="destination-content">
+                <h3 class="destination-title">Mountain Afadjato</h3>
+                <div class="destination-location">
+                  <i class="fas fa-map-marker-alt"></i> Volta Region
+                </div>
+                <div class="destination-price">
+                  Starting from <span>$90</span>
+                </div>
+                <div class="destination-footer">
+                  <span class="destination-users"
+                    ><i class="fas fa-users"></i> 100</span
+                  ><a class="destination-btn" href="mountain-afadjato.html"
+                    >Explore →</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- Ashanti Kingdom Tour -->
+            <div class="destination-card">
+              <div class="destination-image">
+                <img
+                  src="../assets/images/ashanti.jpeg"
+                  alt="Ashanti Kingdom Tour"
+                />
+                <span class="destination-badge">Featured</span>
+              </div>
+              <div class="destination-content">
+                <h3 class="destination-title">Ashanti Kingdom Tour</h3>
+                <div class="destination-location">
+                  <i class="fas fa-map-marker-alt"></i> Kumasi, Ghana
+                </div>
+                <div class="destination-price">
+                  Starting from <span>$110</span>
+                </div>
+                <div class="destination-footer">
+                  <span class="destination-users"
+                    ><i class="fas fa-users"></i> 100</span
+                  >
+                  <a href="ashanti-kingdom.html" class="destination-btn"
+                    >Explore →</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- Wli Waterfalls -->
+            <div class="destination-card">
+              <div class="destination-image">
+                <img src="../assets/images/wli2.jpeg" alt="Wli Waterfalls" />
+                <span class="destination-badge">Featured</span>
+              </div>
+              <div class="destination-content">
+                <h3 class="destination-title">Wli Waterfalls</h3>
+                <div class="destination-location">
+                  <i class="fas fa-map-marker-alt"></i> Volta Region
+                </div>
+                <div class="destination-price">
+                  Starting from <span>$100</span>
+                </div>
+                <div class="destination-footer">
+                  <span class="destination-users"
+                    ><i class="fas fa-users"></i> 100</span
+                  >
+                  <a href="wli-waterfalls.html" class="destination-btn"
+                    >Explore →</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- Ada Foah Beach -->
+            <div class="destination-card">
+              <div class="destination-image">
+                <img
+                  src="../assets/images/ada-beach.jpeg"
+                  alt="Ada Foah Beach"
+                />
+                <span class="destination-badge">Featured</span>
+              </div>
+              <div class="destination-content">
+                <h3 class="destination-title">Ada Foah Beach</h3>
+                <div class="destination-location">
+                  <i class="fas fa-map-marker-alt"></i> Greater Accra
+                </div>
+                <div class="destination-price">
+                  Starting from <span>$80</span>
+                </div>
+                <div class="destination-footer">
+                  <span class="destination-users"
+                    ><i class="fas fa-users"></i> 100</span
+                  >
+                  <a href="ada-foah-beach.html" class="destination-btn"
+                    >Explore →</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- Paga Crocodile Pond -->
+            <div class="destination-card">
+              <div class="destination-image">
+                <img
+                  src="../assets/images/croc2.jpeg"
+                  alt="Paga Crocodile Pond"
+                />
+                <span class="destination-badge">Featured</span>
+              </div>
+              <div class="destination-content">
+                <h3 class="destination-title">Paga Crocodile Pond</h3>
+                <div class="destination-location">
+                  <i class="fas fa-map-marker-alt"></i> Upper East Region
+                </div>
+                <div class="destination-price">
+                  Starting from <span>$90</span>
+                </div>
+                <div class="destination-footer">
+                  <span class="destination-users"
+                    ><i class="fas fa-users"></i> 100</span
+                  >
+                  <a href="paga-crocodile-pond.html" class="destination-btn"
+                    >Explore →</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- Elmina Castle -->
+            <div class="destination-card">
+              <div class="destination-image">
+                <img src="../assets/images/elmina.jpeg" alt="Elmina Castle" />
+                <span class="destination-badge">Featured</span>
+              </div>
+              <div class="destination-content">
+                <h3 class="destination-title">Elmina Castle</h3>
+                <div class="destination-location">
+                  <i class="fas fa-map-marker-alt"></i> Elmina, Ghana
+                </div>
+                <div class="destination-price">
+                  Starting from <span>$75</span>
+                </div>
+                <div class="destination-footer">
+                  <span class="destination-users"
+                    ><i class="fas fa-users"></i> 100</span
+                  >
+                  <a href="elmina-castle.html" class="destination-btn"
+                    >Explore →</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- Manhyia Palace -->
+            <div class="destination-card">
+              <div class="destination-image">
+                <img src="../assets/images/manhyia.jpeg" alt="Manhyia Palace" />
+                <span class="destination-badge">Featured</span>
+              </div>
+              <div class="destination-content">
+                <h3 class="destination-title">Manhyia Palace</h3>
+                <div class="destination-location">
+                  <i class="fas fa-map-marker-alt"></i> Kumasi, Ghana
+                </div>
+                <div class="destination-price">
+                  Starting from <span>$80</span>
+                </div>
+                <div class="destination-footer">
+                  <span class="destination-users"
+                    ><i class="fas fa-users"></i> 100</span
+                  >
+                  <a href="manhyia-palace.html" class="destination-btn"
+                    >Explore →</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- Boabeng-Fiema Monkey Sanctuary -->
+            <div class="destination-card">
+              <div class="destination-image">
+                <img
+                  src="../assets/images/monkey.jpeg"
+                  alt="Boabeng-Fiema Monkey Sanctuary"
+                />
+                <span class="destination-badge">Featured</span>
+              </div>
+              <div class="destination-content">
+                <h3 class="destination-title">
+                  Boabeng-Fiema Monkey Sanctuary
+                </h3>
+                <div class="destination-location">
+                  <i class="fas fa-map-marker-alt"></i> Brong-Ahafo Region
+                </div>
+                <div class="destination-price">
+                  Starting from <span>$70</span>
+                </div>
+                <div class="destination-footer">
+                  <span class="destination-users"
+                    ><i class="fas fa-users"></i> 100</span
+                  >
+                  <a href="boabeng-fiema.html" class="destination-btn"
+                    >Explore →</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- Kintampo Waterfalls -->
+            <div class="destination-card">
+              <div class="destination-image">
+                <img
+                  src="../assets/images/kintampo.jpeg"
+                  alt="Kintampo Waterfalls"
+                />
+                <span class="destination-badge">Featured</span>
+              </div>
+              <div class="destination-content">
+                <h3 class="destination-title">Kintampo Waterfalls</h3>
+                <div class="destination-location">
+                  <i class="fas fa-map-marker-alt"></i> Brong-Ahafo Region
+                </div>
+                <div class="destination-price">
+                  Starting from <span>$85</span>
+                </div>
+                <div class="destination-footer">
+                  <span class="destination-users"
+                    ><i class="fas fa-users"></i> 100</span
+                  >
+                  <a href="kintampo-waterfalls.html" class="destination-btn"
+                    >Explore →</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- Nzulezu Village -->
+            <div class="destination-card">
+              <div class="destination-image">
+                <img
+                  src="../assets/images/nzulezu.jpeg"
+                  alt="Nzulezu Village"
+                />
+                <span class="destination-badge">Featured</span>
+              </div>
+              <div class="destination-content">
+                <h3 class="destination-title">Nzulezu Village</h3>
+                <div class="destination-location">
+                  <i class="fas fa-map-marker-alt"></i> Western Region
+                </div>
+                <div class="destination-price">
+                  Starting from <span>$95</span>
+                </div>
+                <div class="destination-footer">
+                  <span class="destination-users"
+                    ><i class="fas fa-users"></i> 100</span
+                  >
+                  <a href="nzulezu-village.html" class="destination-btn"
+                    >Explore →</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="carousel-dots" id="destinationsDots"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Call to Action Section -->
+    <section class="cta-section">
+      <div class="destination-container">
+        <div class="cta-content fade-in">
+          <div class="cta-text">
+            <h2 class="cta-title">Ready to Meet Our Sacred Monkey Friends?</h2>
+            <p class="cta-subtitle">
+              Experience the heartwarming harmony between humans and primates at
+              Boabeng-Fiema Monkey Sanctuary, where traditional beliefs protect
+              hundreds of monkeys in their natural habitat. Walk through
+              pristine forest trails, observe black-and-white colobus and Mona
+              monkeys up close, and learn about the unique cultural traditions
+              that have preserved this sanctuary for generations. Our expert
+              guides will share fascinating insights into monkey behavior and
+              the deep spiritual connection between the local communities and
+              their primate guardians.
+            </p>
+            <div class="cta-highlights">
+              <div class="cta-highlight">
+                <i class="fas fa-check-circle"></i>
+                <span>Expert Nature Guides</span>
+              </div>
+              <div class="cta-highlight">
+                <i class="fas fa-check-circle"></i>
+                <span>Close Monkey Encounters</span>
+              </div>
+              <div class="cta-highlight">
+                <i class="fas fa-check-circle"></i>
+                <span>Cultural Immersion</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="cta-buttons fade-in">
+          <a href="../contact.html" class="cta-btn primary">
+            <span>Book Your Sanctuary Visit</span>
+            <i class="fas fa-arrow-right"></i>
+          </a>
+          <a href="../destinations.html" class="cta-btn secondary">
+            <span>Explore More Destinations</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <div>
+      <footer class="footer" id="contact">
+        <div class="footer-container">
+          <div class="footer-column">
+            <img
+              src="../assets/images/logo2.png"
+              alt="O G Star Logo"
+              style="max-width: 150px; margin-bottom: 0"
+            />
+          </div>
+
+          <div class="footer-column">
+            <h4>Quick Links</h4>
+            <ul>
+              <li><a href="../index.html">Home</a></li>
+              <li><a href="../services.html">Services</a></li>
+              <li><a href="../destinations.html">Destinations</a></li>
+              <li><a href="../information.html">Information</a></li>
+              <li><a href="../contact.html">Contact</a></li>
+              <li><a href="../blog.html">Blog</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-column">
+            <h4>Our Services</h4>
+            <ul>
+              <li><a href="../services.html">Travel & Tours</a></li>
+              <li><a href="../services.html">Study Abroad</a></li>
+              <li><a href="../services.html">Work & Stay</a></li>
+              <li><a href="../services.html">Visa Assistance</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-column">
+            <h4>Contact Us</h4>
+            <div class="contact-info">
+              <div class="contact-item">
+                <i class="fas fa-map-marker-alt"></i>
+                <span
+                  >Dome-CFC Estate, Near the Dome Market, P.O BOX MS 46 New
+                  Achimota, Accra - Ghana</span
+                >
+              </div>
+              <div class="contact-item">
+                <i class="fas fa-envelope"></i>
+                <a href="mailto:j.asamoah@yahoo.com">j.asamoah@yahoo.com</a>
+              </div>
+              <div class="contact-item">
+                <i class="fas fa-phone"></i>
+                <a href="tel:+233206521474">+233 (0) 206521474</a>
+              </div>
+              <div class="contact-item">
+                <i class="fas fa-phone"></i>
+                <a href="tel:+233545503479">+233 (0) 545503479</a>
+              </div>
+            </div>
+            <div class="social-links">
+              <a href="#" aria-label="WhatsApp"
+                ><i class="fab fa-whatsapp"></i
+              ></a>
+              <a href="#" aria-label="Instagram"
+                ><i class="fab fa-instagram"></i
+              ></a>
+              <a href="#" aria-label="Facebook"
+                ><i class="fab fa-facebook-f"></i
+              ></a>
+              <a href="#" aria-label="LinkedIn"
+                ><i class="fab fa-linkedin-in"></i
+              ></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <span
+            >© 2025 O G Star Travel & Tours. Crafted with ❤️ by
+            Kenzyverse.</span
+          >
+        </div>
+      </footer>
+
+      <!-- WhatsApp Floating Button -->
+      <a
+        href="https://wa.me/233546945944?text=Hello%20OG%20Star%20Travel%20%26%20Tours,%20I'm%20interested%20in%20your%20services"
+        class="whatsapp-float"
+        target="_blank"
+        id="whatsappFloat"
+      >
+        <i class="fab fa-whatsapp"></i>
+      </a>
+
+      <!-- Back to Top Button -->
+      <div class="back-to-top" id="backToTop" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+      </div>
+    </div>
+
+    <!-- Link Global Scripts -->
+    <script src="../assets/src/general.js"></script>
+    <script src="../assets/src/nav-foot1.js"></script>
+    <script src="../assets/src/book.js"></script>
+  </body>
+</html>
