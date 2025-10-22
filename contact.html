@@ -3,141 +3,837 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>OG Star Traveling Tour | Contact</title>
+    <title>Contact Us | OG STAR TRAVEL & TOURS</title>
+
+    <!-- Link Global Styles -->
+    <link rel="stylesheet" href="assets/styles/style.css" />
+    <link rel="stylesheet" href="assets/styles/utils.css" />
+    <link rel="stylesheet" href="assets/styles/nav-foot.css" />
+
+    <!-- Font Awesome for icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <!-- Page-Specific Styles -->
     <style>
-      :root {
-        --accent: #ff7b00;
-        --text-dark: #222;
-        --text-light: #555;
-        --bg-light: #f9f9f9;
-      }
-      body {
-        font-family: "Poppins", sans-serif;
-        margin: 0;
-        background: var(--bg-light);
-        color: var(--text-dark);
-      }
-      header {
+      /* Contact Page Specific Styles */
+
+      /* Hero Section */
+      .contact-hero {
+        position: relative;
+        height: 50vh;
+        min-height: 400px;
+        margin-top: 65px;
+        background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+          url("assets/images/connect2.jpeg");
+        background-size: cover;
+        background-position: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         text-align: center;
-        padding: 5rem 1rem 3rem;
+        color: white;
       }
-      header h1 {
-        font-size: 2.5rem;
-        margin-bottom: 0.5rem;
+
+      @media (min-width: 1024px) {
+        .contact-hero {
+          margin-top: 80px;
+        }
       }
-      header p {
-        color: var(--text-light);
+
+      .contact-hero-content h1 {
+        color: white;
+        margin-bottom: 1rem;
+      }
+
+      .contact-hero-content p {
+        font-size: 1.2rem;
+        max-width: 700px;
+        margin: 0 auto;
+      }
+
+      /* Content Container with max-width of 1200px */
+      .content-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      /* Contact Info Section */
+      .contact-info-section {
+        padding: 80px 0;
+        background: var(--bg-secondary);
+      }
+
+      .contact-info-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 30px;
+        margin-top: 50px;
+      }
+
+      .contact-info-card {
+        background: var(--card-bg-light);
+        padding: 40px 30px;
+        border-radius: var(--radius-lg);
+        text-align: center;
+        box-shadow: var(--shadow);
+        transition: var(--transition);
+        height: 100%;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .contact-info-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 5px;
+        background: var(--gradient-primary);
+      }
+
+      .contact-info-card:hover {
+        transform: translateY(-10px);
+        box-shadow: var(--shadow-hover);
+      }
+
+      .contact-info-icon {
+        width: 80px;
+        height: 80px;
+        margin: 0 auto 25px;
+        background: var(--gradient-primary);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 2rem;
+        box-shadow: 0 8px 16px rgba(46, 196, 182, 0.3);
+      }
+
+      .contact-info-card h3 {
+        margin-bottom: 15px;
+        color: var(--primary-color);
+        font-size: 1.3rem;
+      }
+
+      .contact-info-card p {
+        color: var(--text-muted);
+        margin-bottom: 0;
+        line-height: 1.6;
+      }
+
+      .contact-info-card a {
+        color: var(--primary-color);
+        text-decoration: none;
+        transition: var(--transition);
+        font-weight: 500;
+      }
+
+      .contact-info-card a:hover {
+        color: var(--highlight-color);
+        text-decoration: underline;
+      }
+
+      /* Contact Form Section */
+      .contact-form-section {
+        padding: 80px 0;
+        background: var(--bg-primary);
+      }
+
+      .contact-form-container {
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      .contact-form {
+        background: var(--card-bg-light);
+        padding: 50px;
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .contact-form::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 5px;
+        background: var(--gradient-primary);
+      }
+
+      .form-group {
+        margin-bottom: 25px;
+      }
+
+      .form-group label {
+        display: block;
+        margin-bottom: 10px;
+        font-weight: 600;
+        color: var(--text-color);
         font-size: 1.1rem;
       }
-      .contact-section {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-        gap: 2rem;
-        max-width: 1000px;
-        margin: auto;
-        padding: 3rem 1rem 5rem;
-      }
-      .contact-form,
-      .contact-info {
-        background: #fff;
-        border-radius: 1rem;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
-        padding: 2rem;
-      }
-      .contact-form form {
-        display: flex;
-        flex-direction: column;
-        gap: 1rem;
-      }
-      input,
-      textarea {
-        padding: 0.9rem 1rem;
-        border: 1px solid #ddd;
-        border-radius: 0.5rem;
-        font-family: inherit;
+
+      .form-control {
+        width: 100%;
+        padding: 15px;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        border-radius: var(--radius-md);
+        font-family: var(--font-primary);
         font-size: 1rem;
+        background: var(--bg-primary);
+        color: var(--text-color);
+        transition: var(--transition);
+      }
+
+      .form-control:focus {
         outline: none;
-        transition: border 0.3s ease;
+        border-color: var(--primary-color);
+        box-shadow: 0 0 0 3px rgba(46, 196, 182, 0.2);
       }
-      input:focus,
-      textarea:focus {
-        border-color: var(--accent);
+
+      textarea.form-control {
+        resize: vertical;
+        min-height: 150px;
       }
-      button {
-        background: var(--accent);
-        color: #fff;
-        border: none;
-        border-radius: 0.5rem;
-        padding: 0.9rem;
-        font-size: 1rem;
-        cursor: pointer;
-        transition: background 0.3s ease, transform 0.2s;
+
+      .form-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
       }
-      button:hover {
-        background: #e66f00;
-        transform: translateY(-2px);
-      }
-      .contact-info h3 {
-        margin-bottom: 1rem;
-        color: var(--accent);
-      }
-      .contact-info p {
-        margin: 0.5rem 0;
-        color: var(--text-light);
-      }
-      .social-icons {
-        margin-top: 1.5rem;
-      }
-      .social-icons a {
+
+      .submit-btn {
         display: inline-block;
-        width: 38px;
-        height: 38px;
-        line-height: 38px;
-        text-align: center;
-        border-radius: 50%;
-        background: var(--accent);
-        color: #fff;
-        margin-right: 0.5rem;
-        text-decoration: none;
-        font-weight: bold;
-        transition: background 0.3s ease;
+        padding: 15px 40px;
+        background: var(--gradient-primary);
+        color: white;
+        border: none;
+        border-radius: var(--radius-md);
+        font-weight: 600;
+        font-size: 1.1rem;
+        cursor: pointer;
+        transition: var(--transition);
+        box-shadow: var(--shadow);
+        position: relative;
+        overflow: hidden;
       }
-      .social-icons a:hover {
-        background: #e66f00;
+
+      .submit-btn::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: rgba(255, 255, 255, 0.2);
+        transition: left 0.5s ease;
+      }
+
+      .submit-btn:hover::before {
+        left: 100%;
+      }
+
+      .submit-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: var(--shadow-hover);
+      }
+
+      /* Map Section */
+      .map-section {
+        padding: 0;
+        height: 400px;
+        position: relative;
+      }
+
+      .map-container {
+        height: 100%;
+        width: 100%;
+      }
+
+      .map-placeholder {
+        height: 100%;
+        width: 100%;
+        background: url("https://images.unsplash.com/photo-1579532586980-288c31b8a26b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80");
+        background-size: cover;
+        background-position: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        text-align: center;
+      }
+
+      .map-overlay {
+        background: rgba(0, 0, 0, 0.7);
+        padding: 30px;
+        border-radius: var(--radius-lg);
+        max-width: 500px;
+        backdrop-filter: blur(5px);
+      }
+
+      .map-overlay h3 {
+        color: white;
+        margin-bottom: 15px;
+        font-size: 1.5rem;
+      }
+
+      .map-overlay p {
+        margin-bottom: 25px;
+        line-height: 1.6;
+      }
+
+      /* FAQ Section */
+      .faq-section {
+        padding: 80px 0;
+        background: var(--bg-secondary);
+      }
+
+      .faq-container {
+        max-width: 900px;
+        margin: 50px auto 0;
+      }
+
+      .faq-item {
+        background: var(--card-bg-light);
+        margin-bottom: 20px;
+        border-radius: var(--radius-md);
+        overflow: hidden;
+        box-shadow: var(--shadow);
+        transition: var(--transition);
+      }
+
+      .faq-item:hover {
+        box-shadow: var(--shadow-hover);
+      }
+
+      .faq-question {
+        padding: 25px 30px;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-weight: 600;
+        color: var(--text-color);
+        user-select: none;
+      }
+
+      .faq-question:hover {
+        background: var(--bg-tertiary);
+      }
+
+      .faq-toggle {
+        font-size: 1.5rem;
+        color: var(--primary-color);
+        transition: var(--transition);
+      }
+
+      .faq-item.active .faq-toggle {
+        transform: rotate(180deg);
+      }
+
+      .faq-answer {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+      }
+
+      .faq-answer-content {
+        padding: 0 30px 25px;
+        color: var(--text-muted);
+        line-height: 1.8;
+      }
+
+      .faq-item.active .faq-answer {
+        max-height: 500px;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        .form-row {
+          grid-template-columns: 1fr;
+        }
+
+        .contact-form {
+          padding: 30px 20px;
+        }
+
+        .contact-hero {
+          height: 40vh;
+          min-height: 300px;
+        }
+
+        .contact-info-card {
+          padding: 30px 20px;
+        }
       }
     </style>
   </head>
   <body>
-    <header>
-      <h1>Get in Touch</h1>
-      <p>
-        We’d love to hear from you. Whether it’s a trip inquiry or a question,
-        reach out anytime.
-      </p>
-    </header>
+    <!-- Mobile Menu Overlay -->
+    <div>
+      <div class="overlay" id="overlay"></div>
 
-    <section class="contact-section">
-      <div class="contact-form">
-        <form action="#">
-          <input type="text" placeholder="Full Name" required />
-          <input type="email" placeholder="Email Address" required />
-          <input type="text" placeholder="Subject" required />
-          <textarea rows="5" placeholder="Your Message" required></textarea>
-          <button type="submit">Send Message</button>
-        </form>
+      <!-- Navigation -->
+      <header class="navbar" id="navbar">
+        <div class="nav-inner">
+          <div class="nav-logo">
+            <a href="index.html" class="logo">
+              <img src="assets/images/logo.png" alt="O G Star logo" />
+            </a>
+          </div>
+
+          <nav class="nav-center" aria-label="Main navigation">
+            <ul class="nav-menu" role="menubar">
+              <li class="nav-item" role="none">
+                <a href="index.html" class="nav-link active" role="menuitem"
+                  >Home</a
+                >
+              </li>
+              <li class="nav-item" role="none">
+                <a href="services.html" class="nav-link" role="menuitem"
+                  >Services</a
+                >
+              </li>
+              <li class="nav-item" role="none">
+                <a href="destinations.html" class="nav-link" role="menuitem"
+                  >Destinations</a
+                >
+              </li>
+              <li class="nav-item" role="none">
+                <a href="information.html" class="nav-link" role="menuitem"
+                  >Information</a
+                >
+              </li>
+              <li class="nav-item" role="none">
+                <a href="contact.html" class="nav-link" role="menuitem"
+                  >Contact</a
+                >
+              </li>
+              <li class="nav-item" role="none">
+                <a href="blog.html" class="nav-link" role="menuitem">Blog</a>
+              </li>
+            </ul>
+          </nav>
+
+          <div class="nav-cta">
+            <button class="book-now-btn" id="bookNowBtn" aria-label="Book Now">
+              <span>Book Now</span>
+            </button>
+
+            <button class="hamburger" id="hamburger" aria-label="Open menu">
+              <i class="fas fa-bars"></i>
+            </button>
+          </div>
+        </div>
+      </header>
+
+      <!-- Mobile panel -->
+      <aside class="mobile-panel" id="mobilePanel">
+        <div class="mobile-panel-header">
+          <h3>Menu</h3>
+          <button class="close-btn" id="closePanel" aria-label="Close menu">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+
+        <nav class="mobile-links">
+          <a href="index.html">Home</a>
+          <a href="services.html">Services</a>
+          <a href="destinations.html">Destinations</a>
+          <a href="information.html">Information</a>
+          <a href="contact.html">Contact</a>
+          <a href="blog.html">Blog</a>
+        </nav>
+      </aside>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="contact-hero">
+      <div class="contact-hero-content scroll-animate animate-fade">
+        <h1>Contact Us</h1>
+        <p>
+          Have questions about our travel services? We're here to help you plan
+          your perfect journey to the UAE.
+        </p>
       </div>
+    </section>
 
-      <div class="contact-info">
-        <h3>Contact Information</h3>
-        <p><strong>Email:</strong> contact@ogstartour.com</p>
-        <p><strong>Phone:</strong> +233 20 123 4567</p>
-        <p><strong>Office Hours:</strong> Mon–Fri, 9am–6pm</p>
-        <div class="social-icons">
-          <a href="#">F</a>
-          <a href="#">I</a>
-          <a href="#">T</a>
+    <!-- Contact Info Section -->
+    <section class="contact-info-section">
+      <div class="content-container">
+        <h2 class="heading-md text-center scroll-animate">Get In Touch</h2>
+        <p class="subtitle-md text-center scroll-animate">
+          We're available to assist you
+        </p>
+
+        <div class="contact-info-grid">
+          <div class="contact-info-card scroll-animate">
+            <div class="contact-info-icon">
+              <i class="fas fa-map-marker-alt"></i>
+            </div>
+            <h3>Office Address</h3>
+            <p>123 Travel Street<br />Dubai, UAE</p>
+          </div>
+
+          <div class="contact-info-card scroll-animate">
+            <div class="contact-info-icon">
+              <i class="fas fa-phone"></i>
+            </div>
+            <h3>Phone Number</h3>
+            <p><a href="tel:+971123456789">+971 123 456 789</a></p>
+          </div>
+
+          <div class="contact-info-card scroll-animate">
+            <div class="contact-info-icon">
+              <i class="fas fa-envelope"></i>
+            </div>
+            <h3>Email Address</h3>
+            <p>
+              <a href="mailto:info@ogstartravels.com">info@ogstartravels.com</a>
+            </p>
+          </div>
+
+          <div class="contact-info-card scroll-animate">
+            <div class="contact-info-icon">
+              <i class="fas fa-clock"></i>
+            </div>
+            <h3>Business Hours</h3>
+            <p>
+              Monday - Friday: 9:00 AM - 6:00 PM<br />Saturday: 10:00 AM - 4:00
+              PM
+            </p>
+          </div>
         </div>
       </div>
     </section>
+
+    <!-- Contact Form Section -->
+    <section class="contact-form-section">
+      <div class="content-container">
+        <h2 class="heading-md text-center scroll-animate">Send Us a Message</h2>
+        <p class="subtitle-md text-center scroll-animate">
+          We'll get back to you as soon as possible
+        </p>
+
+        <div class="contact-form-container scroll-animate">
+          <form class="contact-form" id="contactForm">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="firstName">First Name</label>
+                <input
+                  type="text"
+                  id="firstName"
+                  class="form-control"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="lastName">Last Name</label>
+                <input
+                  type="text"
+                  id="lastName"
+                  class="form-control"
+                  required
+                />
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" class="form-control" required />
+              </div>
+              <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" class="form-control" />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="subject">Subject</label>
+              <input type="text" id="subject" class="form-control" required />
+            </div>
+
+            <div class="form-group">
+              <label for="message">Message</label>
+              <textarea id="message" class="form-control" required></textarea>
+            </div>
+
+            <div class="text-center">
+              <button type="submit" class="submit-btn">Send Message</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- Map Section -->
+    <section class="map-section">
+      <div class="map-placeholder">
+        <div class="map-overlay">
+          <h3>Visit Our Office</h3>
+          <p>
+            Find us at our convenient location in Dubai. We're happy to meet
+            with you in person to discuss your travel plans.
+          </p>
+          <button class="submit-btn" id="getDirectionsBtn">
+            Get Directions
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+      <div class="content-container">
+        <h2 class="heading-md text-center scroll-animate">
+          Frequently Asked Questions
+        </h2>
+        <p class="subtitle-md text-center scroll-animate">
+          Find answers to common questions
+        </p>
+
+        <div class="faq-container">
+          <div class="faq-item scroll-animate">
+            <div class="faq-question">
+              <span>What documents do I need for UAE visa processing?</span>
+              <span class="faq-toggle">▼</span>
+            </div>
+            <div class="faq-answer">
+              <div class="faq-answer-content">
+                For UAE visa processing, you'll need a valid passport with at
+                least 6 months validity, recent passport-sized photographs, and
+                a completed visa application form. Additional documents may be
+                required depending on your specific visa type.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item scroll-animate">
+            <div class="faq-question">
+              <span>How long does the visa processing take?</span>
+              <span class="faq-toggle">▼</span>
+            </div>
+            <div class="faq-answer">
+              <div class="faq-answer-content">
+                Visa processing times vary depending on the type of visa and
+                your country of origin. Generally, it takes between 3-7 working
+                days for standard visas. Express services are available for
+                urgent travel needs.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item scroll-animate">
+            <div class="faq-question">
+              <span>Do you provide accommodation assistance?</span>
+              <span class="faq-toggle">▼</span>
+            </div>
+            <div class="faq-answer">
+              <div class="faq-answer-content">
+                Yes, we provide comprehensive accommodation assistance. We can
+                help you find suitable housing based on your preferences and
+                budget, whether you're looking for short-term stays or long-term
+                arrangements.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item scroll-animate">
+            <div class="faq-question">
+              <span>Can you help with job placement in the UAE?</span>
+              <span class="faq-toggle">▼</span>
+            </div>
+            <div class="faq-answer">
+              <div class="faq-answer-content">
+                Absolutely! We have partnerships with reputable employers across
+                various sectors in the UAE. We can help match your skills and
+                qualifications with suitable job opportunities and guide you
+                through the entire recruitment process.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <div>
+      <footer class="footer" id="contact">
+        <div class="footer-container">
+          <div class="footer-column">
+            <img
+              src="assets/images/logo2.png"
+              alt="O G Star Logo"
+              style="max-width: 150px; margin-bottom: 0"
+            />
+          </div>
+
+          <div class="footer-column">
+            <h4>Quick Links</h4>
+            <ul>
+              <li><a href="index.html">Home</a></li>
+              <li><a href="services.html">Services</a></li>
+              <li><a href="destinations.html">Destinations</a></li>
+              <li><a href="information.html">Information</a></li>
+              <li><a href="contact.html">Contact</a></li>
+              <li><a href="blog.html">Blog</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-column">
+            <h4>Our Services</h4>
+            <ul>
+              <li><a href="services.html">Travel & Tours</a></li>
+              <li><a href="services.html">Study Abroad</a></li>
+              <li><a href="services.html">Work & Stay</a></li>
+              <li><a href="services.html">Visa Assistance</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-column">
+            <h4>Contact Us</h4>
+            <div class="contact-info">
+              <div class="contact-item">
+                <i class="fas fa-map-marker-alt"></i>
+                <span
+                  >Dome-CFC Estate, Near the Dome Market, P.O BOX MS 46 New
+                  Achimota, Accra - Ghana</span
+                >
+              </div>
+              <div class="contact-item">
+                <i class="fas fa-envelope"></i>
+                <a href="mailto:j.asamoah@yahoo.com">j.asamoah@yahoo.com</a>
+              </div>
+              <div class="contact-item">
+                <i class="fas fa-phone"></i>
+                <a href="tel:+233206521474">+233 (0) 206521474</a>
+              </div>
+              <div class="contact-item">
+                <i class="fas fa-phone"></i>
+                <a href="tel:+233545503479">+233 (0) 545503479</a>
+              </div>
+            </div>
+            <div class="social-links">
+              <a href="#" aria-label="WhatsApp"
+                ><i class="fab fa-whatsapp"></i
+              ></a>
+              <a href="#" aria-label="Instagram"
+                ><i class="fab fa-instagram"></i
+              ></a>
+              <a href="#" aria-label="Facebook"
+                ><i class="fab fa-facebook-f"></i
+              ></a>
+              <a href="#" aria-label="LinkedIn"
+                ><i class="fab fa-linkedin-in"></i
+              ></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <span
+            >© 2025 O G Star Travel & Tours. Crafted with ❤️ by
+            Kenzyverse.</span
+          >
+        </div>
+      </footer>
+
+      <!-- WhatsApp Floating Button -->
+      <a
+        href="https://wa.me/233546945944?text=Hello%20OG%20Star%20Travel%20%26%20Tours,%20I'm%20interested%20in%20your%20services"
+        class="whatsapp-float"
+        target="_blank"
+        id="whatsappFloat"
+      >
+        <i class="fab fa-whatsapp"></i>
+      </a>
+
+      <!-- Back to Top Button -->
+      <div class="back-to-top" id="backToTop" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+      </div>
+    </div>
+
+    <script src="assets/src/nav-foot1.js"></script>
+    <script src="assets/src/general.js"></script>
+
+    <!-- Page-Specific Scripts -->
+    <script>
+      // Initialize general functionality
+      if (typeof initGeneral === "function") {
+        initGeneral();
+      }
+
+      // Scroll animations
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px",
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+          }
+        });
+      }, observerOptions);
+
+      document.querySelectorAll(".scroll-animate").forEach((el) => {
+        observer.observe(el);
+      });
+
+      // FAQ Accordion functionality
+      document.querySelectorAll(".faq-question").forEach((question) => {
+        question.addEventListener("click", () => {
+          const faqItem = question.parentElement;
+          const isActive = faqItem.classList.contains("active");
+
+          // Close all FAQ items
+          document.querySelectorAll(".faq-item").forEach((item) => {
+            item.classList.remove("active");
+          });
+
+          // Open clicked item if it wasn't active
+          if (!isActive) {
+            faqItem.classList.add("active");
+          }
+        });
+      });
+
+      // Contact Form submission
+      document
+        .getElementById("contactForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          // Get form values
+          const firstName = document.getElementById("firstName").value;
+          const lastName = document.getElementById("lastName").value;
+          const email = document.getElementById("email").value;
+          const phone = document.getElementById("phone").value;
+          const subject = document.getElementById("subject").value;
+          const message = document.getElementById("message").value;
+
+          // Here you would normally send the data to a server
+          // For now, we'll just reset the form
+          this.reset();
+        });
+
+      // Get Directions button functionality
+      document
+        .getElementById("getDirectionsBtn")
+        .addEventListener("click", function () {
+          window.location.href = "tel:+233242613372";
+        });
+    </script>
   </body>
 </html>

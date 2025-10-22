@@ -1,0 +1,1081 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Work and Stay in Dubai or Abu Dhabi | OG STAR TRAVEL & TOURS</title>
+
+    <!-- Link Global Styles -->
+    <link rel="stylesheet" href="assets/styles/style.css" />
+    <link rel="stylesheet" href="assets/styles/utils.css" />
+
+    <!-- Font Awesome for improved icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <!-- Page-Specific Styles -->
+    <style>
+      /* Hero Section */
+      .hero-section {
+        position: relative;
+        width: 100%;
+        height: 65vh;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .hero-image {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+      }
+
+      .hero-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          to bottom,
+          rgba(0, 0, 0, 0.5),
+          rgba(0, 0, 0, 0.7)
+        );
+      }
+
+      .hero-content {
+        position: relative;
+        z-index: 2;
+        text-align: center;
+        color: white;
+        padding: 0 20px;
+        max-width: 900px;
+      }
+
+      .hero-content h1 {
+        color: white;
+        font-size: clamp(2rem, 5vw, 3.5rem);
+        margin-bottom: 1.5rem;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        font-family: var(--font-elegant);
+        text-transform: none;
+      }
+
+      .hero-content p {
+        font-size: clamp(1rem, 2vw, 1.3rem);
+        line-height: 1.8;
+        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+      }
+
+      /* Content Container */
+      .content-wrapper {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      /* Section Spacing */
+      section {
+        padding: 80px 0;
+      }
+
+      /* Intro Section - Updated to match intro.png */
+      .intro-section {
+        background: var(--bg-primary);
+      }
+
+      .intro-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 24px;
+        margin-top: 50px;
+      }
+
+      .intro-card {
+        background: var(--card-bg-light);
+        border-radius: 12px;
+        padding: 24px;
+        text-align: center;
+        transition: var(--transition);
+        box-shadow: var(--shadow);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .intro-card:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--shadow-hover);
+      }
+
+      .intro-icon {
+        width: 64px;
+        height: 64px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        background: rgba(var(--primary-color-rgb), 0.1);
+        margin-bottom: 16px;
+      }
+
+      .intro-icon i {
+        font-size: 28px;
+        color: var(--primary-color);
+      }
+
+      .intro-card h3 {
+        font-size: 18px;
+        font-weight: 600;
+        margin-bottom: 12px;
+        color: var(--text-color);
+      }
+
+      .intro-card p {
+        font-size: 14px;
+        color: var(--text-muted);
+        line-height: 1.5;
+      }
+
+      /* Requirements Section - Updated to match require.png */
+      .requirements-section {
+        background: var(--bg-tertiary);
+      }
+
+      .requirements-content {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 50px;
+        align-items: start;
+      }
+
+      .requirements-intro {
+        padding: 30px;
+        background: var(--card-bg-light);
+        border-radius: 12px;
+        box-shadow: var(--shadow);
+      }
+
+      .requirements-intro h3 {
+        font-size: 24px;
+        font-weight: 600;
+        margin-bottom: 20px;
+        color: var(--text-color);
+      }
+
+      .requirements-intro p {
+        font-size: 16px;
+        line-height: 1.6;
+        color: var(--text-muted);
+        margin-bottom: 24px;
+      }
+
+      .requirements-note {
+        padding: 20px;
+        background: rgba(var(--primary-color-rgb), 0.1);
+        border-radius: 8px;
+        font-size: 15px;
+        color: var(--text-muted);
+        line-height: 1.6;
+      }
+
+      .requirements-list {
+        list-style: none;
+        padding: 0;
+      }
+
+      .requirements-list li {
+        padding: 15px 0 15px 45px;
+        position: relative;
+        font-size: 16px;
+        color: var(--text-color);
+        border-bottom: 2px solid rgba(0, 0, 0, 0.15);
+      }
+
+      .requirements-list li:before {
+        content: "✓";
+        position: absolute;
+        left: 0;
+        color: var(--primary-color);
+        font-weight: bold;
+        font-size: 1.5rem;
+      }
+
+      /* Why Choose Us Section - Updated to match why choose us.png */
+      .benefits-section {
+        background: var(--bg-secondary);
+      }
+
+      .benefits-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+        margin-top: 50px;
+      }
+
+      .benefit-card {
+        background: var(--card-bg-light);
+        border-radius: 12px;
+        padding: 30px;
+        text-align: center;
+        transition: var(--transition);
+        box-shadow: var(--shadow);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .benefit-card:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--shadow-hover);
+      }
+
+      .benefit-icon {
+        width: 64px;
+        height: 64px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        background: rgba(var(--primary-color-rgb), 0.1);
+        margin-bottom: 20px;
+      }
+
+      .benefit-icon i {
+        font-size: 28px;
+        color: var(--primary-color);
+      }
+
+      .benefit-card h4 {
+        font-size: 18px;
+        font-weight: 600;
+        margin-bottom: 12px;
+        color: var(--text-color);
+      }
+
+      .benefit-card p {
+        font-size: 14px;
+        color: var(--text-muted);
+        line-height: 1.5;
+      }
+
+      /* Destination Section */
+      .destination-section {
+        background: var(--bg-primary);
+      }
+
+      .destinations-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+        margin-top: 40px;
+      }
+
+      .destination-card {
+        position: relative;
+        border-radius: var(--radius-lg);
+        overflow: hidden;
+        box-shadow: var(--shadow);
+        transition: var(--transition);
+        min-height: 350px;
+        display: flex;
+        align-items: flex-end;
+      }
+
+      .destination-card:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--shadow-hover);
+      }
+
+      .destination-bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-position: center;
+        z-index: 0;
+      }
+
+      .destination-bg:after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+      }
+
+      .destination-content {
+        position: relative;
+        z-index: 1;
+        padding: 30px;
+        color: white;
+        width: 100%;
+      }
+
+      .destination-content h3 {
+        color: white;
+        font-size: 2rem;
+        margin-bottom: 15px;
+      }
+
+      .destination-content p {
+        line-height: 1.8;
+        font-size: 1rem;
+        margin: 0;
+      }
+
+      .destination-conclusion {
+        max-width: 800px;
+        margin: 50px auto 0;
+        text-align: center;
+        padding: 30px;
+        background: var(--bg-secondary);
+        border-radius: var(--radius-lg);
+        font-size: 1.05rem;
+        color: var(--text-muted);
+        line-height: 1.8;
+      }
+
+      /* Job Categories Carousel */
+      .carousel-section {
+        background: var(--bg-primary);
+        overflow: hidden;
+      }
+
+      .carousel-container {
+        position: relative;
+        overflow: hidden;
+        padding: 20px 0;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .carousel-track {
+        display: flex;
+        gap: 25px;
+        animation: scroll 25s linear infinite;
+      }
+
+      .carousel-track:hover {
+        animation-play-state: paused;
+      }
+
+      @keyframes scroll {
+        0% {
+          transform: translateX(0);
+        }
+        100% {
+          transform: translateX(calc(-100% / 2));
+        }
+      }
+
+      .job-card {
+        min-width: 200px;
+        height: 200px;
+        background: var(--card-bg-light);
+        border-radius: 50%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+        box-shadow: var(--shadow);
+        transition: var(--transition);
+        flex-shrink: 0;
+      }
+
+      .job-card:hover {
+        transform: scale(1.05);
+        box-shadow: var(--shadow-hover);
+      }
+
+      .job-icon {
+        font-size: 2.5rem;
+        margin-bottom: 10px;
+      }
+
+      .job-title {
+        font-weight: 600;
+        text-align: center;
+        font-size: 1rem;
+        color: var(--text-color);
+      }
+
+      .job-desc {
+        font-size: 0.8rem;
+        color: var(--text-muted);
+        text-align: center;
+        margin-top: 5px;
+      }
+
+      /* FAQ Section */
+      .faq-section {
+        background: var(--bg-primary);
+      }
+
+      .faq-container {
+        max-width: 900px;
+        margin: 50px auto 0;
+      }
+
+      .faq-item {
+        background: var(--card-bg-light);
+        margin-bottom: 20px;
+        border-radius: var(--radius-md);
+        overflow: hidden;
+        box-shadow: var(--shadow);
+        transition: var(--transition);
+      }
+
+      .faq-item:hover {
+        box-shadow: var(--shadow-hover);
+      }
+
+      .faq-question {
+        padding: 25px 30px;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-weight: 600;
+        color: var(--text-color);
+        user-select: none;
+      }
+
+      .faq-question:hover {
+        background: var(--bg-secondary);
+      }
+
+      .faq-toggle {
+        font-size: 1.5rem;
+        color: var(--primary-color);
+        transition: var(--transition);
+      }
+
+      .faq-item.active .faq-toggle {
+        transform: rotate(180deg);
+      }
+
+      .faq-answer {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+      }
+
+      .faq-answer-content {
+        padding: 0 30px 25px;
+        color: var(--text-muted);
+        line-height: 1.8;
+      }
+
+      .faq-item.active .faq-answer {
+        max-height: 500px;
+      }
+
+      /* Final Section */
+      .final-section {
+        background: var(--bg-tertiary);
+        text-align: center;
+      }
+
+      .final-content {
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      .final-content p {
+        font-size: 1.2rem;
+        line-height: 2;
+        color: var(--text-color);
+        font-family: var(--font-elegant);
+      }
+
+      /* Responsive Design */
+      @media (max-width: 1536px) {
+        .intro-grid {
+          grid-template-columns: repeat(4, 1fr);
+        }
+
+        .benefits-grid {
+          grid-template-columns: repeat(3, 1fr);
+        }
+      }
+
+      @media (max-width: 1280px) {
+        .intro-grid {
+          grid-template-columns: repeat(4, 1fr);
+        }
+
+        .benefits-grid {
+          grid-template-columns: repeat(3, 1fr);
+        }
+      }
+
+      @media (max-width: 1024px) {
+        .intro-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .benefits-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      @media (max-width: 768px) {
+        section {
+          padding: 60px 0;
+        }
+
+        .hero-section {
+          height: auto;
+          min-height: 50vh;
+        }
+
+        .requirements-content {
+          grid-template-columns: 1fr;
+          gap: 30px;
+        }
+
+        .destinations-grid {
+          grid-template-columns: 1fr;
+          gap: 30px;
+        }
+
+        .intro-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .benefits-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      @media (max-width: 640px) {
+        .intro-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .benefits-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 475px) {
+        .intro-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .benefits-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <img
+        src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=1200"
+        alt="Dubai Skyline"
+        class="hero-image"
+      />
+      <div class="hero-overlay"></div>
+      <div class="hero-content scroll-animate animate-fade">
+        <h1>Start Your Career Journey in the UAE</h1>
+        <p>
+          Learn about the opportunity to work and stay in Dubai or Abu Dhabi
+          through verified and trusted programs.
+        </p>
+      </div>
+    </section>
+
+    <!-- Intro Section - Updated to match intro.png -->
+    <section class="intro-section">
+      <div class="content-wrapper">
+        <h2 class="text-center heading-lg scroll-animate">Our Services</h2>
+        <p class="section-subtitle text-center scroll-animate">
+          Comprehensive support for your journey
+        </p>
+
+        <div class="intro-grid">
+          <div class="intro-card scroll-animate">
+            <div class="intro-icon">
+              <i class="fas fa-passport"></i>
+            </div>
+            <h3>Visa & Travel Support</h3>
+            <p>Providing visa and travel arrangement assistance</p>
+          </div>
+
+          <div class="intro-card scroll-animate">
+            <div class="intro-icon">
+              <i class="fas fa-home"></i>
+            </div>
+            <h3>Accommodation</h3>
+            <p>Safe and comfortable housing arrangements</p>
+          </div>
+
+          <div class="intro-card scroll-animate">
+            <div class="intro-icon">
+              <i class="fas fa-briefcase"></i>
+            </div>
+            <h3>Verified Jobs</h3>
+            <p>Pre-screened employment opportunities</p>
+          </div>
+
+          <div class="intro-card scroll-animate">
+            <div class="intro-icon">
+              <i class="fas fa-file-contract"></i>
+            </div>
+            <h3>Legal Process</h3>
+            <p>Transparent documentation process</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Job Categories Carousel -->
+    <section class="carousel-section">
+      <div class="content-wrapper">
+        <h2 class="text-center heading-lg scroll-animate">
+          Available Job Roles
+        </h2>
+        <p class="section-subtitle text-center scroll-animate">
+          Opportunities across various sectors
+        </p>
+      </div>
+
+      <div class="carousel-container">
+        <div class="carousel-track" id="carouselTrack">
+          <!-- First set of cards -->
+          <div class="job-card">
+            <div class="job-icon">🧹</div>
+            <div class="job-title">Cleaner</div>
+            <div class="job-desc">General support role</div>
+          </div>
+
+          <div class="job-card">
+            <div class="job-icon">🧱</div>
+            <div class="job-title">Mason</div>
+            <div class="job-desc">Skilled trade role</div>
+          </div>
+
+          <div class="job-card">
+            <div class="job-icon">🔨</div>
+            <div class="job-title">Carpenter</div>
+            <div class="job-desc">Skilled trade role</div>
+          </div>
+
+          <div class="job-card">
+            <div class="job-icon">🔧</div>
+            <div class="job-title">Plumber</div>
+            <div class="job-desc">Technical role</div>
+          </div>
+
+          <div class="job-card">
+            <div class="job-icon">⚙️</div>
+            <div class="job-title">Steel Fixer</div>
+            <div class="job-desc">Specialized role</div>
+          </div>
+
+          <div class="job-card">
+            <div class="job-icon">🛡️</div>
+            <div class="job-title">Security Officer</div>
+            <div class="job-desc">Protection role</div>
+          </div>
+
+          <div class="job-card">
+            <div class="job-icon">🤝</div>
+            <div class="job-title">General Helper</div>
+            <div class="job-desc">Support role</div>
+          </div>
+
+          <div class="job-card">
+            <div class="job-icon">👷</div>
+            <div class="job-title">Steel Fixer Foreman</div>
+            <div class="job-desc">Supervisory role</div>
+          </div>
+
+          <div class="job-card">
+            <div class="job-icon">➕</div>
+            <div class="job-title">And More</div>
+            <div class="job-desc">Various positions</div>
+          </div>
+
+          <!-- Duplicate set for seamless loop -->
+          <div class="job-card">
+            <div class="job-icon">🧹</div>
+            <div class="job-title">Cleaner</div>
+            <div class="job-desc">General support role</div>
+          </div>
+
+          <div class="job-card">
+            <div class="job-icon">🧱</div>
+            <div class="job-title">Mason</div>
+            <div class="job-desc">Skilled trade role</div>
+          </div>
+
+          <div class="job-card">
+            <div class="job-icon">🔨</div>
+            <div class="job-title">Carpenter</div>
+            <div class="job-desc">Skilled trade role</div>
+          </div>
+
+          <div class="job-card">
+            <div class="job-icon">🔧</div>
+            <div class="job-title">Plumber</div>
+            <div class="job-desc">Technical role</div>
+          </div>
+
+          <div class="job-card">
+            <div class="job-icon">⚙️</div>
+            <div class="job-title">Steel Fixer</div>
+            <div class="job-desc">Specialized role</div>
+          </div>
+
+          <div class="job-card">
+            <div class="job-icon">🛡️</div>
+            <div class="job-title">Security Officer</div>
+            <div class="job-desc">Protection role</div>
+          </div>
+
+          <div class="job-card">
+            <div class="job-icon">🤝</div>
+            <div class="job-title">General Helper</div>
+            <div class="job-desc">Support role</div>
+          </div>
+
+          <div class="job-card">
+            <div class="job-icon">👷</div>
+            <div class="job-title">Steel Fixer Foreman</div>
+            <div class="job-desc">Supervisory role</div>
+          </div>
+
+          <div class="job-card">
+            <div class="job-icon">➕</div>
+            <div class="job-title">And More</div>
+            <div class="job-desc">Various positions</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Requirements Section - Updated to match require.png -->
+    <section class="requirements-section">
+      <div class="content-wrapper">
+        <h2 class="text-center heading-lg scroll-animate">
+          Requirements & Eligibility
+        </h2>
+        <p class="section-subtitle text-center scroll-animate">
+          What you need to get started
+        </p>
+
+        <div class="requirements-content">
+          <div class="requirements-intro scroll-animate">
+            <h3>Application Requirements</h3>
+            <p>
+              To ensure a smooth and legal recruitment process, applicants must
+              meet basic documentation and fitness requirements. Our team
+              reviews every application carefully to match you with the right
+              employer and role.
+            </p>
+            <div class="requirements-note">
+              Our coordinators will assist you with verification, visa
+              processing, and travel arrangements once eligibility is confirmed.
+            </div>
+          </div>
+
+          <div class="requirements-list-container scroll-animate">
+            <ul class="requirements-list">
+              <li>Valid passport (scanned copy)</li>
+              <li>Recent passport-size photograph</li>
+              <li>Age between 21 and 45 years</li>
+              <li>Physically fit and willing to work</li>
+              <li>Previous experience (optional, depending on position)</li>
+              <li>
+                Willingness to relocate and adapt to UAE working conditions
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Choosing Your Destination -->
+    <section class="destination-section">
+      <div class="content-wrapper">
+        <h2 class="text-center heading-lg scroll-animate">
+          Choosing Your Destination
+        </h2>
+        <p class="section-subtitle text-center scroll-animate">
+          Dubai or Abu Dhabi
+        </p>
+
+        <div class="destinations-grid">
+          <div class="destination-card scroll-animate">
+            <div
+              class="destination-bg"
+              style="
+                background-image: url('https://images.unsplash.com/photo-1582672060674-bc2bd808a8b5?w=800');
+              "
+            ></div>
+            <div class="destination-content">
+              <h3>Dubai</h3>
+              <p>
+                Known for its modern skyline, rapid growth, and vibrant city
+                life, Dubai offers countless opportunities for workers across
+                construction, hospitality, and security sectors. It's a
+                fast-paced environment where ambition meets opportunity.
+              </p>
+            </div>
+          </div>
+
+          <div class="destination-card scroll-animate">
+            <div
+              class="destination-bg"
+              style="
+                background-image: url('https://images.unsplash.com/photo-1512632578888-169bbbc64f33?w=800');
+              "
+            ></div>
+            <div class="destination-content">
+              <h3>Abu Dhabi</h3>
+              <p>
+                As the capital of the UAE, Abu Dhabi provides a more structured
+                and calm environment with long-term job stability and excellent
+                living conditions. It's ideal for workers seeking growth in a
+                professional and balanced setting.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="destination-conclusion scroll-animate">
+          You may be placed in either Dubai or Abu Dhabi depending on the job
+          role, employer, and your personal preference, all handled with
+          transparency and care.
+        </div>
+      </div>
+    </section>
+
+    <!-- Why Choose Us Section - Updated to match why choose us.png -->
+    <section class="benefits-section">
+      <div class="content-wrapper">
+        <h2 class="text-center heading-lg scroll-animate">Why Choose Us</h2>
+        <p class="section-subtitle text-center scroll-animate">
+          Your trusted partner for UAE employment
+        </p>
+
+        <div class="benefits-grid">
+          <div class="benefit-card scroll-animate">
+            <div class="benefit-icon">
+              <i class="fas fa-shield-alt"></i>
+            </div>
+            <h4>Trusted Process</h4>
+            <p>Verified transparent recruitment process</p>
+          </div>
+
+          <div class="benefit-card scroll-animate">
+            <div class="benefit-icon">
+              <i class="fas fa-file-contract"></i>
+            </div>
+            <h4>Legal Documentation</h4>
+            <p>Complete legal documentation assistance</p>
+          </div>
+
+          <div class="benefit-card scroll-animate">
+            <div class="benefit-icon">
+              <i class="fas fa-home"></i>
+            </div>
+            <h4>Accommodation Support</h4>
+            <p>Comfortable accommodation arrangements</p>
+          </div>
+
+          <div class="benefit-card scroll-animate">
+            <div class="benefit-icon">
+              <i class="fas fa-comments"></i>
+            </div>
+            <h4>Continuous Support</h4>
+            <p>Full communication support throughout</p>
+          </div>
+
+          <div class="benefit-card scroll-animate">
+            <div class="benefit-icon">
+              <i class="fas fa-plane"></i>
+            </div>
+            <h4>Travel Coordination</h4>
+            <p>Smooth travel arrangements</p>
+          </div>
+
+          <div class="benefit-card scroll-animate">
+            <div class="benefit-icon">
+              <i class="fas fa-user-tie"></i>
+            </div>
+            <h4>Professional Guidance</h4>
+            <p>Expert guidance and support</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+      <div class="content-wrapper">
+        <h2 class="text-center heading-lg scroll-animate">
+          Frequently Asked Questions
+        </h2>
+        <p class="section-subtitle text-center scroll-animate">
+          Common questions answered
+        </p>
+
+        <div class="faq-container">
+          <div class="faq-item scroll-animate">
+            <div class="faq-question">
+              <span>How long does visa processing usually take?</span>
+              <span class="faq-toggle">▼</span>
+            </div>
+            <div class="faq-answer">
+              <div class="faq-answer-content">
+                Visa processing typically takes 2-4 weeks depending on the
+                employer and government processing times. We keep you informed
+                at every stage and ensure all documentation is prepared
+                correctly to avoid delays.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item scroll-animate">
+            <div class="faq-question">
+              <span>What kind of accommodation will I receive?</span>
+              <span class="faq-toggle">▼</span>
+            </div>
+            <div class="faq-answer">
+              <div class="faq-answer-content">
+                Most employers provide shared accommodation with basic amenities
+                including beds, kitchen facilities, and utilities. The exact
+                type depends on your employer and job role. We assist in
+                ensuring your accommodation meets acceptable standards.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item scroll-animate">
+            <div class="faq-question">
+              <span>Can I choose between Dubai and Abu Dhabi?</span>
+              <span class="faq-toggle">▼</span>
+            </div>
+            <div class="faq-answer">
+              <div class="faq-answer-content">
+                We take your preference into consideration, but final placement
+                depends on job availability, employer requirements, and your
+                qualifications. We discuss all options with you before
+                confirming any placement.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item scroll-animate">
+            <div class="faq-question">
+              <span>Will I pay any fees before traveling?</span>
+              <span class="faq-toggle">▼</span>
+            </div>
+            <div class="faq-answer">
+              <div class="faq-answer-content">
+                All fee structures are explained transparently from the
+                beginning. Some documentation and processing costs may apply,
+                but we provide a clear breakdown. No hidden fees are involved,
+                and all costs are discussed upfront.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item scroll-animate">
+            <div class="faq-question">
+              <span>How will I know my job role and location?</span>
+              <span class="faq-toggle">▼</span>
+            </div>
+            <div class="faq-answer">
+              <div class="faq-answer-content">
+                Once your application is reviewed and an employer is identified,
+                you'll receive a formal job offer letter detailing your role,
+                salary, location, accommodation, and all employment terms.
+                Nothing is finalized without your full knowledge and consent.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Final Information Section -->
+    <section class="final-section">
+      <div class="content-wrapper">
+        <div class="final-content scroll-animate">
+          <p>
+            Beginning a new journey abroad is a big step — and we're here to
+            guide you through it safely and confidently. Learn more by
+            contacting our team or visiting our office to discuss your next
+            steps.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Link Global Scripts -->
+    <script src="assets/src/general.js"></script>
+
+    <!-- Page-Specific Scripts -->
+    <script>
+      // Initialize general functionality
+      if (typeof initGeneral === "function") {
+        initGeneral();
+      }
+
+      // Scroll animations
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px",
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+          }
+        });
+      }, observerOptions);
+
+      document.querySelectorAll(".scroll-animate").forEach((el) => {
+        observer.observe(el);
+      });
+
+      // FAQ Accordion functionality
+      document.querySelectorAll(".faq-question").forEach((question) => {
+        question.addEventListener("click", () => {
+          const faqItem = question.parentElement;
+          const isActive = faqItem.classList.contains("active");
+
+          // Close all FAQ items
+          document.querySelectorAll(".faq-item").forEach((item) => {
+            item.classList.remove("active");
+          });
+
+          // Open clicked item if it wasn't active
+          if (!isActive) {
+            faqItem.classList.add("active");
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
