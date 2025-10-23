@@ -1,12 +1,29 @@
 /* Destination Hero Section */
 .destination-hero {
-  margin-top: 70px;
-  height: 65vh;
+  margin-top: 65px;
   position: relative;
   overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 100%;
+}
+
+/* Mobile devices (1023px and below) */
+@media (max-width: 1023px) {
+  .destination-hero {
+    margin-top: 65px;
+    height: auto;
+    aspect-ratio: 16/9;
+  }
+}
+
+/* Desktop devices (1024px and above) */
+@media (min-width: 1024px) {
+  .destination-hero {
+    margin-top: 80px;
+    height: 65vh;
+  }
 }
 
 .destination-hero-background {
@@ -38,10 +55,11 @@
   text-align: center;
   color: white;
   z-index: 1;
+  width: 100%;
 }
 
 .destination-hero-title {
-  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-size: clamp(1.5rem, 5vw, 3.5rem);
   font-weight: 700;
   color: white;
   margin-bottom: var(--spacing-md);
@@ -54,10 +72,11 @@
 .destination-hero-subtitle {
   color: rgba(255, 255, 255, 0.9);
   margin-bottom: var(--spacing-2xl);
-  font-size: clamp(1rem, 2vw, 1.3rem);
+  font-size: clamp(0.9rem, 2vw, 1.3rem);
   font-weight: 400;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
 }
+
 /* Section Styles */
 .destination-section {
   padding: 80px 0;
