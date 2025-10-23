@@ -540,21 +540,23 @@
         <div class="contact-form-container scroll-animate">
           <!-- Netlify form: name, data-netlify, honeypot, hidden form-name, action to thank-you -->
           <form
-            class="contact-form"
-            id="contactForm"
             name="contact"
             method="POST"
-            action="/thank-you"
             data-netlify="true"
             data-netlify-honeypot="bot-field"
+            action="/thank-you"
+            class="contact-form"
+            id="contactForm"
           >
-            <!-- Required hidden inputs for Netlify -->
+            <!-- Hidden input required by Netlify -->
             <input type="hidden" name="form-name" value="contact" />
-            <!-- honeypot field (visually hidden) -->
+
+            <!-- Honeypot field (spam trap) -->
             <div style="display: none">
               <label
-                >Don’t fill this out if you're human: <input name="bot-field"
-              /></label>
+                >Don’t fill this out if you're human:
+                <input name="bot-field" />
+              </label>
             </div>
 
             <div class="form-row">
