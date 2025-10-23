@@ -368,76 +368,63 @@
         line-height: 1.8;
       }
 
-      /* Job Categories Carousel */
-      .carousel-section {
+      /* Job Categories List - Replaced carousel with list */
+      .job-categories-section {
         background: var(--bg-primary);
-        overflow: hidden;
       }
 
-      .carousel-container {
-        position: relative;
-        overflow: hidden;
-        padding: 20px 0;
-        max-width: 1200px;
+      .job-categories-container {
+        max-width: 1200px; /* Changed from 1200px to 1536px */
         margin: 0 auto;
+        padding: 0 20px;
       }
 
-      .carousel-track {
+      .job-categories-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
+        margin-top: 50px;
+      }
+
+      .job-category-item {
         display: flex;
-        gap: 25px;
-        animation: scroll 25s linear infinite;
-      }
-
-      .carousel-track:hover {
-        animation-play-state: paused;
-      }
-
-      @keyframes scroll {
-        0% {
-          transform: translateX(0);
-        }
-        100% {
-          transform: translateX(calc(-100% / 2));
-        }
-      }
-
-      .job-card {
-        min-width: 200px;
-        height: 200px;
-        background: var(--card-bg-light);
-        border-radius: 50%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
+        align-items: flex-start;
         padding: 20px;
+        background: var(--card-bg-light);
+        border-radius: 12px;
         box-shadow: var(--shadow);
         transition: var(--transition);
-        flex-shrink: 0;
       }
 
-      .job-card:hover {
-        transform: scale(1.05);
+      .job-category-item:hover {
+        transform: translateY(-5px);
         box-shadow: var(--shadow-hover);
       }
 
-      .job-icon {
-        font-size: 2.5rem;
-        margin-bottom: 10px;
+      .job-category-icon {
+        width: 60px;
+        height: 60px;
+        min-width: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        background: rgba(var(--primary-color-rgb), 0.1);
+        margin-right: 20px;
+        font-size: 28px;
       }
 
-      .job-title {
+      .job-category-content h3 {
+        font-size: 18px;
         font-weight: 600;
-        text-align: center;
-        font-size: 1rem;
+        margin-bottom: 8px;
         color: var(--text-color);
       }
 
-      .job-desc {
-        font-size: 0.8rem;
+      .job-category-content p {
+        font-size: 14px;
         color: var(--text-muted);
-        text-align: center;
-        margin-top: 5px;
+        line-height: 1.5;
       }
 
       /* FAQ Section */
@@ -551,6 +538,10 @@
         .benefits-grid {
           grid-template-columns: repeat(2, 1fr);
         }
+
+        .job-categories-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
       }
 
       @media (max-width: 768px) {
@@ -579,6 +570,10 @@
 
         .benefits-grid {
           grid-template-columns: repeat(2, 1fr);
+        }
+
+        .job-categories-grid {
+          grid-template-columns: 1fr;
         }
       }
 
@@ -749,127 +744,118 @@
       </div>
     </section>
 
-    <!-- Job Categories Carousel -->
-    <section class="carousel-section">
-      <div class="content-wrapper">
+    <!-- Job Categories List - Replaced carousel with list -->
+    <section class="job-categories-section">
+      <div class="job-categories-container">
         <h2 class="text-center heading-md scroll-animate">
           Available Job Roles
         </h2>
         <p class="section-subtitle text-center scroll-animate">
           Opportunities across various sectors
         </p>
-      </div>
 
-      <div class="carousel-container">
-        <div class="carousel-track" id="carouselTrack">
-          <!-- First set of cards -->
-          <div class="job-card">
-            <div class="job-icon">🧹</div>
-            <div class="job-title">Cleaner</div>
-            <div class="job-desc">General support role</div>
+        <div class="job-categories-grid">
+          <div class="job-category-item scroll-animate">
+            <div class="job-category-icon">🧹</div>
+            <div class="job-category-content">
+              <h3>Cleaner</h3>
+              <p>
+                General support role with responsibilities for maintaining
+                cleanliness in various settings including offices, hotels, and
+                residential buildings.
+              </p>
+            </div>
           </div>
 
-          <div class="job-card">
-            <div class="job-icon">🧱</div>
-            <div class="job-title">Mason</div>
-            <div class="job-desc">Skilled trade role</div>
+          <div class="job-category-item scroll-animate">
+            <div class="job-category-icon">🧱</div>
+            <div class="job-category-content">
+              <h3>Mason</h3>
+              <p>
+                Skilled trade role involving construction work with bricks,
+                stones, and concrete blocks for building structures.
+              </p>
+            </div>
           </div>
 
-          <div class="job-card">
-            <div class="job-icon">🔨</div>
-            <div class="job-title">Carpenter</div>
-            <div class="job-desc">Skilled trade role</div>
+          <div class="job-category-item scroll-animate">
+            <div class="job-category-icon">🔨</div>
+            <div class="job-category-content">
+              <h3>Carpenter</h3>
+              <p>
+                Skilled trade role focused on constructing, installing, and
+                repairing structures and fixtures made of wood and other
+                materials.
+              </p>
+            </div>
           </div>
 
-          <div class="job-card">
-            <div class="job-icon">🔧</div>
-            <div class="job-title">Plumber</div>
-            <div class="job-desc">Technical role</div>
+          <div class="job-category-item scroll-animate">
+            <div class="job-category-icon">🔧</div>
+            <div class="job-category-content">
+              <h3>Plumber</h3>
+              <p>
+                Technical role involving installation and maintenance of
+                plumbing systems, pipes, and fixtures in residential and
+                commercial buildings.
+              </p>
+            </div>
           </div>
 
-          <div class="job-card">
-            <div class="job-icon">⚙️</div>
-            <div class="job-title">Steel Fixer</div>
-            <div class="job-desc">Specialized role</div>
+          <div class="job-category-item scroll-animate">
+            <div class="job-category-icon">⚙️</div>
+            <div class="job-category-content">
+              <h3>Steel Fixer</h3>
+              <p>
+                Specialized role focused on positioning and securing steel
+                reinforcement bars and mesh for concrete structures.
+              </p>
+            </div>
           </div>
 
-          <div class="job-card">
-            <div class="job-icon">🛡️</div>
-            <div class="job-title">Security Officer</div>
-            <div class="job-desc">Protection role</div>
+          <div class="job-category-item scroll-animate">
+            <div class="job-category-icon">🛡️</div>
+            <div class="job-category-content">
+              <h3>Security Officer</h3>
+              <p>
+                Protection role responsible for maintaining safety and security
+                of people, property, and assets in various settings.
+              </p>
+            </div>
           </div>
 
-          <div class="job-card">
-            <div class="job-icon">🤝</div>
-            <div class="job-title">General Helper</div>
-            <div class="job-desc">Support role</div>
+          <div class="job-category-item scroll-animate">
+            <div class="job-category-icon">🤝</div>
+            <div class="job-category-content">
+              <h3>General Helper</h3>
+              <p>
+                Support role providing assistance across various tasks and
+                activities in construction, maintenance, or operational
+                settings.
+              </p>
+            </div>
           </div>
 
-          <div class="job-card">
-            <div class="job-icon">👷</div>
-            <div class="job-title">Steel Fixer Foreman</div>
-            <div class="job-desc">Supervisory role</div>
+          <div class="job-category-item scroll-animate">
+            <div class="job-category-icon">👷</div>
+            <div class="job-category-content">
+              <h3>Steel Fixer Foreman</h3>
+              <p>
+                Supervisory role overseeing steel fixing operations, managing
+                teams, and ensuring quality and safety standards are met.
+              </p>
+            </div>
           </div>
 
-          <div class="job-card">
-            <div class="job-icon">➕</div>
-            <div class="job-title">And More</div>
-            <div class="job-desc">Various positions</div>
-          </div>
-
-          <!-- Duplicate set for seamless loop -->
-          <div class="job-card">
-            <div class="job-icon">🧹</div>
-            <div class="job-title">Cleaner</div>
-            <div class="job-desc">General support role</div>
-          </div>
-
-          <div class="job-card">
-            <div class="job-icon">🧱</div>
-            <div class="job-title">Mason</div>
-            <div class="job-desc">Skilled trade role</div>
-          </div>
-
-          <div class="job-card">
-            <div class="job-icon">🔨</div>
-            <div class="job-title">Carpenter</div>
-            <div class="job-desc">Skilled trade role</div>
-          </div>
-
-          <div class="job-card">
-            <div class="job-icon">🔧</div>
-            <div class="job-title">Plumber</div>
-            <div class="job-desc">Technical role</div>
-          </div>
-
-          <div class="job-card">
-            <div class="job-icon">⚙️</div>
-            <div class="job-title">Steel Fixer</div>
-            <div class="job-desc">Specialized role</div>
-          </div>
-
-          <div class="job-card">
-            <div class="job-icon">🛡️</div>
-            <div class="job-title">Security Officer</div>
-            <div class="job-desc">Protection role</div>
-          </div>
-
-          <div class="job-card">
-            <div class="job-icon">🤝</div>
-            <div class="job-title">General Helper</div>
-            <div class="job-desc">Support role</div>
-          </div>
-
-          <div class="job-card">
-            <div class="job-icon">👷</div>
-            <div class="job-title">Steel Fixer Foreman</div>
-            <div class="job-desc">Supervisory role</div>
-          </div>
-
-          <div class="job-card">
-            <div class="job-icon">➕</div>
-            <div class="job-title">And More</div>
-            <div class="job-desc">Various positions</div>
+          <div class="job-category-item scroll-animate">
+            <div class="job-category-icon">➕</div>
+            <div class="job-category-content">
+              <h3>And More</h3>
+              <p>
+                Various positions available across multiple sectors including
+                hospitality, retail, administration, and specialized trades.
+              </p>
+            </div>
           </div>
         </div>
       </div>
