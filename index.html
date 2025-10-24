@@ -1316,6 +1316,11 @@
         .section {
           margin-bottom: var(--spacing-xl);
         }
+
+        /* Hide hero navigation buttons on mobile devices */
+        .hero-nav {
+          display: none;
+        }
       }
 
       /* 2xl - 1280px */
@@ -2732,28 +2737,52 @@
           resetHeroAutoSlide();
         });
 
-        // Touch support
+        // Touch support - Enhanced for better mobile experience
         let touchStartX = 0;
         let touchEndX = 0;
+        let touchStartY = 0;
+        let touchEndY = 0;
 
         const heroSlider = document.querySelector(".hero-slider");
         if (heroSlider) {
-          heroSlider.addEventListener("touchstart", (e) => {
-            touchStartX = e.changedTouches[0].screenX;
-          });
+          heroSlider.addEventListener(
+            "touchstart",
+            (e) => {
+              touchStartX = e.changedTouches[0].screenX;
+              touchStartY = e.changedTouches[0].screenY;
+            },
+            { passive: true }
+          );
 
-          heroSlider.addEventListener("touchend", (e) => {
-            touchEndX = e.changedTouches[0].screenX;
-            handleSwipe();
-          });
+          heroSlider.addEventListener(
+            "touchend",
+            (e) => {
+              touchEndX = e.changedTouches[0].screenX;
+              touchEndY = e.changedTouches[0].screenY;
+              handleSwipe();
+            },
+            { passive: true }
+          );
 
           function handleSwipe() {
-            if (touchEndX < touchStartX - 50) {
-              nextHeroSlide();
-              resetHeroAutoSlide();
-            } else if (touchEndX > touchStartX + 50) {
-              prevHeroSlide();
-              resetHeroAutoSlide();
+            // Calculate horizontal and vertical distance
+            const deltaX = touchEndX - touchStartX;
+            const deltaY = touchEndY - touchStartY;
+
+            // Ensure the swipe is more horizontal than vertical
+            if (Math.abs(deltaX) > Math.abs(deltaY)) {
+              // Check if the swipe is significant enough
+              if (Math.abs(deltaX) > 50) {
+                if (deltaX < 0) {
+                  // Swipe left - go to next slide
+                  nextHeroSlide();
+                  resetHeroAutoSlide();
+                } else {
+                  // Swipe right - go to previous slide
+                  prevHeroSlide();
+                  resetHeroAutoSlide();
+                }
+              }
             }
           }
         }
