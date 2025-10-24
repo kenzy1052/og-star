@@ -22,7 +22,7 @@
 @media (min-width: 1024px) {
   .destination-hero {
     margin-top: 80px;
-    height: 65vh;
+    height: 70vh;
   }
 }
 
@@ -212,6 +212,7 @@
 
 .destination-card {
   background: var(--card-bg-light);
+  border: 1px solid var(--border-color);
   border-radius: var(--radius-lg);
   overflow: hidden;
   box-shadow: var(--shadow);

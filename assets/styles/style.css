@@ -24,6 +24,7 @@
   --bg-tertiary: #eef2f3;
   --bg-dark: #212529;
   --bg-darker: #141414;
+  --border-color: #ccc;
 
   /* === NAV & FOOTER === */
   --nav-bg: #ffffff;
@@ -59,7 +60,8 @@
   --spacing-2xl: 4rem;
   --spacing-3xl: 5rem;
   --spacing-4xl: 6rem;
-  --card-bg-light: #ffffff;
+  --card-bg-light: #f7f7f7;
+  --card-bg-light2: #fff;
   --card-bg-dark: #2a2a2a;
 }
 
@@ -82,6 +84,7 @@
     --bg-tertiary: #1e2a2a;
     --bg-dark: #0b1212;
     --bg-darker: #050909;
+    --border-color: #152020;
 
     --nav-bg: #121c1c;
     --nav-bg-dark: #000000;
@@ -92,6 +95,7 @@
     --gradient-accent: linear-gradient(135deg, #3fd0c6 0%, #ff8585 100%);
 
     --card-bg-light: #1f2a2a;
+    --card-bg-light2: #1f2a2a;
     --card-bg-dark: #121c1c;
   }
 }

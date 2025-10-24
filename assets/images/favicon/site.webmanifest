@@ -1,5 +1,5 @@
 {
-  "name": "OG-Star Travel & Tours",
+  "name": "OG-Star travel and Tours",
   "short_name": "OG-Star",
   "icons": [
     {
@@ -15,7 +15,7 @@
       "purpose": "maskable"
     }
   ],
-  "theme_color": "#000000",
-  "background_color": "#ffffff",
+  "theme_color": "#121212",
+  "background_color": "#000000",
   "display": "standalone"
 }

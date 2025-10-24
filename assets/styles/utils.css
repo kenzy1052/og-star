@@ -232,301 +232,43 @@
 
 /* xs - Default (mobile first) */
 .heading-xs {
-  font-size: 1.25rem;
+  font-size: clamp(1rem, 2.5vw, 1.25rem);
 }
 
 .heading-sm {
-  font-size: 1.5rem;
+  font-size: clamp(1.25rem, 2.5vw, 1.5rem);
 }
 
 .heading-md {
-  font-size: 1.75rem;
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
 }
 
 .heading-lg {
-  font-size: 2rem;
+  font-size: clamp(1.75rem, 2.5vw, 2.25rem);
 }
 
 .heading-xl {
-  font-size: 2.5rem;
+  font-size: clamp(2rem, 2.5vw, 2.5rem);
 }
 
 .subtitle-xs {
-  font-size: 1rem;
+  font-size: 0.8rem;
 }
 
 .subtitle-sm {
-  font-size: 1.125rem;
+  font-size: 0.9rem;
 }
 
 .subtitle-md {
-  font-size: 1.25rem;
+  font-size: clamp(1rem, 2.5vw, 1.1rem);
 }
 
 .subtitle-lg {
-  font-size: 1.5rem;
+  font-size: clamp(1.1rem, 2.5vw, 1.25rem);
 }
 
 .subtitle-xl {
-  font-size: 1.75rem;
-}
-
-/* sm - 475px */
-@media (min-width: 475px) {
-  .heading-xs {
-    font-size: 1.375rem;
-  }
-
-  .heading-sm {
-    font-size: 1.625rem;
-  }
-
-  .heading-md {
-    font-size: 1.875rem;
-  }
-
-  .heading-lg {
-    font-size: 2.125rem;
-  }
-
-  .heading-xl {
-    font-size: 2.625rem;
-  }
-
-  .subtitle-xs {
-    font-size: 1.125rem;
-  }
-
-  .subtitle-sm {
-    font-size: 1.25rem;
-  }
-
-  .subtitle-md {
-    font-size: 1.375rem;
-  }
-
-  .subtitle-lg {
-    font-size: 1.625rem;
-  }
-
-  .subtitle-xl {
-    font-size: 1.875rem;
-  }
-}
-
-/* md - 640px */
-@media (min-width: 640px) {
-  .heading-xs {
-    font-size: 1.5rem;
-  }
-
-  .heading-sm {
-    font-size: 1.75rem;
-  }
-
-  .heading-md {
-    font-size: 2rem;
-  }
-
-  .heading-lg {
-    font-size: 2.25rem;
-  }
-
-  .heading-xl {
-    font-size: 2.75rem;
-  }
-
-  .subtitle-xs {
-    font-size: 1.25rem;
-  }
-
-  .subtitle-sm {
-    font-size: 1.375rem;
-  }
-
-  .subtitle-md {
-    font-size: 1.5rem;
-  }
-
-  .subtitle-lg {
-    font-size: 1.75rem;
-  }
-
-  .subtitle-xl {
-    font-size: 2rem;
-  }
-}
-
-/* lg - 768px */
-@media (min-width: 768px) {
-  .heading-xs {
-    font-size: 1.625rem;
-  }
-
-  .heading-sm {
-    font-size: 1.875rem;
-  }
-
-  .heading-md {
-    font-size: 2.125rem;
-  }
-
-  .heading-lg {
-    font-size: 2.5rem;
-  }
-
-  .heading-xl {
-    font-size: 3rem;
-  }
-
-  .subtitle-xs {
-    font-size: 1.375rem;
-  }
-
-  .subtitle-sm {
-    font-size: 1.5rem;
-  }
-
-  .subtitle-md {
-    font-size: 1.625rem;
-  }
-
-  .subtitle-lg {
-    font-size: 1.875rem;
-  }
-
-  .subtitle-xl {
-    font-size: 2.125rem;
-  }
-}
-
-/* xl - 1024px */
-@media (min-width: 1024px) {
-  .heading-xs {
-    font-size: 1.75rem;
-  }
-
-  .heading-sm {
-    font-size: 2rem;
-  }
-
-  .heading-md {
-    font-size: 2.25rem;
-  }
-
-  .heading-lg {
-    font-size: 2.75rem;
-  }
-
-  .heading-xl {
-    font-size: 3.25rem;
-  }
-
-  .subtitle-xs {
-    font-size: 1.5rem;
-  }
-
-  .subtitle-sm {
-    font-size: 1.625rem;
-  }
-
-  .subtitle-md {
-    font-size: 1.75rem;
-  }
-
-  .subtitle-lg {
-    font-size: 2rem;
-  }
-
-  .subtitle-xl {
-    font-size: 2.25rem;
-  }
-}
-
-/* 2xl - 1280px */
-@media (min-width: 1280px) {
-  .heading-xs {
-    font-size: 1.875rem;
-  }
-
-  .heading-sm {
-    font-size: 2.125rem;
-  }
-
-  .heading-md {
-    font-size: 2.5rem;
-  }
-
-  .heading-lg {
-    font-size: 3rem;
-  }
-
-  .heading-xl {
-    font-size: 3.5rem;
-  }
-
-  .subtitle-xs {
-    font-size: 1.625rem;
-  }
-
-  .subtitle-sm {
-    font-size: 1.75rem;
-  }
-
-  .subtitle-md {
-    font-size: 1.875rem;
-  }
-
-  .subtitle-lg {
-    font-size: 2.125rem;
-  }
-
-  .subtitle-xl {
-    font-size: 2.5rem;
-  }
-}
-
-/* 3xl - 1536px */
-@media (min-width: 1536px) {
-  .heading-xs {
-    font-size: 2rem;
-  }
-
-  .heading-sm {
-    font-size: 2.25rem;
-  }
-
-  .heading-md {
-    font-size: 2.75rem;
-  }
-
-  .heading-lg {
-    font-size: 3.25rem;
-  }
-
-  .heading-xl {
-    font-size: 3.75rem;
-  }
-
-  .subtitle-xs {
-    font-size: 1.75rem;
-  }
-
-  .subtitle-sm {
-    font-size: 1.875rem;
-  }
-
-  .subtitle-md {
-    font-size: 2rem;
-  }
-
-  .subtitle-lg {
-    font-size: 2.25rem;
-  }
-
-  .subtitle-xl {
-    font-size: 2.75rem;
-  }
+  font-size: clamp(1.25rem, 2.5vw, 1.5rem);
 }
 
 /* ===========================================

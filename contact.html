@@ -80,6 +80,15 @@
         padding: 0 20px;
       }
 
+      .content-container h2 {
+        margin-bottom: 0;
+      }
+
+      .content-container p {
+        margin-bottom: 1.5rem;
+        color: var(--secondary-color);
+      }
+
       /* Contact Info Section */
       .contact-info-section {
         padding: 80px 0;
@@ -94,7 +103,7 @@
       }
 
       .contact-info-card {
-        background: var(--card-bg-light);
+        background: var(--card-bg-light2);
         padding: 40px 30px;
         border-radius: var(--radius-lg);
         text-align: center;
@@ -121,8 +130,8 @@
       }
 
       .contact-info-icon {
-        width: 80px;
-        height: 80px;
+        width: 50px;
+        height: 50px;
         margin: 0 auto 25px;
         background: var(--gradient-primary);
         border-radius: 50%;
@@ -130,8 +139,8 @@
         align-items: center;
         justify-content: center;
         color: white;
-        font-size: 2rem;
-        box-shadow: 0 8px 16px rgba(46, 196, 182, 0.3);
+        font-size: 1rem;
+        box-shadow: 0 2px 12px rgba(46, 196, 182, 0.2);
       }
 
       .contact-info-card h3 {
@@ -143,7 +152,8 @@
       .contact-info-card p {
         color: var(--text-muted);
         margin-bottom: 0;
-        line-height: 1.6;
+        line-height: 1.4;
+        font-size: 0.9rem;
       }
 
       .contact-info-card a {
@@ -309,71 +319,6 @@
         line-height: 1.6;
       }
 
-      /* FAQ Section */
-      .faq-section {
-        padding: 80px 0;
-        background: var(--bg-secondary);
-      }
-
-      .faq-container {
-        max-width: 900px;
-        margin: 50px auto 0;
-      }
-
-      .faq-item {
-        background: var(--card-bg-light);
-        margin-bottom: 20px;
-        border-radius: var(--radius-md);
-        overflow: hidden;
-        box-shadow: var(--shadow);
-        transition: var(--transition);
-      }
-
-      .faq-item:hover {
-        box-shadow: var(--shadow-hover);
-      }
-
-      .faq-question {
-        padding: 25px 30px;
-        cursor: pointer;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        font-weight: 600;
-        color: var(--text-color);
-        user-select: none;
-      }
-
-      .faq-question:hover {
-        background: var(--bg-tertiary);
-      }
-
-      .faq-toggle {
-        font-size: 1.5rem;
-        color: var(--primary-color);
-        transition: var(--transition);
-      }
-
-      .faq-item.active .faq-toggle {
-        transform: rotate(180deg);
-      }
-
-      .faq-answer {
-        max-height: 0;
-        overflow: hidden;
-        transition: max-height 0.3s ease;
-      }
-
-      .faq-answer-content {
-        padding: 0 30px 25px;
-        color: var(--text-muted);
-        line-height: 1.8;
-      }
-
-      .faq-item.active .faq-answer {
-        max-height: 500px;
-      }
-
       /* Responsive Design */
       @media (max-width: 768px) {
         .form-row {
@@ -421,9 +366,7 @@
           <nav class="nav-center" aria-label="Main navigation">
             <ul class="nav-menu" role="menubar">
               <li class="nav-item" role="none">
-                <a href="index.html" class="nav-link active" role="menuitem"
-                  >Home</a
-                >
+                <a href="index.html" class="nav-link" role="menuitem">Home</a>
               </li>
               <li class="nav-item" role="none">
                 <a href="services.html" class="nav-link" role="menuitem"
@@ -441,7 +384,7 @@
                 >
               </li>
               <li class="nav-item" role="none">
-                <a href="contact.html" class="nav-link" role="menuitem"
+                <a href="contact.html" class="nav-link active" role="menuitem"
                   >Contact</a
                 >
               </li>
@@ -510,8 +453,11 @@
             </div>
             <h3>Office Address</h3>
             <p>
-              Dome-CFC Estate, Near the Dome Market, P.O BOX MS 46 New Achimota,
-              Accra - Ghana
+              <strong>LOCATION:</strong> Dome-CFC Estate, Near Achimota Mall
+            </p>
+            <p>
+              <strong>ADDRESS:</strong> P.O BOX MS 446 New Achimota, Accra -
+              Ghana
             </p>
           </div>
 
@@ -520,7 +466,7 @@
               <i class="fas fa-phone"></i>
             </div>
             <h3>Phone Number</h3>
-            <p><a href="tel:+2330242613372">+233 (0) 242613372</a></p>
+            <p><a href="tel:+2330242613372">+233 (0) 242 613 372</a></p>
           </div>
 
           <div class="contact-info-card scroll-animate">
@@ -529,7 +475,9 @@
             </div>
             <h3>Email Address</h3>
             <p>
-              <a href="mailto:j.asamoah@yahoo.com">j.asamoah@yahoo.com</a>
+              <a href="mailto:ogstartravelandtours@gmail.com"
+                >ogstartravelandtours@gmail.com</a
+              >
             </p>
           </div>
 
@@ -667,23 +615,6 @@
       </div>
     </section>
 
-    <!-- FAQ Section -->
-    <section class="faq-section">
-      <div class="content-container">
-        <h2 class="heading-md text-center scroll-animate">
-          Frequently Asked Questions
-        </h2>
-        <p class="subtitle-md text-center scroll-animate">
-          Find answers to common questions
-        </p>
-
-        <div class="faq-container">
-          <!-- faq items unchanged -->
-          <!-- ... -->
-        </div>
-      </div>
-    </section>
-
     <!-- Footer -->
     <div>
       <footer class="footer" id="contact">
@@ -730,7 +661,9 @@
               </div>
               <div class="contact-item">
                 <i class="fas fa-envelope"></i>
-                <a href="mailto:j.asamoah@yahoo.com">j.asamoah@yahoo.com</a>
+                <a href="mailto:ogstartravelandtours@gmail.com"
+                  >ogstartravelandtours@gmail.com</a
+                >
               </div>
               <div class="contact-item">
                 <i class="fas fa-phone"></i>
@@ -796,29 +729,7 @@
         observer.observe(el);
       });
 
-      // FAQ Accordion functionality (unchanged)
-      document.querySelectorAll(".faq-question").forEach((question) => {
-        question.addEventListener("click", () => {
-          const faqItem = question.parentElement;
-          const isActive = faqItem.classList.contains("active");
-
-          // Close all FAQ items
-          document.querySelectorAll(".faq-item").forEach((item) => {
-            item.classList.remove("active");
-          });
-
-          // Open clicked item if it wasn't active
-          if (!isActive) {
-            faqItem.classList.add("active");
-          }
-        });
-      });
-
       // Remove JS form preventDefault so Netlify receives real POST.
-      // If you want to handle the form via fetch instead, let me know and I will convert it.
-      // For now keep the form default submit behaviour (Netlify will capture it).
-      // We leave this event listener in case you want to show client-side UX before redirect (not required)
-      // but it does not prevent form submission.
       document
         .getElementById("contactForm")
         .addEventListener("submit", function (e) {

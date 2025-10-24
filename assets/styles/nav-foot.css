@@ -639,6 +639,16 @@ body.menu-open {
   color: var(--emerald);
 }
 
+/* Location specific styling */
+.contact-item.location i {
+  color: #e74c3c; /* Red color for location marker */
+}
+
+/* Address specific styling */
+.contact-item.address i {
+  color: #3498db; /* Blue color for address */
+}
+
 /* Responsive adjustments for contact info */
 @media (max-width: 768px) {
   .contact-item {
