@@ -1,0 +1,309 @@
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    if (typeof initGeneral === "function") {
+      initGeneral();
+    }
+
+    // Initialize all sections safely
+    if (document.querySelector(".gallery-card")) initGalleryRotating();
+    if (document.getElementById("lightbox")) initGalleryLightbox();
+    if (document.getElementById("toursTrack")) initToursCarousel();
+  });
+
+  // ================================
+  // GALLERY ROTATING CARDS
+  // ================================
+  function initGalleryRotating() {
+    const cards = document.querySelectorAll(".gallery-card");
+    const totalCards = cards.length;
+    if (totalCards === 0) return;
+
+    let currentCard = 0;
+
+    function rotateCards() {
+      cards.forEach((card, index) => {
+        card.classList.remove("front", "left", "right", "back");
+
+        const cardIndex = (currentCard + index) % totalCards;
+        if (cardIndex === 0) card.classList.add("front");
+        else if (cardIndex === 1) card.classList.add("right");
+        else if (cardIndex === totalCards - 1) card.classList.add("left");
+        else card.classList.add("back");
+      });
+
+      currentCard = (currentCard + 1) % totalCards;
+    }
+
+    rotateCards();
+    setInterval(rotateCards, 3000);
+
+    cards.forEach((card, i) => {
+      card.setAttribute("data-index", i);
+      card.addEventListener("click", () => openLightbox(i));
+    });
+  }
+
+  // ================================
+  // LIGHTBOX CORE
+  // ================================
+  function initGalleryLightbox() {
+    const images = [
+      "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=1600&h=1200&fit=crop",
+      "https://images.unsplash.com/photo-1582672060674-bc2bd808a8b5?w=1600&h=1200&fit=crop",
+      "https://images.unsplash.com/photo-1518684079-3c830dcef090?w=1600&h=1200&fit=crop",
+      "https://images.unsplash.com/photo-1580674684081-7617fbf3d745?w=1600&h=1200&fit=crop",
+    ];
+
+    let currentImageIndex = 0;
+    let lightboxHistoryState = null;
+
+    const transform = { scale: 1, translateX: 0, translateY: 0 };
+
+    const PAN_SENSITIVITY = 2;
+    const DOUBLE_TAP_DELAY = 200;
+    const TAP_MOVEMENT_THRESHOLD = 10;
+    const SWIPE_THRESHOLD = 30;
+    const PINCH_THRESHOLD = 5;
+
+    function updateTransform() {
+      const container = document.getElementById("lightboxImageContainer");
+      if (!container) return;
+      container.style.transform = `translate(${transform.translateX}px, ${transform.translateY}px) scale(${transform.scale})`;
+      container.classList.toggle("zoomed", transform.scale > 1.01);
+    }
+
+    function resetTransform() {
+      transform.scale = 1;
+      transform.translateX = 0;
+      transform.translateY = 0;
+      updateTransform();
+    }
+
+    function openLightbox(index) {
+      const lightbox = document.getElementById("lightbox");
+      const imageEl = document.getElementById("lightboxImage");
+      const counter = document.getElementById("lightboxCounter");
+
+      if (!lightbox || !imageEl) return;
+
+      currentImageIndex = index;
+      imageEl.src = images[currentImageIndex];
+      counter.textContent = `Image ${currentImageIndex + 1} of ${
+        images.length
+      }`;
+      lightbox.classList.add("active");
+      document.body.style.overflow = "hidden";
+
+      resetTransform();
+      setupKeyboardEvents();
+      setupMouseWheelZoom();
+      pushLightboxHistory();
+    }
+
+    function closeLightbox() {
+      const lightbox = document.getElementById("lightbox");
+      if (!lightbox) return;
+
+      lightbox.classList.remove("active");
+      document.body.style.overflow = "auto";
+      removeKeyboardEvents();
+      removeMouseWheelZoom();
+      removeLightboxHistory();
+    }
+
+    function previousImage() {
+      currentImageIndex =
+        currentImageIndex > 0 ? currentImageIndex - 1 : images.length - 1;
+      updateLightboxImage();
+    }
+
+    function nextImage() {
+      currentImageIndex =
+        currentImageIndex < images.length - 1 ? currentImageIndex + 1 : 0;
+      updateLightboxImage();
+    }
+
+    function updateLightboxImage() {
+      const imageEl = document.getElementById("lightboxImage");
+      const counter = document.getElementById("lightboxCounter");
+      if (!imageEl) return;
+
+      imageEl.src = images[currentImageIndex];
+      if (counter)
+        counter.textContent = `Image ${currentImageIndex + 1} of ${
+          images.length
+        }`;
+      resetTransform();
+    }
+
+    function setupKeyboardEvents() {
+      document.addEventListener("keydown", handleKeyDown);
+    }
+
+    function removeKeyboardEvents() {
+      document.removeEventListener("keydown", handleKeyDown);
+    }
+
+    function handleKeyDown(e) {
+      const lightbox = document.getElementById("lightbox");
+      if (!lightbox || !lightbox.classList.contains("active")) return;
+
+      if (e.key === "Escape") closeLightbox();
+      else if (e.key === "ArrowLeft") previousImage();
+      else if (e.key === "ArrowRight") nextImage();
+    }
+
+    function setupMouseWheelZoom() {
+      const lightbox = document.getElementById("lightbox");
+      if (!lightbox) return;
+      lightbox.addEventListener("wheel", handleWheel, { passive: false });
+    }
+
+    function removeMouseWheelZoom() {
+      const lightbox = document.getElementById("lightbox");
+      if (!lightbox) return;
+      lightbox.removeEventListener("wheel", handleWheel);
+    }
+
+    function handleWheel(e) {
+      e.preventDefault();
+      const zoomSpeed = 0.008;
+      const zoomDelta = -e.deltaY * zoomSpeed;
+      const newScale = Math.max(1, Math.min(5, transform.scale + zoomDelta));
+      transform.scale = newScale;
+      updateTransform();
+    }
+
+    // HISTORY HANDLING
+    function pushLightboxHistory() {
+      lightboxHistoryState = { lightbox: true, index: currentImageIndex };
+      history.pushState(lightboxHistoryState, "");
+      window.addEventListener("popstate", handlePopState);
+    }
+
+    function removeLightboxHistory() {
+      if (lightboxHistoryState) {
+        history.back();
+        lightboxHistoryState = null;
+      }
+      window.removeEventListener("popstate", handlePopState);
+    }
+
+    function handlePopState(event) {
+      if (!event.state || !event.state.lightbox) closeLightbox();
+    }
+  }
+
+  // ================================
+  // TOURS CAROUSEL
+  // ================================
+  function initToursCarousel() {
+    const tours = [
+      {
+        title: "Nairobi Adventure",
+        location: "Nairobi, Kenya",
+        image:
+          "https://images.unsplash.com/photo-1523805009345-7448845a9e53?w=800",
+        link: "nairobi-adventure.html",
+      },
+      {
+        title: "Bali & Malaysia",
+        location: "Bali & Kuala Lumpur",
+        image:
+          "https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=800",
+        link: "bali-malaysia.html",
+      },
+      {
+        title: "Johannesburg Special",
+        location: "Johannesburg, South Africa",
+        image:
+          "https://images.unsplash.com/photo-1577948000111-9c970dfe3743?w=800",
+        link: "johannesburg-special.html",
+      },
+      {
+        title: "Morocco Magic",
+        location: "Marrakech, Morocco",
+        image:
+          "https://images.unsplash.com/photo-1489749798305-4fea3ae63d43?w=800",
+        link: "morocco-magic.html",
+      },
+      {
+        title: "Mombasa Feeling",
+        location: "Mombasa, Kenya",
+        image:
+          "https://images.unsplash.com/photo-1590521781837-d074a9c00c60?w=800",
+        link: "mombasa-feeling.html",
+      },
+    ];
+
+    const track = document.getElementById("toursTrack");
+    const dotsContainer = document.getElementById("carouselDots");
+    if (!track || !dotsContainer) return;
+
+    let currentSlide = 0;
+    let autoplayInterval;
+    const totalSlides = tours.length;
+
+    tours.forEach((tour) => {
+      const card = document.createElement("a");
+      card.href = tour.link;
+      card.className = "tour-card";
+      card.innerHTML = `
+        <img src="${tour.image}" alt="${tour.title}" class="tour-card-image" />
+        <div class="tour-card-content">
+          <h3>${tour.title}</h3>
+          <div class="tour-card-location">
+            <i class="fas fa-map-marker-alt"></i> ${tour.location}
+          </div>
+        </div>
+      `;
+      track.appendChild(card);
+    });
+
+    for (let i = 0; i < totalSlides; i++) {
+      const dot = document.createElement("span");
+      dot.className = "carousel-dot" + (i === 0 ? " active" : "");
+      dot.addEventListener("click", () => goToSlide(i));
+      dotsContainer.appendChild(dot);
+    }
+
+    function updateCarousel() {
+      const cardWidth = 280;
+      const gap = 20;
+      const offset = currentSlide * (cardWidth + gap);
+      track.style.transform = `translateX(-${offset}px)`;
+
+      document
+        .querySelectorAll(".carousel-dot")
+        .forEach((dot, i) =>
+          dot.classList.toggle("active", i === currentSlide)
+        );
+    }
+
+    function nextSlide() {
+      currentSlide = (currentSlide + 1) % totalSlides;
+      updateCarousel();
+    }
+
+    function goToSlide(i) {
+      currentSlide = i;
+      updateCarousel();
+      resetAutoplay();
+    }
+
+    function startAutoplay() {
+      autoplayInterval = setInterval(nextSlide, 3000);
+    }
+
+    function resetAutoplay() {
+      clearInterval(autoplayInterval);
+      startAutoplay();
+    }
+
+    track.addEventListener("mouseenter", () => clearInterval(autoplayInterval));
+    track.addEventListener("mouseleave", startAutoplay);
+
+    updateCarousel();
+    startAutoplay();
+  }
+</script>
