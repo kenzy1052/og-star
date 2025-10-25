@@ -31,6 +31,125 @@
     <!-- Page-Specific Styles -->
     <style>
       /* ============================================
+           CSS VARIABLES FOR RESPONSIVE CAROUSEL
+        ============================================ */
+      :root {
+        /* === BRAND COLORS === */
+        --primary-color: #2ec4b6;
+        --secondary-color: #ff6b6b;
+        --accent-color: coral;
+        --highlight-color: #118ab2;
+
+        /* === TEXT COLORS === */
+        --text-color: #1a1a1a;
+        --text-muted: #6c757d;
+        --text-light: #ffffff;
+
+        /* === BACKGROUNDS === */
+        --bg-primary: #ffffff;
+        --bg-secondary: #f6f9fa;
+        --bg-tertiary: #eef2f3;
+        --bg-dark: #212529;
+        --bg-darker: #141414;
+
+        /* === GRADIENTS === */
+        --gradient-primary: linear-gradient(135deg, #2ec4b6 0%, #118ab2 100%);
+        --gradient-secondary: linear-gradient(135deg, #ff6b6b 0%, #ffd166 100%);
+        --gradient-accent: linear-gradient(135deg, #2ec4b6 0%, #ff6b6b 100%);
+
+        /* === EFFECTS === */
+        --shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        --shadow-hover: 0 10px 20px rgba(0, 0, 0, 0.15);
+        --transition: all 0.3s ease-in-out;
+        --radius-sm: 0.25rem;
+        --radius-md: 0.75rem;
+        --radius-lg: 1.25rem;
+
+        /* === TYPOGRAPHY === */
+        --font-primary: "Poppins", sans-serif;
+        --font-secondary: "Montserrat", sans-serif;
+        --font-elegant: "Playfair Display", serif;
+
+        /* === LAYOUT === */
+        --spacing-xs: 0.5rem;
+        --spacing-sm: 1rem;
+        --spacing-md: 1.5rem;
+        --spacing-lg: 2rem;
+        --spacing-xl: 3rem;
+        --spacing-2xl: 4rem;
+        --spacing-3xl: 5rem;
+        --spacing-4xl: 6rem;
+        --card-bg-light: #ffffff;
+        --card-bg-dark: #2a2a2a;
+      }
+
+      /* Dark Theme */
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --primary-color: #3fd0c6;
+          --secondary-color: #ff8585;
+          --accent-color: #ffd042ff;
+          --highlight-color: #48cae4;
+
+          --text-color: #f5f5f5;
+          --text-muted: #b0b0b0;
+          --text-light: #ffffff;
+
+          --bg-primary: #0e1a1a;
+          --bg-secondary: #152020;
+          --bg-tertiary: #1e2a2a;
+          --bg-dark: #0b1212;
+          --bg-darker: #050909;
+
+          --gradient-primary: linear-gradient(135deg, #3fd0c6 0%, #48cae4 100%);
+          --gradient-secondary: linear-gradient(
+            135deg,
+            #ff8585 0%,
+            #ffe080 100%
+          );
+          --gradient-accent: linear-gradient(135deg, #3fd0c6 0%, #ff8585 100%);
+
+          --card-bg-light: #1f2a2a;
+          --card-bg-dark: #121c1c;
+        }
+      }
+
+      /* Base Styles */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: var(--font-primary);
+        line-height: 1.6;
+        color: var(--text-color);
+        background: var(--bg-primary);
+        overflow-x: hidden;
+      }
+
+      /* Responsive Breakpoints for Carousel */
+      /* xs - Default (mobile first) */
+      .tours-carousel-wrapper {
+        --tours-count: 1;
+      }
+
+      /* md - 640px */
+      @media (min-width: 640px) {
+        .tours-carousel-wrapper {
+          --tours-count: 2;
+        }
+      }
+
+      /* xl - 1024px */
+      @media (min-width: 1024px) {
+        .tours-carousel-wrapper {
+          --tours-count: 4;
+        }
+      }
+
+      /* ============================================
            PAGE CONTENT WIDTH
         ============================================ */
       .page-content {
@@ -143,7 +262,8 @@
         border-radius: 5px;
         overflow: hidden;
         box-shadow: var(--shadow-lg);
-        transition: transform 0.3s ease;
+        transition: transform 0.8s cubic-bezier(0.22, 0.9, 0.35, 1),
+          opacity 0.8s ease;
         cursor: pointer;
         background: var(--bg-primary);
         padding: 4px;
@@ -500,7 +620,7 @@
       }
 
       /* ============================================
-           TOURS CAROUSEL SECTION - FIXED
+           TOURS CAROUSEL SECTION - IMPROVED
         ============================================ */
       .other-tours-section {
         padding: 60px 0;
@@ -520,62 +640,78 @@
         text-transform: uppercase;
       }
 
+      /* Carousel common */
       .tours-carousel-wrapper {
         position: relative;
         overflow: hidden;
         margin: 0 auto;
-        padding: 10px 0;
       }
-
       .tours-carousel-track {
         display: flex;
         gap: 20px;
-        transition: transform 0.6s ease;
+        transition: transform 0.6s cubic-bezier(0.22, 0.9, 0.35, 1),
+          opacity 0.35s linear;
         will-change: transform;
+        cursor: grab;
+        align-items: stretch;
+      }
+      .tours-carousel-track.grabbing {
+        cursor: grabbing;
       }
 
+      .carousel-dots {
+        margin-top: 18px;
+        display: flex;
+        justify-content: center;
+        gap: 8px;
+      }
+      .carousel-dots .dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: #d3d3d3;
+        cursor: pointer;
+        transition: background 0.25s;
+      }
+      .carousel-dots .dot.active {
+        background: var(--primary-color);
+      }
+
+      /* Card base */
       .tour-card {
-        flex: 0 0 auto;
-        width: calc(100% - 40px);
-        max-width: 300px;
-        background: var(--card-bg-light);
+        background: var(--bg-primary);
+        /* border-radius: 5px; */
+        /* box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08); */
+        border: 1px solid var(--border-color);
         border-radius: 5px;
         overflow: hidden;
-        box-shadow: var(--shadow);
-        transition: var(--transition);
-        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        min-height: 100%;
+        transform-origin: center;
+        opacity: 0.98;
+        transition: transform 0.25s cubic-bezier(0.22, 0.9, 0.35, 1),
+          opacity 0.4s linear;
         text-decoration: none;
         color: inherit;
-        display: block;
-        padding: 4px;
+        padding: 3px;
       }
-
-      @media (min-width: 640px) {
-        .tour-card {
-          width: calc(50% - 30px);
-        }
-      }
-
-      @media (min-width: 1024px) {
-        .tour-card {
-          width: calc(25% - 18px);
-        }
-      }
-
       .tour-card:hover {
-        transform: translateY(-10px);
-        box-shadow: var(--shadow-hover);
+        transform: scale(1.05);
+      }
+
+      /* small fade increase when flagged in view */
+      .in-view {
+        opacity: 1;
       }
 
       .tour-card-image {
-        /* width: calc(100% - 6px); */
         width: 100%;
         height: 200px;
         object-fit: cover;
         display: block;
-        /* margin: 3px; */
-        border-top-left-radius: 5px;
-        border-top-right-radius: 5px;
+        border-top-left-radius: 3px;
+        border-top-right-radius: 3px;
       }
 
       .tour-card-content {
@@ -599,29 +735,6 @@
       .tour-card-location i {
         margin-right: 0.5rem;
         color: var(--primary-color);
-      }
-
-      .carousel-dots {
-        display: flex;
-        justify-content: center;
-        gap: 8px;
-        margin-top: 2rem;
-      }
-
-      .carousel-dot {
-        width: 10px;
-        height: 10px;
-        border-radius: 50%;
-        background: #d3d3d3;
-        cursor: pointer;
-        transition: var(--transition);
-        border: none;
-        padding: 0;
-      }
-
-      .carousel-dot.active {
-        background: var(--primary-color);
-        transform: scale(1.2);
       }
 
       /* ============================================
@@ -802,6 +915,16 @@
         .lightbox-bottom-bar {
           display: none;
         }
+      }
+
+      /* helpful utility to force stable heights */
+      .tours-carousel-track > * {
+        display: block;
+      }
+
+      html,
+      body {
+        overflow-x: hidden;
       }
     </style>
   </head>
@@ -988,9 +1111,11 @@
           <h2 class="other-tours-title">Explore Other Destinations</h2>
         </div>
         <div class="tours-carousel-wrapper" id="toursCarousel">
-          <div class="tours-carousel-track" id="toursTrack"></div>
+          <div class="tours-carousel-track" id="toursTrack">
+            <!-- Tour cards will be dynamically added here -->
+          </div>
+          <div class="carousel-dots" id="carouselDots"></div>
         </div>
-        <div class="carousel-dots" id="carouselDots"></div>
       </div>
     </section>
 
@@ -1726,7 +1851,7 @@
       }
 
       // ===================================
-      // TOURS CAROUSEL - FIXED
+      // TOURS CAROUSEL - IMPROVED
       // ===================================
       function initToursCarousel() {
         console.log("Initializing Tours Carousel...");
@@ -1804,156 +1929,372 @@
           },
         ];
 
-        const track = document.getElementById("toursTrack");
-        const dotsContainer = document.getElementById("carouselDots");
-        const wrapper = document.getElementById("toursCarousel");
-
-        if (!track || !dotsContainer || !wrapper) {
-          console.error("Carousel elements not found!");
-          return;
-        }
-
-        let currentSlide = 0;
-        let autoplayInterval;
-
-        // Get visible cards based on screen size
-        function getVisibleCards() {
-          if (window.innerWidth >= 1024) return 4;
-          if (window.innerWidth >= 640) return 2;
-          return 1;
-        }
-
-        let visibleCards = getVisibleCards();
-
-        // Create carousel cards
-        tours.forEach((tour, index) => {
-          const card = document.createElement("a");
-          card.href = tour.link;
-          card.className = "tour-card";
-          card.innerHTML = `
-            <img src="${tour.image}" alt="${tour.title}" class="tour-card-image" loading="lazy" />
-            <div class="tour-card-content">
-              <h3 class="tour-card-title">${tour.title}</h3>
-              <div class="tour-card-location">
-                <i class="fas fa-map-marker-alt"></i>
-                <span>${tour.location}</span>
-              </div>
-            </div>
-          `;
-          track.appendChild(card);
-          console.log(`Added card ${index + 1}: ${tour.title}`);
+        // Initialize the improved carousel
+        new CircularCarousel({
+          wrapperId: "toursCarousel",
+          trackId: "toursTrack",
+          dotsId: "carouselDots",
+          autoMs: 3000,
+          toursData: tours,
         });
-
-        // Clone cards for infinite loop effect
-        const cards = track.querySelectorAll(".tour-card");
-        cards.forEach((card) => {
-          const clone = card.cloneNode(true);
-          track.appendChild(clone);
-        });
-
-        const totalSlides = tours.length;
-        console.log(
-          `Total slides: ${totalSlides}, Visible cards: ${visibleCards}`
-        );
-
-        // Create dots
-        for (let i = 0; i < totalSlides; i++) {
-          const dot = document.createElement("button");
-          dot.className = "carousel-dot";
-          dot.setAttribute("aria-label", `Go to slide ${i + 1}`);
-          if (i === 0) dot.classList.add("active");
-          dot.addEventListener("click", () => goToSlide(i));
-          dotsContainer.appendChild(dot);
-        }
-
-        function updateCarousel() {
-          const cardWidth = track.querySelector(".tour-card").offsetWidth;
-          const gap = 20;
-          const offset = currentSlide * (cardWidth + gap);
-          track.style.transform = `translateX(-${offset}px)`;
-
-          // Update dots
-          document.querySelectorAll(".carousel-dot").forEach((dot, index) => {
-            dot.classList.toggle("active", index === currentSlide);
-          });
-        }
-
-        function goToSlide(index) {
-          currentSlide = index;
-          updateCarousel();
-          resetAutoplay();
-        }
-
-        function nextSlide() {
-          currentSlide = (currentSlide + 1) % totalSlides;
-          updateCarousel();
-        }
-
-        function prevSlide() {
-          currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
-          updateCarousel();
-        }
-
-        function startAutoplay() {
-          autoplayInterval = setInterval(nextSlide, 3000);
-        }
-
-        function resetAutoplay() {
-          clearInterval(autoplayInterval);
-          startAutoplay();
-        }
-
-        // Touch swipe support
-        let touchStartX = 0;
-        let touchEndX = 0;
-
-        track.addEventListener("touchstart", (e) => {
-          touchStartX = e.touches[0].clientX;
-          clearInterval(autoplayInterval);
-        });
-
-        track.addEventListener("touchmove", (e) => {
-          touchEndX = e.touches[0].clientX;
-        });
-
-        track.addEventListener("touchend", () => {
-          const diff = touchStartX - touchEndX;
-          if (Math.abs(diff) > 50) {
-            if (diff > 0) {
-              nextSlide();
-            } else {
-              prevSlide();
-            }
-          }
-          startAutoplay();
-        });
-
-        // Pause on hover
-        track.addEventListener("mouseenter", () =>
-          clearInterval(autoplayInterval)
-        );
-        track.addEventListener("mouseleave", startAutoplay);
-
-        // Handle window resize
-        let resizeTimer;
-        window.addEventListener("resize", () => {
-          clearTimeout(resizeTimer);
-          resizeTimer = setTimeout(() => {
-            const newVisibleCards = getVisibleCards();
-            if (newVisibleCards !== visibleCards) {
-              visibleCards = newVisibleCards;
-              updateCarousel();
-            }
-          }, 250);
-        });
-
-        // Initialize carousel
-        setTimeout(() => {
-          updateCarousel();
-          startAutoplay();
-          console.log("Carousel initialized successfully");
-        }, 100);
       }
+
+      // CircularCarousel Class - Improved from the first HTML
+      class CircularCarousel {
+        constructor({
+          wrapperId,
+          trackId,
+          dotsId,
+          autoMs = 3000,
+          toursData = [],
+        }) {
+          this.wrapper = document.getElementById(wrapperId);
+          this.track = document.getElementById(trackId);
+          this.dotsWrap = document.getElementById(dotsId);
+          this.autoMs = autoMs;
+          this.toursData = toursData;
+
+          this.gap = 20;
+          this.cloneCount = 0;
+          this.index = 0; // logical index among originals (0..n-1)
+          this.cardWidth = 0;
+          this.moveIncrement = 0;
+          this.autoTimer = null;
+
+          // drag state
+          this.isDragging = false;
+          this.startX = 0;
+          this.prevTranslate = 0;
+          this.dragThreshold = 60;
+
+          // store original nodes as templates
+          this.originalTemplateNodes = [];
+          this.originalCount = 0;
+
+          // bind
+          this._onTransitionEnd = this._onTransitionEnd.bind(this);
+          this._onResize = this._onResize.bind(this);
+          this._onVisibility = this._onVisibility.bind(this);
+
+          // init
+          this._init();
+        }
+
+        _readVisualCount() {
+          const val = getComputedStyle(this.wrapper).getPropertyValue(
+            "--tours-count"
+          );
+          const n = parseInt(val);
+          return n && n > 0 ? n : 1;
+        }
+
+        _init() {
+          // Create tour cards from data
+          this._createTourCards();
+
+          // visual count & clones
+          this.visualCount = this._readVisualCount();
+          this.cloneCount = this.visualCount;
+
+          // create clones
+          this._createClones();
+
+          // items reference
+          this.items = Array.from(this.track.children);
+
+          // build dots
+          this._buildDots();
+
+          // layout sizes
+          this._layout();
+
+          // initial jump (no transition)
+          this._jumpToIndex(this.index, false);
+
+          // events
+          this.track.addEventListener("transitionend", this._onTransitionEnd);
+          window.addEventListener("resize", this._onResize);
+          document.addEventListener("visibilitychange", this._onVisibility);
+
+          // interactions
+          this._enableDragTouch();
+
+          // auto
+          this._startAuto();
+        }
+
+        _createTourCards() {
+          this.track.innerHTML = "";
+          this.toursData.forEach((tour, index) => {
+            const card = document.createElement("a");
+            card.href = tour.link;
+            card.className = "tour-card";
+            card.innerHTML = `
+              <img src="${tour.image}" alt="${tour.title}" class="tour-card-image" loading="lazy" />
+              <div class="tour-card-content">
+                <h3 class="tour-card-title">${tour.title}</h3>
+                <div class="tour-card-location">
+                  <i class="fas fa-map-marker-alt"></i>
+                  <span>${tour.location}</span>
+                </div>
+              </div>
+            `;
+            this.track.appendChild(card);
+            this.originalTemplateNodes.push(card.cloneNode(true));
+          });
+          this.originalCount = this.toursData.length;
+        }
+
+        _createClones() {
+          const originals = Array.from(this.track.children);
+          // append clones of first cloneCount to end
+          for (let i = 0; i < this.cloneCount; i++) {
+            const clone = originals[i].cloneNode(true);
+            clone.setAttribute("data-clone", "end-" + i);
+            this.track.appendChild(clone);
+          }
+          // prepend clones of last cloneCount to beginning
+          for (let i = 0; i < this.cloneCount; i++) {
+            const clone = originals[originals.length - 1 - i].cloneNode(true);
+            clone.setAttribute("data-clone", "start-" + i);
+            this.track.insertBefore(clone, this.track.firstChild);
+          }
+        }
+
+        _buildDots() {
+          this.dotsWrap.innerHTML = "";
+          this.dots = [];
+          for (let i = 0; i < this.originalCount; i++) {
+            const d = document.createElement("span");
+            d.className = "dot";
+            if (i === 0) d.classList.add("active");
+            ((idx) =>
+              d.addEventListener("click", () => {
+                this.index = idx;
+                this._moveToIndex(this.index);
+                this._resetAuto();
+              }))(i);
+            this.dotsWrap.appendChild(d);
+            this.dots.push(d);
+          }
+        }
+
+        _layout() {
+          this.visualCount = this._readVisualCount();
+          const wrapperW = this.wrapper.clientWidth;
+          const totalGaps = (this.visualCount - 1) * this.gap;
+          const cardW = (wrapperW - totalGaps) / this.visualCount;
+          this.cardWidth = Math.floor(cardW);
+          // apply flex-basis to all items
+          Array.from(this.track.children).forEach((node) => {
+            node.style.flex = `0 0 ${this.cardWidth}px`;
+          });
+          this.moveIncrement = this.cardWidth + this.gap;
+          // remove transition while layout to avoid flashes
+          this.track.style.transition = "none";
+          this._jumpToIndex(this.index, false);
+          requestAnimationFrame(() => {
+            this.track.style.transition = "";
+          });
+          // update in-view visual after layout
+          this._setInViewClass();
+        }
+
+        _enableDragTouch() {
+          // mouse
+          this.track.addEventListener("mousedown", (e) => {
+            e.preventDefault();
+            this.isDragging = true;
+            this.startX = e.clientX;
+            this.prevTranslate =
+              -(this.index + this.cloneCount) * this.moveIncrement;
+            this.track.style.transition = "none";
+            this.track.classList.add("grabbing");
+            this._stopAuto();
+          });
+          window.addEventListener("mousemove", (e) => {
+            if (!this.isDragging) return;
+            const dx = e.clientX - this.startX;
+            this._setTranslate(this.prevTranslate + dx);
+          });
+          window.addEventListener("mouseup", (e) => {
+            if (!this.isDragging) return;
+            this.isDragging = false;
+            this.track.classList.remove("grabbing");
+            const dx = e.clientX - this.startX;
+            if (dx < -this.dragThreshold)
+              this.index = (this.index + 1) % this.originalCount;
+            else if (dx > this.dragThreshold)
+              this.index =
+                (this.index - 1 + this.originalCount) % this.originalCount;
+            this._moveToIndex(this.index);
+            this._resetAuto();
+          });
+
+          // touch
+          this.track.addEventListener(
+            "touchstart",
+            (e) => {
+              this.isDragging = true;
+              this.startX = e.touches[0].clientX;
+              this.prevTranslate =
+                -(this.index + this.cloneCount) * this.moveIncrement;
+              this.track.style.transition = "none";
+              this._stopAuto();
+            },
+            { passive: true }
+          );
+
+          this.track.addEventListener(
+            "touchmove",
+            (e) => {
+              if (!this.isDragging) return;
+              const dx = e.touches[0].clientX - this.startX;
+              this._setTranslate(this.prevTranslate + dx);
+            },
+            { passive: true }
+          );
+
+          this.track.addEventListener("touchend", (e) => {
+            if (!this.isDragging) return;
+            this.isDragging = false;
+            const dx = e.changedTouches[0].clientX - this.startX;
+            if (dx < -this.dragThreshold)
+              this.index = (this.index + 1) % this.originalCount;
+            else if (dx > this.dragThreshold)
+              this.index =
+                (this.index - 1 + this.originalCount) % this.originalCount;
+            this._moveToIndex(this.index);
+            this._resetAuto();
+          });
+
+          // prevent default image drag
+          this.track.addEventListener("dragstart", (e) => e.preventDefault());
+        }
+
+        _setTranslate(x) {
+          this.track.style.transform = `translateX(${x}px)`;
+        }
+
+        _moveToIndex(i) {
+          this.track.style.transition = `transform .6s cubic-bezier(0.22, 0.9, 0.35, 1)`;
+          const x = -(i + this.cloneCount) * this.moveIncrement;
+          this._setTranslate(x);
+          this._updateDots(i);
+          this._setInViewClass();
+        }
+
+        _jumpToIndex(i, withTransition = false) {
+          if (!withTransition) this.track.style.transition = "none";
+          const x = -(i + this.cloneCount) * this.moveIncrement;
+          this._setTranslate(x);
+          this._updateDots(i);
+          this._setInViewClass();
+          if (!withTransition)
+            requestAnimationFrame(() => {
+              this.track.style.transition = "";
+            });
+        }
+
+        _onTransitionEnd() {
+          // check if we are inside the clone zones, then jump to real counterpart
+          const transformX = this._currentTransform();
+          const alignedIndex = Math.round(-transformX / this.moveIncrement); // index among items (incl clones)
+          const firstReal = this.cloneCount;
+          const lastRealStart = firstReal + this.originalCount - 1;
+
+          if (alignedIndex > lastRealStart) {
+            // beyond last real -> wrap
+            const offset = alignedIndex - (firstReal + this.originalCount);
+            this.index = offset % this.originalCount;
+            this._jumpToIndex(this.index, false);
+          } else if (alignedIndex < firstReal) {
+            // before first real -> wrap forward
+            const offset = alignedIndex - firstReal + this.originalCount;
+            this.index = offset % this.originalCount;
+            this._jumpToIndex(this.index, false);
+          } else {
+            // in real zone
+            this.index = (alignedIndex - firstReal) % this.originalCount;
+            this._updateDots(this.index);
+            this._setInViewClass();
+          }
+        }
+
+        _currentTransform() {
+          const st = window.getComputedStyle(this.track).transform;
+          if (!st || st === "none") return 0;
+          const values = st.match(/matrix.*\((.+)\)/)[1].split(", ");
+          return parseFloat(values[4]);
+        }
+
+        _updateDots(i) {
+          if (!this.dots) return;
+          this.dots.forEach((d, idx) =>
+            d.classList.toggle("active", idx === i % this.originalCount)
+          );
+        }
+
+        _setInViewClass() {
+          // Add .in-view to the leftmost visible card (logical index)
+          // First remove from all
+          Array.from(this.track.children).forEach((n) =>
+            n.classList.remove("in-view")
+          );
+          // The node that corresponds to leftmost visible = cloneCount + index
+          const pos = this.cloneCount + this.index;
+          const node = this.track.children[pos];
+          if (node) node.classList.add("in-view");
+        }
+
+        _startAuto() {
+          this._stopAuto();
+          this.autoTimer = setInterval(() => {
+            this.index = (this.index + 1) % this.originalCount;
+            this._moveToIndex(this.index);
+          }, this.autoMs);
+          // pause on hover (desktop)
+          this.wrapper.addEventListener("mouseenter", () => this._stopAuto());
+          this.wrapper.addEventListener("mouseleave", () => this._resetAuto());
+        }
+
+        _stopAuto() {
+          clearInterval(this.autoTimer);
+          this.autoTimer = null;
+        }
+        _resetAuto() {
+          this._stopAuto();
+          this._startAuto();
+        }
+
+        _onResize() {
+          // Re-init layout because visual count might change
+          const savedIndex = this.index;
+          // remove listeners for safety
+          this.track.removeEventListener(
+            "transitionend",
+            this._onTransitionEnd
+          );
+          window.removeEventListener("resize", this._onResize);
+
+          // rebuild original nodes
+          this.track.innerHTML = "";
+          this.originalTemplateNodes.forEach((n) =>
+            this.track.appendChild(n.cloneNode(true))
+          );
+          this.originalCount = Array.from(this.track.children).length;
+
+          // re-init
+          this._init();
+          this.index = savedIndex % this.originalCount;
+          this._jumpToIndex(this.index, false);
+        }
+
+        _onVisibility() {
+          if (document.hidden) this._stopAuto();
+          else this._resetAuto();
+        }
+      } // end class
     </script>
   </body>
 </html>

@@ -184,7 +184,6 @@ p {
   border: none;
   font-size: 1rem;
   min-height: 44px;
-  box-shadow: 0 4px 8px rgba(255, 215, 0, 0.3); /* Updated with new gold color */
   position: relative;
   overflow: hidden;
   z-index: 1;
@@ -204,14 +203,11 @@ p {
   border-radius: inherit;
   opacity: 0.95;
   pointer-events: none;
+  border: none;
 }
 
 .btn:hover::before {
   height: 100%;
-}
-
-.btn:hover {
-  box-shadow: 0 6px 12px rgba(255, 215, 0, 0.4); /* Updated with new gold color */
 }
 
 /* Custom Scrollbar Styles */
