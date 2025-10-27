@@ -3,872 +3,475 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Work & Stay Opportunities in Africa - OG Star Travel & Tours</title>
+    <title>Work and Stay in Africa | OG STAR TRAVEL & TOURS</title>
+
+    <link
+      rel="icon"
+      type="image/png"
+      href="../assets/images/favicon/favicon-96x96.png"
+      sizes="96x96"
+    />
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="../assets/images/favicon/favicon.svg"
+    />
+    <link rel="shortcut icon" href="../assets/images/favicon/favicon.ico" />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="../assets/images/favicon/apple-touch-icon.png"
+    />
 
     <!-- Link Global Styles -->
     <link rel="stylesheet" href="../assets/styles/style.css" />
     <link rel="stylesheet" href="../assets/styles/utils.css" />
+    <link rel="stylesheet" href="../assets/styles/nav-foot.css" />
+    <link rel="stylesheet" href="../assets/styles/work-abroad.css" />
 
-    <!-- Font Awesome -->
+    <!-- Font Awesome for improved icons -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
-
-    <!-- Page-Specific Styles -->
-    <style>
-      /* ============================================
-           PAGE CONTENT WIDTH
-        ============================================ */
-      .page-content {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 0 15px;
-      }
-
-      /* ============================================
-           HERO SECTION
-        ============================================ */
-      .hero-section {
-        position: relative;
-        width: 100%;
-        overflow: hidden;
-        margin-top: 65px; /* Mobile default */
-      }
-
-      @media (min-width: 1024px) {
-        .hero-section {
-          margin-top: 80px;
-          height: 75vh;
-          max-height: 1024px;
-        }
-      }
-
-      .hero-image {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        display: block;
-      }
-
-      .hero-overlay {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(
-          to bottom,
-          rgba(0, 0, 0, 0.4),
-          rgba(0, 0, 0, 0.7)
-        );
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-
-      .hero-content {
-        text-align: center;
-        padding: 0 20px;
-        max-width: 800px;
-      }
-
-      .hero-title {
-        font-size: clamp(2rem, 5vw, 3.5rem);
-        font-weight: 700;
-        color: white;
-        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-        line-height: 1.2;
-        margin-bottom: 1.5rem;
-        font-family: var(--font-secondary);
-        text-transform: uppercase;
-      }
-
-      .hero-subtitle {
-        font-size: clamp(1rem, 2.5vw, 1.5rem);
-        color: rgba(255, 255, 255, 0.9);
-        line-height: 1.6;
-        font-family: var(--font-primary);
-      }
-
-      /* ============================================
-           INTRODUCTION SECTION
-        ============================================ */
-      .intro-section {
-        padding: 80px 0;
-        background: var(--bg-primary);
-      }
-
-      .intro-content {
-        max-width: 800px;
-        margin: 0 auto;
-        text-align: center;
-      }
-
-      .intro-text {
-        font-size: 1.1rem;
-        line-height: 1.8;
-        color: var(--text-muted);
-      }
-
-      /* ============================================
-           REASONS SECTION
-        ============================================ */
-      .reasons-section {
-        padding: 80px 0;
-        background: var(--bg-secondary);
-      }
-
-      .reasons-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 30px;
-        margin-top: 50px;
-      }
-
-      .reason-card {
-        background: var(--card-bg-light);
-        padding: 30px;
-        border-radius: var(--radius-lg);
-        box-shadow: var(--shadow);
-        text-align: center;
-        transition: var(--transition);
-      }
-
-      .reason-card:hover {
-        transform: translateY(-5px);
-        box-shadow: var(--shadow-hover);
-      }
-
-      .reason-icon {
-        font-size: 2.5rem;
-        color: var(--primary-color);
-        margin-bottom: 20px;
-      }
-
-      .reason-title {
-        font-size: 1.3rem;
-        margin-bottom: 15px;
-        color: var(--text-color);
-        font-family: var(--font-secondary);
-      }
-
-      .reason-text {
-        color: var(--text-muted);
-        line-height: 1.6;
-      }
-
-      /* ============================================
-           DESTINATIONS SECTION
-        ============================================ */
-      .destinations-section {
-        padding: 80px 0;
-        background: var(--bg-primary);
-      }
-
-      .destinations-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 30px;
-        margin-top: 50px;
-      }
-
-      .destination-card {
-        background: var(--card-bg-light);
-        border-radius: 8px; /* Reduced from var(--radius-lg) */
-        overflow: hidden;
-        box-shadow: var(--shadow);
-        transition: var(--transition);
-      }
-
-      .destination-card:hover {
-        transform: translateY(-5px);
-        box-shadow: var(--shadow-hover);
-      }
-
-      .destination-image {
-        height: 200px;
-        overflow: hidden;
-      }
-
-      .destination-image img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        transition: var(--transition);
-      }
-
-      .destination-card:hover .destination-image img {
-        transform: scale(1.05);
-      }
-
-      .destination-content {
-        padding: 25px;
-      }
-
-      .destination-title {
-        font-size: 1.3rem;
-        margin-bottom: 10px;
-        color: var(--text-color);
-        font-family: var(--font-secondary);
-      }
-
-      .destination-text {
-        color: var(--text-muted);
-        line-height: 1.6;
-        margin-bottom: 15px;
-      }
-
-      .destination-positions {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 8px;
-      }
-
-      .destination-position {
-        padding: 5px 10px;
-        background: var(--bg-tertiary);
-        color: var(--text-muted);
-        font-size: 0.8rem;
-        border-radius: var(--radius-sm);
-      }
-
-      /* ============================================
-           HOW IT WORKS SECTION
-        ============================================ */
-      .how-it-works-section {
-        padding: 80px 0;
-        background: var(--bg-secondary);
-      }
-
-      .steps-container {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 30px;
-        margin-top: 50px;
-      }
-
-      .step-card {
-        text-align: center;
-        position: relative;
-      }
-
-      .step-number {
-        width: 60px;
-        height: 60px;
-        background: var(--gradient-primary);
-        color: white;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 1.5rem;
-        font-weight: 700;
-        margin: 0 auto 20px;
-      }
-
-      .step-title {
-        font-size: 1.2rem;
-        margin-bottom: 15px;
-        color: var(--text-color);
-        font-family: var(--font-secondary);
-      }
-
-      .step-text {
-        color: var(--text-muted);
-        line-height: 1.6;
-      }
-
-      /* ============================================
-           TESTIMONIALS SECTION
-        ============================================ */
-      .testimonials-section {
-        padding: 80px 0;
-        background: var(--bg-primary);
-      }
-
-      .testimonial-container {
-        max-width: 800px;
-        margin: 50px auto 0;
-        background: var(--card-bg-light);
-        padding: 40px;
-        border-radius: var(--radius-lg);
-        box-shadow: var(--shadow);
-        position: relative;
-        overflow: hidden;
-        cursor: pointer; /* Added cursor pointer to indicate interactivity */
-      }
-
-      .testimonial-stack {
-        position: relative;
-        height: 200px;
-      }
-
-      .testimonial-card {
-        position: absolute;
-        width: 100%;
-        opacity: 0;
-        transform: translateX(100%);
-        transition: transform 0.5s ease, opacity 0.5s ease;
-      }
-
-      .testimonial-card.active {
-        opacity: 1;
-        transform: translateX(0);
-        z-index: 2;
-      }
-
-      .testimonial-card.next {
-        transform: translateX(100%);
-        z-index: 1;
-      }
-
-      .testimonial-quote {
-        font-size: 1.2rem;
-        line-height: 1.8;
-        color: var(--text-muted);
-        font-style: italic;
-        margin-bottom: 20px;
-        position: relative;
-      }
-
-      .testimonial-quote::before {
-        content: '"';
-        font-size: 4rem;
-        color: var(--primary-color);
-        opacity: 0.2;
-        position: absolute;
-        top: -20px;
-        left: -20px;
-      }
-
-      .testimonial-author {
-        display: flex;
-        align-items: center;
-        justify-content: flex-end;
-      }
-
-      .author-name {
-        font-weight: 600;
-        color: var(--text-color);
-        margin-right: 10px;
-      }
-
-      .author-location {
-        color: var(--text-muted);
-      }
-
-      .testimonial-dots {
-        display: flex;
-        justify-content: center;
-        margin-top: 20px;
-        gap: 10px;
-      }
-
-      .testimonial-dot {
-        width: 12px;
-        height: 12px;
-        border-radius: 50%;
-        background-color: #ddd;
-        cursor: pointer;
-        transition: background-color 0.3s ease;
-      }
-
-      .testimonial-dot.active {
-        background-color: var(--primary-color);
-      }
-
-      /* ============================================
-           FAQ SECTION
-        ============================================ */
-      .faq-section {
-        padding: 80px 0;
-        background: var(--bg-secondary);
-      }
-
-      .faq-container {
-        max-width: 800px;
-        margin: 50px auto 0;
-      }
-
-      .faq-item {
-        background: var(--card-bg-light);
-        border-radius: var(--radius-md);
-        margin-bottom: 15px;
-        overflow: hidden;
-        box-shadow: var(--shadow);
-      }
-
-      .faq-question {
-        padding: 20px 25px;
-        font-size: 1.1rem;
-        font-weight: 600;
-        color: var(--text-color);
-        cursor: pointer;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        transition: var(--transition);
-      }
-
-      .faq-question:hover {
-        color: var(--primary-color);
-      }
-
-      .faq-question i {
-        transition: var(--transition);
-      }
-
-      .faq-item.active .faq-question i {
-        transform: rotate(180deg);
-      }
-
-      .faq-answer {
-        max-height: 0;
-        overflow: hidden;
-        transition: max-height 0.3s ease;
-      }
-
-      .faq-item.active .faq-answer {
-        max-height: 300px;
-      }
-
-      .faq-answer-content {
-        padding: 0 25px 20px;
-        color: var(--text-muted);
-        line-height: 1.6;
-      }
-
-      /* ============================================
-           CTA SECTION
-        ============================================ */
-      .cta-section {
-        padding: 80px 0;
-        background: var(--bg-primary);
-        text-align: center;
-      }
-
-      .cta-content {
-        max-width: 800px;
-        margin: 0 auto;
-      }
-
-      .cta-title {
-        font-size: clamp(1.8rem, 4vw, 2.5rem);
-        margin-bottom: 20px;
-        color: var(--text-color);
-        font-family: var(--font-secondary);
-      }
-
-      .cta-text {
-        font-size: 1.2rem;
-        line-height: 1.6;
-        color: var(--text-muted);
-        margin-bottom: 30px;
-      }
-
-      /* ============================================
-           WORK OPPORTUNITIES CAROUSEL
-        ============================================ */
-      .work-opportunities-section {
-        padding: 60px 0;
-        background: var(--bg-secondary);
-      }
-
-      /* Responsive Breakpoints for Carousel */
-      /* xs - Default (mobile first) */
-      .work-carousel-wrapper {
-        --work-count: 1;
-      }
-
-      /* md - 640px */
-      @media (min-width: 640px) {
-        .work-carousel-wrapper {
-          --work-count: 2;
-        }
-      }
-
-      /* xl - 1024px */
-      @media (min-width: 1024px) {
-        .work-carousel-wrapper {
-          --work-count: 3;
-        }
-      }
-
-      .work-carousel-wrapper {
-        position: relative;
-        overflow: hidden;
-        margin: 0 auto;
-      }
-      .work-carousel-track {
-        display: flex;
-        gap: 20px;
-        transition: transform 0.6s cubic-bezier(0.22, 0.9, 0.35, 1),
-          opacity 0.35s linear;
-        will-change: transform;
-        cursor: grab;
-        align-items: stretch;
-      }
-      .work-carousel-track.grabbing {
-        cursor: grabbing;
-      }
-
-      .carousel-dots {
-        margin-top: 18px;
-        display: flex;
-        justify-content: center;
-        gap: 8px;
-      }
-      .carousel-dots .dot {
-        width: 10px;
-        height: 10px;
-        border-radius: 50%;
-        background: #d3d3d3;
-        cursor: pointer;
-        transition: background 0.25s;
-      }
-      .carousel-dots .dot.active {
-        background: var(--primary-color);
-      }
-
-      /* Card base */
-      .work-card {
-        background: var(--bg-primary);
-        border: 1px solid var(--border-color);
-        border-radius: 5px;
-        overflow: hidden;
-        display: flex;
-        flex-direction: column;
-        min-height: 100%;
-        transform-origin: center;
-        opacity: 0.98;
-        transition: transform 0.25s cubic-bezier(0.22, 0.9, 0.35, 1),
-          opacity 0.4s linear;
-        text-decoration: none;
-        color: inherit;
-        padding: 3px;
-      }
-      .work-card:hover {
-        transform: scale(1.05);
-      }
-
-      /* small fade increase when flagged in view */
-      .in-view {
-        opacity: 1;
-      }
-
-      .work-card-image {
-        width: 100%;
-        height: 200px;
-        object-fit: cover;
-        display: block;
-        border-top-left-radius: 3px;
-        border-top-right-radius: 3px;
-      }
-
-      .work-card-content {
-        padding: 1.5rem;
-      }
-
-      .work-card-title {
-        font-size: 1.25rem;
-        margin-bottom: 0.5rem;
-        color: var(--text-color);
-        font-family: var(--font-secondary);
-      }
-
-      .work-card-location {
-        display: flex;
-        align-items: center;
-        color: var(--text-muted);
-        font-size: 0.9rem;
-      }
-
-      .work-card-location i {
-        margin-right: 0.5rem;
-        color: var(--primary-color);
-      }
-
-      .work-positions {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 8px;
-        margin: 15px 0;
-      }
-
-      .work-position {
-        padding: 5px 10px;
-        background: var(--bg-tertiary);
-        color: var(--text-muted);
-        font-size: 0.8rem;
-        border-radius: var(--radius-sm);
-      }
-
-      .work-footer {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-      }
-
-      .work-positions-count {
-        display: flex;
-        align-items: center;
-        color: var(--text-muted);
-        font-size: 0.9rem;
-      }
-
-      .work-positions-count i {
-        margin-right: 5px;
-        color: var(--primary-color);
-      }
-
-      .work-btn {
-        color: var(--primary-color);
-        font-weight: 600;
-        text-decoration: none;
-        display: inline-flex;
-        align-items: center;
-        transition: var(--transition);
-      }
-
-      .work-btn:hover {
-        color: var(--highlight-color);
-      }
-
-      .work-btn i {
-        margin-left: 5px;
-        transition: var(--transition);
-      }
-
-      .work-btn:hover i {
-        transform: translateX(3px);
-      }
-
-      /* helpful utility to force stable heights */
-      .work-carousel-track > * {
-        display: block;
-      }
-
-      html,
-      body {
-        overflow-x: hidden;
-      }
-    </style>
   </head>
   <body>
+    <!-- Mobile Menu Overlay -->
+    <div>
+      <div class="overlay" id="overlay"></div>
+
+      <!-- Navigation -->
+      <header class="navbar" id="navbar">
+        <div class="nav-inner">
+          <div class="nav-logo">
+            <a href="../index.html" class="logo">
+              <img src="../assets/images/logo.png" alt="O G Star logo" />
+            </a>
+          </div>
+
+          <nav class="nav-center" aria-label="Main navigation">
+            <ul class="nav-menu" role="menubar">
+              <li class="nav-item" role="none">
+                <a href="../index.html" class="nav-link" role="menuitem"
+                  >Home</a
+                >
+              </li>
+              <li class="nav-item" role="none">
+                <a href="../services.html" class="nav-link" role="menuitem"
+                  >Services</a
+                >
+              </li>
+              <li class="nav-item" role="none">
+                <a href="../destinations.html" class="nav-link" role="menuitem"
+                  >Destinations</a
+                >
+              </li>
+              <li class="nav-item" role="none">
+                <a href="../information.html" class="nav-link" role="menuitem"
+                  >Information</a
+                >
+              </li>
+              <li class="nav-item" role="none">
+                <a href="../contact.html" class="nav-link" role="menuitem"
+                  >Contact</a
+                >
+              </li>
+              <li class="nav-item" role="none">
+                <a href="../blog.html" class="nav-link" role="menuitem">Blog</a>
+              </li>
+            </ul>
+          </nav>
+
+          <div class="nav-cta">
+            <a href="../contact.html">
+              <button
+                class="book-now-btn"
+                id="bookNowBtn"
+                aria-label="Book Now"
+              >
+                <span>Book Now</span>
+              </button>
+            </a>
+
+            <button class="hamburger" id="hamburger" aria-label="Open menu">
+              <i class="fas fa-bars"></i>
+            </button>
+          </div>
+        </div>
+      </header>
+
+      <!-- Mobile panel -->
+      <aside class="mobile-panel" id="mobilePanel">
+        <div class="mobile-panel-header">
+          <h3>Menu</h3>
+          <button class="close-btn" id="closePanel" aria-label="Close menu">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+
+        <nav class="mobile-links">
+          <a href="../index.html">Home</a>
+          <a href="../services.html">Services</a>
+          <a href="../destinations.html">Destinations</a>
+          <a href="../information.html">Information</a>
+          <a href="../contact.html">Contact</a>
+          <a href="../blog.html">Blog</a>
+        </nav>
+      </aside>
+    </div>
+
     <!-- Hero Section -->
     <section class="hero-section">
       <img
         src="https://images.unsplash.com/photo-1528722828814-77b9b83aafb2?w=1600&h=900&fit=crop"
-        alt="Work & Stay in Africa"
+        alt="African Landscape"
         class="hero-image"
       />
-      <div class="hero-overlay">
-        <div class="hero-content">
-          <h1 class="hero-title">Work & Stay Opportunities in Africa</h1>
-          <p class="hero-subtitle">
-            Explore rewarding career and life experiences across the African
-            continent with OGStar Travel & Tours.
-          </p>
-        </div>
+      <div class="hero-overlay"></div>
+      <div class="hero-content scroll-animate animate-fade">
+        <h1>Start Your Career Journey in Africa</h1>
+        <p>
+          Discover incredible work and stay opportunities across the African
+          continent through our trusted programs.
+        </p>
       </div>
     </section>
 
-    <!-- Introduction Section -->
+    <!-- Intro Section -->
     <section class="intro-section">
-      <div class="page-content">
-        <div class="intro-content">
-          <p class="intro-text">
-            Africa is a land of growth, innovation, and opportunity. Through
-            OGStar Travel & Tours, you can explore exciting work placements and
-            community living experiences across various African countries.
-            Whether you're seeking short-term projects, permanent relocation, or
-            skill-based contracts, we help connect you with organizations in
-            need of your talents.
-          </p>
-        </div>
-      </div>
-    </section>
+      <div class="content-wrapper">
+        <h2 class="text-center heading-md scroll-animate">Our Services</h2>
 
-    <!-- Why Work in Africa Section -->
-    <section class="reasons-section">
-      <div class="page-content">
-        <h2 class="heading-lg text-center">Why Work in Africa</h2>
-        <div class="reasons-grid">
-          <div class="reason-card scroll-animate">
-            <div class="reason-icon">
-              <i class="fas fa-chart-line"></i>
+        <div class="intro-grid">
+          <div class="intro-card scroll-animate">
+            <div class="intro-icon">
+              <i class="fas fa-passport"></i>
             </div>
-            <h3 class="reason-title">Growing Job Markets</h3>
-            <p class="reason-text">
-              Industries like technology, education, tourism, and construction
-              are booming.
-            </p>
+            <h3>Visa & Travel Support</h3>
+            <p>Providing visa and travel arrangement assistance</p>
           </div>
-          <div class="reason-card scroll-animate">
-            <div class="reason-icon">
-              <i class="fas fa-globe-africa"></i>
-            </div>
-            <h3 class="reason-title">Cultural Diversity</h3>
-            <p class="reason-text">
-              Experience different traditions and communities across the
-              continent.
-            </p>
-          </div>
-          <div class="reason-card scroll-animate">
-            <div class="reason-icon">
+
+          <div class="intro-card scroll-animate">
+            <div class="intro-icon">
               <i class="fas fa-home"></i>
             </div>
-            <h3 class="reason-title">Affordable Living</h3>
-            <p class="reason-text">
-              Many destinations offer a lower cost of living with a high quality
-              of life.
-            </p>
+            <h3>Accommodation</h3>
+            <p>Safe and comfortable housing arrangements</p>
           </div>
-          <div class="reason-card scroll-animate">
-            <div class="reason-icon">
-              <i class="fas fa-exchange-alt"></i>
+
+          <div class="intro-card scroll-animate">
+            <div class="intro-icon">
+              <i class="fas fa-briefcase"></i>
             </div>
-            <h3 class="reason-title">Skill Exchange</h3>
-            <p class="reason-text">
-              Contribute to meaningful projects while gaining international
-              experience.
-            </p>
+            <h3>Verified Jobs</h3>
+            <p>Pre-screened employment opportunities</p>
+          </div>
+
+          <div class="intro-card scroll-animate">
+            <div class="intro-icon">
+              <i class="fas fa-file-contract"></i>
+            </div>
+            <h3>Legal Process</h3>
+            <p>Transparent documentation process</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Available Destinations Section -->
-    <section class="destinations-section">
-      <div class="page-content">
-        <h2 class="heading-lg text-center">Available Destinations</h2>
+    <!-- Job Categories List -->
+    <section class="job-categories-section">
+      <div class="job-categories-container">
+        <h2 class="text-center heading-md scroll-animate">
+          Available Job Roles
+        </h2>
+
+        <div class="job-categories-grid">
+          <div class="job-category-item scroll-animate">
+            <div class="job-category-icon">🧹</div>
+            <div class="job-category-content">
+              <h3>Cleaner</h3>
+              <p>
+                General support role with responsibilities for maintaining
+                cleanliness in various settings including offices, hotels, and
+                residential buildings.
+              </p>
+            </div>
+          </div>
+
+          <div class="job-category-item scroll-animate">
+            <div class="job-category-icon">🧱</div>
+            <div class="job-category-content">
+              <h3>Mason</h3>
+              <p>
+                Skilled trade role involving construction work with bricks,
+                stones, and concrete blocks for building structures.
+              </p>
+            </div>
+          </div>
+
+          <div class="job-category-item scroll-animate">
+            <div class="job-category-icon">🔨</div>
+            <div class="job-category-content">
+              <h3>Carpenter</h3>
+              <p>
+                Skilled trade role focused on constructing, installing, and
+                repairing structures and fixtures made of wood and other
+                materials.
+              </p>
+            </div>
+          </div>
+
+          <div class="job-category-item scroll-animate">
+            <div class="job-category-icon">🔧</div>
+            <div class="job-category-content">
+              <h3>Plumber</h3>
+              <p>
+                Technical role involving installation and maintenance of
+                plumbing systems, pipes, and fixtures in residential and
+                commercial buildings.
+              </p>
+            </div>
+          </div>
+
+          <div class="job-category-item scroll-animate">
+            <div class="job-category-icon">⚙️</div>
+            <div class="job-category-content">
+              <h3>Steel Fixer</h3>
+              <p>
+                Specialized role focused on positioning and securing steel
+                reinforcement bars and mesh for concrete structures.
+              </p>
+            </div>
+          </div>
+
+          <div class="job-category-item scroll-animate">
+            <div class="job-category-icon">🛡️</div>
+            <div class="job-category-content">
+              <h3>Security Officer</h3>
+              <p>
+                Protection role responsible for maintaining safety and security
+                of people, property, and assets in various settings.
+              </p>
+            </div>
+          </div>
+
+          <div class="job-category-item scroll-animate">
+            <div class="job-category-icon">🤝</div>
+            <div class="job-category-content">
+              <h3>General Helper</h3>
+              <p>
+                Support role providing assistance across various tasks and
+                activities in construction, maintenance, or operational
+                settings.
+              </p>
+            </div>
+          </div>
+
+          <div class="job-category-item scroll-animate">
+            <div class="job-category-icon">👷</div>
+            <div class="job-category-content">
+              <h3>Steel Fixer Foreman</h3>
+              <p>
+                Supervisory role overseeing steel fixing operations, managing
+                teams, and ensuring quality and safety standards are met.
+              </p>
+            </div>
+          </div>
+
+          <div class="job-category-item scroll-animate">
+            <div class="job-category-icon">➕</div>
+            <div class="job-category-content">
+              <h3>And More</h3>
+              <p>
+                Various positions available across multiple sectors including
+                hospitality, retail, administration, and specialized trades.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Requirements Section -->
+    <section class="requirements-section">
+      <div class="content-wrapper">
+        <h2 class="text-center heading-md scroll-animate">
+          Requirements & Eligibility
+        </h2>
+
+        <div class="requirements-content">
+          <div class="requirements-intro scroll-animate">
+            <h3>Application Requirements</h3>
+            <p>
+              To ensure a smooth and legal recruitment process, applicants must
+              meet basic documentation and fitness requirements. Our team
+              reviews every application carefully to match you with the right
+              employer and role.
+            </p>
+            <div class="requirements-note">
+              Our coordinators will assist you with verification, visa
+              processing, and travel arrangements once eligibility is confirmed.
+            </div>
+          </div>
+
+          <div class="requirements-list-container scroll-animate">
+            <ul class="requirements-list">
+              <li>Valid passport (scanned copy)</li>
+              <li>Recent passport-size photograph</li>
+              <li>Age between 21 and 45 years</li>
+              <li>Physically fit and willing to work</li>
+              <li>Previous experience (optional, depending on position)</li>
+              <li>
+                Willingness to relocate and adapt to African working conditions
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Choosing Your Destination -->
+    <section class="destination-section">
+      <div class="content-wrapper">
+        <h2 class="text-center heading-md scroll-animate">
+          Choosing Your Destination
+        </h2>
+
         <div class="destinations-grid">
           <div class="destination-card scroll-animate">
-            <div class="destination-image">
-              <img
-                src="https://images.unsplash.com/photo-1528722828814-77b9b83aafb2?w=800&h=600&fit=crop"
-                alt="Ghana"
-              />
-            </div>
+            <div
+              class="destination-bg"
+              style="
+                background-image: url('https://images.unsplash.com/photo-1528722828814-77b9b83aafb2?w=800');
+              "
+            ></div>
             <div class="destination-content">
-              <h3 class="destination-title">Ghana</h3>
-              <p class="destination-text">
+              <h3>Ghana</h3>
+              <p>
                 One of West Africa's most stable economies with diverse
-                opportunities.
+                opportunities in hospitality, construction, and education.
+                Experience the warmth of Ghanaian culture while building your
+                career in a rapidly developing economy.
               </p>
-              <div class="destination-positions">
-                <span class="destination-position">Teaching</span>
-                <span class="destination-position">Hospitality</span>
-                <span class="destination-position">IT</span>
-                <span class="destination-position">etc</span>
-              </div>
             </div>
           </div>
+
           <div class="destination-card scroll-animate">
-            <div class="destination-image">
-              <img
-                src="https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?w=800&h=600&fit=crop"
-                alt="Kenya"
-              />
-            </div>
+            <div
+              class="destination-bg"
+              style="
+                background-image: url('https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?w=800');
+              "
+            ></div>
             <div class="destination-content">
-              <h3 class="destination-title">Kenya</h3>
-              <p class="destination-text">
+              <h3>Kenya</h3>
+              <p>
                 East Africa's economic hub with thriving NGO and business
-                sectors.
+                sectors. Kenya offers opportunities in tourism, technology, and
+                conservation in a country known for its stunning wildlife and
+                landscapes.
               </p>
-              <div class="destination-positions">
-                <span class="destination-position">NGO Projects</span>
-                <span class="destination-position">Marketing</span>
-                <span class="destination-position">Healthcare</span>
-                <span class="destination-position">etc</span>
-              </div>
             </div>
           </div>
+
           <div class="destination-card scroll-animate">
-            <div class="destination-image">
-              <img
-                src="https://images.unsplash.com/photo-1516426122078-c23e76319801?w=800&h=600&fit=crop"
-                alt="South Africa"
-              />
-            </div>
+            <div
+              class="destination-bg"
+              style="
+                background-image: url('https://images.unsplash.com/photo-1516426122078-c23e76319801?w=800');
+              "
+            ></div>
             <div class="destination-content">
-              <h3 class="destination-title">South Africa</h3>
-              <p class="destination-text">
+              <h3>South Africa</h3>
+              <p>
                 Africa's most developed economy with diverse industry
-                opportunities.
+                opportunities. From mining to tourism to technology, South
+                Africa offers a multicultural experience with world-class
+                infrastructure.
               </p>
-              <div class="destination-positions">
-                <span class="destination-position">Engineering</span>
-                <span class="destination-position">Tourism</span>
-                <span class="destination-position">Creative Arts</span>
-                <span class="destination-position">etc</span>
-              </div>
             </div>
           </div>
+
           <div class="destination-card scroll-animate">
-            <div class="destination-image">
-              <img
-                src="https://images.unsplash.com/photo-1590766940552-8b9e1e7e7b0e?w=800&h=600&fit=crop"
-                alt="Rwanda"
-              />
-            </div>
+            <div
+              class="destination-bg"
+              style="
+                background-image: url('https://images.unsplash.com/photo-1590766940552-8b9e1e7e7b0e?w=800');
+              "
+            ></div>
             <div class="destination-content">
-              <h3 class="destination-title">Rwanda</h3>
-              <p class="destination-text">
+              <h3>Rwanda</h3>
+              <p>
                 Africa's emerging tech hub with innovative community programs.
+                Known for its cleanliness, safety, and rapid development, Rwanda
+                offers opportunities in technology, education, and community
+                development.
               </p>
-              <div class="destination-positions">
-                <span class="destination-position">Tech Startups</span>
-                <span class="destination-position">Community Programs</span>
-                <span class="destination-position">Education</span>
-                <span class="destination-position">etc</span>
-              </div>
             </div>
           </div>
-          <div class="destination-card scroll-animate">
-            <div class="destination-image">
-              <img
-                src="https://images.unsplash.com/photo-1558504655-71f9c08a4021?w=800&h=600&fit=crop"
-                alt="Nigeria"
-              />
+        </div>
+
+        <div class="destination-conclusion scroll-animate">
+          We also offer opportunities in Nigeria, Tanzania, Uganda, Ethiopia,
+          Morocco, Egypt, and many more countries across the African continent.
+          Your placement will depend on job availability, employer requirements,
+          and your personal preferences.
+        </div>
+      </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section class="benefits-section">
+      <div class="content-wrapper">
+        <h2 class="text-center heading-md scroll-animate">Why Choose Us</h2>
+
+        <div class="benefits-grid">
+          <div class="benefit-card scroll-animate">
+            <div class="benefit-icon">
+              <i class="fas fa-shield-alt"></i>
             </div>
-            <div class="destination-content">
-              <h3 class="destination-title">Nigeria</h3>
-              <p class="destination-text">
-                Africa's largest economy with opportunities in multiple sectors.
-              </p>
-              <div class="destination-positions">
-                <span class="destination-position">Business Development</span>
-                <span class="destination-position">Oil & Gas</span>
-                <span class="destination-position">IT</span>
-                <span class="destination-position">etc</span>
-              </div>
-            </div>
+            <h4>Trusted Process</h4>
+            <p>Verified transparent recruitment process</p>
           </div>
-          <div class="destination-card scroll-animate">
-            <div class="destination-image">
-              <img
-                src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=800&h=600&fit=crop"
-                alt="And Many More"
-              />
+
+          <div class="benefit-card scroll-animate">
+            <div class="benefit-icon">
+              <i class="fas fa-file-contract"></i>
             </div>
-            <div class="destination-content">
-              <h3 class="destination-title">And Many More</h3>
-              <p class="destination-text">
-                Explore opportunities across the entire African continent, from
-                Tunisia to South Africa, from Senegal to Ethiopia.
-              </p>
-              <div class="destination-positions">
-                <span class="destination-position">Healthcare</span>
-                <span class="destination-position">Education</span>
-                <span class="destination-position">Agriculture</span>
-                <span class="destination-position">Technology</span>
-                <span class="destination-position">Finance</span>
-                <span class="destination-position">And More</span>
-              </div>
+            <h4>Legal Documentation</h4>
+            <p>Complete legal documentation assistance</p>
+          </div>
+
+          <div class="benefit-card scroll-animate">
+            <div class="benefit-icon">
+              <i class="fas fa-home"></i>
             </div>
+            <h4>Accommodation Support</h4>
+            <p>Comfortable accommodation arrangements</p>
+          </div>
+
+          <div class="benefit-card scroll-animate">
+            <div class="benefit-icon">
+              <i class="fas fa-comments"></i>
+            </div>
+            <h4>Continuous Support</h4>
+            <p>Full communication support throughout</p>
+          </div>
+
+          <div class="benefit-card scroll-animate">
+            <div class="benefit-icon">
+              <i class="fas fa-plane"></i>
+            </div>
+            <h4>Travel Coordination</h4>
+            <p>Smooth travel arrangements</p>
+          </div>
+
+          <div class="benefit-card scroll-animate">
+            <div class="benefit-icon">
+              <i class="fas fa-user-tie"></i>
+            </div>
+            <h4>Professional Guidance</h4>
+            <p>Expert guidance and support</p>
           </div>
         </div>
       </div>
@@ -876,8 +479,9 @@
 
     <!-- How It Works Section -->
     <section class="how-it-works-section">
-      <div class="page-content">
-        <h2 class="heading-lg text-center">How It Works</h2>
+      <div class="content-wrapper">
+        <h2 class="text-center heading-md scroll-animate">How It Works</h2>
+
         <div class="steps-container">
           <div class="step-card scroll-animate">
             <div class="step-number">1</div>
@@ -917,138 +521,195 @@
 
     <!-- Testimonials Section -->
     <section class="testimonials-section">
-      <div class="page-content">
-        <h2 class="heading-lg text-center">What Our Candidates Say</h2>
-        <div class="testimonial-container" id="testimonialContainer">
-          <div class="testimonial-stack">
-            <div class="testimonial-card active">
-              <p class="testimonial-quote">
-                OGStar helped me secure a teaching position in Kenya. The
-                process was smooth and professional. They assisted with
-                everything from visa processing to finding accommodation. I
-                couldn't be happier with my experience!
-              </p>
-              <div class="testimonial-author">
-                <span class="author-name">Ama Mensah</span>
-                <span class="author-location">Ghana</span>
+      <div class="content-wrapper">
+        <h2 class="text-center heading-md scroll-animate">
+          What Our Candidates Say
+        </h2>
+
+        <div class="testimonials-container">
+          <div class="testimonials-wrapper">
+            <div class="testimonials-track" id="testimonialsTrack">
+              <div class="testimonial-card">
+                <div class="testimonial-content">
+                  <p class="testimonial-text">
+                    OGStar helped me secure a teaching position in Kenya. The
+                    process was smooth and professional. They assisted with
+                    everything from visa processing to finding accommodation. I
+                    couldn't be happier with my experience!
+                  </p>
+                </div>
+                <div class="testimonial-author">
+                  <div class="author-info">
+                    <div class="author-name">Ama Mensah</div>
+                    <div class="author-location">Ghana</div>
+                  </div>
+                </div>
               </div>
-            </div>
-            <div class="testimonial-card">
-              <p class="testimonial-quote">
-                I was placed in a tech startup in Rwanda through OGStar. The
-                support they provided throughout the relocation process was
-                exceptional. I've now been working here for 8 months and love
-                every moment!
-              </p>
-              <div class="testimonial-author">
-                <span class="author-name">Kwame Asante</span>
-                <span class="author-location">Ghana</span>
+              <div class="testimonial-card">
+                <div class="testimonial-content">
+                  <p class="testimonial-text">
+                    I was placed in a tech startup in Rwanda through OGStar. The
+                    support they provided throughout the relocation process was
+                    exceptional. I've now been working here for 8 months and
+                    love every moment!
+                  </p>
+                </div>
+                <div class="testimonial-author">
+                  <div class="author-info">
+                    <div class="author-name">Kwame Asante</div>
+                    <div class="author-location">Ghana</div>
+                  </div>
+                </div>
               </div>
-            </div>
-            <div class="testimonial-card">
-              <p class="testimonial-quote">
-                Working in South Africa has been a life-changing experience.
-                OGStar connected me with the perfect NGO role that matches my
-                skills in community development. The cultural immersion has been
-                incredible.
-              </p>
-              <div class="testimonial-author">
-                <span class="author-name">Fatima Zahra</span>
-                <span class="author-location">Morocco</span>
+              <div class="testimonial-card">
+                <div class="testimonial-content">
+                  <p class="testimonial-text">
+                    Working in South Africa has been a life-changing experience.
+                    OGStar connected me with the perfect NGO role that matches
+                    my skills in community development. The cultural immersion
+                    has been incredible.
+                  </p>
+                </div>
+                <div class="testimonial-author">
+                  <div class="author-info">
+                    <div class="author-name">Fatima Zahra</div>
+                    <div class="author-location">Morocco</div>
+                  </div>
+                </div>
               </div>
-            </div>
-            <div class="testimonial-card">
-              <p class="testimonial-quote">
-                As a healthcare professional, finding the right opportunity in
-                Ghana was challenging until I contacted OGStar. They understood
-                my needs and found me a position where I can truly make a
-                difference.
-              </p>
-              <div class="testimonial-author">
-                <span class="author-name">David Okonkwo</span>
-                <span class="author-location">Nigeria</span>
+              <div class="testimonial-card">
+                <div class="testimonial-content">
+                  <p class="testimonial-text">
+                    As a healthcare professional, finding the right opportunity
+                    in Ghana was challenging until I contacted OGStar. They
+                    understood my needs and found me a position where I can
+                    truly make a difference.
+                  </p>
+                </div>
+                <div class="testimonial-author">
+                  <div class="author-info">
+                    <div class="author-name">David Okonkwo</div>
+                    <div class="author-location">Nigeria</div>
+                  </div>
+                </div>
+              </div>
+              <div class="testimonial-card">
+                <div class="testimonial-content">
+                  <p class="testimonial-text">
+                    The transition to working in Tanzania was seamless thanks to
+                    OGStar. From job placement to accommodation, everything was
+                    handled professionally. I'm now thriving in my new role and
+                    enjoying the Tanzanian culture.
+                  </p>
+                </div>
+                <div class="testimonial-author">
+                  <div class="author-info">
+                    <div class="author-name">Michael Johnson</div>
+                    <div class="author-location">Tanzania</div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-          <div class="testimonial-dots">
-            <span class="testimonial-dot active" data-index="0"></span>
-            <span class="testimonial-dot" data-index="1"></span>
-            <span class="testimonial-dot" data-index="2"></span>
-            <span class="testimonial-dot" data-index="3"></span>
-          </div>
+          <div class="testimonial-dots" id="testimonialDots"></div>
         </div>
       </div>
     </section>
 
     <!-- FAQ Section -->
     <section class="faq-section">
-      <div class="page-content">
-        <h2 class="heading-lg text-center">Frequently Asked Questions</h2>
-        <div class="faq-container">
-          <div class="faq-item">
-            <div class="faq-question">
-              Do I need prior work experience to apply?
-              <i class="fas fa-chevron-down"></i>
-            </div>
-            <div class="faq-answer">
-              <div class="faq-answer-content">
-                Not necessarily. Some opportunities are open to beginners, while
-                others require experience. We'll help you find the best fit
-                based on your skills and background.
-              </div>
-            </div>
-          </div>
-          <div class="faq-item">
-            <div class="faq-question">
-              Will OGStar assist with travel and accommodation?
-              <i class="fas fa-chevron-down"></i>
-            </div>
-            <div class="faq-answer">
-              <div class="faq-answer-content">
-                Yes, our team helps you through every step — from travel
-                arrangements to securing accommodation at your destination. We
-                provide comprehensive support throughout the process.
-              </div>
-            </div>
-          </div>
-          <div class="faq-item">
-            <div class="faq-question">
-              How long does the process take?
-              <i class="fas fa-chevron-down"></i>
-            </div>
-            <div class="faq-answer">
-              <div class="faq-answer-content">
-                Depending on the country and role, placements typically take
-                between 2-6 weeks to finalize. We'll keep you updated at every
-                stage of the process.
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+      <div class="content-wrapper">
+        <h2 class="text-center heading-md scroll-animate">
+          Frequently Asked Questions
+        </h2>
 
-    <!-- CTA Section -->
-    <section class="cta-section">
-      <div class="page-content">
-        <div class="cta-content">
-          <h2 class="cta-title">
-            Ready to take your next career step across Africa?
-          </h2>
-          <p class="cta-text">
-            Talk to our travel advisors today and discover where your skills are
-            needed most.
-          </p>
-          <a href="../contact.html" class="btn">Contact Now</a>
+        <div class="faq-container">
+          <div class="faq-item scroll-animate">
+            <div class="faq-question">
+              <span>How long does visa processing usually take?</span>
+              <span class="faq-toggle">▼</span>
+            </div>
+            <div class="faq-answer">
+              <div class="faq-answer-content">
+                Visa processing typically takes 2-4 weeks depending on the
+                country and government processing times. We keep you informed at
+                every stage and ensure all documentation is prepared correctly
+                to avoid delays.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item scroll-animate">
+            <div class="faq-question">
+              <span>What kind of accommodation will I receive?</span>
+              <span class="faq-toggle">▼</span>
+            </div>
+            <div class="faq-answer">
+              <div class="faq-answer-content">
+                Most employers provide shared accommodation with basic amenities
+                including beds, kitchen facilities, and utilities. The exact
+                type depends on your employer and job role. We assist in
+                ensuring your accommodation meets acceptable standards.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item scroll-animate">
+            <div class="faq-question">
+              <span>Can I choose which African country to work in?</span>
+              <span class="faq-toggle">▼</span>
+            </div>
+            <div class="faq-answer">
+              <div class="faq-answer-content">
+                We take your preference into consideration, but final placement
+                depends on job availability, employer requirements, and your
+                qualifications. We discuss all options with you before
+                confirming any placement.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item scroll-animate">
+            <div class="faq-question">
+              <span>Will I pay any fees before traveling?</span>
+              <span class="faq-toggle">▼</span>
+            </div>
+            <div class="faq-answer">
+              <div class="faq-answer-content">
+                All fee structures are explained transparently from the
+                beginning. Some documentation and processing costs may apply,
+                but we provide a clear breakdown. No hidden fees are involved,
+                and all costs are discussed upfront.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item scroll-animate">
+            <div class="faq-question">
+              <span>How will I know my job role and location?</span>
+              <span class="faq-toggle">▼</span>
+            </div>
+            <div class="faq-answer">
+              <div class="faq-answer-content">
+                Once your application is reviewed and an employer is identified,
+                you'll receive a formal job offer letter detailing your role,
+                salary, location, accommodation, and all employment terms.
+                Nothing is finalized without your full knowledge and consent.
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
     <!-- Work Opportunities Section -->
     <section class="work-opportunities-section">
-      <div class="page-content">
-        <h2 class="heading-lg text-center">Explore Other Work Opportunities</h2>
-        <div class="work-carousel-wrapper visual-items" id="workCarousel">
+      <div class="work-opportunities-container">
+        <h2 class="text-center heading-md scroll-animate">
+          Explore Other Work Opportunities
+        </h2>
+
+        <div class="work-carousel-wrapper">
           <div class="work-carousel-track" id="workTrack">
             <!-- Work cards will be dynamically added here -->
           </div>
@@ -1057,635 +718,110 @@
       </div>
     </section>
 
+    <!-- Final Information Section -->
+    <section class="final-section">
+      <div class="content-wrapper">
+        <div class="final-content scroll-animate">
+          <p>
+            Beginning a new journey abroad is a big step — and we're here to
+            guide you through it safely and confidently. Learn more by
+            contacting our team or visiting our office to discuss your next
+            steps.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <div>
+      <footer class="footer" id="contact">
+        <div class="footer-container">
+          <div class="footer-column">
+            <img
+              src="../assets/images/logo2.png"
+              alt="O G Star Logo"
+              style="max-width: 150px; margin-bottom: 0"
+            />
+          </div>
+
+          <div class="footer-column">
+            <h4>Quick Links</h4>
+            <ul>
+              <li><a href="../index.html">Home</a></li>
+              <li><a href="../services.html">Services</a></li>
+              <li><a href="../destinations.html">Destinations</a></li>
+              <li><a href="../information.html">Information</a></li>
+              <li><a href="../contact.html">Contact</a></li>
+              <li><a href="../blog.html">Blog</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-column">
+            <h4>Our Services</h4>
+            <ul>
+              <li><a href="../services.html">Travel & Tours</a></li>
+              <li><a href="../services.html">Study Abroad</a></li>
+              <li><a href="../services.html">Work & Stay</a></li>
+              <li><a href="../services.html">Visa Assistance</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-column">
+            <h4>Contact Us</h4>
+            <div class="contact-info">
+              <div class="contact-item">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>Dome-CFC Estate, Near Achimota Mall</span>
+              </div>
+              <div class="contact-item">
+                <i class="fas fa-home"></i>
+                <span>P.O BOX MS 446 New Achimota, Accra - Ghana</span>
+              </div>
+              <div class="contact-item">
+                <i class="fas fa-envelope"></i>
+                <a href="mailto:ogstartravelandtours@gmail.com"
+                  >ogstartravelandtours@gmail.com</a
+                >
+              </div>
+              <div class="contact-item">
+                <i class="fas fa-phone"></i>
+                <a href="tel:+233206521474">+233 (0) 206 521 474</a>
+              </div>
+              <div class="contact-item">
+                <i class="fas fa-phone"></i>
+                <a href="tel:+233545503479">+233 (0) 242 613 372</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <span
+            >© 2025 O G Star Travel & Tours. Crafted with ❤️ by
+            Kenzyverse.</span
+          >
+        </div>
+      </footer>
+
+      <!-- WhatsApp Floating Button -->
+      <a
+        href="https://wa.me/233242613372?text=Hello%20OG%20Star%20Travel%20%26%20Tours,%20I'm%20interested%20in%20your%20services"
+        class="whatsapp-float"
+        target="_blank"
+        id="whatsappFloat"
+      >
+        <i class="fab fa-whatsapp"></i>
+      </a>
+
+      <!-- Back to Top Button -->
+      <div class="back-to-top" id="backToTop" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+      </div>
+    </div>
+
     <!-- Link Global Scripts -->
     <script src="../assets/src/general.js"></script>
-
-    <!-- Page-Specific Scripts -->
-    <script>
-      // Work opportunities data
-      const workOpportunities = [
-        {
-          title: "Dubai, UAE",
-          location: "United Arab Emirates",
-          image:
-            "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=800",
-          badge: "HOT",
-          positions: [
-            "Carpentry",
-            "Painter",
-            "Furniture Helper",
-            "General Worker",
-            "etc",
-          ],
-          count: "20+",
-          link: "work-abroad/UAE.html",
-        },
-        {
-          title: "Asia",
-          location: "Across Asia",
-          image:
-            "https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=800",
-          badge: "NEW",
-          positions: [
-            "Teaching & Education",
-            "IT & Technology",
-            "Business & Finance",
-            "etc",
-          ],
-          count: "30+",
-          link: "work-abroad/Asia.html",
-        },
-        {
-          title: "Africa Opportunities",
-          location: "Across Africa",
-          image:
-            "https://images.unsplash.com/photo-1528722828814-77b9b83aafb2?w=800",
-          badge: "POPULAR",
-          positions: [
-            "Mining & Resources",
-            "Agriculture & Agribusiness",
-            "NGO & Development",
-            "etc",
-          ],
-          count: "25+",
-          link: "work-abroad/Africa.html",
-        },
-        {
-          title: "Europe Opportunities",
-          location: "Across Europe",
-          image:
-            "https://images.unsplash.com/photo-1522092576479-2c8e7a4a4a3a?w=800",
-          badge: "URGENT",
-          positions: [
-            "Healthcare Professionals",
-            "Skilled Labor",
-            "Hospitality & Tourism",
-          ],
-          count: "35+",
-          link: "work-abroad/Europe.html",
-        },
-        {
-          title: "The American Dream",
-          location: "Across America",
-          image:
-            "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=800",
-          badge: "NEW",
-          positions: [
-            "Sales Assistant",
-            "Store Manager",
-            "IT & Technology",
-            "Skilled Workers",
-            "etc",
-          ],
-          count: "35+",
-          link: "work-abroad/America.html",
-        },
-        {
-          title: "Canadian Dream",
-          location: "Across Canada",
-          image:
-            "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800",
-          badge: "HIGH PAY",
-          positions: [
-            "Technician",
-            "Engineer",
-            "IT & Technology",
-            "Carpentry",
-            "etc",
-          ],
-          count: "20+",
-          link: "work-abroad/Canada.html",
-        },
-      ];
-
-      // Initialize work opportunities carousel
-      function initWorkCarousel() {
-        console.log("Initializing Work Carousel...");
-
-        // Initialize the improved carousel
-        new CircularCarousel({
-          wrapperId: "workCarousel",
-          trackId: "workTrack",
-          dotsId: "workDots",
-          autoMs: 3000,
-          toursData: workOpportunities,
-        });
-      }
-
-      // CircularCarousel Class - Improved from the provided HTML
-      class CircularCarousel {
-        constructor({
-          wrapperId,
-          trackId,
-          dotsId,
-          autoMs = 3000,
-          toursData = [],
-        }) {
-          this.wrapper = document.getElementById(wrapperId);
-          this.track = document.getElementById(trackId);
-          this.dotsWrap = document.getElementById(dotsId);
-          this.autoMs = autoMs;
-          this.toursData = toursData;
-
-          this.gap = 20;
-          this.cloneCount = 0;
-          this.index = 0; // logical index among originals (0..n-1)
-          this.cardWidth = 0;
-          this.moveIncrement = 0;
-          this.autoTimer = null;
-
-          // drag state
-          this.isDragging = false;
-          this.startX = 0;
-          this.prevTranslate = 0;
-          this.dragThreshold = 60;
-
-          // store original nodes as templates
-          this.originalTemplateNodes = [];
-          this.originalCount = 0;
-
-          // bind
-          this._onTransitionEnd = this._onTransitionEnd.bind(this);
-          this._onResize = this._onResize.bind(this);
-          this._onVisibility = this._onVisibility.bind(this);
-
-          // init
-          this._init();
-        }
-
-        _readVisualCount() {
-          const val = getComputedStyle(this.wrapper).getPropertyValue(
-            "--work-count"
-          );
-          const n = parseInt(val);
-          return n && n > 0 ? n : 1;
-        }
-
-        _init() {
-          // Create work cards from data
-          this._createWorkCards();
-
-          // visual count & clones
-          this.visualCount = this._readVisualCount();
-          this.cloneCount = this.visualCount;
-
-          // create clones
-          this._createClones();
-
-          // items reference
-          this.items = Array.from(this.track.children);
-
-          // build dots
-          this._buildDots();
-
-          // layout sizes
-          this._layout();
-
-          // initial jump (no transition)
-          this._jumpToIndex(this.index, false);
-
-          // events
-          this.track.addEventListener("transitionend", this._onTransitionEnd);
-          window.addEventListener("resize", this._onResize);
-          document.addEventListener("visibilitychange", this._onVisibility);
-
-          // interactions
-          this._enableDragTouch();
-
-          // auto
-          this._startAuto();
-        }
-
-        _createWorkCards() {
-          this.track.innerHTML = "";
-          this.toursData.forEach((tour, index) => {
-            const card = document.createElement("a");
-            card.href = tour.link;
-            card.className = "work-card";
-            card.innerHTML = `
-              <img src="${tour.image}" alt="${
-              tour.title
-            }" class="work-card-image" loading="lazy" />
-              <div class="work-card-content">
-                <h3 class="work-card-title">${tour.title}</h3>
-                <div class="work-card-location">
-                  <i class="fas fa-map-marker-alt"></i>
-                  <span>${tour.location}</span>
-                </div>
-                <div class="work-positions">
-                  ${tour.positions
-                    .map((pos) => `<span class="work-position">${pos}</span>`)
-                    .join("")}
-                </div>
-                <div class="work-footer">
-                  <span><i class="fas fa-briefcase"></i> ${
-                    tour.count
-                  } Positions</span>
-                  <a class="work-btn" href="${tour.link}">Explore →</a>
-                </div>
-              </div>
-            `;
-            this.track.appendChild(card);
-            this.originalTemplateNodes.push(card.cloneNode(true));
-          });
-          this.originalCount = this.toursData.length;
-        }
-
-        _createClones() {
-          const originals = Array.from(this.track.children);
-          // append clones of first cloneCount to end
-          for (let i = 0; i < this.cloneCount; i++) {
-            const clone = originals[i].cloneNode(true);
-            clone.setAttribute("data-clone", "end-" + i);
-            this.track.appendChild(clone);
-          }
-          // prepend clones of last cloneCount to beginning
-          for (let i = 0; i < this.cloneCount; i++) {
-            const clone = originals[originals.length - 1 - i].cloneNode(true);
-            clone.setAttribute("data-clone", "start-" + i);
-            this.track.insertBefore(clone, this.track.firstChild);
-          }
-        }
-
-        _buildDots() {
-          this.dotsWrap.innerHTML = "";
-          this.dots = [];
-          for (let i = 0; i < this.originalCount; i++) {
-            const d = document.createElement("span");
-            d.className = "dot";
-            if (i === 0) d.classList.add("active");
-            ((idx) =>
-              d.addEventListener("click", () => {
-                this.index = idx;
-                this._moveToIndex(this.index);
-                this._resetAuto();
-              }))(i);
-            this.dotsWrap.appendChild(d);
-            this.dots.push(d);
-          }
-        }
-
-        _layout() {
-          this.visualCount = this._readVisualCount();
-          const wrapperW = this.wrapper.clientWidth;
-          const totalGaps = (this.visualCount - 1) * this.gap;
-          const cardW = (wrapperW - totalGaps) / this.visualCount;
-          this.cardWidth = Math.floor(cardW);
-          // apply flex-basis to all items
-          Array.from(this.track.children).forEach((node) => {
-            node.style.flex = `0 0 ${this.cardWidth}px`;
-          });
-          this.moveIncrement = this.cardWidth + this.gap;
-          // remove transition while layout to avoid flashes
-          this.track.style.transition = "none";
-          this._jumpToIndex(this.index, false);
-          requestAnimationFrame(() => {
-            this.track.style.transition = "";
-          });
-          // update in-view visual after layout
-          this._setInViewClass();
-        }
-
-        _enableDragTouch() {
-          // mouse
-          this.track.addEventListener("mousedown", (e) => {
-            e.preventDefault();
-            this.isDragging = true;
-            this.startX = e.clientX;
-            this.prevTranslate =
-              -(this.index + this.cloneCount) * this.moveIncrement;
-            this.track.style.transition = "none";
-            this.track.classList.add("grabbing");
-            this._stopAuto();
-          });
-          window.addEventListener("mousemove", (e) => {
-            if (!this.isDragging) return;
-            const dx = e.clientX - this.startX;
-            this._setTranslate(this.prevTranslate + dx);
-          });
-          window.addEventListener("mouseup", (e) => {
-            if (!this.isDragging) return;
-            this.isDragging = false;
-            this.track.classList.remove("grabbing");
-            const dx = e.clientX - this.startX;
-            if (dx < -this.dragThreshold)
-              this.index = (this.index + 1) % this.originalCount;
-            else if (dx > this.dragThreshold)
-              this.index =
-                (this.index - 1 + this.originalCount) % this.originalCount;
-            this._moveToIndex(this.index);
-            this._resetAuto();
-          });
-
-          // touch
-          this.track.addEventListener(
-            "touchstart",
-            (e) => {
-              this.isDragging = true;
-              this.startX = e.touches[0].clientX;
-              this.prevTranslate =
-                -(this.index + this.cloneCount) * this.moveIncrement;
-              this.track.style.transition = "none";
-              this._stopAuto();
-            },
-            { passive: true }
-          );
-
-          this.track.addEventListener(
-            "touchmove",
-            (e) => {
-              if (!this.isDragging) return;
-              const dx = e.touches[0].clientX - this.startX;
-              this._setTranslate(this.prevTranslate + dx);
-            },
-            { passive: true }
-          );
-
-          this.track.addEventListener("touchend", (e) => {
-            if (!this.isDragging) return;
-            this.isDragging = false;
-            const dx = e.changedTouches[0].clientX - this.startX;
-            if (dx < -this.dragThreshold)
-              this.index = (this.index + 1) % this.originalCount;
-            else if (dx > this.dragThreshold)
-              this.index =
-                (this.index - 1 + this.originalCount) % this.originalCount;
-            this._moveToIndex(this.index);
-            this._resetAuto();
-          });
-
-          // prevent default image drag
-          this.track.addEventListener("dragstart", (e) => e.preventDefault());
-        }
-
-        _setTranslate(x) {
-          this.track.style.transform = `translateX(${x}px)`;
-        }
-
-        _moveToIndex(i) {
-          this.track.style.transition = `transform .6s cubic-bezier(0.22, 0.9, 0.35, 1)`;
-          const x = -(i + this.cloneCount) * this.moveIncrement;
-          this._setTranslate(x);
-          this._updateDots(i);
-          this._setInViewClass();
-        }
-
-        _jumpToIndex(i, withTransition = false) {
-          if (!withTransition) this.track.style.transition = "none";
-          const x = -(i + this.cloneCount) * this.moveIncrement;
-          this._setTranslate(x);
-          this._updateDots(i);
-          this._setInViewClass();
-          if (!withTransition)
-            requestAnimationFrame(() => {
-              this.track.style.transition = "";
-            });
-        }
-
-        _onTransitionEnd() {
-          // check if we are inside the clone zones, then jump to real counterpart
-          const transformX = this._currentTransform();
-          const alignedIndex = Math.round(-transformX / this.moveIncrement); // index among items (incl clones)
-          const firstReal = this.cloneCount;
-          const lastRealStart = firstReal + this.originalCount - 1;
-
-          if (alignedIndex > lastRealStart) {
-            // beyond last real -> wrap
-            const offset = alignedIndex - (firstReal + this.originalCount);
-            this.index = offset % this.originalCount;
-            this._jumpToIndex(this.index, false);
-          } else if (alignedIndex < firstReal) {
-            // before first real -> wrap forward
-            const offset = alignedIndex - firstReal + this.originalCount;
-            this.index = offset % this.originalCount;
-            this._jumpToIndex(this.index, false);
-          } else {
-            // in real zone
-            this.index = (alignedIndex - firstReal) % this.originalCount;
-            this._updateDots(this.index);
-            this._setInViewClass();
-          }
-        }
-
-        _currentTransform() {
-          const st = window.getComputedStyle(this.track).transform;
-          if (!st || st === "none") return 0;
-          const values = st.match(/matrix.*\((.+)\)/)[1].split(", ");
-          return parseFloat(values[4]);
-        }
-
-        _updateDots(i) {
-          if (!this.dots) return;
-          this.dots.forEach((d, idx) =>
-            d.classList.toggle("active", idx === i % this.originalCount)
-          );
-        }
-
-        _setInViewClass() {
-          // Add .in-view to the leftmost visible card (logical index)
-          // First remove from all
-          Array.from(this.track.children).forEach((n) =>
-            n.classList.remove("in-view")
-          );
-          // The node that corresponds to leftmost visible = cloneCount + index
-          const pos = this.cloneCount + this.index;
-          const node = this.track.children[pos];
-          if (node) node.classList.add("in-view");
-        }
-
-        _startAuto() {
-          this._stopAuto();
-          this.autoTimer = setInterval(() => {
-            this.index = (this.index + 1) % this.originalCount;
-            this._moveToIndex(this.index);
-          }, this.autoMs);
-          // pause on hover (desktop)
-          this.wrapper.addEventListener("mouseenter", () => this._stopAuto());
-          this.wrapper.addEventListener("mouseleave", () => this._resetAuto());
-        }
-
-        _stopAuto() {
-          clearInterval(this.autoTimer);
-          this.autoTimer = null;
-        }
-        _resetAuto() {
-          this._stopAuto();
-          this._startAuto();
-        }
-
-        _onResize() {
-          // Re-init layout because visual count might change
-          const savedIndex = this.index;
-          // remove listeners for safety
-          this.track.removeEventListener(
-            "transitionend",
-            this._onTransitionEnd
-          );
-          window.removeEventListener("resize", this._onResize);
-
-          // rebuild original nodes
-          this.track.innerHTML = "";
-          this.originalTemplateNodes.forEach((n) =>
-            this.track.appendChild(n.cloneNode(true))
-          );
-          this.originalCount = Array.from(this.track.children).length;
-
-          // re-init
-          this._init();
-          this.index = savedIndex % this.originalCount;
-          this._jumpToIndex(this.index, false);
-        }
-
-        _onVisibility() {
-          if (document.hidden) this._stopAuto();
-          else this._resetAuto();
-        }
-      } // end class
-
-      // Testimonials rotation functionality
-      function initTestimonialsRotation() {
-        const testimonialCards = document.querySelectorAll(".testimonial-card");
-        const testimonialDots = document.querySelectorAll(".testimonial-dot");
-        const testimonialContainer = document.getElementById(
-          "testimonialContainer"
-        );
-        let currentIndex = 0;
-        let autoRotateTimer = null;
-        const autoRotateInterval = 5000;
-
-        function showTestimonial(index) {
-          // Remove active class from all cards and dots
-          testimonialCards.forEach((card) => {
-            card.classList.remove("active");
-            card.classList.add("next");
-          });
-
-          testimonialDots.forEach((dot) => {
-            dot.classList.remove("active");
-          });
-
-          // Set current card and dot as active
-          testimonialCards[index].classList.remove("next");
-          testimonialCards[index].classList.add("active");
-          testimonialDots[index].classList.add("active");
-
-          currentIndex = index;
-        }
-
-        function startAutoRotate() {
-          stopAutoRotate();
-          autoRotateTimer = setInterval(() => {
-            const nextIndex = (currentIndex + 1) % testimonialCards.length;
-            showTestimonial(nextIndex);
-          }, autoRotateInterval);
-        }
-
-        function stopAutoRotate() {
-          if (autoRotateTimer) {
-            clearInterval(autoRotateTimer);
-            autoRotateTimer = null;
-          }
-        }
-
-        // Set initial states
-        showTestimonial(0);
-
-        // Add click event to dots
-        testimonialDots.forEach((dot, index) => {
-          dot.addEventListener("click", () => {
-            showTestimonial(index);
-            startAutoRotate(); // Restart auto-rotation after manual selection
-          });
-        });
-
-        // Add hover events to pause auto-rotation
-        testimonialContainer.addEventListener("mouseenter", () => {
-          stopAutoRotate();
-        });
-
-        testimonialContainer.addEventListener("mouseleave", () => {
-          startAutoRotate();
-        });
-
-        // Add click event to pause auto-rotation
-        testimonialContainer.addEventListener("click", () => {
-          stopAutoRotate();
-          // Resume auto-rotation after 10 seconds of inactivity
-          setTimeout(() => {
-            if (!autoRotateTimer) {
-              startAutoRotate();
-            }
-          }, 10000);
-        });
-
-        // Start auto-rotation
-        startAutoRotate();
-      }
-
-      // FAQ accordion functionality
-      function initFAQ() {
-        const faqItems = document.querySelectorAll(".faq-item");
-
-        faqItems.forEach((item) => {
-          const question = item.querySelector(".faq-question");
-
-          question.addEventListener("click", () => {
-            const isActive = item.classList.contains("active");
-
-            // Close all items
-            faqItems.forEach((faqItem) => {
-              faqItem.classList.remove("active");
-            });
-
-            // Open clicked item if it wasn't active
-            if (!isActive) {
-              item.classList.add("active");
-            }
-          });
-        });
-      }
-
-      // Scroll animations
-      function initScrollAnimations() {
-        const scrollElements = document.querySelectorAll(".scroll-animate");
-
-        const elementInView = (el, dividend = 1) => {
-          const elementTop = el.getBoundingClientRect().top;
-          return (
-            elementTop <=
-            (window.innerHeight || document.documentElement.clientHeight) /
-              dividend
-          );
-        };
-
-        const displayScrollElement = (element) => {
-          element.classList.add("visible");
-        };
-
-        const handleScrollAnimation = () => {
-          scrollElements.forEach((el) => {
-            if (elementInView(el, 1.25)) {
-              displayScrollElement(el);
-            }
-          });
-        };
-
-        window.addEventListener("scroll", () => {
-          handleScrollAnimation();
-        });
-
-        // Initial check on page load
-        handleScrollAnimation();
-      }
-
-      // Initialize all functionality when DOM is loaded
-      document.addEventListener("DOMContentLoaded", function () {
-        initWorkCarousel();
-        initTestimonialsRotation();
-        initFAQ();
-        initScrollAnimations();
-        initGeneral(); // Initialize global functionality
-      });
-    </script>
+    <script src="../assets/src/nav-foot1.js"></script>
+    <script src="../assets/src/work-abroad.js"></script>
   </body>
 </html>
