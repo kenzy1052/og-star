@@ -807,7 +807,7 @@
                 <li>etc.</li>
               </ul>
               <div class="destination-footer">
-                <a href="book/work-stay-abroad.html" class="destination-btn"
+                <a href="work-abroad/UAE.html" class="destination-btn"
                   >Explore →</a
                 >
               </div>
@@ -835,7 +835,7 @@
                 <li>etc.</li>
               </ul>
               <div class="destination-footer">
-                <a href="book/work-stay-abroad.html" class="destination-btn"
+                <a href="work-abroad/Asia.html" class="destination-btn"
                   >Explore →</a
                 >
               </div>
@@ -863,7 +863,7 @@
                 <li>etc.</li>
               </ul>
               <div class="destination-footer">
-                <a href="book/work-stay-abroad.html" class="destination-btn"
+                <a href="work-abroad/Europe.html" class="destination-btn"
                   >Explore →</a
                 >
               </div>
@@ -891,7 +891,7 @@
                 <li>etc.</li>
               </ul>
               <div class="destination-footer">
-                <a href="book/work-stay-abroad.html" class="destination-btn"
+                <a href="work-abroad/Africa.html" class="destination-btn"
                   >Explore →</a
                 >
               </div>
@@ -919,7 +919,7 @@
                 <li>etc.</li>
               </ul>
               <div class="destination-footer">
-                <a href="book/work-stay-abroad.html" class="destination-btn"
+                <a href="work-abroad/America.html" class="destination-btn"
                   >Explore →</a
                 >
               </div>
@@ -947,7 +947,7 @@
                 <li>etc.</li>
               </ul>
               <div class="destination-footer">
-                <a href="book/work-stay-abroad.html" class="destination-btn"
+                <a href="work-abroad/Canada.html" class="destination-btn"
                   >Explore →</a
                 >
               </div>
@@ -1679,6 +1679,24 @@
           initGeneral();
         }
 
+        // Get URL parameters to restore state
+        const urlParams = new URLSearchParams(window.location.search);
+        const filterParam = urlParams.get("filter");
+        const pageParam = urlParams.get("page");
+
+        // Set filter from URL or default to local
+        if (
+          filterParam &&
+          (filterParam === "local" || filterParam === "international")
+        ) {
+          currentFilter = filterParam;
+        }
+
+        // Set page from URL or default to 1
+        if (pageParam && !isNaN(pageParam)) {
+          currentPage = parseInt(pageParam);
+        }
+
         setupFilters();
         renderTours();
         initAnimations();
@@ -1689,14 +1707,30 @@
       function setupFilters() {
         const filterBtns = document.querySelectorAll(".filter-btn");
         filterBtns.forEach((btn) => {
+          // Set active state based on current filter
+          if (btn.dataset.filter === currentFilter) {
+            btn.classList.add("active");
+          } else {
+            btn.classList.remove("active");
+          }
+
           btn.addEventListener("click", () => {
             filterBtns.forEach((b) => b.classList.remove("active"));
             btn.classList.add("active");
             currentFilter = btn.dataset.filter;
             currentPage = 1;
+            updateURL();
             renderTours();
           });
         });
+      }
+
+      // Update URL with current filter and page
+      function updateURL() {
+        const url = new URL(window.location);
+        url.searchParams.set("filter", currentFilter);
+        url.searchParams.set("page", currentPage.toString());
+        window.history.replaceState({}, "", url);
       }
 
       // Render tours based on filter and pagination
@@ -1706,6 +1740,10 @@
         const startIndex = (currentPage - 1) * toursPerPage;
         const endIndex = startIndex + toursPerPage;
         const currentTours = tours.slice(startIndex, endIndex);
+
+        // Determine folder based on filter
+        const folder =
+          currentFilter === "local" ? "local-tour" : "international-tour";
 
         grid.innerHTML = currentTours
           .map(
@@ -1730,12 +1768,9 @@
                 </div>
               </div>
               <div class="destination-footer">
-                <a href="book/${tour.title
-                  .toLowerCase()
-                  .replace(
-                    /\s+/g,
-                    "-"
-                  )}.html" class="destination-btn">Explore →</a>
+                <a href="${folder}/${tour.title
+              .toLowerCase()
+              .replace(/\s+/g, "-")}.html" class="destination-btn">Explore →</a>
               </div>
             </div>
           </div>
@@ -1793,6 +1828,7 @@
         );
         if (page < 1 || page > totalPages) return;
         currentPage = page;
+        updateURL();
         renderTours();
         document
           .getElementById("tours-section")

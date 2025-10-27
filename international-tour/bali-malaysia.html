@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bali & Malaysia Experience - OG Star Travel & Tours</title>
+
+    <!-- Favicon -->
+    <link
+      rel="icon"
+      type="image/png"
+      href="../assets/images/favicon/favicon-96x96.png"
+      sizes="96x96"
+    />
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="../assets/images/favicon/favicon.svg"
+    />
+    <link rel="shortcut icon" href="../assets/images/favicon/favicon.ico" />
+
+    <!-- Link Global Styles -->
+    <link rel="stylesheet" href="../assets/styles/style.css" />
+    <link rel="stylesheet" href="../assets/styles/utils.css" />
+    <link rel="stylesheet" href="../assets/styles/nav-foot.css" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <!-- Page-Specific Styles -->
+    <link rel="stylesheet" href="../assets/styles/work-abroad.css" />
+  </head>
+  <body>
+    <!-- Mobile Menu Overlay -->
+    <div>
+      <div class="overlay" id="overlay"></div>
+
+      <!-- Navigation -->
+      <header class="navbar" id="navbar">
+        <div class="nav-inner">
+          <div class="nav-logo">
+            <a href="../index.html" class="logo">
+              <img src="../assets/images/logo.png" alt="O G Star logo" />
+            </a>
+          </div>
+
+          <nav class="nav-center" aria-label="Main navigation">
+            <ul class="nav-menu" role="menubar">
+              <li class="nav-item" role="none">
+                <a href="../index.html" class="nav-link" role="menuitem"
+                  >Home</a
+                >
+              </li>
+              <li class="nav-item" role="none">
+                <a href="../services.html" class="nav-link" role="menuitem"
+                  >Services</a
+                >
+              </li>
+              <li class="nav-item" role="none">
+                <a href="../destinations.html" class="nav-link" role="menuitem"
+                  >Destinations</a
+                >
+              </li>
+              <li class="nav-item" role="none">
+                <a href="../information.html" class="nav-link" role="menuitem"
+                  >Information</a
+                >
+              </li>
+              <li class="nav-item" role="none">
+                <a href="../contact.html" class="nav-link" role="menuitem"
+                  >Contact</a
+                >
+              </li>
+              <li class="nav-item" role="none">
+                <a href="../blog.html" class="nav-link" role="menuitem">Blog</a>
+              </li>
+            </ul>
+          </nav>
+
+          <div class="nav-cta">
+            <a href="../contact.html">
+              <button
+                class="book-now-btn"
+                id="bookNowBtn"
+                aria-label="Book Now"
+              >
+                <span>Book Now</span>
+              </button>
+            </a>
+
+            <button class="hamburger" id="hamburger" aria-label="Open menu">
+              <i class="fas fa-bars"></i>
+            </button>
+          </div>
+        </div>
+      </header>
+
+      <!-- Mobile panel -->
+      <aside class="mobile-panel" id="mobilePanel">
+        <div class="mobile-panel-header">
+          <h3>Menu</h3>
+          <button class="close-btn" id="closePanel" aria-label="Close menu">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+
+        <nav class="mobile-links">
+          <a href="../index.html">Home</a>
+          <a href="../services.html">Services</a>
+          <a href="../destinations.html">Destinations</a>
+          <a href="../information.html">Information</a>
+          <a href="../contact.html">Contact</a>
+          <a href="../blog.html">Blog</a>
+        </nav>
+      </aside>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="destination-hero">
+      <img
+        src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=1600&h=900&fit=crop"
+        alt="Bali & Malaysia Experience"
+        class="destination-hero-image"
+      />
+      <div class="destination-hero-overlay">
+        <h1 class="destination-hero-title">Bali & Malaysia Experience</h1>
+      </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery-section">
+      <div class="page-content">
+        <div class="gallery-header">
+          <h2 class="gallery-title">Photo Gallery</h2>
+        </div>
+        <div class="gallery-rotating" id="galleryRotating">
+          <div class="gallery-card front" data-index="0">
+            <img
+              src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=600&h=600&fit=crop"
+              alt="Bali Gallery 1"
+            />
+          </div>
+          <div class="gallery-card right" data-index="1">
+            <img
+              src="https://images.unsplash.com/photo-1549180030-48bf079fb38a?w=600&h=600&fit=crop"
+              alt="Bali Gallery 2"
+            />
+          </div>
+          <div class="gallery-card back" data-index="2">
+            <img
+              src="https://images.unsplash.com/photo-1525625293386-3f8f99389edd?w=600&h=600&fit=crop"
+              alt="Malaysia Gallery 1"
+            />
+          </div>
+          <div class="gallery-card left" data-index="3">
+            <img
+              src="https://images.unsplash.com/photo-1596436889106-3539d3c616c0?w=600&h=600&fit=crop"
+              alt="Malaysia Gallery 2"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Advanced Lightbox -->
+    <div class="lightbox" id="lightbox">
+      <div class="lightbox-top-bar">
+        <div class="lightbox-counter" id="lightboxCounter">Image 1 of 4</div>
+        <button class="lightbox-close" onclick="closeLightbox()">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+
+      <button class="lightbox-nav lightbox-prev" onclick="previousImage()">
+        <i class="fas fa-chevron-left"></i>
+      </button>
+      <button class="lightbox-nav lightbox-next" onclick="nextImage()">
+        <i class="fas fa-chevron-right"></i>
+      </button>
+
+      <div class="lightbox-content" id="lightboxContent">
+        <div class="lightbox-image-container" id="lightboxImageContainer">
+          <img src="" alt="" class="lightbox-image" id="lightboxImage" />
+        </div>
+      </div>
+
+      <div class="lightbox-bottom-bar">
+        <div class="zoom-instruction">Swipe to view next picture</div>
+      </div>
+    </div>
+
+    <!-- Tour Overview Section -->
+    <section class="tour-overview-section">
+      <div class="page-content">
+        <h2 class="tour-main-title">OVERVIEW</h2>
+        <p class="tour-description">
+          Immerse yourself in the enchanting blend of ancient traditions and
+          modern marvels as you journey through two of Southeast Asia's most
+          captivating destinations. Begin your adventure in Bali, the Island of
+          the Gods, where terraced rice paddies cascade down volcanic hillsides,
+          ornate temples dot the landscape, and vibrant arts and culture thrive
+          in every village. Experience the spiritual heart of Ubud, relax on
+          pristine beaches in Seminyak, and witness breathtaking sunsets in
+          Tanah Lot. Then, discover the dynamic fusion of cultures in Malaysia,
+          where Malay, Chinese, and Indian influences create a rich tapestry of
+          flavors, architecture, and traditions. Explore the futuristic skyline
+          of Kuala Lumpur with its iconic Petronas Towers, wander through the
+          historic streets of George Town in Penang, and escape to the tea
+          plantations of the Cameron Highlands. From Bali's spiritual
+          tranquility to Malaysia's cosmopolitan energy, this journey offers a
+          perfect balance of relaxation, adventure, and cultural discovery.
+        </p>
+
+        <div class="tour-details-grid">
+          <div class="tour-includes">
+            <h3><i class="fas fa-check-circle"></i> What's Included</h3>
+            <ul class="tour-list">
+              <li><i class="fas fa-check"></i> Round-trip airfare</li>
+              <li><i class="fas fa-check"></i> 4-star hotel accommodation</li>
+              <li><i class="fas fa-check"></i> Daily breakfast</li>
+              <li><i class="fas fa-check"></i> Full-day Ubud cultural tour</li>
+              <li>
+                <i class="fas fa-check"></i> Petronas Towers observation deck
+                tickets
+              </li>
+              <li><i class="fas fa-check"></i> Batu Caves tour</li>
+              <li><i class="fas fa-check"></i> Airport transfers</li>
+              <li><i class="fas fa-check"></i> Professional tour guide</li>
+            </ul>
+          </div>
+
+          <div class="tour-excludes">
+            <h3><i class="fas fa-times-circle"></i> What's Not Included</h3>
+            <ul class="tour-list">
+              <li><i class="fas fa-times"></i> Lunch and dinner</li>
+              <li><i class="fas fa-times"></i> Travel insurance</li>
+              <li><i class="fas fa-times"></i> Visa fees</li>
+              <li><i class="fas fa-times"></i> Personal expenses</li>
+              <li><i class="fas fa-times"></i> Optional activities</li>
+              <li><i class="fas fa-times"></i> Tips and gratuities</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="tour-info-grid">
+          <div class="tour-info-card">
+            <div class="tour-info-icon"><i class="fas fa-users"></i></div>
+            <div class="tour-info-label">Max People</div>
+            <div class="tour-info-value">20</div>
+          </div>
+
+          <div class="tour-info-card">
+            <div class="tour-info-icon"><i class="fas fa-child"></i></div>
+            <div class="tour-info-label">Minimum Age</div>
+            <div class="tour-info-value">12 years</div>
+          </div>
+
+          <div class="tour-info-card">
+            <div class="tour-info-icon"><i class="fas fa-clock"></i></div>
+            <div class="tour-info-label">Duration</div>
+            <div class="tour-info-value">10 Days / 9 Nights</div>
+          </div>
+
+          <div class="tour-info-card">
+            <div class="tour-info-icon">
+              <i class="fas fa-map-marker-alt"></i>
+            </div>
+            <div class="tour-info-label">Location</div>
+            <div class="tour-info-value">Bali & Malaysia</div>
+          </div>
+
+          <div class="tour-info-card">
+            <div class="tour-info-icon">
+              <i class="fas fa-calendar-alt"></i>
+            </div>
+            <div class="tour-info-label">Availability</div>
+            <div class="tour-info-value">April - October</div>
+          </div>
+
+          <div class="tour-info-card">
+            <div class="tour-info-icon"><i class="fas fa-chart-line"></i></div>
+            <div class="tour-info-label">Tour Level</div>
+            <div class="tour-info-value">Moderate</div>
+          </div>
+        </div>
+
+        <div class="tour-pricing">
+          <h3>Tour Pricing</h3>
+          <div class="tour-price">From $2,200</div>
+          <p class="tour-price-note">per person (based on double occupancy)</p>
+          <p class="tour-price-note">Group discounts available for 8+ people</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Other International Tours Carousel -->
+    <section class="other-tours-section">
+      <div class="page-content">
+        <div class="other-tours-header">
+          <h2 class="other-tours-title">Explore Other Destinations</h2>
+        </div>
+        <div class="tours-carousel-wrapper" id="toursCarousel">
+          <div class="tours-carousel-track" id="toursTrack">
+            <!-- Tour cards will be dynamically added here -->
+          </div>
+          <div class="carousel-dots" id="carouselDots"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+      <div class="page-content">
+        <h2 class="cta-title">
+          Ready to book your Bali & Malaysia experience?
+        </h2>
+        <p class="cta-description">
+          Don't miss out on this incredible journey through two of Southeast
+          Asia's most enchanting destinations. Book your tour today or explore
+          more amazing destinations we offer.
+        </p>
+        <div class="cta-buttons">
+          <a href="../destinations.html" class="btn cta-btn-primary">
+            <i class="fas fa-calendar-check"></i> Book Tour
+          </a>
+          <a href="../destinations.html" class="btn cta-btn-secondary">
+            <i class="fas fa-globe"></i> Explore Destinations
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <div>
+      <footer class="footer" id="contact">
+        <div class="footer-container">
+          <div class="footer-column">
+            <img
+              src="../assets/images/logo2.png"
+              alt="O G Star Logo"
+              style="max-width: 150px; margin-bottom: 0"
+            />
+          </div>
+
+          <div class="footer-column">
+            <h4>Quick Links</h4>
+            <ul>
+              <li><a href="../index.html">Home</a></li>
+              <li><a href="../services.html">Services</a></li>
+              <li><a href="../destinations.html">Destinations</a></li>
+              <li><a href="../information.html">Information</a></li>
+              <li><a href="../contact.html">Contact</a></li>
+              <li><a href="../blog.html">Blog</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-column">
+            <h4>Our Services</h4>
+            <ul>
+              <li><a href="../services.html">Travel & Tours</a></li>
+              <li><a href="../services.html">Study Abroad</a></li>
+              <li><a href="../services.html">Work & Stay</a></li>
+              <li><a href="../services.html">Visa Assistance</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-column">
+            <h4>Contact Us</h4>
+            <div class="contact-info">
+              <div class="contact-item">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>Dome-CFC Estate, Near Achimota Mall</span>
+              </div>
+              <div class="contact-item">
+                <i class="fas fa-home"></i>
+                <span>P.O BOX MS 446 New Achimota, Accra - Ghana</span>
+              </div>
+              <div class="contact-item">
+                <i class="fas fa-envelope"></i>
+                <a href="mailto:ogstartravelandtours@gmail.com"
+                  >ogstartravelandtours@gmail.com</a
+                >
+              </div>
+              <div class="contact-item">
+                <i class="fas fa-phone"></i>
+                <a href="tel:+233206521474">+233 (0) 206 521 474</a>
+              </div>
+              <div class="contact-item">
+                <i class="fas fa-phone"></i>
+                <a href="tel:+233545503479">+233 (0) 242 613 372</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <span
+            >© 2025 O G Star Travel & Tours. Crafted with ❤️ by
+            Kenzyverse.</span
+          >
+        </div>
+      </footer>
+
+      <!-- WhatsApp Floating Button -->
+      <a
+        href="https://wa.me/233242613372?text=Hello%20OG%20Star%20Travel%20%26%20Tours,%20I'm%20interested%20in%20your%20services"
+        class="whatsapp-float"
+        target="_blank"
+        id="whatsappFloat"
+      >
+        <i class="fab fa-whatsapp"></i>
+      </a>
+
+      <!-- Back to Top Button -->
+      <div class="back-to-top" id="backToTop" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+      </div>
+    </div>
+
+    <!-- Link Global Scripts -->
+    <script src="../assets/src/general.js"></script>
+    <script src="../assets/src/nav-foot1.js"></script>
+    <script src="../assets/src/work-abroad.js"></script>
+  </body>
+</html>

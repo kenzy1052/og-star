@@ -1,0 +1,188 @@
+<section class="testimonials-section">
+  <h2 class="section-title">What People Say</h2>
+
+  <div class="testimonial-stack">
+    <div class="testimonial-card active">
+      <p class="testimonial-text">
+        “OGStar helped me secure a teaching position in Kenya. The process was
+        smooth and professional.”
+      </p>
+      <h4 class="testimonial-author">— Ama, Ghana</h4>
+    </div>
+
+    <div class="testimonial-card">
+      <p class="testimonial-text">
+        “I got placed in South Africa through OGStar, and the support I received
+        made the transition easy.”
+      </p>
+      <h4 class="testimonial-author">— Kwame, South Africa</h4>
+    </div>
+
+    <div class="testimonial-card">
+      <p class="testimonial-text">
+        “Thanks to OGStar, I’m now working with an NGO in Rwanda. Everything was
+        well organized.”
+      </p>
+      <h4 class="testimonial-author">— Lydia, Rwanda</h4>
+    </div>
+
+    <div class="testimonial-card">
+      <p class="testimonial-text">
+        “Their guidance helped me find a perfect job in Nigeria. I recommend
+        OGStar to anyone looking abroad.”
+      </p>
+      <h4 class="testimonial-author">— Joseph, Nigeria</h4>
+    </div>
+  </div>
+
+  <div class="testimonial-dots">
+    <span class="dot active"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
+  </div>
+</section>
+
+<style>
+  .testimonials-section {
+    padding: 60px 20px;
+    text-align: center;
+    position: relative;
+  }
+
+  .section-title {
+    font-size: 1.8rem;
+    margin-bottom: 40px;
+  }
+
+  .testimonial-stack {
+    position: relative;
+    width: 90%;
+    max-width: 600px;
+    margin: 0 auto;
+    height: 240px;
+    perspective: 1000px;
+  }
+
+  .testimonial-card {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: #fff;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+    opacity: 0.9;
+    transform: scale(0.95) translateY(15px);
+    transition: transform 0.8s ease, opacity 0.5s ease;
+  }
+
+  .testimonial-card.active {
+    z-index: 4;
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+
+  .testimonial-card.leave {
+    transform: translateX(-120%) scale(0.9);
+    opacity: 0;
+    z-index: 5;
+  }
+
+  .testimonial-dots {
+    margin-top: 30px;
+  }
+
+  .testimonial-dots .dot {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    margin: 0 5px;
+    background: #ccc;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+
+  .testimonial-dots .dot.active {
+    background: #333;
+  }
+
+  .testimonial-text {
+    font-size: 1rem;
+    font-style: italic;
+    margin-bottom: 15px;
+  }
+
+  .testimonial-author {
+    font-weight: 600;
+    color: #333;
+  }
+
+  /* Small screens */
+  @media (max-width: 600px) {
+    .testimonial-stack {
+      height: auto;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const cards = document.querySelectorAll(".testimonial-card");
+    const dots = document.querySelectorAll(".dot");
+    const stack = document.querySelector(".testimonial-stack");
+    let current = 0;
+    let rotating = false;
+
+    function rotateNext() {
+      if (rotating) return;
+      rotating = true;
+
+      const currentCard = cards[current];
+      const next = (current + 1) % cards.length;
+      const nextCard = cards[next];
+
+      currentCard.classList.add("leave");
+
+      setTimeout(() => {
+        currentCard.classList.remove("active", "leave");
+        stack.appendChild(currentCard);
+        nextCard.classList.add("active");
+        updateDots(next);
+        current = next;
+        rotating = false;
+      }, 800);
+    }
+
+    function updateDots(activeIndex) {
+      dots.forEach((dot, i) =>
+        dot.classList.toggle("active", i === activeIndex)
+      );
+    }
+
+    // Auto-rotate
+    let interval = setInterval(rotateNext, 5000);
+
+    // Dots navigation
+    dots.forEach((dot, index) => {
+      dot.addEventListener("click", () => {
+        clearInterval(interval);
+        while (current !== index) rotateNext();
+        interval = setInterval(rotateNext, 5000);
+      });
+    });
+
+    // Swipe detection
+    let startX = 0;
+    stack.addEventListener(
+      "touchstart",
+      (e) => (startX = e.touches[0].clientX)
+    );
+    stack.addEventListener("touchend", (e) => {
+      const endX = e.changedTouches[0].clientX;
+      if (startX - endX > 50) rotateNext();
+    });
+  });
+</script>
