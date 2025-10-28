@@ -750,162 +750,162 @@ function initToursCarousel() {
     {
       title: "Dubai Experience",
       location: "Dubai, UAE",
-      image:
-        "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=800",
+      image: "../assets/images/dubai-xp.jpg",
       maxPeople: 25,
       days: 7,
+      price: 1600,
     },
     {
       title: "Nairobi Adventure",
       location: "Nairobi, Kenya",
-      image:
-        "https://images.unsplash.com/photo-1523805009345-7448845a9e53?w=800",
+      image: "../assets/images/nairobi.jpg",
       maxPeople: 30,
       days: 5,
+      price: 1200,
     },
     {
       title: "Bali & Malaysia",
       location: "Bali & Kuala Lumpur",
-      image:
-        "https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=800",
+      image: "../assets/images/bali.jpg",
       maxPeople: 20,
       days: 10,
+      price: 2200,
     },
     {
-      title: "Jo'burg Special",
+      title: "Johannesburg Special",
       location: "Johannesburg, South Africa",
-      image:
-        "https://images.unsplash.com/photo-1577948000111-9c970dfe3743?w=800",
-      maxPeople: 25,
+      image: "../assets/images/joburg.jpg",
+      maxPeople: 20,
       days: 6,
+      price: 1400,
     },
     {
       title: "Morocco Magic",
       location: "Marrakech, Morocco",
-      image:
-        "https://images.unsplash.com/photo-1489749798305-4fea3ae63d43?w=800",
-      maxPeople: 20,
-      days: 7,
+      image: "../assets/images/morocco.jpg",
+      maxPeople: 15,
+      days: 8,
+      price: 1450,
     },
     {
       title: "Mombasa Feeling",
       location: "Mombasa, Kenya",
-      image:
-        "https://images.unsplash.com/photo-1590521781837-d074a9c00c60?w=800",
+      image: "../assets/images/mombasa.jpg",
       maxPeople: 30,
       days: 5,
+      price: 1350,
     },
     {
-      title: "Phil's Paradise",
+      title: "Philippines Paradise",
       location: "Manila, Philippines",
-      image:
-        "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=800",
-      maxPeople: 25,
-      days: 8,
+      image: "../assets/images/phil.jpg",
+      maxPeople: 18,
+      days: 9,
+      price: 1750,
     },
     {
       title: "Seychelles Escape",
       location: "Seychelles",
-      image:
-        "https://images.unsplash.com/photo-1505881502353-a1986add3762?w=800",
-      maxPeople: 15,
+      image: "../assets/images/seychelles.jpg",
+      maxPeople: 16,
       days: 7,
+      price: 2850,
     },
     {
       title: "Abidjan Discovery",
       location: "Abidjan, Ivory Coast",
-      image:
-        "https://images.unsplash.com/photo-1531314146329-946e97b18f16?w=800",
-      maxPeople: 30,
-      days: 4,
+      image: "../assets/images/abidjan.jpg",
+      maxPeople: 16,
+      days: 5,
+      price: 1200,
     },
     {
       title: "Zanzibar Bliss",
       location: "Zanzibar, Tanzania",
-      image:
-        "https://images.unsplash.com/photo-1505881502353-a1986add3762?w=800",
-      maxPeople: 20,
+      image: "../assets/images/zanzibar.jpg",
+      maxPeople: 24,
       days: 6,
+      price: 1750,
     },
     {
       title: "Tanzania Safari",
       location: "Tanzania",
-      image:
-        "https://images.unsplash.com/photo-1516426122078-c23e76319801?w=800",
-      maxPeople: 20,
-      days: 8,
+      image: "../assets/images/tanzania.jpg",
+      maxPeople: 12,
+      days: 7,
+      price: 2800,
     },
     {
-      title: "Singapore Journey",
+      title: "Singapore Bliss",
       location: "Singapore",
-      image:
-        "https://images.unsplash.com/photo-1525625293386-3f8f99389edd?w=800",
-      maxPeople: 25,
+      image: "../assets/images/singapore.jpg",
+      maxPeople: 20,
       days: 5,
+      price: 1850,
     },
     {
       title: "Turkey Delight",
       location: "Istanbul, Turkey",
-      image:
-        "https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?w=800",
-      maxPeople: 30,
-      days: 7,
+      image: "../assets/images/turkey.jpg",
+      maxPeople: 28,
+      days: 8,
+      price: 1550,
     },
     {
       title: "Cape Town Special",
       location: "Cape Town, South Africa",
-      image:
-        "https://images.unsplash.com/photo-1580060839134-75a5edca2e99?w=800",
-      maxPeople: 25,
+      image: "../assets/images/cape-town.jpg",
+      maxPeople: 18,
       days: 6,
+      price: 1650,
     },
     {
       title: "Addis Ababa Tour",
       location: "Addis Ababa, Ethiopia",
-      image:
-        "https://images.unsplash.com/photo-1580549793385-de0a6b6b5ace?w=800",
-      maxPeople: 30,
+      image: "../assets/images/addis.jpg",
+      maxPeople: 22,
       days: 5,
+      price: 1250,
     },
     {
       title: "Europe Grand Tour",
       location: "Multiple Cities, Europe",
-      image:
-        "https://images.unsplash.com/photo-1467269204594-9661b134dd2b?w=800",
-      maxPeople: 20,
+      image: "../assets/images/europe.jpg",
+      maxPeople: 30,
       days: 14,
+      price: 3950,
     },
     {
       title: "Family Getaway",
       location: "Various Destinations",
-      image:
-        "https://images.unsplash.com/photo-1511895426328-dc8714191300?w=800",
+      image: "../assets/images/family.jpg",
       maxPeople: 30,
       days: 7,
+      price: 1800,
     },
     {
-      title: "X-MAS Experience",
+      title: "Christmas Experience",
       location: "Seasonal Destinations",
-      image:
-        "https://images.unsplash.com/photo-1512389142860-9c449e58a543?w=800",
+      image: "../assets/images/christmas.jpg",
       maxPeople: 25,
-      days: 7,
+      days: 8,
+      price: 2450,
     },
     {
       title: "Relaxation Retreat",
       location: "Beach Resorts",
-      image:
-        "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800",
+      image: "../assets/images/relaxation.jpg",
       maxPeople: 20,
-      days: 5,
+      days: 6,
+      price: 3200,
     },
     {
       title: "Festival Getaways",
       location: "Event Locations",
-      image:
-        "https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?w=800",
-      maxPeople: 30,
-      days: 4,
+      image: "../assets/images/festival.jpg",
+      maxPeople: 18,
+      days: 5,
+      price: 2200,
     },
   ];
 
@@ -1001,18 +1001,29 @@ class CircularCarousel {
     this.track.innerHTML = "";
     this.toursData.forEach((tour, index) => {
       const card = document.createElement("a");
-      card.href = tour.link;
+      // Format the title to create a clean URL
+      const formattedTitle = tour.title
+        .toLowerCase()
+        .replace(/\s+/g, "-") // Replace spaces with dashes
+        .replace(/&/g, "-&-") // Replace & with -&-
+        .replace(/--/g, "-") // Replace double dashes with single dash
+        .replace(/'-/g, "-") // Fix apostrophe followed by dash
+        .replace(/'-/g, "-") // Fix dash followed by apostrophe
+        .replace(/'/g, "") // Remove remaining apostrophes
+        .replace(/,/g, ""); // Remove commas
+
+      card.href = `${formattedTitle}.html`;
       card.className = "tour-card";
       card.innerHTML = `
-              <img src="${tour.image}" alt="${tour.title}" class="tour-card-image" loading="lazy" />
-              <div class="tour-card-content">
-                <h3 class="tour-card-title">${tour.title}</h3>
-                <div class="tour-card-location">
-                  <i class="fas fa-map-marker-alt"></i>
-                  <span>${tour.location}</span>
-                </div>
+            <img src="${tour.image}" alt="${tour.title}" class="tour-card-image" loading="lazy" />
+            <div class="tour-card-content">
+              <h3 class="tour-card-title">${tour.title}</h3>
+              <div class="tour-card-location">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>${tour.location}</span>
               </div>
-            `;
+            </div>
+          `;
       this.track.appendChild(card);
       this.originalTemplateNodes.push(card.cloneNode(true));
     });

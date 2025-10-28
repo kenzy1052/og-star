@@ -147,6 +147,32 @@
   line-height: 1.6;
 }
 
+.tour-pricing {
+  background: var(--gradient-primary);
+  color: white;
+  padding: 2rem;
+  border-radius: var(--radius-lg);
+  text-align: center;
+  box-shadow: var(--shadow-hover);
+}
+
+.tour-pricing h3 {
+  color: white;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+
+.tour-price {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.tour-price-note {
+  font-size: 0.9rem;
+  opacity: 0.9;
+}
+
 /* Fun Facts */
 .facts-list {
   display: flex;
