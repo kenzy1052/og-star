@@ -87,8 +87,8 @@ function openLightbox(index) {
   // Store current navbar state before hiding it
   previousNavbarState = {
     isVisible: navbar.classList.contains("navbar-visible"),
-    transform: navbar.style.transform || "translateY(0)",
-    transition: navbar.style.transition || "",
+    transform: navbar.style.transform,
+    transition: navbar.style.transition,
   };
 
   // Hide navbar when lightbox opens
@@ -556,13 +556,20 @@ function closeLightboxWithoutHistory() {
 
   // Restore navbar state after closing lightbox
   if (previousNavbarState) {
-    // Always restore the navbar to its original position
-    navbar.style.transform = previousNavbarState.transform;
-    navbar.style.transition = previousNavbarState.transition;
-    
-    // Restore the navbar-visible class if it was originally present
+    // Restore the navbar to its previous state
     if (previousNavbarState.isVisible) {
+      navbar.style.transform = previousNavbarState.transform || "translateY(0)";
       navbar.classList.add("navbar-visible");
+    } else {
+      navbar.style.transform = "translateY(-100%)";
+      navbar.classList.remove("navbar-visible");
+    }
+
+    // Restore transition property
+    if (previousNavbarState.transition) {
+      navbar.style.transition = previousNavbarState.transition;
+    } else {
+      navbar.style.transition = "";
     }
 
     previousNavbarState = null;
