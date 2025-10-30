@@ -353,8 +353,7 @@
         top: 0;
         right: 0;
         bottom: 0;
-        background: rgba(0, 0, 0, 0.5);
-        backdrop-filter: blur(4px);
+        background: var(--bg-tertiary);
         display: none;
         align-items: center;
         justify-content: center;
@@ -366,179 +365,100 @@
         width: 100%;
         max-width: 460px;
         background: #ffffff;
-        border-radius: 16px;
-        padding: 40px 30px;
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        border-radius: 12px;
+        padding: 22px;
+        box-shadow: 0 6px 30px rgba(10, 20, 30, 0.2);
         text-align: center;
         color: var(--primary-color);
       }
 
-      /* Modern Dots Spinner */
-      .dots-loader {
+      /* spinner */
+      .spinner {
+        width: 64px;
+        height: 64px;
+        border-radius: 50%;
+        display: inline-block;
+        border: 6px solid rgba(0, 0, 0, 0.08);
+        border-top-color: var(--primary-color);
+        animation: spin 1s linear infinite;
+        margin-bottom: 14px;
+      }
+
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      /* success check */
+      .check {
+        width: 76px;
+        height: 76px;
+        border-radius: 50%;
         display: inline-flex;
-        gap: 8px;
-        margin-bottom: 20px;
-      }
-
-      .dots-loader .dot {
-        width: 12px;
-        height: 12px;
-        border-radius: 50%;
-        background: var(--primary-color);
-        box-shadow: 0 0 5px rgba(46, 196, 182, 0.5);
-        animation: dotPulse 1.4s ease-in-out infinite;
-      }
-
-      .dots-loader .dot:nth-child(1) {
-        animation-delay: 0s;
-      }
-
-      .dots-loader .dot:nth-child(2) {
-        animation-delay: 0.2s;
-      }
-
-      .dots-loader .dot:nth-child(3) {
-        animation-delay: 0.4s;
-      }
-
-      @keyframes dotPulse {
-        0%,
-        100% {
-          transform: scale(0.8);
-          opacity: 0.5;
-        }
-        50% {
-          transform: scale(1.2);
-          opacity: 1;
-          box-shadow: 0 0 10px rgba(46, 196, 182, 0.8);
-        }
-      }
-
-      /* Modern Success Checkmark */
-      .check-container {
-        width: 80px;
-        height: 80px;
-        margin: 0 auto 20px;
-        position: relative;
-      }
-
-      .check-circle {
-        width: 80px;
-        height: 80px;
-        border-radius: 50%;
-        background: linear-gradient(135deg, #2ec4b6 0%, #1a9d8f 100%);
-        display: flex;
         align-items: center;
         justify-content: center;
-        animation: scaleIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        box-shadow: 0 3px 10px rgba(46, 196, 182, 0.3);
+        background: #e9fbf7;
+        border: 2px solid #08a87b;
+        margin-bottom: 14px;
       }
 
-      .check-icon {
-        width: 40px;
-        height: 40px;
-        stroke: white;
-        stroke-width: 3;
+      .check svg {
+        width: 36px;
+        height: 36px;
+        fill: none;
+        stroke: #08a87b;
+        stroke-width: 4;
         stroke-linecap: round;
         stroke-linejoin: round;
-        fill: none;
-        stroke-dasharray: 60;
-        stroke-dashoffset: 60;
-        animation: drawCheck 0.6s 0.3s ease-out forwards;
-      }
-
-      @keyframes scaleIn {
-        0% {
-          transform: scale(0);
-          opacity: 0;
-        }
-        50% {
-          transform: scale(1.1);
-        }
-        100% {
-          transform: scale(1);
-          opacity: 1;
-        }
-      }
-
-      @keyframes drawCheck {
-        to {
-          stroke-dashoffset: 0;
-        }
       }
 
       .fm-title {
-        font-size: 20px;
-        margin: 0 0 10px;
+        font-size: 18px;
+        margin: 6px 0 8px;
         color: var(--primary-color);
-        font-weight: 600;
       }
 
       .fm-sub {
         font-size: 14px;
-        color: #666;
+        color: var(--secondary-color);
         margin-bottom: 10px;
-        line-height: 1.5;
       }
 
       .fm-actions {
-        margin-top: 24px;
+        margin-top: 14px;
         display: flex;
         gap: 10px;
         justify-content: center;
       }
 
       .fm-btn {
-        padding: 12px 24px;
+        padding: 10px 16px;
         border-radius: 8px;
         border: none;
         cursor: pointer;
         font-weight: 600;
-        font-size: 14px;
-        transition: all 0.3s ease;
       }
 
       .fm-btn.primary {
-        background: linear-gradient(135deg, #2ec4b6 0%, #1a9d8f 100%);
+        background: var(--gradient-primary);
         color: #fff;
-      }
-
-      .fm-btn.primary:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 3px 8px rgba(46, 196, 182, 0.4);
       }
 
       .fm-btn.ghost {
         background: transparent;
-        color: #666;
-        border: 1px solid #e0e0e0;
+        color: #333;
+        border: 1px solid #e6e6e6;
       }
 
-      .fm-btn.ghost:hover {
-        background: #f5f5f5;
-        border-color: #ccc;
-      }
-
-      /* Error Icon */
-      .error-icon {
-        width: 80px;
-        height: 80px;
-        margin: 0 auto 20px;
-        border-radius: 50%;
-        background: linear-gradient(135deg, #ff6b6b 0%, #ee5a52 100%);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        animation: scaleIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        box-shadow: 0 4px 20px rgba(255, 107, 107, 0.3);
-      }
-
-      .error-icon svg {
-        width: 40px;
-        height: 40px;
-        stroke: white;
-        stroke-width: 3;
-        stroke-linecap: round;
+      /* message highlight area in the email preview on the page (for user) */
+      .message-preview {
+        background: #f7fbff;
+        border-left: 4px solid #0078ff;
+        padding: 12px;
+        border-radius: 6px;
+        white-space: pre-wrap;
+        text-align: left;
       }
     </style>
   </head>
@@ -639,6 +559,7 @@
         </p>
 
         <div class="contact-info-grid">
+          <!-- contact cards (unchanged) -->
           <div class="contact-info-card scroll-animate">
             <div class="contact-info-icon">
               <i class="fas fa-map-marker-alt"></i>
@@ -696,15 +617,17 @@
         </p>
 
         <div class="contact-form-container scroll-animate">
+          <!-- Removed Netlify submission attributes and changed names to match Apps Script -->
           <form
             name="contact"
             class="contact-form"
             id="contactForm"
             autocomplete="on"
           >
+            <!-- Honeypot field (spam trap) - keep hidden -->
             <div style="display: none">
               <label
-                >Don't fill this out if you're human:
+                >Don’t fill this out if you're human:
                 <input name="bot-field" id="bot-field" />
               </label>
             </div>
@@ -899,13 +822,16 @@
 
     <!-- Page-Specific Scripts -->
     <script>
+      // Insert your deployed Apps Script web app URL here:
       const scriptURL =
         "https://script.google.com/macros/s/AKfycbzAbsbz7BaztUUKh8ZvBS4iqu2hQQnjJz5eriZgnfvTHgZceUUsHnUmujGEjTnPXXUY/exec";
 
+      // Initialize general functionality (unchanged)
       if (typeof initGeneral === "function") {
         initGeneral();
       }
 
+      // Scroll animations (unchanged)
       const observerOptions = {
         threshold: 0.1,
         rootMargin: "0px 0px -50px 0px",
@@ -923,13 +849,14 @@
         observer.observe(el);
       });
 
+      // Get Directions button functionality
       document
         .getElementById("getDirectionsBtn")
         .addEventListener("click", function () {
           window.location.href = "tel:+233242613372";
         });
 
-      // FORM HANDLING with updated UI
+      // FORM HANDLING: prevent default, POST to Apps Script, show nice UI feedback
       (function () {
         const form = document.getElementById("contactForm");
         const overlay = document.getElementById("fmOverlay");
@@ -949,12 +876,8 @@
 
         function loadingContent() {
           return `
-            <div>
-              <div class="dots-loader" aria-hidden="true">
-                <div class="dot"></div>
-                <div class="dot"></div>
-                <div class="dot"></div>
-              </div>
+            <div style="padding:6px;">
+              <div class="spinner" aria-hidden="true"></div>
               <div class="fm-title">Sending message…</div>
               <div class="fm-sub">Please wait while we deliver your message.</div>
             </div>
@@ -964,15 +887,13 @@
         function successContent() {
           return `
             <div>
-              <div class="check-container">
-                <div class="check-circle" aria-hidden="true">
-                  <svg class="check-icon" viewBox="0 0 24 24">
-                    <path d="M20 6L9 17l-5-5"></path>
-                  </svg>
-                </div>
+              <div class="check" aria-hidden="true">
+                <svg viewBox="0 0 24 24">
+                  <path d="M20 6L9 17l-5-5"></path>
+                </svg>
               </div>
-              <div class="fm-title">Message Sent Successfully</div>
-              <div class="fm-sub">Thanks for reaching out! We'll get back to you shortly.</div>
+              <div class="fm-title">Message Sent</div>
+              <div class="fm-sub">Thanks — we'll get back to you shortly.</div>
               <div class="fm-actions">
                 <button class="fm-btn primary" id="fmCloseBtn">OK</button>
               </div>
@@ -983,16 +904,11 @@
         function errorContent(errMsg) {
           return `
             <div>
-              <div class="error-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24">
-                  <line x1="18" y1="6" x2="6" y2="18"></line>
-                  <line x1="6" y1="6" x2="18" y2="18"></line>
-                </svg>
-              </div>
+              <div style="font-size:36px; color:#e04b4b; margin-bottom:10px;">&#9888;</div>
               <div class="fm-title">Sending Failed</div>
               <div class="fm-sub">${errMsg}</div>
               <div class="fm-actions">
-                <button class="fm-btn primary" id="fmRetryBtn">Try Again</button>
+                <button class="fm-btn primary" id="fmRetryBtn">Try again</button>
                 <button class="fm-btn ghost" id="fmCloseBtn">Close</button>
               </div>
             </div>
@@ -1002,33 +918,43 @@
         async function submitHandler(e) {
           e.preventDefault();
 
+          // optional honeypot: if filled, abort silently
           const botField = document.getElementById("bot-field");
           if (botField && botField.value) {
+            // silent failure (likely bot)
             return;
           }
 
+          // collect FormData (field names match Apps Script)
           const formData = new FormData(form);
 
+          // disable submit button
           submitBtn.disabled = true;
           submitBtn.style.opacity = "0.7";
 
+          // show loading overlay
           showOverlay(loadingContent());
 
           try {
             const resp = await fetch(scriptURL, {
               method: "POST",
               body: formData,
-              mode: "no-cors",
+              mode: "no-cors", // use no-cors for Apps Script simple deploy; if you use CORS-enabled, remove this
             });
 
+            // With 'no-cors' the response is opaque, so treat it as success if no network error.
+            // If you configured CORS on the web app and want to inspect response, remove mode:'no-cors'.
+            // show success
             showOverlay(successContent());
 
+            // attach close handler
             document
               .getElementById("fmCloseBtn")
               .addEventListener("click", () => {
                 hideOverlay();
               });
 
+            // reset form
             form.reset();
           } catch (err) {
             console.error("Send error:", err);
@@ -1037,6 +963,7 @@
                 "Could not send message. Check your connection and try again."
               )
             );
+            // attach handlers for retry/close
             document
               .getElementById("fmRetryBtn")
               ?.addEventListener("click", () => {
@@ -1050,6 +977,7 @@
                 hideOverlay();
               });
           } finally {
+            // re-enable button after short delay (if overlay open, close will keep disabled until user clicks)
             setTimeout(() => {
               submitBtn.disabled = false;
               submitBtn.style.opacity = "1";
@@ -1057,6 +985,7 @@
           }
         }
 
+        // wire up
         form.addEventListener("submit", submitHandler);
       })();
     </script>
