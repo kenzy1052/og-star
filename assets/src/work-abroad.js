@@ -1,9 +1,9 @@
 // Work opportunities data
 const workOpportunities = [
   {
-    title: "Dubai, UAE",
+    title: "UAE",
     location: "United Arab Emirates",
-    image: "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=800",
+    image: "../assets/images/uae.jpg",
     badge: "HOT",
     positions: [
       "Carpentry",
@@ -18,7 +18,7 @@ const workOpportunities = [
   {
     title: "Asia",
     location: "Across Asia",
-    image: "https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=800",
+    image: "../assets/images/asia.jpg",
     badge: "NEW",
     positions: [
       "Teaching & Education",
@@ -32,7 +32,7 @@ const workOpportunities = [
   {
     title: "Europe Opportunities",
     location: "Across Europe",
-    image: "https://images.unsplash.com/photo-1522092576479-2c8e7a4a4a3a?w=800",
+    image: "../assets/images/europe.jpg",
     badge: "URGENT",
     positions: [
       "Healthcare Professionals",
@@ -45,7 +45,7 @@ const workOpportunities = [
   {
     title: "The American Dream",
     location: "Across America",
-    image: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=800",
+    image: "../assets/images/america.jpg",
     badge: "NEW",
     positions: [
       "Sales Assistant",
@@ -60,7 +60,7 @@ const workOpportunities = [
   {
     title: "Africa Opportunities",
     location: "Across Africa",
-    image: "https://images.unsplash.com/photo-1528722828814-77b9b83aafb2?w=800",
+    image: "../assets/images/africa.jpg",
     badge: "NEW",
     positions: [
       "Mining & Resources",
@@ -75,7 +75,7 @@ const workOpportunities = [
   {
     title: "Canadian Dream",
     location: "Across Canada",
-    image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800",
+    image: "../assets/images/canada.jpg",
     badge: "HIGH PAY",
     positions: [
       "Technician",
