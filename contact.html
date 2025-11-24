@@ -103,7 +103,7 @@
       .contact-info-card {
         background: var(--card-bg-light2);
         padding: 40px 30px;
-        border-radius: var(--radius-lg);
+        border-radius: var(--radius-md);
         text-align: center;
         box-shadow: var(--shadow);
         transition: var(--transition);
@@ -180,7 +180,7 @@
       .contact-form {
         background: var(--card-bg-light);
         padding: 50px;
-        border-radius: var(--radius-lg);
+        border-radius: var(--radius-md);
         box-shadow: var(--shadow);
         position: relative;
         overflow: hidden;
@@ -288,7 +288,7 @@
       .map-placeholder {
         height: 100%;
         width: 100%;
-        background: url("https://images.unsplash.com/photo-1579532586980-288c31b8a26b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80");
+        /* background: url("assets/images/abidjan.jpg"); */
         background-size: cover;
         background-position: center;
         display: flex;
@@ -299,10 +299,10 @@
       }
 
       .map-overlay {
-        background: rgba(0, 0, 0, 0.7);
+        background: var(--gradient-primary);
         padding: 30px;
-        border-radius: var(--radius-lg);
-        max-width: 500px;
+        border-radius: var(--radius-md);
+        max-width: 800px;
         backdrop-filter: blur(5px);
       }
 
@@ -315,6 +315,10 @@
       .map-overlay p {
         margin-bottom: 25px;
         line-height: 1.6;
+      }
+
+      .get-direction {
+        background: var(--gradient-secondary);
       }
 
       /* Responsive Design */
@@ -794,7 +798,7 @@
             Find us at our convenient location in Dubai. We're happy to meet
             with you in person to discuss your travel plans.
           </p>
-          <button class="submit-btn" id="getDirectionsBtn">
+          <button class="submit-btn get-direction" id="getDirectionsBtn">
             Get Directions
           </button>
         </div>
@@ -900,7 +904,7 @@
     <!-- Page-Specific Scripts -->
     <script>
       const scriptURL =
-        "https://script.google.com/macros/s/AKfycbw_O0gNB2quf6XNpVxDAzZ6l6P6Y-0YyB1FrsLUmVzMYzgO_NZ1k_eYCpljRnUbe4K8/exec";
+        "https://script.google.com/macros/s/AKfycbx9u3cdyI_B5RpnPocjSFfyPWxQWZyP8YFWnbVbA_zw2bVr8k2eZAY_PAjgHEXNrWgV/exec";
 
       if (typeof initGeneral === "function") {
         initGeneral();

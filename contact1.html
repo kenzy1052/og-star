@@ -103,7 +103,7 @@
       .contact-info-card {
         background: var(--card-bg-light2);
         padding: 40px 30px;
-        border-radius: var(--radius-lg);
+        border-radius: var(--radius-md);
         text-align: center;
         box-shadow: var(--shadow);
         transition: var(--transition);
@@ -180,7 +180,7 @@
       .contact-form {
         background: var(--card-bg-light);
         padding: 50px;
-        border-radius: var(--radius-lg);
+        border-radius: var(--radius-md);
         box-shadow: var(--shadow);
         position: relative;
         overflow: hidden;
@@ -288,7 +288,6 @@
       .map-placeholder {
         height: 100%;
         width: 100%;
-        background: url("https://images.unsplash.com/photo-1579532586980-288c31b8a26b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80");
         background-size: cover;
         background-position: center;
         display: flex;
@@ -299,10 +298,10 @@
       }
 
       .map-overlay {
-        background: rgba(0, 0, 0, 0.7);
+        background: var(--gradient-primary);
         padding: 30px;
-        border-radius: var(--radius-lg);
-        max-width: 500px;
+        border-radius: var(--radius-md);
+        max-width: 800px;
         backdrop-filter: blur(5px);
       }
 
@@ -315,6 +314,10 @@
       .map-overlay p {
         margin-bottom: 25px;
         line-height: 1.6;
+      }
+
+      .get-direction {
+        background: var(--gradient-secondary);
       }
 
       /* Responsive Design */
@@ -353,7 +356,8 @@
         top: 0;
         right: 0;
         bottom: 0;
-        background: var(--bg-tertiary);
+        background: rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(4px);
         display: none;
         align-items: center;
         justify-content: center;
@@ -365,100 +369,238 @@
         width: 100%;
         max-width: 460px;
         background: #ffffff;
-        border-radius: 12px;
-        padding: 22px;
-        box-shadow: 0 6px 30px rgba(10, 20, 30, 0.2);
+        border-radius: 16px;
+        padding: 40px 30px;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
         text-align: center;
         color: var(--primary-color);
       }
 
-      /* spinner */
-      .spinner {
-        width: 64px;
-        height: 64px;
-        border-radius: 50%;
-        display: inline-block;
-        border: 6px solid rgba(0, 0, 0, 0.08);
-        border-top-color: var(--primary-color);
-        animation: spin 1s linear infinite;
-        margin-bottom: 14px;
+      /* Modern Circular Spinner (like bottom-right yellow one) */
+      .spinner-loader {
+        width: 80px;
+        height: 80px;
+        margin: 0 auto 25px;
+        position: relative;
       }
 
-      @keyframes spin {
-        to {
+      .spinner-circle {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        animation: rotate 2s linear infinite;
+      }
+
+      .spinner-dot {
+        position: absolute;
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #2ec4b6 0%, #1a9d8f 100%);
+        box-shadow: 0 0 10px rgba(46, 196, 182, 0.5);
+      }
+
+      /* Position 12 dots in a circle */
+      .spinner-dot:nth-child(1) {
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        animation: pulse 1.2s ease-in-out infinite;
+        animation-delay: 0s;
+      }
+      .spinner-dot:nth-child(2) {
+        top: 6px;
+        right: 6px;
+        animation: pulse 1.2s ease-in-out infinite;
+        animation-delay: 0.1s;
+      }
+      .spinner-dot:nth-child(3) {
+        top: 50%;
+        right: 0;
+        transform: translateY(-50%);
+        animation: pulse 1.2s ease-in-out infinite;
+        animation-delay: 0.2s;
+      }
+      .spinner-dot:nth-child(4) {
+        bottom: 6px;
+        right: 6px;
+        animation: pulse 1.2s ease-in-out infinite;
+        animation-delay: 0.3s;
+      }
+      .spinner-dot:nth-child(5) {
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        animation: pulse 1.2s ease-in-out infinite;
+        animation-delay: 0.4s;
+      }
+      .spinner-dot:nth-child(6) {
+        bottom: 6px;
+        left: 6px;
+        animation: pulse 1.2s ease-in-out infinite;
+        animation-delay: 0.5s;
+      }
+      .spinner-dot:nth-child(7) {
+        top: 50%;
+        left: 0;
+        transform: translateY(-50%);
+        animation: pulse 1.2s ease-in-out infinite;
+        animation-delay: 0.6s;
+      }
+      .spinner-dot:nth-child(8) {
+        top: 6px;
+        left: 6px;
+        animation: pulse 1.2s ease-in-out infinite;
+        animation-delay: 0.7s;
+      }
+
+      @keyframes rotate {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
           transform: rotate(360deg);
         }
       }
 
-      /* success check */
-      .check {
-        width: 76px;
-        height: 76px;
-        border-radius: 50%;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        background: #e9fbf7;
-        border: 2px solid #08a87b;
-        margin-bottom: 14px;
+      @keyframes pulse {
+        0%,
+        100% {
+          opacity: 0.3;
+          transform: scale(0.8);
+        }
+        50% {
+          opacity: 1;
+          transform: scale(1.2);
+          box-shadow: 0 0 15px rgba(46, 196, 182, 0.8);
+        }
       }
 
-      .check svg {
-        width: 36px;
-        height: 36px;
-        fill: none;
-        stroke: #08a87b;
-        stroke-width: 4;
+      /* Modern Success Checkmark */
+      .check-container {
+        width: 80px;
+        height: 80px;
+        margin: 0 auto 20px;
+        position: relative;
+      }
+
+      .check-circle {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #2ec4b6 0%, #1a9d8f 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        animation: scaleIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        box-shadow: 0 3px 10px rgba(46, 196, 182, 0.3);
+      }
+
+      .check-icon {
+        width: 40px;
+        height: 40px;
+        stroke: white;
+        stroke-width: 3;
         stroke-linecap: round;
         stroke-linejoin: round;
+        fill: none;
+        stroke-dasharray: 60;
+        stroke-dashoffset: 60;
+        animation: drawCheck 0.6s 0.3s ease-out forwards;
+      }
+
+      @keyframes scaleIn {
+        0% {
+          transform: scale(0);
+          opacity: 0;
+        }
+        50% {
+          transform: scale(1.1);
+        }
+        100% {
+          transform: scale(1);
+          opacity: 1;
+        }
+      }
+
+      @keyframes drawCheck {
+        to {
+          stroke-dashoffset: 0;
+        }
       }
 
       .fm-title {
-        font-size: 18px;
-        margin: 6px 0 8px;
+        font-size: 20px;
+        margin: 0 0 10px;
         color: var(--primary-color);
+        font-weight: 600;
       }
 
       .fm-sub {
         font-size: 14px;
-        color: var(--secondary-color);
+        color: #666;
         margin-bottom: 10px;
+        line-height: 1.5;
       }
 
       .fm-actions {
-        margin-top: 14px;
+        margin-top: 24px;
         display: flex;
         gap: 10px;
         justify-content: center;
       }
 
       .fm-btn {
-        padding: 10px 16px;
+        padding: 12px 24px;
         border-radius: 8px;
         border: none;
         cursor: pointer;
         font-weight: 600;
+        font-size: 14px;
+        transition: all 0.3s ease;
       }
 
       .fm-btn.primary {
-        background: var(--gradient-primary);
+        background: linear-gradient(135deg, #2ec4b6 0%, #1a9d8f 100%);
         color: #fff;
+      }
+
+      .fm-btn.primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 3px 8px rgba(46, 196, 182, 0.4);
       }
 
       .fm-btn.ghost {
         background: transparent;
-        color: #333;
-        border: 1px solid #e6e6e6;
+        color: #666;
+        border: 1px solid #e0e0e0;
       }
 
-      /* message highlight area in the email preview on the page (for user) */
-      .message-preview {
-        background: #f7fbff;
-        border-left: 4px solid #0078ff;
-        padding: 12px;
-        border-radius: 6px;
-        white-space: pre-wrap;
-        text-align: left;
+      .fm-btn.ghost:hover {
+        background: #f5f5f5;
+        border-color: #ccc;
+      }
+
+      /* Error Icon */
+      .error-icon {
+        width: 80px;
+        height: 80px;
+        margin: 0 auto 20px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #ff6b6b 0%, #ee5a52 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        animation: scaleIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        box-shadow: 0 4px 20px rgba(255, 107, 107, 0.3);
+      }
+
+      .error-icon svg {
+        width: 40px;
+        height: 40px;
+        stroke: white;
+        stroke-width: 3;
+        stroke-linecap: round;
       }
     </style>
   </head>
@@ -559,7 +701,6 @@
         </p>
 
         <div class="contact-info-grid">
-          <!-- contact cards (unchanged) -->
           <div class="contact-info-card scroll-animate">
             <div class="contact-info-icon">
               <i class="fas fa-map-marker-alt"></i>
@@ -617,17 +758,15 @@
         </p>
 
         <div class="contact-form-container scroll-animate">
-          <!-- Removed Netlify submission attributes and changed names to match Apps Script -->
           <form
             name="contact"
             class="contact-form"
             id="contactForm"
             autocomplete="on"
           >
-            <!-- Honeypot field (spam trap) - keep hidden -->
             <div style="display: none">
               <label
-                >Don’t fill this out if you're human:
+                >Don't fill this out if you're human:
                 <input name="bot-field" id="bot-field" />
               </label>
             </div>
@@ -717,7 +856,7 @@
             Find us at our convenient location in Dubai. We're happy to meet
             with you in person to discuss your travel plans.
           </p>
-          <button class="submit-btn" id="getDirectionsBtn">
+          <button class="submit-btn get-direction" id="getDirectionsBtn">
             Get Directions
           </button>
         </div>
@@ -822,16 +961,13 @@
 
     <!-- Page-Specific Scripts -->
     <script>
-      // Insert your deployed Apps Script web app URL here:
       const scriptURL =
-        "https://script.google.com/macros/s/AKfycbw_O0gNB2quf6XNpVxDAzZ6l6P6Y-0YyB1FrsLUmVzMYzgO_NZ1k_eYCpljRnUbe4K8/exec";
+        "https://script.google.com/macros/s/AKfycbx9u3cdyI_B5RpnPocjSFfyPWxQWZyP8YFWnbVbA_zw2bVr8k2eZAY_PAjgHEXNrWgV/exec";
 
-      // Initialize general functionality (unchanged)
       if (typeof initGeneral === "function") {
         initGeneral();
       }
 
-      // Scroll animations (unchanged)
       const observerOptions = {
         threshold: 0.1,
         rootMargin: "0px 0px -50px 0px",
@@ -849,14 +985,13 @@
         observer.observe(el);
       });
 
-      // Get Directions button functionality
       document
         .getElementById("getDirectionsBtn")
         .addEventListener("click", function () {
           window.location.href = "tel:+233242613372";
         });
 
-      // FORM HANDLING: prevent default, POST to Apps Script, show nice UI feedback
+      // FORM HANDLING with circular spinner
       (function () {
         const form = document.getElementById("contactForm");
         const overlay = document.getElementById("fmOverlay");
@@ -876,10 +1011,21 @@
 
         function loadingContent() {
           return `
-            <div style="padding:6px;">
-              <div class="spinner" aria-hidden="true"></div>
-              <div class="fm-title">Sending message…</div>
-              <div class="fm-sub">Please wait while we deliver your message.</div>
+            <div>
+              <div class="spinner-loader">
+                <div class="spinner-circle">
+                  <div class="spinner-dot"></div>
+                  <div class="spinner-dot"></div>
+                  <div class="spinner-dot"></div>
+                  <div class="spinner-dot"></div>
+                  <div class="spinner-dot"></div>
+                  <div class="spinner-dot"></div>
+                  <div class="spinner-dot"></div>
+                  <div class="spinner-dot"></div>
+                </div>
+              </div>
+              <div class="fm-title">Sending Your Message</div>
+              <div class="fm-sub">Please wait while we deliver your message...</div>
             </div>
           `;
         }
@@ -887,13 +1033,15 @@
         function successContent() {
           return `
             <div>
-              <div class="check" aria-hidden="true">
-                <svg viewBox="0 0 24 24">
-                  <path d="M20 6L9 17l-5-5"></path>
-                </svg>
+              <div class="check-container">
+                <div class="check-circle" aria-hidden="true">
+                  <svg class="check-icon" viewBox="0 0 24 24">
+                    <path d="M20 6L9 17l-5-5"></path>
+                  </svg>
+                </div>
               </div>
-              <div class="fm-title">Message Sent</div>
-              <div class="fm-sub">Thanks — we'll get back to you shortly.</div>
+              <div class="fm-title">Message Sent Successfully</div>
+              <div class="fm-sub">Thanks for reaching out! We'll get back to you shortly.</div>
               <div class="fm-actions">
                 <button class="fm-btn primary" id="fmCloseBtn">OK</button>
               </div>
@@ -904,11 +1052,16 @@
         function errorContent(errMsg) {
           return `
             <div>
-              <div style="font-size:36px; color:#e04b4b; margin-bottom:10px;">&#9888;</div>
+              <div class="error-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24">
+                  <line x1="18" y1="6" x2="6" y2="18"></line>
+                  <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+              </div>
               <div class="fm-title">Sending Failed</div>
               <div class="fm-sub">${errMsg}</div>
               <div class="fm-actions">
-                <button class="fm-btn primary" id="fmRetryBtn">Try again</button>
+                <button class="fm-btn primary" id="fmRetryBtn">Try Again</button>
                 <button class="fm-btn ghost" id="fmCloseBtn">Close</button>
               </div>
             </div>
@@ -918,43 +1071,33 @@
         async function submitHandler(e) {
           e.preventDefault();
 
-          // optional honeypot: if filled, abort silently
           const botField = document.getElementById("bot-field");
           if (botField && botField.value) {
-            // silent failure (likely bot)
             return;
           }
 
-          // collect FormData (field names match Apps Script)
           const formData = new FormData(form);
 
-          // disable submit button
           submitBtn.disabled = true;
           submitBtn.style.opacity = "0.7";
 
-          // show loading overlay
           showOverlay(loadingContent());
 
           try {
             const resp = await fetch(scriptURL, {
               method: "POST",
               body: formData,
-              mode: "no-cors", // use no-cors for Apps Script simple deploy; if you use CORS-enabled, remove this
+              mode: "no-cors",
             });
 
-            // With 'no-cors' the response is opaque, so treat it as success if no network error.
-            // If you configured CORS on the web app and want to inspect response, remove mode:'no-cors'.
-            // show success
             showOverlay(successContent());
 
-            // attach close handler
             document
               .getElementById("fmCloseBtn")
               .addEventListener("click", () => {
                 hideOverlay();
               });
 
-            // reset form
             form.reset();
           } catch (err) {
             console.error("Send error:", err);
@@ -963,7 +1106,6 @@
                 "Could not send message. Check your connection and try again."
               )
             );
-            // attach handlers for retry/close
             document
               .getElementById("fmRetryBtn")
               ?.addEventListener("click", () => {
@@ -977,7 +1119,6 @@
                 hideOverlay();
               });
           } finally {
-            // re-enable button after short delay (if overlay open, close will keep disabled until user clicks)
             setTimeout(() => {
               submitBtn.disabled = false;
               submitBtn.style.opacity = "1";
@@ -985,7 +1126,6 @@
           }
         }
 
-        // wire up
         form.addEventListener("submit", submitHandler);
       })();
     </script>
