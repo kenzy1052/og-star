@@ -1,0 +1,1327 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Work Opportunities - OG STAR TRAVEL & TOURS</title>
+
+    <!-- SEO Meta Tags -->
+    <meta
+      name="description"
+      content="Explore international job opportunities with OG STAR TRAVEL & TOURS. Browse available positions abroad and start your journey today."
+    />
+    <meta
+      name="keywords"
+      content="work abroad, international jobs, overseas opportunities, job placement, OG Star Travel"
+    />
+
+    <link
+      rel="icon"
+      type="image/png"
+      href="assets/images/favicon/favicon-96x96.png"
+      sizes="96x96"
+    />
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="assets/images/favicon/favicon.svg"
+    />
+    <link rel="shortcut icon" href="assets/images/favicon/favicon.ico" />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="assets/images/favicon/apple-touch-icon.png"
+    />
+    <meta name="apple-mobile-web-app-title" content="OG-Star" />
+    <link rel="manifest" href="assets/images/favicon/site.webmanifest" />
+
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="assets/styles/modern-normalize.css" />
+    <link rel="stylesheet" href="assets/styles/style.css" />
+    <link rel="stylesheet" href="assets/styles/utils.css" />
+    <link rel="stylesheet" href="assets/styles/nav-foot.css" />
+
+    <style>
+      /* Page Container */
+      .opportunities-page {
+        padding: var(--spacing-4xl) 0;
+        background: var(--bg-primary);
+      }
+
+      .opportunities-container {
+        max-width: 1280px;
+        margin: 0 auto;
+        padding: 0 var(--spacing-md);
+      }
+
+      /* Page Header */
+      .page-header {
+        text-align: center;
+        margin-bottom: var(--spacing-3xl);
+      }
+
+      .page-title {
+        font-size: clamp(2rem, 5vw, 3rem);
+        color: var(--primary-color);
+        margin-bottom: var(--spacing-sm);
+      }
+
+      .page-description {
+        color: var(--text-muted);
+        max-width: 700px;
+        margin: 0 auto;
+        font-size: 1.1rem;
+        line-height: 1.6;
+      }
+
+      /* Flyer Grid */
+      .flyer-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+        margin-bottom: var(--spacing-4xl);
+      }
+
+      /* Mobile: 1 per row (default) */
+      @media (min-width: 640px) {
+        .flyer-grid {
+          grid-template-columns: repeat(2, 1fr);
+          gap: var(--spacing-lg);
+        }
+      }
+
+      /* Medium screens / tablets: 3 per row */
+      @media (min-width: 768px) {
+        .flyer-grid {
+          grid-template-columns: repeat(3, 1fr);
+          gap: var(--spacing-lg);
+        }
+      }
+
+      /* Large screens / laptops: 4 per row */
+      @media (min-width: 1024px) {
+        .flyer-grid {
+          grid-template-columns: repeat(4, 1fr);
+          gap: var(--spacing-lg);
+        }
+      }
+
+      /* Flyer Card */
+      .flyer-card {
+        background: var(--card-bg-light2);
+        border-radius: var(--radius-md);
+        box-shadow: var(--shadow);
+        overflow: hidden;
+        cursor: pointer;
+        transition: var(--transition);
+        border: 1px solid var(--border-color);
+      }
+
+      .flyer-card:hover {
+        transform: translateY(-8px);
+        box-shadow: var(--shadow-hover);
+        border-color: var(--primary-color);
+      }
+
+      .flyer-image {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 3/4;
+        object-fit: cover;
+        display: block;
+      }
+
+      /* Lightbox Overlay */
+      #lightbox {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.95);
+        z-index: 10000;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+
+      #lightbox.active {
+        display: flex;
+        opacity: 1;
+      }
+
+      /* Lightbox Content */
+      #lightboxContent {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      /* Image Container */
+      #lightboxImageContainer {
+        position: relative;
+        max-width: 95%;
+        max-height: 95%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: grab;
+        touch-action: none;
+      }
+
+      #lightboxImageContainer.zoomed {
+        cursor: grab;
+      }
+
+      #lightboxImageContainer.dragging {
+        cursor: grabbing;
+      }
+
+      #lightboxImage {
+        max-width: 100%;
+        max-height: 90vh;
+        object-fit: contain;
+        display: block;
+        user-select: none;
+        -webkit-user-drag: none;
+        transition: transform 0.1s ease-out;
+      }
+
+      /* Close Button */
+      .lightbox-close {
+        position: fixed;
+        top: var(--spacing-md);
+        right: var(--spacing-md);
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        color: white;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        font-size: 1.5rem;
+        cursor: pointer;
+        transition: var(--transition);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 10001;
+      }
+
+      .lightbox-close:hover {
+        background: rgba(255, 255, 255, 0.2);
+        transform: scale(1.1);
+      }
+
+      /* Navigation Arrows */
+      .lightbox-nav {
+        position: fixed;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        color: white;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        font-size: 1.5rem;
+        cursor: pointer;
+        transition: var(--transition);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 10001;
+      }
+
+      .lightbox-nav:hover {
+        background: rgba(255, 255, 255, 0.2);
+        transform: translateY(-50%) scale(1.1);
+      }
+
+      .lightbox-nav-prev {
+        left: var(--spacing-md);
+      }
+
+      .lightbox-nav-next {
+        right: var(--spacing-md);
+      }
+
+      /* Counter */
+      #lightboxCounter {
+        position: fixed;
+        bottom: var(--spacing-md);
+        left: 50%;
+        transform: translateX(-50%);
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        color: white;
+        padding: var(--spacing-xs) var(--spacing-md);
+        border-radius: var(--radius-md);
+        font-size: 0.9rem;
+        font-weight: 600;
+        z-index: 10001;
+      }
+
+      /* Mobile Adjustments */
+      @media (max-width: 767px) {
+        .lightbox-nav,
+        .lightbox-close {
+          width: 40px;
+          height: 40px;
+          font-size: 1.2rem;
+        }
+
+        #lightboxImageContainer {
+          max-width: 98%;
+        }
+      }
+
+      /* Prevent body scroll when lightbox is open */
+      body.modal-open {
+        overflow: hidden;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navigation will be inserted here -->
+    <!-- Mobile Menu Overlay -->
+    <div>
+      <div class="overlay" id="overlay"></div>
+
+      <!-- Navigation -->
+      <header class="navbar" id="navbar">
+        <div class="nav-inner">
+          <div class="nav-logo">
+            <a href="index.html" class="logo">
+              <img src="assets/images/logo.png" alt="O G Star logo" />
+            </a>
+          </div>
+
+          <nav class="nav-center" aria-label="Main navigation">
+            <ul class="nav-menu" role="menubar">
+              <li class="nav-item" role="none">
+                <a href="index.html" class="nav-link" role="menuitem">Home</a>
+              </li>
+              <li class="nav-item" role="none">
+                <a href="services.html" class="nav-link" role="menuitem"
+                  >Services</a
+                >
+              </li>
+              <li class="nav-item" role="none">
+                <a href="destinations.html" class="nav-link" role="menuitem"
+                  >Destinations</a
+                >
+              </li>
+              <li class="nav-item" role="none">
+                <a href="information.html" class="nav-link" role="menuitem"
+                  >Information</a
+                >
+              </li>
+              <li class="nav-item" role="none">
+                <a href="contact.html" class="nav-link" role="menuitem"
+                  >Contact</a
+                >
+              </li>
+              <li class="nav-item" role="none">
+                <a href="blog.html" class="nav-link" role="menuitem">Blog</a>
+              </li>
+            </ul>
+          </nav>
+
+          <div class="nav-cta">
+            <button class="book-now-btn" id="bookNowBtn" aria-label="Book Now">
+              <span>Book Now</span>
+            </button>
+
+            <button class="hamburger" id="hamburger" aria-label="Open menu">
+              <i class="fas fa-bars"></i>
+            </button>
+          </div>
+        </div>
+      </header>
+
+      <!-- Mobile panel -->
+      <aside class="mobile-panel" id="mobilePanel">
+        <div class="mobile-panel-header">
+          <h3>Menu</h3>
+          <button class="close-btn" id="closePanel" aria-label="Close menu">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+
+        <nav class="mobile-links">
+          <a href="index.html">Home</a>
+          <a href="services.html">Services</a>
+          <a href="destinations.html">Destinations</a>
+          <a href="information.html">Information</a>
+          <a href="contact.html">Contact</a>
+          <a href="blog.html">Blog</a>
+        </nav>
+      </aside>
+    </div>
+
+    <!-- Main Content -->
+    <main class="opportunities-page">
+      <div class="opportunities-container">
+        <!-- Page Header -->
+        <header class="page-header reveal">
+          <h4 class="section-subtitle">Career Opportunities</h4>
+          <h1 class="page-title">Work Abroad Opportunities</h1>
+          <p class="page-description">
+            Explore exciting international job opportunities. Click any flyer to
+            view details, zoom, and navigate through all available positions.
+          </p>
+        </header>
+
+        <!-- Flyer Grid -->
+        <div class="flyer-grid">
+          <!-- Flyer 1 -->
+          <div class="flyer-card scroll-animate" onclick="openLightbox(0)">
+            <img
+              src="assets/flyers/job1.jpg"
+              alt="Job 1 flyer"
+              class="flyer-image"
+            />
+          </div>
+
+          <!-- Flyer 2 -->
+          <div class="flyer-card scroll-animate" onclick="openLightbox(1)">
+            <img
+              src="assets/flyers/job2.jpg"
+              alt="Job 2 flyer"
+              class="flyer-image"
+            />
+          </div>
+
+          <!-- Flyer 3 -->
+          <div class="flyer-card scroll-animate" onclick="openLightbox(2)">
+            <img
+              src="assets/flyers/job3.jpg"
+              alt="Job 3 flyer"
+              class="flyer-image"
+            />
+          </div>
+
+          <!-- Flyer 4 -->
+          <div class="flyer-card scroll-animate" onclick="openLightbox(3)">
+            <img
+              src="assets/flyers/job4.jpg"
+              alt="Job 4 flyer"
+              class="flyer-image"
+            />
+          </div>
+
+          <!-- Flyer 5 -->
+          <div class="flyer-card scroll-animate" onclick="openLightbox(4)">
+            <img
+              src="assets/flyers/job5.jpg"
+              alt="Job 5 flyer"
+              class="flyer-image"
+            />
+          </div>
+
+          <!-- Flyer 6 -->
+          <div class="flyer-card scroll-animate" onclick="openLightbox(5)">
+            <img
+              src="assets/flyers/job6.jpg"
+              alt="Job 6 flyer"
+              class="flyer-image"
+            />
+          </div>
+
+          <!-- Flyer 7 -->
+          <div class="flyer-card scroll-animate" onclick="openLightbox(6)">
+            <img
+              src="assets/flyers/job7.jpg"
+              alt="Job 7 flyer"
+              class="flyer-image"
+            />
+          </div>
+
+          <!-- Flyer 8 -->
+          <div class="flyer-card scroll-animate" onclick="openLightbox(7)">
+            <img
+              src="assets/flyers/job8.jpg"
+              alt="Job 8 flyer"
+              class="flyer-image"
+            />
+          </div>
+
+          <!-- Flyer 9 -->
+          <div class="flyer-card scroll-animate" onclick="openLightbox(8)">
+            <img
+              src="assets/flyers/job9.jpg"
+              alt="Job 9 flyer"
+              class="flyer-image"
+            />
+          </div>
+
+          <!-- Flyer 10 -->
+          <div class="flyer-card scroll-animate" onclick="openLightbox(9)">
+            <img
+              src="assets/flyers/job10.jpg"
+              alt="Job 10 flyer"
+              class="flyer-image"
+            />
+          </div>
+
+          <!-- Flyer 11 -->
+          <div class="flyer-card scroll-animate" onclick="openLightbox(10)">
+            <img
+              src="assets/flyers/job11.jpg"
+              alt="Job 11 flyer"
+              class="flyer-image"
+            />
+          </div>
+
+          <!-- Flyer 12 -->
+          <div class="flyer-card scroll-animate" onclick="openLightbox(11)">
+            <img
+              src="assets/flyers/job12.jpg"
+              alt="Job 12 flyer"
+              class="flyer-image"
+            />
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Lightbox -->
+    <div
+      id="lightbox"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Job flyer viewer"
+    >
+      <div id="lightboxContent">
+        <!-- Close Button -->
+        <button
+          class="lightbox-close"
+          onclick="closeLightbox()"
+          aria-label="Close lightbox"
+        >
+          <i class="fas fa-times"></i>
+        </button>
+
+        <!-- Previous Button -->
+        <button
+          class="lightbox-nav lightbox-nav-prev"
+          onclick="previousImage()"
+          aria-label="Previous flyer"
+        >
+          <i class="fas fa-chevron-left"></i>
+        </button>
+
+        <!-- Next Button -->
+        <button
+          class="lightbox-nav lightbox-nav-next"
+          onclick="nextImage()"
+          aria-label="Next flyer"
+        >
+          <i class="fas fa-chevron-right"></i>
+        </button>
+
+        <!-- Image Container -->
+        <div id="lightboxImageContainer">
+          <img id="lightboxImage" src="" alt="" draggable="false" />
+        </div>
+
+        <!-- Counter -->
+        <div id="lightboxCounter">1 / 12</div>
+      </div>
+    </div>
+
+    <!-- Footer will be inserted here -->
+    <!-- Footer -->
+    <div>
+      <footer class="footer" id="contact">
+        <div class="footer-container">
+          <div class="footer-column">
+            <img
+              src="assets/images/logo2.png"
+              alt="O G Star Logo"
+              style="max-width: 150px; margin-bottom: 0"
+            />
+          </div>
+
+          <div class="footer-column">
+            <h4>Quick Links</h4>
+            <ul>
+              <li><a href="index.html">Home</a></li>
+              <li><a href="services.html">Services</a></li>
+              <li><a href="destinations.html">Destinations</a></li>
+              <li><a href="information.html">Information</a></li>
+              <li><a href="contact.html">Contact</a></li>
+              <li><a href="blog.html">Blog</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-column">
+            <h4>Our Services</h4>
+            <ul>
+              <li><a href="services.html">Travel & Tours</a></li>
+              <li><a href="services.html">Study Abroad</a></li>
+              <li><a href="services.html">Work & Stay</a></li>
+              <li><a href="services.html">Visa Assistance</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-column">
+            <h4>Contact Us</h4>
+            <div class="contact-info">
+              <div class="contact-item">
+                <i class="fas fa-map-marker-alt"></i>
+                <span
+                  >Dome-CFC Estate, Near the Dome Market, P.O BOX MS 46 New
+                  Achimota, Accra - Ghana</span
+                >
+              </div>
+              <div class="contact-item">
+                <i class="fas fa-envelope"></i>
+                <a href="mailto:ogstartravelandtours@gmail.com"
+                  >ogstartravelandtours@gmail.com</a
+                >
+              </div>
+              <div class="contact-item">
+                <i class="fas fa-phone"></i>
+                <a href="tel:+233206521474">+233 (0) 206521474</a>
+              </div>
+              <div class="contact-item">
+                <i class="fas fa-phone"></i>
+                <a href="tel:+233545503479">+233 (0) 242613372</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <span
+            >© 2025 O G Star Travel & Tours. Crafted with ❤️ by
+            Kenzyverse.</span
+          >
+        </div>
+      </footer>
+
+      <!-- WhatsApp Floating Button -->
+      <a
+        href="https://wa.me/233242613372?text=Hello%20OG%20Star%20Travel%20%26%20Tours,%20I'm%20interested%20in%20your%20services"
+        class="whatsapp-float"
+        target="_blank"
+        id="whatsappFloat"
+      >
+        <i class="fab fa-whatsapp"></i>
+      </a>
+
+      <!-- Back to Top Button -->
+      <div class="back-to-top" id="backToTop" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+      </div>
+    </div>
+    <!-- Scripts -->
+    <script src="assets/src/nav-foot1.js"></script>
+    <script src="assets/src/general.js"></script>
+    <script>
+      // Flyer data array
+      const images = [
+        "assets/flyers/job1.jpg",
+        "assets/flyers/job2.jpg",
+        "assets/flyers/job3.jpg",
+        "assets/flyers/job4.jpg",
+        "assets/flyers/job5.jpg",
+        "assets/flyers/job6.jpg",
+        "assets/flyers/job7.jpg",
+        "assets/flyers/job8.jpg",
+        "assets/flyers/job9.jpg",
+        "assets/flyers/job10.jpg",
+        "assets/flyers/job11.jpg",
+        "assets/flyers/job12.jpg",
+      ];
+
+      let currentImageIndex = 0;
+      let lightboxHistoryState = null;
+
+      // Transform state
+      let transform = {
+        scale: 1,
+        translateX: 0,
+        translateY: 0,
+      };
+
+      // Gesture state
+      let gestureState = {
+        lastTouchEnd: 0,
+        lastTapTime: 0,
+        lastTapPosition: { x: 0, y: 0 },
+        touchStartPoint: { x: 0, y: 0 },
+        touchStartTime: 0,
+        isDragging: false,
+        isPinching: false,
+        hasMoved: false,
+        totalMovement: 0,
+        pinchData: {
+          startDistance: 0,
+          startScale: 1,
+          startCenter: { x: 0, y: 0 },
+          startTransform: { scale: 1, translateX: 0, translateY: 0 },
+          currentCenter: { x: 0, y: 0 },
+        },
+      };
+
+      // Mouse drag state
+      let isMouseDragging = false;
+      let isRightMouseDragging = false;
+      let mouseLastPoint = { x: 0, y: 0 };
+
+      const PAN_SENSITIVITY = 2.0;
+      const DOUBLE_TAP_DELAY = 200;
+      const TAP_MOVEMENT_THRESHOLD = 10;
+      const SWIPE_THRESHOLD = 30;
+      const PINCH_THRESHOLD = 5;
+
+      // Scroll animations
+      document.addEventListener("DOMContentLoaded", function () {
+        const observerOptions = {
+          threshold: 0.1,
+          rootMargin: "0px 0px -50px 0px",
+        };
+
+        const observer = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
+            }
+          });
+        }, observerOptions);
+
+        document
+          .querySelectorAll(".scroll-animate, .reveal")
+          .forEach(function (el) {
+            observer.observe(el);
+          });
+      });
+
+      // Open lightbox
+      function openLightbox(index) {
+        currentImageIndex = index;
+        const lightbox = document.getElementById("lightbox");
+        const lightboxImage = document.getElementById("lightboxImage");
+        const lightboxCounter = document.getElementById("lightboxCounter");
+
+        lightboxImage.src = images[currentImageIndex];
+        lightboxImage.alt = `Job ${currentImageIndex + 1} flyer`;
+        lightboxCounter.textContent = `Image ${currentImageIndex + 1} of ${
+          images.length
+        }`;
+
+        lightbox.classList.add("active");
+        document.body.classList.add("modal-open");
+
+        resetTransform();
+        setupTouchEvents();
+        setupMouseEvents();
+        setupKeyboardEvents();
+        setupMouseWheelZoom();
+        setupHistoryListener();
+        pushLightboxHistory();
+      }
+
+      // Close lightbox
+      function closeLightbox() {
+        closeLightboxWithoutHistory();
+        removeLightboxHistory();
+      }
+
+      function closeLightboxWithoutHistory() {
+        const lightbox = document.getElementById("lightbox");
+        lightbox.classList.remove("active");
+        document.body.classList.remove("modal-open");
+
+        removeTouchEvents();
+        removeMouseEvents();
+        removeKeyboardEvents();
+        removeMouseWheelZoom();
+        removeHistoryListener();
+
+        lightboxHistoryState = null;
+      }
+
+      // Update lightbox image
+      function updateLightboxImage() {
+        const lightboxImage = document.getElementById("lightboxImage");
+        const lightboxCounter = document.getElementById("lightboxCounter");
+
+        lightboxImage.src = images[currentImageIndex];
+        lightboxImage.alt = `Job ${currentImageIndex + 1} flyer`;
+        lightboxCounter.textContent = `Image ${currentImageIndex + 1} of ${
+          images.length
+        }`;
+
+        resetTransform();
+        if (lightboxHistoryState) {
+          lightboxHistoryState.imageIndex = currentImageIndex;
+          history.replaceState(lightboxHistoryState, "", window.location.href);
+        }
+      }
+
+      // Navigate images
+      function previousImage() {
+        if (currentImageIndex > 0) {
+          currentImageIndex--;
+        } else {
+          currentImageIndex = images.length - 1;
+        }
+        updateLightboxImage();
+      }
+
+      function nextImage() {
+        if (currentImageIndex < images.length - 1) {
+          currentImageIndex++;
+        } else {
+          currentImageIndex = 0;
+        }
+        updateLightboxImage();
+      }
+
+      // Transform functions
+      function updateTransform() {
+        const container = document.getElementById("lightboxImageContainer");
+        if (!container) return;
+
+        container.style.transform = `translate(${transform.translateX}px, ${transform.translateY}px) scale(${transform.scale})`;
+
+        if (transform.scale > 1.01) {
+          container.classList.add("zoomed");
+        } else {
+          container.classList.remove("zoomed");
+        }
+      }
+
+      function resetTransform() {
+        transform = { scale: 1, translateX: 0, translateY: 0 };
+        updateTransform();
+      }
+
+      function getDistance(touch1, touch2) {
+        const dx = touch1.clientX - touch2.clientX;
+        const dy = touch1.clientY - touch2.clientY;
+        return Math.sqrt(dx * dx + dy * dy);
+      }
+
+      function getMidpoint(touch1, touch2) {
+        return {
+          x: (touch1.clientX + touch2.clientX) / 2,
+          y: (touch1.clientY + touch2.clientY) / 2,
+        };
+      }
+
+      function getImageCoordinates(clientX, clientY) {
+        const container = document.getElementById("lightboxContent");
+        if (!container) return { x: 0, y: 0 };
+
+        const containerRect = container.getBoundingClientRect();
+        return {
+          x: clientX - containerRect.left - containerRect.width / 2,
+          y: clientY - containerRect.top - containerRect.height / 2,
+        };
+      }
+
+      function getImageBounds() {
+        const container = document.getElementById("lightboxContent");
+        const image = document.getElementById("lightboxImage");
+
+        if (!container || !image || !image.naturalWidth) {
+          return { width: 0, height: 0, displayedWidth: 0, displayedHeight: 0 };
+        }
+
+        const containerRect = container.getBoundingClientRect();
+        const imageAspect = image.naturalWidth / image.naturalHeight;
+        const containerAspect = containerRect.width / containerRect.height;
+
+        let displayedWidth, displayedHeight;
+        if (imageAspect > containerAspect) {
+          displayedWidth = containerRect.width * 0.95;
+          displayedHeight = (containerRect.width * 0.95) / imageAspect;
+        } else {
+          displayedHeight = containerRect.height * 0.95;
+          displayedWidth = containerRect.height * 0.95 * imageAspect;
+        }
+
+        return {
+          width: containerRect.width,
+          height: containerRect.height,
+          displayedWidth,
+          displayedHeight,
+        };
+      }
+
+      function applyBoundaries() {
+        const bounds = getImageBounds();
+        if (bounds.displayedWidth === 0) return;
+
+        const zoomedWidth = bounds.displayedWidth * transform.scale;
+        const zoomedHeight = bounds.displayedHeight * transform.scale;
+
+        let maxX = 0,
+          maxY = 0;
+
+        if (zoomedWidth > bounds.width) {
+          maxX = (zoomedWidth - bounds.width) / 2;
+        }
+        if (zoomedHeight > bounds.height) {
+          maxY = (zoomedHeight - bounds.height) / 2;
+        }
+
+        const buffer = 5;
+        transform.translateX = Math.max(
+          -maxX - buffer,
+          Math.min(maxX + buffer, transform.translateX)
+        );
+        transform.translateY = Math.max(
+          -maxY - buffer,
+          Math.min(maxY + buffer, transform.translateY)
+        );
+      }
+
+      // Touch events
+      function setupTouchEvents() {
+        const container = document.getElementById("lightboxContent");
+        if (!container) return;
+
+        container.addEventListener("touchstart", handleTouchStart, {
+          passive: false,
+        });
+        container.addEventListener("touchmove", handleTouchMove, {
+          passive: false,
+        });
+        container.addEventListener("touchend", handleTouchEnd, {
+          passive: false,
+        });
+        container.addEventListener("touchcancel", handleTouchCancel, {
+          passive: false,
+        });
+      }
+
+      function removeTouchEvents() {
+        const container = document.getElementById("lightboxContent");
+        if (container) {
+          container.removeEventListener("touchstart", handleTouchStart);
+          container.removeEventListener("touchmove", handleTouchMove);
+          container.removeEventListener("touchend", handleTouchEnd);
+          container.removeEventListener("touchcancel", handleTouchCancel);
+        }
+      }
+
+      function resetGestureState() {
+        gestureState.isDragging = false;
+        gestureState.isPinching = false;
+        gestureState.hasMoved = false;
+        gestureState.totalMovement = 0;
+      }
+
+      function handleTouchStart(e) {
+        const now = Date.now();
+
+        if (e.touches.length === 1) {
+          const touch = e.touches[0];
+          resetGestureState();
+
+          gestureState.touchStartPoint = { x: touch.clientX, y: touch.clientY };
+          gestureState.touchStartTime = now;
+
+          const timeSinceLastTap = now - gestureState.lastTapTime;
+          const distanceFromLastTap = Math.sqrt(
+            Math.pow(touch.clientX - gestureState.lastTapPosition.x, 2) +
+              Math.pow(touch.clientY - gestureState.lastTapPosition.y, 2)
+          );
+
+          if (
+            timeSinceLastTap < DOUBLE_TAP_DELAY &&
+            timeSinceLastTap > 50 &&
+            distanceFromLastTap < TAP_MOVEMENT_THRESHOLD
+          ) {
+            e.preventDefault();
+            toggleZoomAtExactPoint(touch.clientX, touch.clientY);
+            gestureState.lastTapTime = 0;
+            return;
+          }
+
+          gestureState.lastTapPosition = { x: touch.clientX, y: touch.clientY };
+          gestureState.lastTapTime = now;
+        } else if (e.touches.length === 2) {
+          e.preventDefault();
+          gestureState.isDragging = false;
+          gestureState.isPinching = true;
+          gestureState.hasMoved = false;
+
+          const center = getMidpoint(e.touches[0], e.touches[1]);
+          gestureState.pinchData.startDistance = getDistance(
+            e.touches[0],
+            e.touches[1]
+          );
+          gestureState.pinchData.startScale = transform.scale;
+          gestureState.pinchData.startCenter = center;
+          gestureState.pinchData.currentCenter = center;
+          gestureState.pinchData.startTransform = { ...transform };
+        }
+      }
+
+      function handleTouchMove(e) {
+        e.preventDefault();
+
+        if (gestureState.isPinching && e.touches.length === 2) {
+          const currentDistance = getDistance(e.touches[0], e.touches[1]);
+          const currentCenter = getMidpoint(e.touches[0], e.touches[1]);
+          const distanceDelta = Math.abs(
+            currentDistance - gestureState.pinchData.startDistance
+          );
+
+          if (distanceDelta < PINCH_THRESHOLD && !gestureState.hasMoved) return;
+
+          gestureState.hasMoved = true;
+          gestureState.pinchData.currentCenter = currentCenter;
+
+          const scaleFactor =
+            currentDistance / gestureState.pinchData.startDistance;
+          let newScale = gestureState.pinchData.startScale * scaleFactor;
+          newScale = Math.max(1, Math.min(5, newScale));
+
+          const pinchPoint = getImageCoordinates(
+            currentCenter.x,
+            currentCenter.y
+          );
+          const scaleChange =
+            newScale - gestureState.pinchData.startTransform.scale;
+
+          transform.translateX =
+            gestureState.pinchData.startTransform.translateX -
+            pinchPoint.x * scaleChange;
+          transform.translateY =
+            gestureState.pinchData.startTransform.translateY -
+            pinchPoint.y * scaleChange;
+          transform.scale = newScale;
+
+          if (transform.scale <= 1.01) {
+            resetTransform();
+            return;
+          }
+
+          applyBoundaries();
+          updateTransform();
+        } else if (e.touches.length === 1 && !gestureState.isPinching) {
+          const touch = e.touches[0];
+          const deltaX = touch.clientX - gestureState.touchStartPoint.x;
+          const deltaY = touch.clientY - gestureState.touchStartPoint.y;
+          const totalDistance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+
+          gestureState.totalMovement = totalDistance;
+
+          if (
+            transform.scale > 1.01 &&
+            totalDistance > TAP_MOVEMENT_THRESHOLD
+          ) {
+            if (!gestureState.isDragging) {
+              gestureState.isDragging = true;
+              gestureState.hasMoved = true;
+            }
+          }
+
+          if (gestureState.isDragging) {
+            const moveDeltaX =
+              (touch.clientX - gestureState.touchStartPoint.x) *
+              PAN_SENSITIVITY;
+            const moveDeltaY =
+              (touch.clientY - gestureState.touchStartPoint.y) *
+              PAN_SENSITIVITY;
+
+            transform.translateX += moveDeltaX;
+            transform.translateY += moveDeltaY;
+
+            applyBoundaries();
+            updateTransform();
+
+            gestureState.touchStartPoint = {
+              x: touch.clientX,
+              y: touch.clientY,
+            };
+          }
+        }
+      }
+
+      function handleTouchEnd(e) {
+        const now = Date.now();
+        const touchDuration = now - gestureState.touchStartTime;
+
+        if (e.touches.length === 0) {
+          gestureState.lastTouchEnd = now;
+
+          if (
+            !gestureState.isPinching &&
+            !gestureState.isDragging &&
+            transform.scale <= 1.01 &&
+            gestureState.totalMovement > SWIPE_THRESHOLD &&
+            touchDuration < 500
+          ) {
+            const touch = e.changedTouches[0];
+            const deltaX = touch.clientX - gestureState.touchStartPoint.x;
+            const deltaY = touch.clientY - gestureState.touchStartPoint.y;
+
+            if (
+              Math.abs(deltaX) > Math.abs(deltaY) &&
+              Math.abs(deltaX) > SWIPE_THRESHOLD
+            ) {
+              if (deltaX > 0) {
+                previousImage();
+              } else {
+                nextImage();
+              }
+            }
+          }
+
+          resetGestureState();
+        } else if (e.touches.length === 1 && gestureState.isPinching) {
+          gestureState.isPinching = false;
+          gestureState.isDragging = false;
+          gestureState.hasMoved = false;
+          gestureState.touchStartPoint = {
+            x: e.touches[0].clientX,
+            y: e.touches[0].clientY,
+          };
+          gestureState.touchStartTime = now;
+        }
+      }
+
+      function handleTouchCancel(e) {
+        resetGestureState();
+      }
+
+      function toggleZoomAtExactPoint(clientX, clientY) {
+        const imageCoords = getImageCoordinates(clientX, clientY);
+
+        if (transform.scale <= 1.01) {
+          const targetScale = 2.5;
+          const scaleChange = targetScale - transform.scale;
+
+          transform.translateX =
+            transform.translateX - imageCoords.x * scaleChange;
+          transform.translateY =
+            transform.translateY - imageCoords.y * scaleChange;
+          transform.scale = targetScale;
+
+          applyBoundaries();
+        } else {
+          resetTransform();
+        }
+
+        updateTransform();
+      }
+
+      // Mouse events
+      function setupMouseEvents() {
+        const container = document.getElementById("lightboxImageContainer");
+        container.addEventListener("mousedown", handleMouseDown);
+        container.addEventListener("dblclick", handleMouseDoubleClick);
+        document.addEventListener("mousemove", handleMouseMove);
+        document.addEventListener("mouseup", handleMouseUp);
+        document.addEventListener("mouseleave", handleMouseUp);
+        container.addEventListener("contextmenu", (e) => e.preventDefault());
+      }
+
+      function removeMouseEvents() {
+        const container = document.getElementById("lightboxImageContainer");
+        if (container) {
+          container.removeEventListener("mousedown", handleMouseDown);
+          container.removeEventListener("dblclick", handleMouseDoubleClick);
+        }
+        document.removeEventListener("mousemove", handleMouseMove);
+        document.removeEventListener("mouseup", handleMouseUp);
+        document.removeEventListener("mouseleave", handleMouseUp);
+      }
+
+      function handleMouseDoubleClick(e) {
+        e.preventDefault();
+        toggleZoomAtExactPoint(e.clientX, e.clientY);
+      }
+
+      function handleMouseDown(e) {
+        // Allow both left-click (0) and right-click (2) for dragging when zoomed in
+        if (e.button !== 0 && e.button !== 2) return;
+
+        if (transform.scale > 1.01) {
+          if (e.button === 0) {
+            isMouseDragging = true;
+          } else if (e.button === 2) {
+            isRightMouseDragging = true;
+          }
+
+          mouseLastPoint = { x: e.clientX, y: e.clientY };
+
+          const container = document.getElementById("lightboxImageContainer");
+          container.classList.add("dragging");
+        }
+
+        e.preventDefault();
+      }
+
+      function handleMouseMove(e) {
+        if (!isMouseDragging && !isRightMouseDragging) return;
+
+        const deltaX = (e.clientX - mouseLastPoint.x) * PAN_SENSITIVITY;
+        const deltaY = (e.clientY - mouseLastPoint.y) * PAN_SENSITIVITY;
+
+        transform.translateX += deltaX;
+        transform.translateY += deltaY;
+
+        applyBoundaries();
+        updateTransform();
+
+        mouseLastPoint = { x: e.clientX, y: e.clientY };
+      }
+
+      function handleMouseUp(e) {
+        if (isMouseDragging || isRightMouseDragging) {
+          isMouseDragging = false;
+          isRightMouseDragging = false;
+          const container = document.getElementById("lightboxImageContainer");
+          if (container) {
+            container.classList.remove("dragging");
+          }
+        }
+      }
+
+      // Mouse wheel zoom
+      function setupMouseWheelZoom() {
+        const lightbox = document.getElementById("lightbox");
+        lightbox.addEventListener("wheel", handleMouseWheel, {
+          passive: false,
+        });
+      }
+
+      function removeMouseWheelZoom() {
+        const lightbox = document.getElementById("lightbox");
+        if (lightbox) {
+          lightbox.removeEventListener("wheel", handleMouseWheel);
+        }
+      }
+
+      function handleMouseWheel(e) {
+        e.preventDefault();
+
+        const zoomSpeed = 0.008;
+        const zoomDelta = -e.deltaY * zoomSpeed;
+        let newScale = transform.scale + zoomDelta;
+
+        newScale = Math.max(1, Math.min(5, newScale));
+
+        const cursorPoint = getImageCoordinates(e.clientX, e.clientY);
+        const scaleChange = newScale - transform.scale;
+
+        transform.translateX =
+          transform.translateX - cursorPoint.x * scaleChange;
+        transform.translateY =
+          transform.translateY - cursorPoint.y * scaleChange;
+        transform.scale = newScale;
+
+        if (transform.scale <= 1.01) {
+          resetTransform();
+          return;
+        }
+
+        applyBoundaries();
+        updateTransform();
+      }
+
+      // Keyboard events
+      function setupKeyboardEvents() {
+        document.addEventListener("keydown", handleKeyDown);
+      }
+
+      function removeKeyboardEvents() {
+        document.removeEventListener("keydown", handleKeyDown);
+      }
+
+      function handleKeyDown(e) {
+        const lightbox = document.getElementById("lightbox");
+        if (lightbox && lightbox.classList.contains("active")) {
+          if (e.key === "Escape") {
+            e.preventDefault();
+            e.stopPropagation();
+            closeLightbox();
+            return false;
+          } else if (transform.scale <= 1.01) {
+            if (e.key === "ArrowLeft") {
+              previousImage();
+            } else if (e.key === "ArrowRight") {
+              nextImage();
+            }
+          } else {
+            const panAmount = 60 * PAN_SENSITIVITY;
+
+            if (e.key === "ArrowLeft") {
+              transform.translateX -= panAmount;
+            } else if (e.key === "ArrowRight") {
+              transform.translateX += panAmount;
+            } else if (e.key === "ArrowUp") {
+              transform.translateY -= panAmount;
+            } else if (e.key === "ArrowDown") {
+              transform.translateY += panAmount;
+            }
+
+            applyBoundaries();
+            updateTransform();
+          }
+        }
+      }
+
+      // History management
+      function pushLightboxHistory() {
+        lightboxHistoryState = {
+          lightbox: true,
+          imageIndex: currentImageIndex,
+          timestamp: Date.now(),
+        };
+        history.pushState(lightboxHistoryState, "", window.location.href);
+      }
+
+      function removeLightboxHistory() {
+        if (lightboxHistoryState) {
+          history.back();
+          lightboxHistoryState = null;
+        }
+      }
+
+      function setupHistoryListener() {
+        window.addEventListener("popstate", handlePopState);
+      }
+
+      function removeHistoryListener() {
+        window.removeEventListener("popstate", handlePopState);
+      }
+
+      function handlePopState(event) {
+        const lightbox = document.getElementById("lightbox");
+
+        if (lightbox && lightbox.classList.contains("active")) {
+          if (event.state && event.state.lightbox) {
+            return;
+          } else {
+            closeLightboxWithoutHistory();
+            if (lightboxHistoryState) {
+              history.pushState(null, "", window.location.href);
+            }
+          }
+        }
+      }
+    </script>
+  </body>
+</html>
