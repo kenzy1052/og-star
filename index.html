@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -372,52 +372,40 @@
 
       /* Hero slide backgrounds - Desktop */
       .hero-slide-1 {
-        background-image: linear-gradient(
-            rgba(0, 0, 0, 0.5),
-            rgba(0, 0, 0, 0.5)
-          ),
+        background-image:
+          linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
           url("assets/images/h1.jpg");
       }
 
       .hero-slide-2 {
-        background-image: linear-gradient(
-            rgba(0, 0, 0, 0.5),
-            rgba(0, 0, 0, 0.5)
-          ),
+        background-image:
+          linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
           url("assets/images/h2.2.jpg");
       }
 
       .hero-slide-3 {
-        background-image: linear-gradient(
-            rgba(0, 0, 0, 0.5),
-            rgba(0, 0, 0, 0.5)
-          ),
+        background-image:
+          linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
           url("assets/images/h3.3.jpg");
       }
 
       /* Mobile hero images */
       @media (max-width: 767px) {
         .hero-slide-1 {
-          background-image: linear-gradient(
-              rgba(0, 0, 0, 0.5),
-              rgba(0, 0, 0, 0.5)
-            ),
+          background-image:
+            linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
             url("assets/images/h1m.jpg");
         }
 
         .hero-slide-2 {
-          background-image: linear-gradient(
-              rgba(0, 0, 0, 0.5),
-              rgba(0, 0, 0, 0.5)
-            ),
+          background-image:
+            linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
             url("assets/images/h2.2m.jpg");
         }
 
         .hero-slide-3 {
-          background-image: linear-gradient(
-              rgba(0, 0, 0, 0.5),
-              rgba(0, 0, 0, 0.5)
-            ),
+          background-image:
+            linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
             url("assets/images/h2m.jpg");
         }
       }
@@ -768,7 +756,8 @@
       .carousel-track {
         display: flex;
         gap: 20px;
-        transition: transform 0.6s cubic-bezier(0.22, 0.9, 0.35, 1),
+        transition:
+          transform 0.6s cubic-bezier(0.22, 0.9, 0.35, 1),
           opacity 0.35s linear;
         will-change: transform;
         cursor: grab;
@@ -816,7 +805,8 @@
         min-height: 100%;
         transform-origin: center;
         opacity: 0.98;
-        transition: box-shadow 0.25s cubic-bezier(0.22, 0.9, 0.35, 1),
+        transition:
+          box-shadow 0.25s cubic-bezier(0.22, 0.9, 0.35, 1),
           opacity 0.4s linear;
       }
       .tour-card:hover,
@@ -897,7 +887,8 @@
         color: var(--secondary-color);
         font-weight: 700;
         display: inline-block;
-        transition: color 0.2s cubic-bezier(0.22, 0.9, 0.35, 1),
+        transition:
+          color 0.2s cubic-bezier(0.22, 0.9, 0.35, 1),
           opacity 0.2s linear;
       }
       .tour-btn:hover {
@@ -965,7 +956,8 @@
         color: var(--accent-color);
         font-weight: 700;
         display: inline-block;
-        transition: color 0.2s cubic-bezier(0.22, 0.9, 0.35, 1),
+        transition:
+          color 0.2s cubic-bezier(0.22, 0.9, 0.35, 1),
           opacity 0.2s linear;
       }
       .work-btn:hover {
@@ -1456,7 +1448,9 @@
       .reveal {
         opacity: 0;
         transform: translateY(20px);
-        transition: opacity 0.6s ease, transform 0.6s ease;
+        transition:
+          opacity 0.6s ease,
+          transform 0.6s ease;
       }
 
       .reveal.visible {
@@ -1777,6 +1771,7 @@
     </section>
 
     <!-- Services Section -->
+    <!-- Services Section -->
     <section class="section services" id="services">
       <div class="container">
         <h4 class="section-subtitle">Our Services</h4>
@@ -1840,6 +1835,28 @@
             <p>
               Design your perfect journey with our bespoke travel packages
               tailored to your preferences.
+            </p>
+          </div>
+          <!-- New Service: Hotel Reservations -->
+          <div class="service-card scroll-animate animate-scale">
+            <div class="service-icon">
+              <i class="fas fa-hotel"></i>
+            </div>
+            <h3>Hotel Reservations</h3>
+            <p>
+              Find the perfect accommodation with our extensive network of
+              hotels worldwide, from budget-friendly to luxury resorts.
+            </p>
+          </div>
+          <!-- New Service: Ticketing -->
+          <div class="service-card scroll-animate animate-scale">
+            <div class="service-icon">
+              <i class="fas fa-ticket-alt"></i>
+            </div>
+            <h3>Ticketing Services</h3>
+            <p>
+              Book flights, trains, and event tickets with ease through our
+              comprehensive ticketing platform at competitive prices.
             </p>
           </div>
         </div>
@@ -3441,7 +3458,7 @@
           {
             threshold: 0.1,
             rootMargin: "0px 0px -30px 0px",
-          }
+          },
         );
 
         document
@@ -3453,7 +3470,7 @@
 
       function initVisibleElements() {
         const elements = document.querySelectorAll(
-          ".scroll-animate, .text-animate, .reveal"
+          ".scroll-animate, .text-animate, .reveal",
         );
         elements.forEach((el, index) => {
           const rect = el.getBoundingClientRect();
@@ -3574,7 +3591,7 @@
               touchStartX = e.changedTouches[0].screenX;
               touchStartY = e.changedTouches[0].screenY;
             },
-            { passive: true }
+            { passive: true },
           );
 
           heroSlider.addEventListener(
@@ -3584,7 +3601,7 @@
               touchEndY = e.changedTouches[0].screenY;
               handleSwipe();
             },
-            { passive: true }
+            { passive: true },
           );
 
           function handleSwipe() {
@@ -3675,7 +3692,7 @@
 
           // store original nodes as templates
           this.originalTemplateNodes = Array.from(this.track.children).map(
-            (n) => n.cloneNode(true)
+            (n) => n.cloneNode(true),
           );
           this.originalCount = this.originalTemplateNodes.length;
 
@@ -3690,7 +3707,7 @@
 
         _readVisualCount() {
           const val = getComputedStyle(this.wrapper).getPropertyValue(
-            "--visual-count"
+            "--visual-count",
           );
           const n = parseInt(val);
           return n && n > 0 ? n : 1;
@@ -3700,7 +3717,7 @@
           // rebuild track with original nodes (no clones)
           this.track.innerHTML = "";
           this.originalTemplateNodes.forEach((n) =>
-            this.track.appendChild(n.cloneNode(true))
+            this.track.appendChild(n.cloneNode(true)),
           );
           this.originalCount = Array.from(this.track.children).length;
 
@@ -3832,7 +3849,7 @@
               this.track.style.transition = "none";
               this._stopAuto();
             },
-            { passive: true }
+            { passive: true },
           );
 
           this.track.addEventListener(
@@ -3842,7 +3859,7 @@
               const dx = e.touches[0].clientX - this.startX;
               this._setTranslate(this.prevTranslate + dx);
             },
-            { passive: true }
+            { passive: true },
           );
 
           this.track.addEventListener("touchend", (e) => {
@@ -3921,7 +3938,7 @@
         _updateDots(i) {
           if (!this.dots) return;
           this.dots.forEach((d, idx) =>
-            d.classList.toggle("active", idx === i % this.originalCount)
+            d.classList.toggle("active", idx === i % this.originalCount),
           );
         }
 
@@ -3929,7 +3946,7 @@
           // Add .in-view to the leftmost visible card (logical index)
           // First remove from all
           Array.from(this.track.children).forEach((n) =>
-            n.classList.remove("in-view")
+            n.classList.remove("in-view"),
           );
           // The node that corresponds to leftmost visible = cloneCount + index
           const pos = this.cloneCount + this.index;
@@ -3963,14 +3980,14 @@
           // remove listeners for safety
           this.track.removeEventListener(
             "transitionend",
-            this._onTransitionEnd
+            this._onTransitionEnd,
           );
           window.removeEventListener("resize", this._onResize);
 
           // rebuild original nodes
           this.track.innerHTML = "";
           this.originalTemplateNodes.forEach((n) =>
-            this.track.appendChild(n.cloneNode(true))
+            this.track.appendChild(n.cloneNode(true)),
           );
           this.originalCount = Array.from(this.track.children).length;
 
@@ -4008,7 +4025,7 @@
           },
           {
             threshold: 0.2,
-          }
+          },
         );
 
         const card = jobAlert.querySelector(".job-alert-card");

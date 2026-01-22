@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -167,7 +167,8 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+        background:
+          linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
           url("https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=1920&q=80");
         background-size: cover;
         background-position: center;
@@ -477,7 +478,8 @@
       .carousel-track {
         display: flex;
         gap: 20px;
-        transition: transform 0.6s cubic-bezier(0.22, 0.9, 0.35, 1),
+        transition:
+          transform 0.6s cubic-bezier(0.22, 0.9, 0.35, 1),
           opacity 0.35s linear;
         will-change: transform;
         cursor: grab;
@@ -519,7 +521,8 @@
         min-height: 100%;
         transform-origin: center;
         opacity: 0.98;
-        transition: box-shadow 0.25s cubic-bezier(0.22, 0.9, 0.35, 1),
+        transition:
+          box-shadow 0.25s cubic-bezier(0.22, 0.9, 0.35, 1),
           opacity 0.4s linear;
         padding: 24px;
         align-items: center;
@@ -998,7 +1001,10 @@
 
           <div class="team-card">
             <div class="team-avatar">
-              <img src="assets/images/team3.jpg" alt="Salamatu Peace Atteh" />
+              <img
+                src="assets/images/team3.1.jpeg"
+                alt="Salamatu Peace Atteh"
+              />
             </div>
             <h3 class="team-name">Salamatu Peace Atteh</h3>
             <p class="team-role">
@@ -1650,7 +1656,7 @@
           this.dragThreshold = 60;
 
           this.originalTemplateNodes = Array.from(this.track.children).map(
-            (n) => n.cloneNode(true)
+            (n) => n.cloneNode(true),
           );
           this.originalCount = this.originalTemplateNodes.length;
 
@@ -1663,7 +1669,7 @@
 
         _readVisualCount() {
           const val = getComputedStyle(this.wrapper).getPropertyValue(
-            "--visual-count"
+            "--visual-count",
           );
           const n = parseInt(val);
           return n && n > 0 ? n : 1;
@@ -1672,7 +1678,7 @@
         _init() {
           this.track.innerHTML = "";
           this.originalTemplateNodes.forEach((n) =>
-            this.track.appendChild(n.cloneNode(true))
+            this.track.appendChild(n.cloneNode(true)),
           );
           this.originalCount = Array.from(this.track.children).length;
 
@@ -1788,7 +1794,7 @@
               this.track.style.transition = "none";
               this._stopAuto();
             },
-            { passive: true }
+            { passive: true },
           );
 
           this.track.addEventListener(
@@ -1798,7 +1804,7 @@
               const dx = e.touches[0].clientX - this.startX;
               this._setTranslate(this.prevTranslate + dx);
             },
-            { passive: true }
+            { passive: true },
           );
 
           this.track.addEventListener("touchend", (e) => {
@@ -1872,13 +1878,13 @@
         _updateDots(i) {
           if (!this.dots) return;
           this.dots.forEach((d, idx) =>
-            d.classList.toggle("active", idx === i % this.originalCount)
+            d.classList.toggle("active", idx === i % this.originalCount),
           );
         }
 
         _setInViewClass() {
           Array.from(this.track.children).forEach((n) =>
-            n.classList.remove("in-view")
+            n.classList.remove("in-view"),
           );
           const pos = this.cloneCount + this.index;
           const node = this.track.children[pos];
@@ -1908,13 +1914,13 @@
           const savedIndex = this.index;
           this.track.removeEventListener(
             "transitionend",
-            this._onTransitionEnd
+            this._onTransitionEnd,
           );
           window.removeEventListener("resize", this._onResize);
 
           this.track.innerHTML = "";
           this.originalTemplateNodes.forEach((n) =>
-            this.track.appendChild(n.cloneNode(true))
+            this.track.appendChild(n.cloneNode(true)),
           );
           this.originalCount = Array.from(this.track.children).length;
 

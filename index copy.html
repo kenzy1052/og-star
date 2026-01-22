@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -372,52 +372,40 @@
 
       /* Hero slide backgrounds - Desktop */
       .hero-slide-1 {
-        background-image: linear-gradient(
-            rgba(0, 0, 0, 0.5),
-            rgba(0, 0, 0, 0.5)
-          ),
+        background-image:
+          linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
           url("assets/images/h1.jpg");
       }
 
       .hero-slide-2 {
-        background-image: linear-gradient(
-            rgba(0, 0, 0, 0.5),
-            rgba(0, 0, 0, 0.5)
-          ),
+        background-image:
+          linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
           url("assets/images/h2.2.jpg");
       }
 
       .hero-slide-3 {
-        background-image: linear-gradient(
-            rgba(0, 0, 0, 0.5),
-            rgba(0, 0, 0, 0.5)
-          ),
+        background-image:
+          linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
           url("assets/images/h3.3.jpg");
       }
 
       /* Mobile hero images */
       @media (max-width: 767px) {
         .hero-slide-1 {
-          background-image: linear-gradient(
-              rgba(0, 0, 0, 0.5),
-              rgba(0, 0, 0, 0.5)
-            ),
+          background-image:
+            linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
             url("assets/images/h1m.jpg");
         }
 
         .hero-slide-2 {
-          background-image: linear-gradient(
-              rgba(0, 0, 0, 0.5),
-              rgba(0, 0, 0, 0.5)
-            ),
+          background-image:
+            linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
             url("assets/images/h2.2m.jpg");
         }
 
         .hero-slide-3 {
-          background-image: linear-gradient(
-              rgba(0, 0, 0, 0.5),
-              rgba(0, 0, 0, 0.5)
-            ),
+          background-image:
+            linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
             url("assets/images/h2m.jpg");
         }
       }
@@ -768,7 +756,8 @@
       .carousel-track {
         display: flex;
         gap: 20px;
-        transition: transform 0.6s cubic-bezier(0.22, 0.9, 0.35, 1),
+        transition:
+          transform 0.6s cubic-bezier(0.22, 0.9, 0.35, 1),
           opacity 0.35s linear;
         will-change: transform;
         cursor: grab;
@@ -816,7 +805,8 @@
         min-height: 100%;
         transform-origin: center;
         opacity: 0.98;
-        transition: box-shadow 0.25s cubic-bezier(0.22, 0.9, 0.35, 1),
+        transition:
+          box-shadow 0.25s cubic-bezier(0.22, 0.9, 0.35, 1),
           opacity 0.4s linear;
       }
       .tour-card:hover,
@@ -897,7 +887,8 @@
         color: var(--secondary-color);
         font-weight: 700;
         display: inline-block;
-        transition: color 0.2s cubic-bezier(0.22, 0.9, 0.35, 1),
+        transition:
+          color 0.2s cubic-bezier(0.22, 0.9, 0.35, 1),
           opacity 0.2s linear;
       }
       .tour-btn:hover {
@@ -965,7 +956,8 @@
         color: var(--accent-color);
         font-weight: 700;
         display: inline-block;
-        transition: color 0.2s cubic-bezier(0.22, 0.9, 0.35, 1),
+        transition:
+          color 0.2s cubic-bezier(0.22, 0.9, 0.35, 1),
           opacity 0.2s linear;
       }
       .work-btn:hover {
@@ -1146,6 +1138,240 @@
         height: 100%;
       }
 
+      /* Job Opportunities Alert Section */
+      .job-opportunities-alert {
+        padding: var(--spacing-lg) 0;
+        background: var(--bg-secondary);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .job-alert-card {
+        background: linear-gradient(
+          135deg,
+          rgba(46, 196, 182, 0.08) 0%,
+          rgba(255, 107, 107, 0.08) 100%
+        );
+        border: 2px solid var(--primary-color);
+        border-radius: var(--radius-lg);
+        padding: 1.5rem 2rem;
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+        position: relative;
+        box-shadow: 0 8px 24px rgba(46, 196, 182, 0.15);
+        transition: all 0.3s ease;
+        flex-wrap: wrap;
+      }
+
+      .job-alert-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: var(--gradient-primary);
+        opacity: 0;
+        border-radius: inherit;
+        transition: opacity 0.3s ease;
+        pointer-events: none;
+        z-index: 0;
+      }
+
+      .job-alert-card:hover::before {
+        opacity: 0.05;
+      }
+
+      .job-alert-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 12px 32px rgba(46, 196, 182, 0.25);
+      }
+
+      .job-alert-badge {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 60px;
+        height: 60px;
+        z-index: 1;
+      }
+
+      .badge-pulse {
+        position: absolute;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        background: var(--secondary-color);
+        opacity: 0.4;
+        animation: pulse-animation 2s infinite;
+      }
+
+      @keyframes pulse-animation {
+        0% {
+          transform: scale(0.8);
+          opacity: 0.6;
+        }
+        50% {
+          transform: scale(1.2);
+          opacity: 0.3;
+        }
+        100% {
+          transform: scale(0.8);
+          opacity: 0.6;
+        }
+      }
+
+      .badge-text {
+        position: relative;
+        background: var(--gradient-secondary);
+        color: white;
+        padding: 0.5rem 1rem;
+        border-radius: 20px;
+        font-weight: 700;
+        font-size: 0.85rem;
+        letter-spacing: 1px;
+        box-shadow: 0 4px 12px rgba(255, 107, 107, 0.3);
+        z-index: 2;
+      }
+
+      .job-alert-content {
+        flex: 1;
+        min-width: 250px;
+        z-index: 1;
+      }
+
+      .job-alert-title {
+        font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+        color: var(--text-color);
+        margin: 0 0 0.5rem 0;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        text-transform: none;
+      }
+
+      .job-alert-title i {
+        color: var(--primary-color);
+        font-size: 1.2em;
+      }
+
+      .job-alert-description {
+        color: var(--text-muted);
+        margin: 0;
+        font-size: 0.95rem;
+        line-height: 1.5;
+      }
+
+      .job-alert-btn {
+        background: var(--gradient-secondary);
+        color: white;
+        padding: 0.875rem 1.75rem;
+        border-radius: 50px;
+        font-weight: 600;
+        font-size: 1rem;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 12px rgba(255, 107, 107, 0.3);
+        white-space: nowrap;
+        position: relative;
+        overflow: hidden;
+        z-index: 1;
+      }
+
+      .job-alert-btn::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 0%;
+        background: rgba(0, 0, 0, 0.2);
+        z-index: -1;
+        transition: height 0.3s ease;
+        border-radius: inherit;
+      }
+
+      .job-alert-btn:hover::before {
+        height: 100%;
+      }
+
+      .job-alert-btn:hover {
+        transform: translateX(4px);
+        box-shadow: 0 6px 16px rgba(255, 107, 107, 0.4);
+      }
+
+      .job-alert-btn i {
+        transition: transform 0.3s ease;
+      }
+
+      .job-alert-btn:hover i {
+        transform: translateX(4px);
+      }
+
+      /* Responsive adjustments */
+      @media (max-width: 768px) {
+        .job-opportunities-alert {
+          padding: var(--spacing-md) 0;
+        }
+
+        .job-alert-card {
+          padding: 1.25rem 1.5rem;
+          flex-direction: column;
+          text-align: center;
+          gap: 1rem;
+        }
+
+        .job-alert-badge {
+          min-width: 50px;
+          height: 50px;
+        }
+
+        .badge-pulse {
+          width: 50px;
+          height: 50px;
+        }
+
+        .job-alert-content {
+          min-width: auto;
+        }
+
+        .job-alert-title {
+          justify-content: center;
+          font-size: 1.1rem;
+        }
+
+        .job-alert-description {
+          font-size: 0.9rem;
+        }
+
+        .job-alert-btn {
+          padding: 0.75rem 1.5rem;
+          font-size: 0.95rem;
+          width: 100%;
+          justify-content: center;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .job-alert-card {
+          padding: 1rem;
+        }
+
+        .job-alert-title {
+          font-size: 1rem;
+        }
+
+        .job-alert-description {
+          font-size: 0.85rem;
+        }
+      }
+
       /* === STYLES THAT SHOULD BE MOVED TO UTILS.CSS === */
       /* Enhanced Scroll Animation Classes */
       .scroll-animate {
@@ -1222,7 +1448,9 @@
       .reveal {
         opacity: 0;
         transform: translateY(20px);
-        transition: opacity 0.6s ease, transform 0.6s ease;
+        transition:
+          opacity 0.6s ease,
+          transform 0.6s ease;
       }
 
       .reveal.visible {
@@ -1493,6 +1721,32 @@
       </div>
     </section>
 
+    <!-- Job Opportunities Announcement Section -->
+    <section class="job-opportunities-alert">
+      <div class="container">
+        <div class="job-alert-card">
+          <div class="job-alert-badge">
+            <span class="badge-pulse"></span>
+            <span class="badge-text">NEW</span>
+          </div>
+          <div class="job-alert-content">
+            <h3 class="job-alert-title">
+              <i class="fas fa-briefcase"></i>
+              New Overseas Job Opportunities
+            </h3>
+            <p class="job-alert-description">
+              Exciting international career opportunities are now available.
+              Start your journey abroad today.
+            </p>
+          </div>
+          <a href="/opportunities" class="job-alert-btn">
+            View Opportunities
+            <i class="fas fa-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+    </section>
+
     <!-- About Us Section - New Design -->
     <section id="about" class="container split">
       <div class="media reveal">
@@ -1516,6 +1770,7 @@
       </div>
     </section>
 
+    <!-- Services Section -->
     <!-- Services Section -->
     <section class="section services" id="services">
       <div class="container">
@@ -1580,6 +1835,28 @@
             <p>
               Design your perfect journey with our bespoke travel packages
               tailored to your preferences.
+            </p>
+          </div>
+          <!-- New Service: Hotel Reservations -->
+          <div class="service-card scroll-animate animate-scale">
+            <div class="service-icon">
+              <i class="fas fa-hotel"></i>
+            </div>
+            <h3>Hotel Reservations</h3>
+            <p>
+              Find the perfect accommodation with our extensive network of
+              hotels worldwide, from budget-friendly to luxury resorts.
+            </p>
+          </div>
+          <!-- New Service: Ticketing -->
+          <div class="service-card scroll-animate animate-scale">
+            <div class="service-icon">
+              <i class="fas fa-ticket-alt"></i>
+            </div>
+            <h3>Ticketing Services</h3>
+            <p>
+              Book flights, trains, and event tickets with ease through our
+              comprehensive ticketing platform at competitive prices.
             </p>
           </div>
         </div>
@@ -3050,8 +3327,10 @@
           experiences around the world.
         </p>
         <div class="cta-buttons">
-          <a href="#contact" class="cta-btn cta-btn-primary">Get in Touch</a>
-          <a href="#services" class="cta-btn cta-btn-secondary"
+          <a href="contact.html" class="cta-btn cta-btn-primary"
+            >Get in Touch</a
+          >
+          <a href="services.html" class="cta-btn cta-btn-secondary"
             >Explore Services</a
           >
         </div>
@@ -3161,6 +3440,7 @@
         initVisibleElements();
         initHeroSlider();
         initCarousels();
+        initJobAlert();
       });
 
       // Scroll Animations
@@ -3178,7 +3458,7 @@
           {
             threshold: 0.1,
             rootMargin: "0px 0px -30px 0px",
-          }
+          },
         );
 
         document
@@ -3190,7 +3470,7 @@
 
       function initVisibleElements() {
         const elements = document.querySelectorAll(
-          ".scroll-animate, .text-animate, .reveal"
+          ".scroll-animate, .text-animate, .reveal",
         );
         elements.forEach((el, index) => {
           const rect = el.getBoundingClientRect();
@@ -3311,7 +3591,7 @@
               touchStartX = e.changedTouches[0].screenX;
               touchStartY = e.changedTouches[0].screenY;
             },
-            { passive: true }
+            { passive: true },
           );
 
           heroSlider.addEventListener(
@@ -3321,7 +3601,7 @@
               touchEndY = e.changedTouches[0].screenY;
               handleSwipe();
             },
-            { passive: true }
+            { passive: true },
           );
 
           function handleSwipe() {
@@ -3412,7 +3692,7 @@
 
           // store original nodes as templates
           this.originalTemplateNodes = Array.from(this.track.children).map(
-            (n) => n.cloneNode(true)
+            (n) => n.cloneNode(true),
           );
           this.originalCount = this.originalTemplateNodes.length;
 
@@ -3427,7 +3707,7 @@
 
         _readVisualCount() {
           const val = getComputedStyle(this.wrapper).getPropertyValue(
-            "--visual-count"
+            "--visual-count",
           );
           const n = parseInt(val);
           return n && n > 0 ? n : 1;
@@ -3437,7 +3717,7 @@
           // rebuild track with original nodes (no clones)
           this.track.innerHTML = "";
           this.originalTemplateNodes.forEach((n) =>
-            this.track.appendChild(n.cloneNode(true))
+            this.track.appendChild(n.cloneNode(true)),
           );
           this.originalCount = Array.from(this.track.children).length;
 
@@ -3569,7 +3849,7 @@
               this.track.style.transition = "none";
               this._stopAuto();
             },
-            { passive: true }
+            { passive: true },
           );
 
           this.track.addEventListener(
@@ -3579,7 +3859,7 @@
               const dx = e.touches[0].clientX - this.startX;
               this._setTranslate(this.prevTranslate + dx);
             },
-            { passive: true }
+            { passive: true },
           );
 
           this.track.addEventListener("touchend", (e) => {
@@ -3658,7 +3938,7 @@
         _updateDots(i) {
           if (!this.dots) return;
           this.dots.forEach((d, idx) =>
-            d.classList.toggle("active", idx === i % this.originalCount)
+            d.classList.toggle("active", idx === i % this.originalCount),
           );
         }
 
@@ -3666,7 +3946,7 @@
           // Add .in-view to the leftmost visible card (logical index)
           // First remove from all
           Array.from(this.track.children).forEach((n) =>
-            n.classList.remove("in-view")
+            n.classList.remove("in-view"),
           );
           // The node that corresponds to leftmost visible = cloneCount + index
           const pos = this.cloneCount + this.index;
@@ -3700,14 +3980,14 @@
           // remove listeners for safety
           this.track.removeEventListener(
             "transitionend",
-            this._onTransitionEnd
+            this._onTransitionEnd,
           );
           window.removeEventListener("resize", this._onResize);
 
           // rebuild original nodes
           this.track.innerHTML = "";
           this.originalTemplateNodes.forEach((n) =>
-            this.track.appendChild(n.cloneNode(true))
+            this.track.appendChild(n.cloneNode(true)),
           );
           this.originalCount = Array.from(this.track.children).length;
 
@@ -3722,6 +4002,35 @@
           else this._resetAuto();
         }
       } // end class
+
+      function initJobAlert() {
+        const jobAlert = document.querySelector(".job-opportunities-alert");
+        if (!jobAlert) return;
+
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.style.opacity = "0";
+                entry.target.style.transform = "translateY(30px)";
+
+                setTimeout(() => {
+                  entry.target.style.transition =
+                    "opacity 0.6s ease, transform 0.6s ease";
+                  entry.target.style.opacity = "1";
+                  entry.target.style.transform = "translateY(0)";
+                }, 100);
+              }
+            });
+          },
+          {
+            threshold: 0.2,
+          },
+        );
+
+        const card = jobAlert.querySelector(".job-alert-card");
+        if (card) observer.observe(card);
+      }
     </script>
   </body>
 </html>

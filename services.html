@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -52,11 +52,8 @@
         align-items: center;
         justify-content: center;
         overflow: hidden;
-        background: linear-gradient(
-            to right,
-            rgba(0, 0, 0, 0.7),
-            rgba(0, 0, 0, 0.3)
-          ),
+        background:
+          linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.3)),
           url("https://images.unsplash.com/photo-1488646953014-85cb44e25828?q=80&w=2070")
             center/cover no-repeat;
       }
@@ -295,7 +292,8 @@
       /* Final CTA Section */
       .final-cta-section {
         padding: 100px 0;
-        background: linear-gradient(
+        background:
+          linear-gradient(
             to right,
             rgba(46, 196, 182, 0.9),
             rgba(17, 138, 178, 0.9)
@@ -758,6 +756,89 @@
           </div>
         </div>
       </div>
+
+      <!-- Service 7: Hotel Reservations -->
+      <div class="service-section">
+        <div class="service-container">
+          <div class="service-image-wrapper scroll-animate animate-slide-left">
+            <img
+              class="service-image"
+              src="assets/images/hotel-reservations.jpg"
+              alt="Hotel Reservations"
+            />
+          </div>
+          <div class="service-content scroll-animate animate-slide-right">
+            <div class="service-icon">
+              <i class="fas fa-hotel"></i>
+            </div>
+            <h2 class="service-title">Hotel Reservations</h2>
+            <p class="service-text">
+              Find the perfect accommodation with our extensive network of
+              hotels worldwide. From budget-friendly options to luxury resorts,
+              we help you secure the best rates and ensure comfortable stays
+              during your travels.
+            </p>
+            <div class="service-highlights">
+              <div class="service-highlight">
+                <i class="fas fa-check-circle"></i>
+                <span>Worldwide hotel network</span>
+              </div>
+              <div class="service-highlight">
+                <i class="fas fa-check-circle"></i>
+                <span>Best price guarantee</span>
+              </div>
+              <div class="service-highlight">
+                <i class="fas fa-check-circle"></i>
+                <span>Special group rates</span>
+              </div>
+            </div>
+            <a href="#" class="service-cta" data-service="Hotel Reservations"
+              >Book Your Stay →</a
+            >
+          </div>
+        </div>
+      </div>
+
+      <!-- Service 8: Ticketing -->
+      <div class="service-section">
+        <div class="service-container">
+          <div class="service-image-wrapper scroll-animate animate-slide-right">
+            <img
+              class="service-image"
+              src="assets/images/ticketing.jpg"
+              alt="Ticketing Services"
+            />
+          </div>
+          <div class="service-content scroll-animate animate-slide-left">
+            <div class="service-icon">
+              <i class="fas fa-ticket-alt"></i>
+            </div>
+            <h2 class="service-title">Ticketing Services</h2>
+            <p class="service-text">
+              Book flights, trains, and event tickets with ease through our
+              comprehensive ticketing platform. We offer competitive prices and
+              convenient booking options for all your travel needs.
+            </p>
+            <div class="service-highlights">
+              <div class="service-highlight">
+                <i class="fas fa-check-circle"></i>
+                <span>Flight bookings</span>
+              </div>
+              <div class="service-highlight">
+                <i class="fas fa-check-circle"></i>
+                <span>Train and bus tickets</span>
+              </div>
+              <div class="service-highlight">
+                <i class="fas fa-check-circle"></i>
+                <span>Event and attraction tickets</span>
+              </div>
+            </div>
+            <a href="#" class="service-cta" data-service="Ticketing Services"
+              >Book Tickets →</a
+            >
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- Why Choose Us Section -->
@@ -920,7 +1001,7 @@
             e.preventDefault();
             const serviceName = this.getAttribute("data-service");
             const message = encodeURIComponent(
-              `Hello OG Star Travel and Tours, I'm interested in your ${serviceName} service. Can you provide more information?`
+              `Hello OG Star Travel and Tours, I'm interested in your ${serviceName} service. Can you provide more information?`,
             );
             window.open(`https://wa.me/233546945944?text=${message}`, "_blank");
           });
@@ -936,11 +1017,11 @@
 
             if (buttonText === "Plan My Trip") {
               message = encodeURIComponent(
-                "Hello OG Star Travel and Tours, I'd like to plan a trip. Can you help me with the options?"
+                "Hello OG Star Travel and Tours, I'd like to plan a trip. Can you help me with the options?",
               );
             } else {
               message = encodeURIComponent(
-                "Hello OG Star Travel and Tours, I'd like toget in touch with you. Can you provide more information about your services?"
+                "Hello OG Star Travel and Tours, I'd like toget in touch with you. Can you provide more information about your services?",
               );
             }
 
